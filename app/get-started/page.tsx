@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { sendQuoteEmail } from '@/lib/emailService';
 import { 
   ArrowRight, ArrowLeft, Check, Sparkles, Zap, Clock, 
   Code2, Smartphone, Bot, LayoutDashboard, Workflow, Database,
@@ -216,30 +217,42 @@ export default function GetStartedPage() {
     );
   };
 
-  // Handle form submission
   const handleSubmit = async () => {
     setIsSubmitting(true);
     
-    // Simulate API call - Replace with actual email API
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    // In production, you would send this data to your backend
+    // 1. Prepare Data
     const quoteData = {
-      contact: contactInfo,
-      service: selectedService?.name,
-      features: selectedFeatures.map(id => {
-        const feature = selectedService?.features.find(f => f.id === id);
-        return feature?.name;
-      }),
+      from_name: contactInfo.name,
+      from_email: contactInfo.email,
+      phone: contactInfo.phone,
+      company: contactInfo.company || 'Not provided',
+      service: selectedService?.name || 'Unknown',
+      features: selectedFeatures.join(', '),
       timeline: selectedTimeline.name,
-      totalPrice: totalPrice,
-      timestamp: new Date().toISOString()
+      total_price: `$${totalPrice.toLocaleString()}`,
+      message: contactInfo.message || 'No message',
     };
-    
-    console.log('Quote Data:', quoteData);
-    
-    setIsSubmitting(false);
-    setCurrentStep(5);
+
+    try {
+      const emailjs = await import('@emailjs/browser');
+
+      // 2. SEND WITH THE CORRECT COMBINATION
+      await emailjs.send(
+        'service_npei2gf',       // <--- Your REAL Service ID (Not default_service)
+        'template_2u2lhr9',      // <--- Your Verified New Template ID
+        quoteData,
+        '-IObU0502rQ2VlNHa'      // <--- Your Public Key (lowercase 'l')
+      );
+
+      console.log('SUCCESS! Email sent.');
+      setIsSubmitting(false);
+      setCurrentStep(5); // Show Success Screen
+
+    } catch (error) {
+      console.error('FAILED:', error);
+      alert("Error sending email. Please check the console.");
+      setIsSubmitting(false);
+    }
   };
 
   // Handle quote acceptance

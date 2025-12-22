@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import ReceptionistAI from '@/components/ReceptionistAI';
 import { 
   ArrowRight, CheckCircle2, Bot, LayoutDashboard, Code2, Inbox, Lock, UploadCloud,
   Smartphone, Phone, BarChart3, Workflow, Database, Cpu, Check, XCircle, Plus, Star, Rocket, CreditCard, Mail, FileText, Play, Users// <--- Added Star
@@ -817,6 +818,7 @@ export default function Home() {
       
       {/* --- 6. FOOTER (New Component) --- */}
       <Footer />
-    </main>
+    <ReceptionistAI /> {/* It will only live here now */}
+  </main>
   );
 }

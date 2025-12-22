@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ai-sdk/groq": "^2.0.33",
+    "@ai-sdk/react": "^2.0.118",
+    "@emailjs/browser": "^4.4.1",
+    "ai": "^5.0.116",
     "lucide-react": "^0.562.0",
     "next": "16.1.0",
     "react": "19.2.3",
