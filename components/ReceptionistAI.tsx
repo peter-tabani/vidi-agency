@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { MessageSquare, X, Send, Sparkles, Zap, ChevronDown, Minimize2 } from 'lucide-react';
 
-const ROBOT_IMAGE = "https://img.freepik.com/free-photo/view-3d-robot-with-tech-elements_23-2150889222.jpg";
+const ROBOT_IMAGE = "/vidi-avatar.jpeg";
 
 // --- UPDATED MESSAGES (Punchy & Brand Focused) ---
 const TEASER_MESSAGES = [
