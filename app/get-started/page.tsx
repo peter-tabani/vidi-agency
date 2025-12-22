@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { 
   ArrowRight, ArrowLeft, Check, Sparkles, Zap, Clock, 
   Code2, Smartphone, Bot, LayoutDashboard, Workflow, Database,
   Globe, Palette, ShoppingCart, Rocket, Users, Mail, Phone, User,
   Building2, MessageSquare, CheckCircle2, PartyPopper, RefreshCw,
-  ChevronRight, Star, Shield, Cpu, Send, Loader2
+  Shield, Cpu, Send, Loader2, Star
 } from 'lucide-react';
 
 // ============================================================================
@@ -188,22 +188,23 @@ export default function GetStartedPage() {
   useEffect(() => {
     const duration = 500;
     const steps = 20;
-    const increment = (totalPrice - animatedPrice) / steps;
     let current = animatedPrice;
-    let step = 0;
+    const increment = (totalPrice - current) / steps;
+    let stepCount = 0;
 
     const timer = setInterval(() => {
-      step++;
+      stepCount++;
       current += increment;
       setAnimatedPrice(Math.round(current));
       
-      if (step >= steps) {
+      if (stepCount >= steps) {
         setAnimatedPrice(totalPrice);
         clearInterval(timer);
       }
     }, duration / steps);
 
     return () => clearInterval(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [totalPrice]);
 
   // Handle feature toggle
