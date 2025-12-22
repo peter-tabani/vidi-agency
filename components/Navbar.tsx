@@ -234,9 +234,9 @@ export default function Navbar() {
           </div>
 
           <div className="hidden md:block">
-            <button className="px-6 py-2.5 rounded-full text-white font-bold text-sm bg-gradient-to-r from-blue-600 to-purple-600 hover:opacity-90 transition-opacity shadow-lg shadow-blue-200">
-              Contact Us
-            </button>
+            <Link href="/get-started" className="px-6 py-2.5 rounded-full text-white font-bold text-sm bg-gradient-to-r from-blue-600 to-purple-600 hover:opacity-90 transition-opacity shadow-lg shadow-blue-200">
+              Start Project
+            </Link>
           </div>
 
           <button className="md:hidden p-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors z-50" onClick={() => setIsMobileMenuOpen(true)}>
@@ -307,7 +307,7 @@ export default function Navbar() {
               </div>
             </div>
 
-            <button className="w-full mt-8 py-3.5 rounded-full text-white font-bold bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg shadow-blue-200">Contact Us</button>
+            <Link href="/get-started" onClick={() => setIsMobileMenuOpen(false)} className="block w-full mt-8 py-3.5 rounded-full text-white font-bold bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg shadow-blue-200 text-center">Start Project</Link>
          </div>
       </div>
     </>

@@ -1,4 +1,5 @@
 import Footer from "@/components/Footer";
+import Link from "next/link";
 import { 
   ArrowRight, CheckCircle2, Bot, LayoutDashboard, Code2, Inbox, Lock, UploadCloud,
   Smartphone, Phone, BarChart3, Workflow, Database, Cpu, Check, XCircle, Plus, Star, Rocket, CreditCard, Mail, FileText, Play, Users// <--- Added Star
@@ -164,12 +165,12 @@ export default function Home() {
 
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 mb-10 w-full sm:w-auto">
-              <button className="bg-gray-900 text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-blue-700 shadow-xl shadow-blue-200/50 transition-all w-full sm:w-auto">
+              <Link href="/get-started" className="bg-gray-900 text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-blue-700 shadow-xl shadow-blue-200/50 transition-all w-full sm:w-auto text-center">
                 Start Your Project
-              </button>
-              <button className="px-8 py-4 rounded-full text-lg font-bold text-gray-800 bg-white border border-gray-300 hover:bg-gray-50 transition-all shadow-sm w-full sm:w-auto">
+              </Link>
+              <Link href="/case-studies" className="px-8 py-4 rounded-full text-lg font-bold text-gray-800 bg-white border border-gray-300 hover:bg-gray-50 transition-all shadow-sm w-full sm:w-auto text-center">
                 See Our Work
-              </button>
+              </Link>
             </div>
 
             {/* REVIEWS */}
