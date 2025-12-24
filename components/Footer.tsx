@@ -80,6 +80,7 @@ export default function Footer() {
           </div>
 
         </div>
+        
 
         {/* BOTTOM BAR */}
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">

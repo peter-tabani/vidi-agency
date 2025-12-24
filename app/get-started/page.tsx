@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation'; // <--- FIXED: Added missing import
+import { supabase } from '@/lib/supabase';   // <--- FIXED: Added missing import
 import { sendQuoteEmail } from '@/lib/emailService';
 import { 
   ArrowRight, ArrowLeft, Check, Sparkles, Zap, Clock, 
@@ -12,7 +14,7 @@ import {
 } from 'lucide-react';
 
 // ============================================================================
-// PRICING DATA STRUCTURE - ADJUST THESE VALUES AS NEEDED
+// PRICING DATA STRUCTURE 
 // ============================================================================
 
 interface Feature {
@@ -154,6 +156,7 @@ const timelines = [
 // ============================================================================
 
 export default function GetStartedPage() {
+  const router = useRouter(); // <--- FIXED: Initialized Router
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedService, setSelectedService] = useState<Service | null>(null);
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
@@ -238,10 +241,10 @@ export default function GetStartedPage() {
 
       // 2. SEND WITH THE CORRECT COMBINATION
       await emailjs.send(
-        'service_npei2gf',       // <--- Your REAL Service ID (Not default_service)
+        'service_npei2gf',       // <--- Your REAL Service ID 
         'template_2u2lhr9',      // <--- Your Verified New Template ID
         quoteData,
-        '-IObU0502rQ2VlNHa'      // <--- Your Public Key (lowercase 'l')
+        '-IObU0502rQ2VlNHa'      // <--- Your Public Key 
       );
 
       console.log('SUCCESS! Email sent.');
@@ -255,19 +258,52 @@ export default function GetStartedPage() {
     }
   };
 
-  // Handle quote acceptance
+  // --- FIXED HANDLE ACCEPT FUNCTION (Cleaned up the mess) ---
   const handleAccept = async () => {
+    // 1. Validate
+    if (!selectedService) return;
     setIsSubmitting(true);
     
-    // Simulate sending confirmation email
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    setIsSubmitting(false);
-    setIsAccepted(true);
-    setShowConfetti(true);
-    
-    // Hide confetti after animation
-    setTimeout(() => setShowConfetti(false), 5000);
+    try {
+      // 2. Save Client to Database
+      const { data, error } = await supabase
+        .from('clients')
+        .insert([
+          {
+            name: contactInfo.name,
+            email: contactInfo.email,
+            phone: contactInfo.phone,
+            company: contactInfo.company || 'Not Provided',
+            service: selectedService.name,
+            package: totalPrice > 2000 ? 'Grow' : 'Launch', // Simple logic to pick package
+            amount: totalPrice, 
+            paid: 0,
+            status: 'Not Started',
+            industry: `Features: ${selectedFeatures.join(', ')}. Timeline: ${selectedTimeline.name}`
+          }
+        ])
+        .select();
+
+      if (error) throw error;
+
+      // 3. Redirect to Payment Portal
+      if (data && data.length > 0) {
+        const newClientId = data[0].id;
+        
+        // Show confetti briefly
+        setShowConfetti(true); 
+        
+        // Wait 1 second then go to payment
+        setTimeout(() => {
+          router.push(`/pay/${newClientId}`);
+        }, 1000);
+      }
+
+    } catch (error) {
+      console.error('Error creating project:', error);
+      alert("System Error: Could not start project. Please check your connection.");
+      setIsSubmitting(false);
+    }
   };
 
   // Navigation
