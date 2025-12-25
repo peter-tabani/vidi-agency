@@ -1,16 +1,12 @@
 import type { NextConfig } from "next";
 
-// We use ': any' to avoid strict type errors during the build
 const nextConfig: any = {
-  // 1. Force a static export to create the "out" folder Netlify expects
-  output: 'export',
+  // We removed "output: 'export'" so dynamic pages like /pay work again.
   
-  // 2. Disable default image optimization (Required for static export)
   images: {
-    unoptimized: true,
+    // We can allow optimization again (optional, but better for performance)
+    unoptimized: true, 
   },
-
-  // 3. Ignore strict errors so the build doesn't fail on small warnings
   eslint: {
     ignoreDuringBuilds: true,
   },
