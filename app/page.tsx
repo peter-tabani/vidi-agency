@@ -362,9 +362,9 @@ export default function Home() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="px-10 py-5 bg-white text-gray-900 rounded-full text-lg font-bold hover:bg-gray-100 transition-all shadow-xl shadow-white/10 flex items-center gap-2">
-              Start Your Project <ArrowRight size={20} />
-            </button>
+            <Link href="/get-started" className="px-10 py-5 bg-white text-gray-900 rounded-full text-lg font-bold hover:bg-gray-100 transition-all shadow-xl shadow-white/10 flex items-center gap-2">
+                Start Your Project
+              </Link>
             <button className="px-10 py-5 bg-transparent border border-gray-700 text-white rounded-full text-lg font-bold hover:bg-gray-800 transition-all">
               Book a Strategy Call
             </button>

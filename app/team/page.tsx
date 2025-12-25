@@ -1,11 +1,10 @@
 'use client';
-
 import { useState, useEffect } from 'react';
-import { supabase } from '@/lib/supabase';
+// FIX: Import your specific instance from your lib folder
+import { supabase } from '@/lib/supabase'; 
 import { 
-  Lock, ArrowRight, DollarSign, CheckCircle2, Clock, 
-  Megaphone, TrendingUp, Globe, Smartphone, Layout, LogOut,
-  AlertCircle, ChevronRight
+  Lock, ArrowRight, Wallet, CheckCircle, 
+  Clock, AlertCircle, RefreshCw, LogOut 
 } from 'lucide-react';
 
 // --- TYPES ---
@@ -14,33 +13,45 @@ interface Task {
   title: string;
   description: string;
   amount: number;
-  status: string;
+  status: 'Pending' | 'Completed' | 'Paid';
   due_date: string;
 }
 
 interface Employee {
+  id: string;
   name: string;
-  role: 'marketing' | 'builder';
+  role: string;
+  earnings: number;
 }
 
 export default function TeamPortal() {
+  // REMOVED: const supabase = createClient(); <- You don't need this anymore
+  
+  // State
   const [accessCode, setAccessCode] = useState('');
-  const [currentUser, setCurrentUser] = useState<Employee | null>(null);
+  const [employee, setEmployee] = useState<Employee | null>(null);
   const [tasks, setTasks] = useState<Task[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  // --- LOGIN LOGIC ---
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
+  // 1. CHECK SESSION (Persist Login)
+  useEffect(() => {
+    const savedCode = sessionStorage.getItem('vidi_team_code');
+    if (savedCode) {
+      handleLogin(savedCode);
+    }
+  }, []);
+
+  // 2. LOGIN LOGIC
+  const handleLogin = async (codeInput: string = accessCode) => {
     setLoading(true);
     setError('');
 
-    // 1. Check Code against Database
+    // Find employee by Access Code
     const { data, error } = await supabase
       .from('employees')
       .select('*')
-      .eq('access_code', accessCode)
+      .eq('access_code', codeInput)
       .single();
 
     if (error || !data) {
@@ -49,218 +60,187 @@ export default function TeamPortal() {
       return;
     }
 
-    // 2. Set User
-    const employee = { name: data.name, role: data.role as 'marketing' | 'builder' };
-    setCurrentUser(employee);
-    
-    // 3. Fetch Their Tasks
-    fetchTasks(data.name);
+    // Success: Save user and fetch their tasks
+    setEmployee(data);
+    sessionStorage.setItem('vidi_team_code', codeInput);
+    fetchEmployeeTasks(data.id);
     setLoading(false);
   };
 
-  const fetchTasks = async (employeeName: string) => {
+  // 3. FETCH TASKS
+  const fetchEmployeeTasks = async (employeeId: string) => {
     const { data } = await supabase
       .from('tasks')
       .select('*')
-      .eq('assigned_to', employeeName)
-      .order('due_date', { ascending: true });
-    
-    if (data) setTasks(data);
+      .eq('assigned_to', employeeId)
+      .order('created_at', { ascending: false });
+
+    if (data) setTasks(data as Task[]);
   };
 
-  const markComplete = async (taskId: string) => {
-    // Optimistic Update
-    setTasks(tasks.map(t => t.id === taskId ? { ...t, status: 'Completed' } : t));
-    
-    // DB Update
-    await supabase.from('tasks').update({ status: 'Completed' }).eq('id', taskId);
+  // 4. MARK TASK COMPLETE
+  const handleCompleteTask = async (taskId: string) => {
+    if (!confirm('Are you sure you finished this task?')) return;
+
+    // Update in Supabase
+    const { error } = await supabase
+      .from('tasks')
+      .update({ status: 'Completed' })
+      .eq('id', taskId);
+
+    if (!error && employee) {
+      // Refresh list
+      fetchEmployeeTasks(employee.id);
+    }
   };
 
-  // --- LOGOUT ---
+  // 5. LOGOUT
   const handleLogout = () => {
-    setCurrentUser(null);
+    sessionStorage.removeItem('vidi_team_code');
+    setEmployee(null);
     setAccessCode('');
-    setTasks([]);
   };
 
-  // --- RENDER: LOGIN SCREEN ---
-  if (!currentUser) {
+  // --- VIEW: LOGIN SCREEN ---
+  if (!employee) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-6">
-        <div className="bg-white max-w-md w-full rounded-2xl shadow-xl border border-gray-100 p-10">
+      <div className="min-h-screen bg-gray-950 flex items-center justify-center p-4">
+        <div className="max-w-md w-full bg-gray-900 border border-gray-800 rounded-2xl p-8 shadow-2xl">
           <div className="text-center mb-8">
-            <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-blue-200">
-              <Lock className="w-8 h-8 text-white" />
+            <div className="w-16 h-16 bg-blue-600/20 rounded-2xl flex items-center justify-center mx-auto mb-4 text-blue-500">
+              <Lock className="w-8 h-8" />
             </div>
-            <h1 className="text-2xl font-bold text-gray-900">Team Portal</h1>
-            <p className="text-gray-500 text-sm mt-1">Enter your unique access code to view tasks.</p>
+            <h1 className="text-2xl font-bold text-white">Vidi Team Portal</h1>
+            <p className="text-gray-400 text-sm mt-2">Enter your unique access code to view tasks.</p>
           </div>
 
-          <form onSubmit={handleLogin} className="space-y-4">
-            <div>
-              <input 
-                type="password"
-                value={accessCode}
-                onChange={(e) => setAccessCode(e.target.value)}
-                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all text-center text-lg tracking-widest"
-                placeholder="• • • • • •"
-              />
-            </div>
-            {error && <p className="text-red-500 text-sm text-center flex items-center justify-center gap-2"><AlertCircle size={14}/> {error}</p>}
+          <div className="space-y-4">
+            <input
+              type="password"
+              placeholder="Access Code (e.g. code123)"
+              value={accessCode}
+              onChange={(e) => setAccessCode(e.target.value)}
+              className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white focus:border-blue-500 outline-none text-center tracking-widest text-lg"
+            />
             
-            <button 
+            {error && (
+              <div className="p-3 bg-red-900/20 border border-red-900/50 rounded-lg flex items-center gap-2 text-red-400 text-sm">
+                <AlertCircle className="w-4 h-4" /> {error}
+              </div>
+            )}
+
+            <button
+              onClick={() => handleLogin()}
               disabled={loading}
-              className="w-full bg-gray-900 text-white py-3 rounded-xl font-bold hover:bg-black transition-all flex items-center justify-center gap-2"
+              className="w-full py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2"
             >
-              {loading ? 'Verifying...' : 'Access Dashboard'}
+              {loading ? <RefreshCw className="w-5 h-5 animate-spin" /> : <>Login <ArrowRight className="w-5 h-5" /></>}
             </button>
-          </form>
+          </div>
         </div>
       </div>
     );
   }
 
-  // --- RENDER: DASHBOARD ---
-  const totalEarnings = tasks
-    .filter(t => t.status === 'Completed')
-    .reduce((sum, t) => sum + Number(t.amount), 0);
-
-  const pendingTasks = tasks.filter(t => t.status !== 'Completed');
+  // --- VIEW: DASHBOARD ---
+  // Calculate potential earnings from pending tasks vs completed
+  const pendingPay = tasks.filter(t => t.status === 'Pending').reduce((sum, t) => sum + t.amount, 0);
+  const completedPay = tasks.filter(t => t.status === 'Completed').reduce((sum, t) => sum + t.amount, 0);
 
   return (
-    <div className="min-h-screen bg-gray-50 font-sans">
-      {/* Navbar */}
-      <nav className="bg-white border-b border-gray-200 sticky top-0 z-10">
-        <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className={`w-2 h-2 rounded-full ${currentUser.role === 'marketing' ? 'bg-green-500' : 'bg-purple-500'}`}></div>
-            <span className="font-bold text-gray-900">{currentUser.name}</span>
-            <span className="text-xs text-gray-400 border border-gray-200 px-2 py-0.5 rounded-full uppercase">
-              {currentUser.role === 'marketing' ? 'Growth Team' : 'Eng Team'}
-            </span>
-          </div>
-          <button onClick={handleLogout} className="text-sm text-gray-500 hover:text-red-500 flex items-center gap-1">
-            <LogOut size={14} /> Exit
-          </button>
-        </div>
-      </nav>
-
-      <main className="max-w-5xl mx-auto px-6 py-10">
+    <div className="min-h-screen bg-gray-950 text-gray-100 p-6">
+      <div className="max-w-4xl mx-auto space-y-8">
         
-        {/* HERO STATS */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-          <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
-            <div className="flex justify-between items-start">
-              <div>
-                <p className="text-xs font-bold text-gray-400 uppercase tracking-wide">Wallet Balance</p>
-                <h2 className="text-3xl font-extrabold text-gray-900 mt-1">${totalEarnings.toLocaleString()}</h2>
-              </div>
-              <div className="bg-green-50 p-2 rounded-lg text-green-600">
-                <DollarSign size={24} />
-              </div>
+        {/* Header */}
+        <header className="flex justify-between items-center bg-gray-900/50 p-4 rounded-2xl border border-gray-800">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center font-bold text-white">
+              {employee.name.charAt(0)}
             </div>
-            <p className="text-xs text-green-600 font-medium mt-4 flex items-center gap-1">
-              <CheckCircle2 size={12} /> Available for withdrawal
-            </p>
+            <div>
+              <h2 className="font-bold text-white">{employee.name}</h2>
+              <p className="text-xs text-gray-400 uppercase">{employee.role}</p>
+            </div>
+          </div>
+          <button onClick={handleLogout} className="p-2 hover:bg-gray-800 rounded-lg text-gray-400 hover:text-red-400 transition-colors">
+            <LogOut className="w-5 h-5" />
+          </button>
+        </header>
+
+        {/* Stats / Wallet */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-6 rounded-2xl border border-gray-800">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="p-2 bg-emerald-500/20 rounded-lg text-emerald-400"><CheckCircle className="w-5 h-5" /></div>
+              <span className="text-gray-400 text-sm">Completed Earnings</span>
+            </div>
+            <div className="text-3xl font-bold text-white">${completedPay}</div>
+            <p className="text-xs text-gray-500 mt-1">Ready for payout</p>
           </div>
 
-          <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
-            <div className="flex justify-between items-start">
-              <div>
-                <p className="text-xs font-bold text-gray-400 uppercase tracking-wide">Pending Tasks</p>
-                <h2 className="text-3xl font-extrabold text-gray-900 mt-1">{pendingTasks.length}</h2>
-              </div>
-              <div className="bg-blue-50 p-2 rounded-lg text-blue-600">
-                <Clock size={24} />
-              </div>
+          <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-6 rounded-2xl border border-gray-800">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="p-2 bg-blue-500/20 rounded-lg text-blue-400"><Clock className="w-5 h-5" /></div>
+              <span className="text-gray-400 text-sm">Pending Tasks</span>
             </div>
-            <p className="text-xs text-blue-600 font-medium mt-4">Next due: {pendingTasks[0]?.due_date || 'No deadlines'}</p>
-          </div>
-
-          {/* Role Specific Stat Card */}
-          <div className={`p-6 rounded-2xl shadow-sm border flex flex-col justify-between text-white ${
-            currentUser.role === 'marketing' 
-              ? 'bg-gradient-to-br from-green-500 to-emerald-600 border-green-500' 
-              : 'bg-gradient-to-br from-purple-500 to-indigo-600 border-purple-500'
-          }`}>
-            <div className="flex justify-between items-start">
-              <div>
-                <p className="text-xs font-bold text-white/80 uppercase tracking-wide">
-                  {currentUser.role === 'marketing' ? 'Ad Performance' : 'System Status'}
-                </p>
-                <h2 className="text-3xl font-extrabold mt-1">98.5%</h2>
-              </div>
-              <div className="bg-white/20 p-2 rounded-lg text-white">
-                {currentUser.role === 'marketing' ? <TrendingUp size={24} /> : <Globe size={24} />}
-              </div>
-            </div>
-            <p className="text-xs text-white/80 font-medium mt-4">
-              {currentUser.role === 'marketing' ? 'ROI on recent campaigns' : 'Uptime on all servers'}
-            </p>
+            <div className="text-3xl font-bold text-white">${pendingPay}</div>
+            <p className="text-xs text-gray-500 mt-1">{tasks.filter(t => t.status === 'Pending').length} tasks remaining</p>
           </div>
         </div>
 
-        {/* TASK LIST */}
-        <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-          Your Assignments
-          <span className="text-sm font-normal text-gray-400 bg-gray-100 px-2 py-0.5 rounded-full">{tasks.length}</span>
-        </h3>
-
-        <div className="space-y-4">
-          {tasks.length === 0 ? (
-            <div className="text-center py-12 bg-white rounded-2xl border border-dashed border-gray-200">
-              <p className="text-gray-400">No tasks assigned yet. Enjoy the break!</p>
-            </div>
-          ) : (
-            tasks.map((task) => (
-              <div key={task.id} className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex flex-col md:flex-row md:items-center justify-between gap-6 group">
-                <div className="flex items-start gap-4">
-                  <div className={`p-3 rounded-xl flex-shrink-0 ${
-                    task.status === 'Completed' ? 'bg-gray-100 text-gray-400' : 'bg-blue-50 text-blue-600'
-                  }`}>
-                    {currentUser.role === 'marketing' ? <Megaphone size={20} /> : <Layout size={20} />}
+        {/* Task List */}
+        <div>
+          <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+            <Wallet className="w-5 h-5 text-gray-400" /> Your Assignments
+          </h3>
+          
+          <div className="space-y-4">
+            {tasks.map((task) => (
+              <div key={task.id} className="bg-gray-900 border border-gray-800 rounded-xl p-5 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 hover:border-gray-700 transition-colors">
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-1">
+                    <h4 className="font-bold text-lg text-white">{task.title}</h4>
+                    <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${
+                      task.status === 'Completed' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-amber-500/20 text-amber-400'
+                    }`}>
+                      {task.status}
+                    </span>
                   </div>
-                  <div>
-                    <h4 className={`font-bold text-lg ${task.status === 'Completed' ? 'text-gray-400 line-through' : 'text-gray-900'}`}>
-                      {task.title}
-                    </h4>
-                    <p className="text-gray-500 text-sm mt-1">{task.description}</p>
-                    <div className="flex items-center gap-3 mt-3">
-                      <span className={`text-xs px-2 py-1 rounded-md font-medium ${
-                        task.status === 'Completed' 
-                          ? 'bg-green-100 text-green-700' 
-                          : 'bg-yellow-100 text-yellow-700'
-                      }`}>
-                        {task.status}
-                      </span>
-                      <span className="text-xs text-gray-400 flex items-center gap-1">
-                        <Clock size={12} /> Due: {new Date(task.due_date).toLocaleDateString()}
-                      </span>
-                    </div>
+                  <p className="text-gray-400 text-sm mb-2">{task.description}</p>
+                  <div className="text-xs text-gray-500 flex items-center gap-2">
+                    <Clock className="w-3 h-3" /> Due: {new Date(task.due_date).toLocaleDateString()}
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between md:justify-end gap-6 border-t md:border-t-0 border-gray-100 pt-4 md:pt-0">
-                  <div className="text-right">
-                    <p className="text-xs text-gray-400 font-bold uppercase">Payout</p>
-                    <p className="text-2xl font-extrabold text-gray-900">${task.amount}</p>
-                  </div>
+                <div className="flex items-center gap-4 w-full md:w-auto justify-between md:justify-end">
+                  <span className="font-bold text-xl text-green-400">${task.amount}</span>
                   
-                  {task.status !== 'Completed' && (
+                  {task.status === 'Pending' && (
                     <button 
-                      onClick={() => markComplete(task.id)}
-                      className="bg-black text-white px-6 py-3 rounded-xl font-bold hover:bg-gray-800 transition-all flex items-center gap-2 group-hover:scale-105"
+                      onClick={() => handleCompleteTask(task.id)}
+                      className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium rounded-lg transition-colors flex items-center gap-2"
                     >
-                      Complete <ChevronRight size={16} />
+                      <CheckCircle className="w-4 h-4" /> Done
+                    </button>
+                  )}
+                  {task.status === 'Completed' && (
+                    <button disabled className="px-4 py-2 bg-gray-800 text-gray-500 text-sm font-medium rounded-lg cursor-not-allowed">
+                      In Review
                     </button>
                   )}
                 </div>
               </div>
-            ))
-          )}
+            ))}
+
+            {tasks.length === 0 && (
+              <div className="text-center py-12 bg-gray-900/50 rounded-2xl border border-dashed border-gray-800">
+                <p className="text-gray-500">No tasks assigned to you yet.</p>
+              </div>
+            )}
+          </div>
         </div>
 
-      </main>
+      </div>
     </div>
   );
 }

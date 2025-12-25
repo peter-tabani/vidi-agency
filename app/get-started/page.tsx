@@ -6,11 +6,39 @@ import { useRouter } from 'next/navigation'; // <--- FIXED: Added missing import
 import { supabase } from '@/lib/supabase';   // <--- FIXED: Added missing import
 import { sendQuoteEmail } from '@/lib/emailService';
 import { 
-  ArrowRight, ArrowLeft, Check, Sparkles, Zap, Clock, 
+  ArrowRight, ArrowLeft, Check,  Zap, Clock, 
   Code2, Smartphone, Bot, LayoutDashboard, Workflow, Database,
   Globe, Palette, ShoppingCart, Rocket, Users, Mail, Phone, User,
-  Building2, MessageSquare, CheckCircle2, PartyPopper, RefreshCw,
-  Shield, Cpu, Send, Loader2, Star
+  Building2, MessageSquare, CheckCircle2, PartyPopper, RefreshCw,PaintBucket,
+  Shield, Cpu, Send, Loader2, Star,Cloud, FileText, Video, LifeBuoy,BarChart,
+  PenTool,
+  Code,
+  Server,
+  TrendingUp,
+  Target,
+  Wrench,
+  Fingerprint,  // For Biometrics
+  Key,          // For 2FA
+  Lock,         // For Encryption
+  Sparkles,     // For AI
+  Share2,       // For Social Integration
+  Trophy,       // For Gamification
+  Moon,         // For Dark Mode
+  Watch,        // For Wearables
+  Mic,          // For Voice Command
+  UploadCloud,  // For App Store Submission
+  Split,
+  Headphones,   // For Human Takeover
+  Layers,       // For Multi-platform
+  LineChart,    // For Detailed Analytics
+  Languages,    // For Multi-language
+  ShieldCheck,  // For AI Safety
+  Bell,         // For Hot Lead Alertsy
+  CalendarCheck,// Appointment Booking
+  UserMinus,    // Spam Blocking
+  Forward,      // Call Transfer
+  Voicemail,    // Voicemail management
+  Activity      // Dashboard/Status
 } from 'lucide-react';
 
 // ============================================================================
@@ -38,76 +66,131 @@ interface Service {
 
 const services: Service[] = [
   {
-    id: "web-development",
-    name: "Website Development",
-    description: "Custom-built, high-performance websites from scratch",
-    icon: Code2,
-    basePrice: 2500,
-    gradient: "from-blue-500 to-cyan-500",
-    features: [
-      { id: "pages-5", name: "Up to 5 Pages", description: "Home, About, Services, Contact, etc.", price: 0, icon: Globe },
-      { id: "pages-10", name: "Up to 10 Pages", description: "Extended site with more content", price: 800, icon: Globe },
-      { id: "pages-unlimited", name: "Unlimited Pages", description: "Large-scale website with no limits", price: 2000, icon: Globe },
-      { id: "cms", name: "Content Management System", description: "Edit your content without coding", price: 600, icon: Database, popular: true },
-      { id: "blog", name: "Blog System", description: "Publish articles and news updates", price: 400, icon: MessageSquare },
-      { id: "seo", name: "SEO Optimization", description: "Rank higher on Google searches", price: 500, icon: Rocket, popular: true },
-      { id: "analytics", name: "Analytics Dashboard", description: "Track visitors and conversions", price: 300, icon: LayoutDashboard },
-      { id: "multilingual", name: "Multi-language Support", description: "Reach global audiences", price: 700, icon: Globe },
-      { id: "animations", name: "Premium Animations", description: "Stunning micro-interactions", price: 450, icon: Sparkles },
-    ]
-  },
+  id: "web-development",
+  name: "Website Development",
+  description: "Custom-built, high-performance websites tailored for the US market.",
+  icon: Code2,
+  basePrice: 700, // FIXED: Starting price as requested
+  gradient: "from-blue-600 to-indigo-600",
+  features: [
+  // --- CORE STRUCTURE ---
+  { id: "pages-5", name: "Up to 5 Pages", description: "Standard site (Home, About, Services, Contact, etc.)", price: 0, icon: Globe },
+  { id: "pages-10", name: "Up to 10 Pages", description: "More space for extra services or detailed info", price: 600, icon: Globe },
+  { id: "pages-unlimited", name: "Unlimited Pages", description: "A massive site with no limits on content", price: 1800, icon: Globe },
+  
+  // --- SECURITY & COMPLIANCE ---
+  { id: "ssl", name: "SSL Security Certificate", description: "The 'Secure' padlock icon that builds trust", price: 0, icon: Shield },
+  { id: "privacy", name: "Legal & Privacy Compliance", description: "Required cookie pop-ups and legal pages", price: 300, icon: Shield, popular: true },
+  { id: "backups", name: "Daily Auto-Backups", description: "We save your site daily so you never lose data", price: 200, icon: Database },
+
+  // --- PERFORMANCE ---
+  { id: "mobile", name: "Mobile Friendly", description: "Looks perfect on all iPhones and Androids", price: 0, icon: Smartphone },
+  { id: "hosting", name: "Domain & Server Setup", description: "We connect your www.name.com to the internet", price: 150, icon: Cloud },
+  { id: "speed", name: "Speed Boost Package", description: "Makes your site load instantly (under 2 seconds)", price: 450, icon: Zap, popular: true },
+
+  // --- FUNCTIONALITY ---
+  { id: "cms", name: "Easy-Edit Admin Panel", description: "Change text and photos yourself easily", price: 500, icon: LayoutDashboard },
+  { id: "forms", name: "Smart Application Forms", description: "Forms that can take resumes or surveys", price: 350, icon: FileText },
+  { id: "booking", name: "Booking System", description: "Clients can schedule appointments online", price: 400, icon: Clock },
+  { id: "chat", name: "Live Chat Widget", description: "Chat with visitors via WhatsApp or Messenger", price: 200, icon: MessageSquare },
+  { id: "ecommerce-lite", name: "Online Store Setup", description: "Sell products and accept payments online", price: 1200, icon: ShoppingCart },
+
+  // --- GROWTH ---
+  { id: "seo", name: "Google Ranking (SEO)", description: "Helps your website show up on Google Search", price: 600, icon: Rocket, popular: true },
+  { id: "analytics", name: "Visitor Tracking", description: "See who visits your site and where they come from", price: 250, icon: BarChart },
+  { id: "maintenance", name: "3-Month Support", description: "We fix bugs and update software for 3 months", price: 500, icon: LifeBuoy },
+]
+},
   {
-    id: "web-redesign",
-    name: "Website Redesign",
-    description: "Transform your existing site into a modern masterpiece",
-    icon: Palette,
-    basePrice: 1800,
-    gradient: "from-purple-500 to-pink-500",
-    features: [
-      { id: "ui-overhaul", name: "Complete UI Overhaul", description: "Fresh, modern visual design", price: 0, icon: Palette },
-      { id: "ux-audit", name: "UX Audit & Improvements", description: "Optimize user journeys", price: 400, icon: Users, popular: true },
-      { id: "mobile-first", name: "Mobile-First Redesign", description: "Perfect on all devices", price: 500, icon: Smartphone },
-      { id: "speed-optimization", name: "Speed Optimization", description: "Lightning-fast load times", price: 350, icon: Zap, popular: true },
-      { id: "accessibility", name: "Accessibility Compliance", description: "WCAG 2.1 standards", price: 450, icon: Shield },
-      { id: "content-migration", name: "Content Migration", description: "Transfer all existing content", price: 300, icon: Database },
-      { id: "brand-refresh", name: "Brand Refresh", description: "Updated colors, fonts, imagery", price: 600, icon: Sparkles },
-    ]
-  },
+  id: "website-redesign",
+  name: "Website Redesign",
+  description: "Modernize your outdated site with better performance & conversion.",
+  icon: PaintBucket, // Assuming you have an icon like this, or use 'Layout'
+  basePrice: 600, // FIXED: Slightly lower entry than "New Build" to hook them
+  gradient: "from-purple-600 to-pink-600",
+  features: [
+    // --- VISUAL & EXPERIENCE (The "Facelift") ---
+    { id: "ui-refresh", name: "UI/UX Modernization", description: "Fresh, modern look with 2025 design trends", price: 0, icon: Palette }, // Included standard
+    { id: "mobile-fix", name: "Mobile Responsiveness Fix", description: "Fixing layout issues on phones & tablets", price: 200, icon: Smartphone },
+    { id: "branding", name: "Brand Style Guide", description: "New color palette, typography & logo polish", price: 350, icon: PenTool },
+
+    // --- TECHNICAL IMPROVEMENTS (The "Fix") ---
+    { id: "speed-audit", name: "Speed & Performance Overhaul", description: "Fixing slow load times (Core Web Vitals)", price: 400, icon: Zap, popular: true },
+    { id: "code-cleanup", name: "Code Structure Cleanup", description: "Removing bloat & unused scripts", price: 250, icon: Code },
+    { id: "security-patch", name: "Security Hardening", description: "Fixing vulnerabilities & updating SSL", price: 200, icon: Shield },
+
+    // --- MIGRATION & DATA (The Hard Work) ---
+    { id: "migration-content", name: "Content Migration", description: "Safely moving blogs, images & text (up to 20 pages)", price: 400, icon: Database },
+    { id: "platform-switch", name: "Platform Migration", description: "Moving from Wix/WordPress to Custom/React", price: 800, icon: Server, popular: true },
+    { id: "seo-retain", name: "SEO Rank Protection", description: "301 redirects & sitemap updates to keep rankings", price: 500, icon: TrendingUp },
+
+    // --- CONVERSION FOCUS (Making Money) ---
+    { id: "cro", name: "Conversion Rate Optimization", description: "Redesigning CTAs & flows to get more leads", price: 450, icon: Target },
+    { id: "analytics-audit", name: "Analytics Re-setup", description: "Fixing broken tracking & events", price: 200, icon: BarChart },
+    { id: "integration-fix", name: "Integration Repair", description: "Fixing broken forms, maps, or API connections", price: 300, icon: Wrench },
+  ]
+},
   {
-    id: "mobile-app",
-    name: "Mobile App Development",
-    description: "Native iOS & Android apps that users love",
-    icon: Smartphone,
-    basePrice: 8000,
-    gradient: "from-green-500 to-emerald-500",
-    features: [
-      { id: "ios", name: "iOS App", description: "Native Swift for Apple devices", price: 0, icon: Smartphone },
-      { id: "android", name: "Android App", description: "Native Kotlin for Android", price: 2000, icon: Smartphone },
-      { id: "cross-platform", name: "Cross-Platform (Both)", description: "React Native / Flutter", price: 3500, icon: Smartphone, popular: true },
-      { id: "push-notifications", name: "Push Notifications", description: "Engage users with alerts", price: 500, icon: MessageSquare },
-      { id: "offline-mode", name: "Offline Mode", description: "Works without internet", price: 800, icon: Database },
-      { id: "in-app-payments", name: "In-App Payments", description: "Monetize with subscriptions", price: 1200, icon: ShoppingCart, popular: true },
-      { id: "social-login", name: "Social Login", description: "Sign in with Google, Apple, etc.", price: 400, icon: Users },
-      { id: "analytics-mobile", name: "Mobile Analytics", description: "Track user behavior", price: 350, icon: LayoutDashboard },
-    ]
-  },
+  id: "app-development",
+  name: "Mobile App Development",
+  description: "Native & Cross-platform apps for iOS and Android.",
+  icon: Smartphone, // Already imported
+  basePrice: 2000, // FIXED: A "steal" in the US, but high enough to be credible
+  gradient: "from-green-500 to-emerald-600",
+  features: [
+  // --- SECURITY ---
+  { id: "biometrics", name: "Face ID / Fingerprint Login", description: "Let users log in quickly and securely", price: 300, icon: Fingerprint },
+  { id: "2fa", name: "2-Step Verification", description: "Extra safety via SMS codes (like banks use)", price: 400, icon: Key },
+  { id: "encryption", name: "Secure Data Encryption", description: "Makes chat and user data impossible to hack", price: 600, icon: Lock, popular: true },
+  { id: "app-privacy", name: "Privacy & Data Tools", description: "Tools that let users manage their own data", price: 300, icon: Shield },
+
+  // --- ENGAGEMENT ---
+  { id: "ai-personal", name: "Smart Recommendations", description: "App learns what users like and shows it to them", price: 900, icon: Sparkles, popular: true },
+  { id: "gamification", name: "Rewards & Badges", description: "Fun features to keep users coming back daily", price: 500, icon: Trophy },
+  { id: "social-share", name: "Social Sharing", description: "Users can share content to Instagram/TikTok", price: 250, icon: Share2 },
+  { id: "in-app-support", name: "Automated Support Bot", description: "An AI assistant to answer user questions 24/7", price: 450, icon: MessageSquare },
+
+  // --- FEATURES ---
+  { id: "dark-mode", name: "Dark Mode", description: "A dark theme option that is easy on the eyes", price: 300, icon: Moon },
+  { id: "voice-cmd", name: "Voice Controls", description: "Users can talk to the app to get things done", price: 400, icon: Mic },
+  { id: "wearables", name: "Smart Watch Connection", description: "App works on Apple Watch and other devices", price: 800, icon: Watch },
+  { id: "deep-linking", name: "Smart Ad Links", description: "Ads click straight into the right screen in the app", price: 200, icon: Link },
+
+  // --- LAUNCH & SUPPORT ---
+  { id: "store-submission", name: "App Store Publishing", description: "We handle the hard work of getting into Apple/Google", price: 500, icon: UploadCloud, popular: true },
+  { id: "cloud-backend", name: "Database Hosting", description: "Setup of the secure server where data lives", price: 600, icon: Cloud },
+  { id: "ab-testing", name: "Feature Testing Tools", description: "Test two versions to see which makes more money", price: 350, icon: Split },
+  { id: "app-maintenance", name: "3-Month Bug Fixes", description: "We keep the app running smoothly after launch", price: 700, icon: LifeBuoy },
+]
+},
   {
-    id: "ai-integration",
-    name: "AI & Chatbot Integration",
-    description: "Intelligent automation that works 24/7",
-    icon: Bot,
-    basePrice: 1500,
-    gradient: "from-orange-500 to-red-500",
-    features: [
-      { id: "chatbot-basic", name: "Basic AI Chatbot", description: "FAQ & lead capture", price: 0, icon: Bot },
-      { id: "chatbot-advanced", name: "Advanced AI Agent", description: "Trained on your business data", price: 1200, icon: Cpu, popular: true },
-      { id: "voice-agent", name: "AI Voice Agent", description: "Phone call automation", price: 2000, icon: Phone },
-      { id: "whatsapp-bot", name: "WhatsApp Integration", description: "Chat on WhatsApp 24/7", price: 600, icon: MessageSquare, popular: true },
-      { id: "instagram-bot", name: "Instagram DM Bot", description: "Auto-reply to DMs", price: 500, icon: MessageSquare },
-      { id: "appointment-booking", name: "Appointment Booking", description: "AI schedules meetings", price: 700, icon: Clock },
-      { id: "lead-qualification", name: "Lead Qualification", description: "Score and route leads", price: 800, icon: Users },
-    ]
-  },
+  id: "ai-automation",
+  name: "AI & Chatbot Automation",
+  description: "Smart assistants that sell to customers 24/7.",
+  icon: Bot, 
+  basePrice: 1500, // FIXED: A competitive entry price for Custom AI
+  gradient: "from-purple-500 to-indigo-500",
+  features: [
+    // --- INTEGRATIONS (Connecting to their tools) ---
+    { id: "crm-connect", name: "Auto-Save Leads (CRM)", description: "Send customer info directly to Salesforce/HubSpot", price: 600, icon: Users, popular: true },
+    { id: "human-takeover", name: "Human Takeover Switch", description: "You can jump into the chat whenever needed", price: 400, icon: Headphones },
+    { id: "omnichannel", name: "Works on WhatsApp/FB", description: "One bot that works on Website, Insta & WhatsApp", price: 500, icon: Layers },
+    
+    // --- DATA & RESULTS (Showing it works) ---
+    { id: "analytics-pro", name: "Success Dashboard", description: "See exactly how many leads the AI captured", price: 300, icon: LineChart },
+    { id: "transcripts", name: "Read Customer Chats", description: "Review full conversation history for quality", price: 200, icon: FileText }, // Uses existing FileText icon
+    { id: "ab-testing-ai", name: "Response Testing", description: "Test different answers to see which sells better", price: 350, icon: Split }, // Uses existing Split icon
+
+    // --- INTELLIGENCE & SAFETY (Trust) ---
+    { id: "ai-training", name: "Smart Learning Loop", description: "We train the AI weekly to get smarter answers", price: 500, icon: Sparkles }, // Uses existing Sparkles
+    { id: "ai-safety", name: "Brand Safety Guard", description: "Prevents the AI from saying anything incorrect/rude", price: 400, icon: ShieldCheck, popular: true },
+    { id: "multi-lang", name: "Auto-Translate", description: "Chat with customers in English, Spanish, French, etc.", price: 400, icon: Languages },
+
+    // --- LOOK & FEEL (Branding) ---
+    { id: "custom-ui", name: "Custom Brand Colors", description: "Chat bubble matches your logo and website colors", price: 200, icon: Palette },
+    { id: "hot-lead-alert", name: "Hot Lead Alerts", description: "Get a text/email instantly when a client wants to buy", price: 150, icon: Bell },
+  ]
+},
   {
     id: "automation",
     name: "Business Automation",
@@ -143,6 +226,35 @@ const services: Service[] = [
       { id: "reviews", name: "Product Reviews", description: "Build social proof", price: 300, icon: Star },
     ]
   },
+  {
+  id: "ai-receptionist",
+  name: "AI Phone Receptionist",
+  description: "A human-like voice assistant that answers calls & books appointments 24/7.",
+  icon: Phone,
+  basePrice: 1200, // FIXED: Setup fee. Cheaper than 2 weeks of a human receptionist.
+  gradient: "from-pink-500 to-rose-500",
+  features: [
+    // --- CORE CALL HANDLING ---
+    { id: "24-7-answer", name: "24/7 Call Answering", description: "Never miss a customer call, even at night or weekends", price: 0, icon: Clock }, // Standard Inclusion
+    { id: "human-voice", name: "Ultra-Realistic Voice", description: "Sounds exactly like a human (pauses, 'umms', & emotion)", price: 0, icon: Mic }, // Standard Inclusion
+    { id: "call-routing", name: "Smart Call Routing", description: "AI sends sales calls to Sales, support calls to Support", price: 300, icon: Forward },
+
+    // --- BUSINESS ACTIONS (The Value) ---
+    { id: "booking-voice", name: "Auto-Appointment Booking", description: "AI checks your calendar and books times while on the phone", price: 500, icon: CalendarCheck, popular: true },
+    { id: "spam-blocker", name: "Spam & Robo-Call Blocker", description: "AI screens callers so you never talk to a spammer again", price: 250, icon: UserMinus },
+    { id: "sms-followup", name: "Instant SMS Follow-up", description: "Sends a text with links/info immediately after hanging up", price: 300, icon: MessageSquare },
+
+    // --- INTEGRATION & SETUP ---
+    { id: "crm-sync-voice", name: "CRM Auto-Entry", description: "Types out the call summary and saves it to your database", price: 450, icon: Database },
+    { id: "live-transfer", name: "Live Human Transfer", description: "AI patches the call through to your cell if it's urgent", price: 350, icon: Phone },
+    { id: "custom-number", name: "Local US Phone Number", description: "Setup of a dedicated business line for the AI", price: 150, icon: Globe },
+
+    // --- ADVANCED ---
+    { id: "voice-clone", name: "Voice Cloning", description: "Train the AI to sound exactly like YOU or your staff", price: 600, icon: Fingerprint },
+    { id: "analytics-voice", name: "Call Recording & Analysis", description: "Dashboard to listen to calls and see success rates", price: 250, icon: Activity },
+    { id: "maintenance-voice", name: "Monthly Tuning", description: "We update the script and improve the voice monthly", price: 400, icon: LifeBuoy },
+  ]
+},
 ];
 
 const timelines = [

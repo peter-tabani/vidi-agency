@@ -60,14 +60,6 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-bold mb-6">Contact</h4>
             <ul className="space-y-6 text-sm text-gray-400">
-              <li className="flex items-start gap-3">
-                <MapPin size={20} className="text-blue-500 flex-shrink-0 mt-0.5"/>
-                <span>
-                  123 Tech Plaza, Suite 400<br/>
-                  San Francisco, CA 94107<br/>
-                  United States
-                </span>
-              </li>
               <li className="flex items-center gap-3">
                 <Mail size={20} className="text-blue-500 flex-shrink-0"/>
                 <a href="mailto:hello@vidiagency.com" className="hover:text-white transition-colors">hello@vidiagency.com</a>
