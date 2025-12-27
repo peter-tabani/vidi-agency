@@ -53,6 +53,7 @@ export default function ReceptionistAI() {
   const [personalizedMessages, setPersonalizedMessages] = useState([
     { text: "Hello! How can I help you today?", color: "from-blue-600 to-indigo-600" },
     { text: "Do you need an AI receptionist like me?", color: "from-indigo-600 to-purple-600" },
+    { text: "Click solutions, and see the ones we have for you", color: "from-indigo-600 to-purple-600" },
     { text: "Need a Website, Redesign, or App?", color: "from-purple-600 to-pink-600" },
     { text: "Automate your business with Vidi.", color: "from-pink-600 to-rose-600" }
   ]);
@@ -97,12 +98,16 @@ export default function ReceptionistAI() {
         // --- THIS IS WHERE WE SET THE MARKETING MESSAGES ---
         setPersonalizedMessages([
           { 
-            text: `Good ${timeGreeting}! How can I help you today?`, 
+            text: `Good ${timeGreeting}! How can we help you today?`, 
             color: "from-blue-600 to-indigo-600"
           },
           { 
             text: `Serving ${locationName} & beyond. Do you need an AI receptionist like me?`, 
             color: "from-indigo-600 to-purple-600"
+          },
+          { 
+            text: `Click Solutions , and see which ones we have for you`, 
+            color: "from-purple-600 to-pink-600"
           },
           { 
             text: `Do you need a Website, Redesign, or Mobile App?`, 
@@ -117,7 +122,7 @@ export default function ReceptionistAI() {
       } catch (error) {
         // Fallback if location fails (still updated with new copy)
         setPersonalizedMessages([
-            { text: `Good ${timeGreeting}! How can I help you today?`, color: "from-blue-600 to-indigo-600" },
+            { text: `Good ${timeGreeting}! How can we help you today?`, color: "from-blue-600 to-indigo-600" },
             { text: "Serving Nairobi & beyond. Do you need an AI receptionist like me?", color: "from-indigo-600 to-purple-600" },
             { text: "Do you need a Website, Redesign, or Mobile App?", color: "from-purple-600 to-pink-600" },
             { text: "Automate your business with Vidi Agency.", color: "from-pink-600 to-rose-600" }
@@ -244,7 +249,7 @@ export default function ReceptionistAI() {
   const currentMessage = personalizedMessages[messageIndex] || personalizedMessages[0];
 
   return (
-    <div className="fixed bottom-0 right-6 z-50 font-sans flex flex-col items-end">
+    <div className="fixed bottom-4 right-4 md:right-6 md:bottom-6 z-[9999] font-sans flex flex-col items-end">
       
       {/* --- PEEKING ROBOT --- */}
       {!isOpen && (
@@ -302,7 +307,7 @@ export default function ReceptionistAI() {
       {/* --- MAIN CHAT WINDOW --- */}
       {isOpen && (
         <div className={`
-          mb-6 bg-white w-[90vw] sm:w-[400px] 
+          mb-2 bg-white w-[calc(100vw-32px)] sm:w-[400px] max-w-full 
           ${isMinimized ? 'h-16' : 'h-[600px]'} 
           rounded-2xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden 
           transition-all duration-300 ease-in-out

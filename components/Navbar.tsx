@@ -63,10 +63,11 @@ const servicesData = [
 ];
 
 // --- DATA: INDUSTRIES MENU ---
+// Inside components/Navbar.tsx, replace the first two items in industriesData
 const industriesData = [
-  { name: "Healthcare", icon: Stethoscope, href: "/case-studies#healthcare-&-medical" },
-  { name: "Real Estate", icon: Home, href: "/case-studies#real-estate-&-property" },
-  { name: "Legal", icon: Scale, href: "/case-studies#legal-&-professional" },
+  { name: "Healthcare", icon: Stethoscope, href: "/industries/healthcare" }, // <-- NEW LINK
+  { name: "Real Estate", icon: Home, href: "/industries/real-estate" }, 
+  { name: "Legal", icon: Scale, href: "/industries/legal" },
   { name: "Education", icon: GraduationCap, href: "/case-studies#education-&-training" },
   { name: "Hospitality", icon: Plane, href: "/case-studies#hospitality-&-travel" },
   { name: "Food & Restaurant", icon: Utensils, href: "/case-studies#restaurants-&-food" },
@@ -84,7 +85,7 @@ const industriesData = [
 // --- DATA: COMPANY MENU (New!) ---
 const companyData = [
   { name: "About Us", href: "/about", icon: Users, desc: "Our mission & team." },
-  { name: "Blog", href: "#", icon: BookOpen, desc: "Latest tech insights." },
+  { name: "Blog", href: "/blog", icon: BookOpen, desc: "Latest tech insights." },
 ];
 
 export default function Navbar() {
@@ -127,6 +128,9 @@ export default function Navbar() {
             
             <Link href="/" className="hover:text-blue-600 transition-colors h-full flex items-center">
               Home
+            </Link>
+            <Link href="/solutions" className="hover:text-blue-600 transition-colors h-full flex items-center font-bold">
+              Solutions
             </Link>
 
             {/* 1. SERVICES MEGA MENU */}
@@ -253,10 +257,12 @@ export default function Navbar() {
             </Link>
             <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 text-gray-500 hover:bg-gray-100 rounded-full transition-colors"><X size={28} /></button>
          </div>
-         <div className="flex flex-col px-6 py-4 overflow-y-auto h-[calc(100vh-80px)]">
+                  <div className="flex flex-col px-6 py-4 overflow-y-auto h-[calc(100vh-80px)]">
             <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="py-4 text-lg font-medium text-gray-800 border-b border-gray-100">Home</Link>
+            <Link href="/solutions" onClick={() => setIsMobileMenuOpen(false)} className="py-4 text-lg font-bold text-blue-600 border-b border-gray-100">Solutions</Link>
             
             <div className="border-b border-gray-100">
+
               <button onClick={() => toggleMobileSection('services')} className="flex items-center justify-between w-full py-4 text-lg font-medium text-gray-800">
                 Services <ChevronDown size={20} className={`transition-transform duration-300 ${expandedMobileSection === 'services' ? 'rotate-180 text-blue-600' : ''}`} />
               </button>
