@@ -30,34 +30,67 @@ const features = [
 ];
 const advancedFeatures = [
   {
-    icon: <Bot className="text-purple-600" size={32} />, // Purple for AI
-    title: "AI Support Agents",
-    description: "Chatbots that don't just talk—they book appointments, process orders, and handle support tickets 24/7."
+    icon: <Bot className="text-purple-600" size={32} />, 
+    title: "24/7 AI Receptionist",
+    description: "Never lose a customer to voicemail again. Our AI answers calls, books appointments, and answers questions instantly—day or night."
   },
   {
-    icon: <Workflow className="text-blue-600" size={32} />, // Blue for Automation
-    title: "Workflow Automation",
-    description: "Connect your CRM, Email, and Calendar. When a lead comes in, we automatically qualify and schedule them."
+    icon: <Workflow className="text-blue-600" size={32} />, 
+    title: "The 'Auto-Pilot' Growth System",
+    description: "Stop chasing leads manually. We build systems that automatically text, email, and schedule new clients on your calendar while you sleep."
   },
   {
-    icon: <Database className="text-orange-600" size={32} />, // Orange for Data
-    title: "Custom Dashboards",
-    description: "Stop using spreadsheets. We build internal admin panels to track your sales, users, and metrics in real-time."
+    icon: <Database className="text-orange-600" size={32} />, 
+    title: "Your Business Command Center",
+    description: "Ditch the messy spreadsheets. Get a simple, custom dashboard that shows you exactly how much revenue you made today at a glance."
   },
   {
-    icon: <Smartphone className="text-pink-600" size={32} />, // Pink for Mobile
-    title: "Mobile Native Apps",
-    description: "We convert your web platform into a high-performance iOS and Android app using Kotlin and React Native."
+    icon: <Smartphone className="text-pink-600" size={32} />, 
+    title: "Your Brand in Their Pocket",
+    description: "Be just a tap away. We launch a dedicated, high-speed mobile app for your business on iPhone and Android to boost customer loyalty."
   },
   {
-    icon: <Inbox className="text-green-600" size={32} />, // Green for Sales
-    title: "Unified Sales Inbox",
-    description: "Bring WhatsApp, Instagram, Email, and SMS into one single dashboard for your sales team."
+    icon: <Inbox className="text-green-600" size={32} />, 
+    title: "The 'One-Screen' Sales Hub",
+    description: "Stop switching between apps. Manage WhatsApp, Instagram, Email, and SMS messages from one single screen so you never miss a deal."
   },
   {
-    icon: <Cpu className="text-indigo-600" size={32} />, // Indigo for Tech
-    title: "API Integrations",
-    description: "We build custom connections between your favorite tools (Stripe, HubSpot, Salesforce) to eliminate manual entry."
+    icon: <Cpu className="text-indigo-600" size={32} />, 
+    title: "Zero-Touch Data Entry",
+    description: "Eliminate the boring admin work. We connect your payment and booking tools so data flows automatically—no more manual typing errors."
+  }
+];
+const TECHNOLOGIES = [
+  {
+    name: "OpenAI",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/4/4d/OpenAI_Logo.svg",
+    className: "h-8 w-auto" 
+  },
+  {
+    name: "Next.js",
+    logo: "https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon_dark_background.png",
+    className: "h-10 w-auto" 
+  },
+  {
+    name: "Kotlin",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/7/74/Kotlin_Icon.png",
+    className: "h-10 w-auto"
+  },
+  {
+    name: "Python",
+    // REPLACED SUPABASE with Python (The King of AI/Backend)
+    logo: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg",
+    className: "h-10 w-auto"
+  },
+  {
+    name: "AWS",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
+    className: "h-8 w-auto"
+  },
+  {
+    name: "React Native",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
+    className: "h-10 w-auto"
   }
 ];
 const pricingPlans = [
@@ -160,9 +193,9 @@ export default function Home() {
 
             {/* Paragraph */}
             <p className="text-lg sm:text-xl text-gray-700 mb-8 leading-relaxed font-medium max-w-2xl">
-              Don't just build a website. Build a <b>Sales Machine</b>. 
-              We combine Full-Stack Engineering with AI to automate your business processes 24/7.
-            </p>
+    We build custom <b>Apps, Websites, and Systems</b> designed for growth. 
+    Transform your business with 24/7 automation that captures leads, streamlines operations, and secures revenue while you sleep.
+</p>
 
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 mb-10 w-full sm:w-auto">
@@ -261,20 +294,47 @@ export default function Home() {
 
         </div>
 
-        {/* LOGO MARQUEE - Optimized */}
-        <div className="w-full border-t border-gray-100 bg-white/60 backdrop-blur-sm py-4 relative z-20 overflow-hidden flex-shrink-0 mt-8 lg:mt-0">
-           {/* 'will-change-transform' prevents scrolling stutter */}
-           <div className="flex animate-scroll min-w-full gap-12 lg:gap-20 items-center px-8 will-change-transform transform-gpu">
-             <span className="text-lg lg:text-xl font-bold flex items-center gap-2 lg:gap-3 text-teal-600 whitespace-nowrap"><Bot size={24}/> OpenAI</span>
-             <span className="text-lg lg:text-xl font-bold flex items-center gap-2 lg:gap-3 text-black whitespace-nowrap"><LayoutDashboard size={24}/> Next.js</span>
-             <span className="text-lg lg:text-xl font-bold flex items-center gap-2 lg:gap-3 text-purple-600 whitespace-nowrap"><Smartphone size={24}/> Kotlin</span>
-             <span className="text-lg lg:text-xl font-bold flex items-center gap-2 lg:gap-3 text-green-600 whitespace-nowrap"><Database size={24}/> Supabase</span>
-             <span className="text-lg lg:text-xl font-bold flex items-center gap-2 lg:gap-3 text-orange-500 whitespace-nowrap"><Cpu size={24}/> AWS</span>
-             <span className="text-lg lg:text-xl font-bold flex items-center gap-2 lg:gap-3 text-teal-600 whitespace-nowrap"><Bot size={24}/> OpenAI</span>
-             <span className="text-lg lg:text-xl font-bold flex items-center gap-2 lg:gap-3 text-black whitespace-nowrap"><LayoutDashboard size={24}/> Next.js</span>
-           </div>
-        </div>
+        {/* LOGO MARQUEE */}
+<div className="w-full bg-white py-12 relative overflow-hidden flex-shrink-0">
+   
+   {/* Gradients to hide the edges smoothly */}
+   <div className="absolute left-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-r from-white to-transparent pointer-events-none" />
+   <div className="absolute right-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-l from-white to-transparent pointer-events-none" />
 
+   {/* The Scrolling Track */}
+   <div className="flex w-max animate-scroll gap-32 items-center">
+     
+     {/* Set 1 */}
+     {TECHNOLOGIES.map((tech, index) => (
+       <img 
+         key={`tech-1-${index}`}
+         src={tech.logo} 
+         alt={`${tech.name} logo`} 
+         className={`${tech.className} object-contain`}
+       />
+     ))}
+     
+     {/* Set 2 (Duplicate) */}
+     {TECHNOLOGIES.map((tech, index) => (
+       <img 
+         key={`tech-2-${index}`}
+         src={tech.logo} 
+         alt={`${tech.name} logo`} 
+         className={`${tech.className} object-contain`}
+       />
+     ))}
+
+     {/* Set 3 (Triple ensures no gaps on wide screens) */}
+     {TECHNOLOGIES.map((tech, index) => (
+       <img 
+         key={`tech-3-${index}`}
+         src={tech.logo} 
+         alt={`${tech.name} logo`} 
+         className={`${tech.className} object-contain`}
+       />
+     ))}
+   </div>
+</div>
       </section>
       {/* ADVANCED CAPABILITIES SECTION */}
       <section id="services" className="py-24 relative overflow-hidden bg-gray-50">
