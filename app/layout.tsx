@@ -7,6 +7,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import React from "react";
+import Navbar from "@/components/Navbar";
 import { 
   defaultMetadata, 
   siteConfig, 
@@ -108,6 +109,9 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
+        
+        {/* Navigation Bar */}
+        <Navbar />
         
         {/* Main content wrapper */}
         <div id="main-content">
