@@ -49,13 +49,13 @@ export default function ReceptionistAI() {
   const [userLocation, setUserLocation] = useState<UserLocation>({ city: '', state: '', country: '' });
   const [greetingTime, setGreetingTime] = useState('Day');
   
-  // Default messages (Before location loads)
+ // Default messages (Before location loads)
   const [personalizedMessages, setPersonalizedMessages] = useState([
-    { text: "Hello! How can I help you today?", color: "from-blue-600 to-indigo-600" },
-    { text: "Do you need an AI receptionist like me?", color: "from-indigo-600 to-purple-600" },
-    { text: "Click solutions, and see the ones we have for you", color: "from-indigo-600 to-purple-600" },
-    { text: "Need a Website, Redesign, or App?", color: "from-purple-600 to-pink-600" },
-    { text: "Automate your business with Vidi.", color: "from-pink-600 to-rose-600" }
+    { text: "Hello! We are here to bring your ideas to life.", color: "from-blue-600 to-indigo-600" },
+    { text: "Looking for a Custom Website, Mobile App, or Redesign?", color: "from-indigo-600 to-purple-600" },
+    { text: "We build intelligent systems that work for you 24/7.", color: "from-indigo-600 to-purple-600" },
+    { text: "No matter your industry or size, we have the tools to help you scale.", color: "from-purple-600 to-pink-600" },
+    { text: "Explore our 'Solutions' to see exactly what we can build for you.", color: "from-pink-600 to-rose-600" }
   ]);
 
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -66,11 +66,10 @@ export default function ReceptionistAI() {
     const hour = new Date().getHours();
     if (hour >= 5 && hour < 12) return 'Morning';
     if (hour >= 12 && hour < 17) return 'Afternoon';
-    // Use "Evening" for everything else (even late night) - "Good Night" is for sleeping!
     return 'Evening';
   };
 
-  // --- 1. FETCH LOCATION & SET CUSTOM MESSAGES ---
+  // --- 1. FETCH LOCATION (Logic kept, but text is generic) ---
   useEffect(() => {
     const fetchLocation = async () => {
       const timeGreeting = getGreeting();
@@ -93,39 +92,38 @@ export default function ReceptionistAI() {
         
         setUserLocation(location);
         
-        const locationName = location.city ? location.city : (location.country || 'Nairobi');
-        
-        // --- THIS IS WHERE WE SET THE MARKETING MESSAGES ---
+        // --- UPDATED MESSAGES (Universal & Inclusive) ---
         setPersonalizedMessages([
           { 
-            text: `Good ${timeGreeting}! How can we help you today?`, 
+            text: `Good ${timeGreeting}! We are ready to bring your ideas to life.`, 
             color: "from-blue-600 to-indigo-600"
           },
           { 
-            text: `Serving ${locationName} & beyond. Do you need an AI receptionist like me?`, 
+            text: `Looking for a Custom Website, Mobile App, or System Redesign?`, 
             color: "from-indigo-600 to-purple-600"
           },
           { 
-            text: `Click Solutions , and see which ones we have for you`, 
+            text: `We build intelligent AI systems that handle your workload 24/7.`, 
             color: "from-purple-600 to-pink-600"
           },
           { 
-            text: `Do you need a Website, Redesign, or Mobile App?`, 
+            text: `No matter your industry or size, we have the digital tools to help you scale.`, 
             color: "from-purple-600 to-pink-600"
           },
           { 
-            text: `Automate your business with Vidi Agency.`, 
+            text: `Explore our 'Solutions' menu to see how we can transform your operations.`, 
             color: "from-pink-600 to-rose-600"
           }
         ]);
         
       } catch (error) {
-        // Fallback if location fails (still updated with new copy)
+        // Fallback
         setPersonalizedMessages([
-            { text: `Good ${timeGreeting}! How can we help you today?`, color: "from-blue-600 to-indigo-600" },
-            { text: "Serving Nairobi & beyond. Do you need an AI receptionist like me?", color: "from-indigo-600 to-purple-600" },
-            { text: "Do you need a Website, Redesign, or Mobile App?", color: "from-purple-600 to-pink-600" },
-            { text: "Automate your business with Vidi Agency.", color: "from-pink-600 to-rose-600" }
+            { text: `Good ${timeGreeting}! We are ready to bring your ideas to life.`, color: "from-blue-600 to-indigo-600" },
+            { text: "Looking for a Custom Website, Mobile App, or System Redesign?", color: "from-indigo-600 to-purple-600" },
+            { text: "We build intelligent AI systems that handle your workload 24/7.", color: "from-purple-600 to-pink-600" },
+            { text: "No matter your industry or size, we have the digital tools to help you scale.", color: "from-purple-600 to-pink-600" },
+            { text: "Explore our 'Solutions' menu to see how we can transform your operations.", color: "from-pink-600 to-rose-600" }
         ]);
       }
     };
