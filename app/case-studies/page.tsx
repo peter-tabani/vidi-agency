@@ -9,7 +9,7 @@ import {
   Leaf, Smartphone, Globe, Cpu, Activity
 } from 'lucide-react';
 
-// --- 1. THE MASSIVE "PREMIUM" PORTFOLIO DATA (45 Projects) ---
+// --- 1. THE SERVICES & SOLUTIONS CATALOG ---
 
 const industries = [
   // 1. HEALTHCARE
@@ -17,49 +17,49 @@ const industries = [
     title: "Healthcare & Medical",
     icon: Stethoscope,
     color: "teal",
-    description: "Digital transformation for clinics, private practices, and pharmacies.",
+    description: "Digital transformation capabilities for clinics, private practices, and pharmacies.",
     projects: [
       {
-        title: "Vitality Medical Center",
-        type: "Multi-Specialty Clinic",
-        desc: "Transformed a paper-based clinic into a fully digital operation. Patients now book via app, and doctors access records instantly on tablets.",
+        title: "Clinic Management System",
+        type: "Operations System",
+        desc: "We build fully digital operation suites. Enable patients to book via app and give doctors instant access to records on tablets.",
         tech: ["Next.js", "WebRTC", "PostgreSQL", "Twilio"],
         metrics: [
-          { label: "Patient Retention", value: "+40%", icon: Users },
-          { label: "Admin Time/Day", value: "-3 Hours", icon: Clock },
-          { label: "No-Show Rate", value: "< 5%", icon: CheckCircle2 }
+          { label: "Retention", value: "High", icon: Users },
+          { label: "Admin Time", value: "Minimized", icon: Clock },
+          { label: "No-Shows", value: "Reduced", icon: CheckCircle2 }
         ],
         gradient: "from-teal-400 via-teal-500 to-emerald-500",
         accentColor: "teal",
-        client: "Vitality Health Group"
+        client: "Clinics & Hospitals"
       },
       {
-        title: "Dr. Stevens Orthodontics",
-        type: "Private Practice",
-        desc: "A telemedicine & booking platform allowing remote consultations. AI automatically sorts urgency of cases based on uploaded photos.",
+        title: "Telemedicine Platform",
+        type: "Remote Care App",
+        desc: "Secure video consultation platforms. Includes features like AI triage that sorts case urgency based on patient inputs.",
         tech: ["React", "TensorFlow", "Stripe", "AWS"],
         metrics: [
-          { label: "Remote Consults", value: "200/mo", icon: Zap },
-          { label: "Revenue Growth", value: "+25%", icon: TrendingUp },
-          { label: "Patient Satisf.", value: "4.9/5", icon: Heart }
+          { label: "Consults", value: "Unlimited", icon: Zap },
+          { label: "Revenue", value: "Scalable", icon: TrendingUp },
+          { label: "Feedback", value: "System", icon: Heart }
         ],
         gradient: "from-cyan-400 via-blue-500 to-blue-600",
         accentColor: "blue",
-        client: "Stevens Ortho"
+        client: "Private Practices"
       },
       {
-        title: "PharmaDirect Delivery",
-        type: "Pharmacy Chain",
-        desc: "Automated inventory management and delivery logistics for a chain of 15 pharmacies. Drivers use a native app for routing.",
+        title: "Pharmacy Delivery Logistics",
+        type: "Logistics Suite",
+        desc: "Automated inventory management and delivery tracking for pharmacy chains. Includes driver apps for optimized routing.",
         tech: ["Flutter", "Node.js", "Google Maps"],
         metrics: [
-          { label: "Delivery Speed", value: "20 min", icon: Zap },
-          { label: "Stockouts", value: "0%", icon: CheckCircle2 },
-          { label: "Order Vol", value: "+150%", icon: TrendingUp }
+          { label: "Speed", value: "Optimized", icon: Zap },
+          { label: "Stockouts", value: "Prevented", icon: CheckCircle2 },
+          { label: "Tracking", value: "Real-Time", icon: TrendingUp }
         ],
         gradient: "from-emerald-500 via-green-500 to-teal-600",
         accentColor: "emerald",
-        client: "PharmaDirect Inc."
+        client: "Pharmacy Chains"
       }
     ]
   },
@@ -71,46 +71,46 @@ const industries = [
     description: "Platforms for agents, property managers, and developers.",
     projects: [
       {
-        title: "Summit Skyline Realty",
-        type: "Real Estate Agency",
-        desc: "Replaced manual viewings with a high-end web platform featuring 3D Matterport tours and automated WhatsApp lead qualification.",
+        title: "Virtual Property Showcases",
+        type: "Sales Platform",
+        desc: "Replace manual viewings with high-end web platforms featuring 3D tours and automated WhatsApp lead qualification bots.",
         tech: ["Next.js", "Matterport API", "WhatsApp Bot"],
         metrics: [
-          { label: "Site Visits", value: "+300%", icon: Users },
-          { label: "Lead Conversion", value: "18%", icon: TrendingUp },
-          { label: "Time/Sale", value: "-2 Wks", icon: Clock }
+          { label: "Reach", value: "Global", icon: Users },
+          { label: "Leads", value: "Qualified", icon: TrendingUp },
+          { label: "Sales Cycle", value: "Faster", icon: Clock }
         ],
         gradient: "from-indigo-500 via-purple-500 to-violet-600",
         accentColor: "indigo",
-        client: "Summit Skyline"
+        client: "Real Estate Agencies"
       },
       {
-        title: "Metro Property Managers",
-        type: "Management Firm",
-        desc: "Tenant portal for 500+ units. Tenants pay rent, request maintenance, and view leases online, reducing office calls by 90%.",
+        title: "Tenant Management Portal",
+        type: "Management System",
+        desc: "A centralized portal for units. Tenants can pay rent, request maintenance, and view leases online, reducing office admin work.",
         tech: ["React", "Stripe Connect", "Firebase"],
         metrics: [
-          { label: "On-Time Rent", value: "99%", icon: CheckCircle2 },
-          { label: "Support Calls", value: "-90%", icon: Zap },
-          { label: "Admin Saved", value: "20hr/wk", icon: Clock }
+          { label: "Rent Col.", value: "Automated", icon: CheckCircle2 },
+          { label: "Support", value: "Digital", icon: Zap },
+          { label: "Admin", value: "Simplified", icon: Clock }
         ],
         gradient: "from-blue-600 via-indigo-600 to-slate-700",
         accentColor: "blue",
-        client: "Metro Properties"
+        client: "Property Managers"
       },
       {
-        title: "Haven Vacation Rentals",
-        type: "Rental Business",
-        desc: "Direct booking engine for luxury villas, allowing the owner to bypass Airbnb fees. Synchronized calendars across all platforms.",
+        title: "Direct Booking Engine",
+        type: "Rental Platform",
+        desc: "Commission-free booking engines for luxury villas. Synchronize calendars across Airbnb and Booking.com automatically.",
         tech: ["Next.js", "Airbnb API", "PayPal"],
         metrics: [
-          { label: "Commission Saved", value: "$45k", icon: TrendingUp },
-          { label: "Direct Bookings", value: "70%", icon: Users },
-          { label: "Occupancy", value: "94%", icon: Home }
+          { label: "Commissions", value: "0%", icon: TrendingUp },
+          { label: "Bookings", value: "Direct", icon: Users },
+          { label: "Sync", value: "24/7", icon: Home }
         ],
         gradient: "from-violet-500 via-fuchsia-500 to-pink-500",
         accentColor: "violet",
-        client: "Haven Luxury"
+        client: "Vacation Rentals"
       }
     ]
   },
@@ -122,46 +122,46 @@ const industries = [
     description: "Secure systems for law firms, consultants, and auditors.",
     projects: [
       {
-        title: "Justice Partners",
-        type: "Law Firm",
-        desc: "Bank-grade secure client portal for document sharing and case status tracking. Clients upload evidence directly to encrypted cloud storage.",
+        title: "Secure Client Portal",
+        type: "Data System",
+        desc: "Bank-grade secure portals for document sharing and case tracking. Allows clients to upload evidence to encrypted storage.",
         tech: ["Next.js", "Azure", "AES-256"],
         metrics: [
-          { label: "Data Security", value: "100%", icon: CheckCircle2 },
-          { label: "Admin Work", value: "-40%", icon: Clock },
-          { label: "Client Trust", value: "High", icon: Users }
+          { label: "Security", value: "Max", icon: CheckCircle2 },
+          { label: "Admin Work", value: "Reduced", icon: Clock },
+          { label: "Privacy", value: "Encrypted", icon: Users }
         ],
         gradient: "from-slate-700 via-gray-800 to-black",
         accentColor: "slate",
-        client: "Justice Partners LLP"
+        client: "Law Firms"
       },
       {
-        title: "Apex Strategy Group",
-        type: "Consultancy",
-        desc: "Interactive data visualization dashboard. Consultants present live ROI data to clients instead of static PDF reports.",
+        title: "Data Visualization Dashboard",
+        type: "Analytics Tool",
+        desc: "Interactive dashboards for consultants. Present live ROI data to clients dynamically instead of using static PDF reports.",
         tech: ["React", "D3.js", "AWS"],
         metrics: [
-          { label: "Client Retent.", value: "95%", icon: Heart },
-          { label: "Report Time", value: "Instant", icon: Zap },
-          { label: "Engagement", value: "High", icon: Users }
+          { label: "Clarity", value: "Crystal", icon: Heart },
+          { label: "Updates", value: "Live", icon: Zap },
+          { label: "Reports", value: "Dynamic", icon: Users }
         ],
         gradient: "from-gray-600 via-slate-600 to-zinc-700",
         accentColor: "gray",
-        client: "Apex Strategy"
+        client: "Consultancies"
       },
       {
-        title: "Prime Auditors",
-        type: "Accounting Firm",
-        desc: "Automated tax document collection system. Clients snap photos of receipts, and AI extracts the data into QuickBooks.",
+        title: "Auto-Accounting System",
+        type: "FinTech Tool",
+        desc: "Automated tax document collection. Users snap photos of receipts, and AI extracts the data directly into accounting software.",
         tech: ["Python", "OCR API", "QuickBooks"],
         metrics: [
           { label: "Data Entry", value: "Auto", icon: Zap },
-          { label: "Errors", value: "0%", icon: CheckCircle2 },
-          { label: "Season Cap.", value: "2x", icon: TrendingUp }
+          { label: "Errors", value: "Zero", icon: CheckCircle2 },
+          { label: "Capacity", value: "Scaled", icon: TrendingUp }
         ],
         gradient: "from-zinc-700 via-stone-700 to-neutral-800",
         accentColor: "zinc",
-        client: "Prime Auditors"
+        client: "Accounting Firms"
       }
     ]
   },
@@ -170,49 +170,49 @@ const industries = [
     title: "Education & Training",
     icon: GraduationCap,
     color: "blue",
-    description: "E-learning for schools, tutors, and colleges.",
+    description: "E-learning solutions for schools, tutors, and colleges.",
     projects: [
       {
-        title: "Future Leaders Academy",
-        type: "K-12 School",
-        desc: "Comprehensive portal for grades, attendance, and homework. Parents receive push notifications for important updates.",
+        title: "School Management System",
+        type: "Admin Portal",
+        desc: "Comprehensive portals for grades, attendance, and homework. Send push notifications to parents for important updates.",
         tech: ["PHP", "Laravel", "MySQL"],
         metrics: [
-          { label: "Parent Login", value: "98%", icon: Users },
-          { label: "Paper Saved", value: "100%", icon: Leaf },
+          { label: "Access", value: "Mobile", icon: Users },
+          { label: "Paper", value: "Eliminated", icon: Leaf },
           { label: "Homework", value: "Digital", icon: CheckCircle2 }
         ],
         gradient: "from-blue-500 via-cyan-500 to-teal-500",
         accentColor: "blue",
-        client: "Future Leaders"
+        client: "K-12 Schools"
       },
       {
-        title: "SkillUp Online",
-        type: "Training Center",
-        desc: "Video course platform with quizzes, progress tracking, and automated PDF certificate generation upon completion.",
+        title: "Video Course Platform",
+        type: "LMS System",
+        desc: "Custom course platforms with quizzes, progress tracking, and automated PDF certificate generation upon completion.",
         tech: ["AWS S3", "React", "Node.js"],
         metrics: [
-          { label: "Students", value: "5K+", icon: Users },
-          { label: "Completion", value: "85%", icon: TrendingUp },
+          { label: "Students", value: "Unlimited", icon: Users },
+          { label: "Tracking", value: "Precise", icon: TrendingUp },
           { label: "Uptime", value: "99.9%", icon: Zap }
         ],
         gradient: "from-sky-500 via-blue-600 to-indigo-600",
         accentColor: "sky",
-        client: "SkillUp Tech"
+        client: "Training Centers"
       },
       {
-        title: "MathMaster Tutors",
-        type: "Tutoring Agency",
-        desc: "Booking system for 1-on-1 sessions with integrated Zoom links and recurring Stripe payments.",
+        title: "Tutor Booking App",
+        type: "Scheduling Tool",
+        desc: "Booking systems for 1-on-1 sessions with integrated Zoom links and recurring payment processing.",
         tech: ["Zoom API", "Next.js", "Stripe"],
         metrics: [
-          { label: "Bookings", value: "Full", icon: CheckCircle2 },
+          { label: "Booking", value: "24/7", icon: CheckCircle2 },
           { label: "Scheduling", value: "Auto", icon: Clock },
-          { label: "No-Shows", value: "-50%", icon: Zap }
+          { label: "Payments", value: "Secure", icon: Zap }
         ],
         gradient: "from-cyan-400 via-blue-500 to-indigo-500",
         accentColor: "cyan",
-        client: "MathMaster"
+        client: "Private Tutors"
       }
     ]
   },
@@ -224,46 +224,46 @@ const industries = [
     description: "Booking engines for hotels, tours, and restaurants.",
     projects: [
       {
-        title: "Grand Horizon Hotel",
-        type: "Luxury Hotel",
-        desc: "Direct booking engine with dynamic pricing based on demand. Guests can select specific rooms from a digital floorplan.",
+        title: "Hotel Direct Booking",
+        type: "Reservation System",
+        desc: "Custom booking engines with dynamic pricing based on demand. Allows guests to select specific rooms from digital floorplans.",
         tech: ["React", "Sanity CMS", "PayPal"],
         metrics: [
-          { label: "Direct Book", value: "+60%", icon: TrendingUp },
-          { label: "OTA Fees", value: "-20%", icon: CheckCircle2 },
-          { label: "Occupancy", value: "92%", icon: Users }
+          { label: "Fees", value: "Saved", icon: TrendingUp },
+          { label: "Pricing", value: "Dynamic", icon: CheckCircle2 },
+          { label: "UX", value: "Premium", icon: Users }
         ],
         gradient: "from-orange-400 via-amber-500 to-yellow-600",
         accentColor: "orange",
-        client: "Grand Horizon"
+        client: "Hotels & Lodges"
       },
       {
-        title: "Safari Adventures",
-        type: "Tour Operator",
-        desc: "Custom itinerary builder. Agents drag-and-drop destinations to create beautiful PDF quotes for clients in seconds.",
+        title: "Itinerary Builder",
+        type: "Travel Tech",
+        desc: "Drag-and-drop itinerary builders for agents. Create beautiful PDF quotes for clients in seconds.",
         tech: ["Node.js", "PDF Kit", "React"],
         metrics: [
-          { label: "Quote Speed", value: "2 min", icon: Clock },
-          { label: "Conversion", value: "+30%", icon: TrendingUp },
-          { label: "Sales", value: "High", icon: ShoppingBag }
+          { label: "Quotes", value: "Instant", icon: Clock },
+          { label: "Design", value: "Custom", icon: TrendingUp },
+          { label: "Sales", value: "Boosted", icon: ShoppingBag }
         ],
         gradient: "from-amber-500 via-yellow-500 to-orange-600",
         accentColor: "amber",
-        client: "Safari Adventures"
+        client: "Tour Operators"
       },
       {
-        title: "City Lodge",
-        type: "Boutique Lodge",
-        desc: "Mobile check-in web app. Guests upload ID and sign forms before arrival, receiving a digital room key.",
+        title: "Contactless Check-In",
+        type: "Guest Web App",
+        desc: "Mobile check-in web apps. Guests upload ID and sign forms before arrival, receiving a digital room key.",
         tech: ["PWA", "React", "IoT Lock API"],
         metrics: [
-          { label: "Check-In", value: "30 sec", icon: Zap },
-          { label: "Staff Time", value: "-10h", icon: Clock },
+          { label: "Check-In", value: "Fast", icon: Zap },
+          { label: "Staff", value: "Efficient", icon: Clock },
           { label: "Reviews", value: "5 Star", icon: Sparkles }
         ],
         gradient: "from-yellow-500 via-orange-600 to-red-600",
         accentColor: "yellow",
-        client: "City Lodge"
+        client: "Boutique Hotels"
       }
     ]
   },
@@ -275,46 +275,46 @@ const industries = [
     description: "Ordering systems for restaurants and catering.",
     projects: [
       {
-        title: "The Golden Bistro",
-        type: "Fine Dining",
-        desc: "Table QR ordering system. Customers view a rich media menu, order, and split the bill from their phones.",
+        title: "QR Table Ordering",
+        type: "Dine-In System",
+        desc: "Customers view a rich media menu, order, and split the bill from their phones without waiting for staff.",
         tech: ["Flutter", "Stripe", "Firebase"],
         metrics: [
-          { label: "Table Turnover", value: "+20%", icon: Zap },
-          { label: "Avg Order", value: "+15%", icon: TrendingUp },
-          { label: "Staff Errors", value: "0%", icon: CheckCircle2 }
+          { label: "Turnover", value: "Faster", icon: Zap },
+          { label: "Order Val", value: "Higher", icon: TrendingUp },
+          { label: "Errors", value: "Zero", icon: CheckCircle2 }
         ],
         gradient: "from-red-500 via-orange-500 to-yellow-500",
         accentColor: "red",
-        client: "Golden Bistro"
+        client: "Restaurants"
       },
       {
-        title: "Slice Pizza Co.",
-        type: "Food Delivery",
-        desc: "Custom delivery app with real-time pizza tracking (Oven -> Box -> Driver). Built to rival Domino's tech.",
+        title: "Food Delivery App",
+        type: "Mobile App",
+        desc: "Custom delivery apps with real-time tracking (Oven -> Box -> Driver). Built to rival major delivery tech standards.",
         tech: ["Google Maps", "React", "Twilio"],
         metrics: [
-          { label: "Orders", value: "500/day", icon: ShoppingBag },
-          { label: "Driver Eff.", value: "+25%", icon: Truck },
-          { label: "App Rating", value: "4.8", icon: Heart }
+          { label: "Tracking", value: "GPS", icon: ShoppingBag },
+          { label: "Logistics", value: "Auto", icon: Truck },
+          { label: "UX", value: "Smooth", icon: Heart }
         ],
         gradient: "from-orange-500 via-red-500 to-red-600",
         accentColor: "orange",
-        client: "Slice Pizza"
+        client: "Fast Food Chains"
       },
       {
-        title: "Fresh Catering Events",
-        type: "Catering Biz",
-        desc: "Interactive menu builder for corporate clients. Calculates costs per head and generates invoices automatically.",
+        title: "Catering Event Calculator",
+        type: "B2B Tool",
+        desc: "Interactive menu builders for corporate clients. Calculates costs per head and generates invoices automatically.",
         tech: ["Next.js", "EmailJS", "Xero"],
         metrics: [
-          { label: "Lead Gen", value: "High", icon: Users },
-          { label: "Admin Work", value: "-80%", icon: Clock },
-          { label: "Sales", value: "+40%", icon: TrendingUp }
+          { label: "Invoicing", value: "Auto", icon: Users },
+          { label: "Admin", value: "Saved", icon: Clock },
+          { label: "Conversion", value: "Higher", icon: TrendingUp }
         ],
         gradient: "from-red-600 via-rose-600 to-pink-600",
         accentColor: "red",
-        client: "Fresh Catering"
+        client: "Catering Companies"
       }
     ]
   },
@@ -326,46 +326,46 @@ const industries = [
     description: "Scalable online stores and inventory systems.",
     projects: [
       {
-        title: "Urban Mode Fashion",
-        type: "International Brand",
-        desc: "Headless Shopify storefront with AI size recommendations and localized currency support for global shipping.",
+        title: "International E-Store",
+        type: "E-Commerce",
+        desc: "Headless Shopify storefronts with AI size recommendations and localized currency support for global shipping.",
         tech: ["Shopify Plus", "Next.js", "Sanity"],
         metrics: [
-          { label: "Conversion Rate", value: "4.2%", icon: TrendingUp },
-          { label: "Returns", value: "-20%", icon: CheckCircle2 },
-          { label: "Intl Sales", value: "+50%", icon: Plane }
+          { label: "Speed", value: "Fast", icon: TrendingUp },
+          { label: "Returns", value: "Lower", icon: CheckCircle2 },
+          { label: "Markets", value: "Global", icon: Plane }
         ],
         gradient: "from-rose-500 via-pink-500 to-fuchsia-500",
         accentColor: "rose",
-        client: "Urban Mode"
+        client: "Fashion Brands"
       },
       {
-        title: "BulkMart Wholesale",
-        type: "B2B Supplier",
-        desc: "Wholesale portal with tiered pricing, bulk reordering, and ERP integration for automated invoicing.",
+        title: "B2B Wholesale Portal",
+        type: "Ordering System",
+        desc: "Wholesale portals with tiered pricing, bulk reordering, and ERP integration for automated invoicing.",
         tech: ["Magento", "SAP API", "React"],
         metrics: [
-          { label: "Order Proc.", value: "Instant", icon: Zap },
-          { label: "Admin Cost", value: "-40%", icon: TrendingUp },
-          { label: "Avg Order Val", value: "$5K+", icon: ShoppingBag }
+          { label: "Ordering", value: "Instant", icon: Zap },
+          { label: "Admin", value: "Reduced", icon: TrendingUp },
+          { label: "Volume", value: "High", icon: ShoppingBag }
         ],
         gradient: "from-pink-500 via-red-500 to-orange-500",
         accentColor: "pink",
-        client: "BulkMart Global"
+        client: "Suppliers"
       },
       {
-        title: "Corner Market",
-        type: "Local Shop chain",
-        desc: "Mobile inventory app for 5 locations. Managers scan barcodes to track stock levels and auto-order from suppliers.",
+        title: "Inventory Scanner App",
+        type: "Internal Tool",
+        desc: "Mobile inventory apps. Managers scan barcodes to track stock levels and auto-order from suppliers.",
         tech: ["React Native", "Firebase", "Barcode API"],
         metrics: [
-          { label: "Stockouts", value: "0%", icon: CheckCircle2 },
-          { label: "Waste", value: "-15%", icon: Leaf },
-          { label: "Efficiency", value: "High", icon: Zap }
+          { label: "Stockouts", value: "Zero", icon: CheckCircle2 },
+          { label: "Waste", value: "Reduced", icon: Leaf },
+          { label: "Efficiency", value: "Max", icon: Zap }
         ],
         gradient: "from-red-500 via-rose-500 to-pink-600",
         accentColor: "red",
-        client: "Corner Market"
+        client: "Retail Chains"
       }
     ]
   },
@@ -377,46 +377,46 @@ const industries = [
     description: "Project management for builders and architects.",
     projects: [
       {
-        title: "Apex Constructors",
-        type: "Construction Co",
-        desc: "Project management dashboard. Site managers upload photos and progress reports, clients view timelines remotely.",
+        title: "Site Management Dashboard",
+        type: "Project Tool",
+        desc: "Digital site management. Managers upload photos and progress reports, allowing clients to view timelines remotely.",
         tech: ["React", "AWS S3", "PostgreSQL"],
         metrics: [
-          { label: "On-Time", value: "98%", icon: Clock },
+          { label: "Deadlines", value: "Met", icon: Clock },
           { label: "Budget", value: "Tracked", icon: TrendingUp },
-          { label: "Disputes", value: "Low", icon: CheckCircle2 }
+          { label: "Disputes", value: "Reduced", icon: CheckCircle2 }
         ],
         gradient: "from-yellow-500 via-orange-600 to-amber-700",
         accentColor: "yellow",
-        client: "Apex Constructors"
+        client: "Construction Firms"
       },
       {
-        title: "Modern Architects",
-        type: "Architecture Firm",
-        desc: "High-performance visual portfolio showcasing 3D WebGL renders. Fast loading despite heavy image assets.",
+        title: "3D Portfolio Showcase",
+        type: "Visual Web",
+        desc: "High-performance visual portfolios showcasing 3D WebGL renders. Optimized for fast loading despite heavy assets.",
         tech: ["Three.js", "Next.js", "Vercel"],
         metrics: [
-          { label: "Awards", value: "Winner", icon: Sparkles },
-          { label: "Load Time", value: "0.5s", icon: Zap },
-          { label: "Inquiries", value: "+200%", icon: Users }
+          { label: "Visuals", value: "Stunning", icon: Sparkles },
+          { label: "Load Time", value: "Fast", icon: Zap },
+          { label: "Inquiries", value: "More", icon: Users }
         ],
         gradient: "from-amber-400 via-yellow-500 to-orange-500",
         accentColor: "amber",
-        client: "Modern Architects"
+        client: "Architects"
       },
       {
-        title: "Site Contractors",
-        type: "General Contractor",
-        desc: "Bid management system. Organizes subcontractor quotes and material costs to generate accurate client proposals.",
+        title: "Bid Estimator Tool",
+        type: "Costing System",
+        desc: "Bid management systems. Organize subcontractor quotes and material costs to generate accurate client proposals.",
         tech: ["Python", "Excel Integ", "React"],
         metrics: [
-          { label: "Bids Won", value: "+20%", icon: TrendingUp },
-          { label: "Admin", value: "-15h", icon: Clock },
+          { label: "Win Rate", value: "Higher", icon: TrendingUp },
+          { label: "Admin", value: "Less", icon: Clock },
           { label: "Accuracy", value: "100%", icon: CheckCircle2 }
         ],
         gradient: "from-orange-400 via-amber-600 to-yellow-600",
         accentColor: "orange",
-        client: "Site Contractors"
+        client: "Contractors"
       }
     ]
   },
@@ -428,46 +428,46 @@ const industries = [
     description: "Apps for member engagement and donations.",
     projects: [
       {
-        title: "Grace Community",
-        type: "Mega Church",
-        desc: "Custom mobile app for sermon streaming, event calendar, and recurring tithing via credit card or bank transfer.",
+        title: "Congregation App",
+        type: "Community App",
+        desc: "Custom mobile apps for sermon streaming, event calendars, and recurring tithing via credit card or bank transfer.",
         tech: ["React Native", "Stripe", "YouTube API"],
         metrics: [
-          { label: "Donations", value: "+60%", icon: TrendingUp },
+          { label: "Giving", value: "Easy", icon: TrendingUp },
           { label: "Engagement", value: "Daily", icon: Users },
-          { label: "App Installs", value: "10K+", icon: Smartphone }
+          { label: "Reach", value: "Global", icon: Smartphone }
         ],
         gradient: "from-purple-500 via-violet-600 to-indigo-600",
         accentColor: "purple",
-        client: "Grace Community"
+        client: "Churches"
       },
       {
-        title: "Hope Foundation",
-        type: "Intl. NGO",
-        desc: "Impact tracking dashboard. Donors can see exactly where their money is spent via interactive maps and live feeds.",
+        title: "Impact Tracker",
+        type: "Donor Dashboard",
+        desc: "Transparency dashboards. Show donors exactly where their money is spent via interactive maps and live feeds.",
         tech: ["D3.js", "React", "Mapbox"],
         metrics: [
-          { label: "Donor Trust", value: "High", icon: Heart },
-          { label: "Funding", value: "+30%", icon: TrendingUp },
-          { label: "Transparency", value: "100%", icon: CheckCircle2 }
+          { label: "Trust", value: "High", icon: Heart },
+          { label: "Funding", value: "Secure", icon: TrendingUp },
+          { label: "Data", value: "Clear", icon: CheckCircle2 }
         ],
         gradient: "from-violet-500 via-fuchsia-600 to-purple-700",
         accentColor: "violet",
-        client: "Hope Foundation"
+        client: "NGOs"
       },
       {
-        title: "Global Relief",
-        type: "Charity",
-        desc: "Emergency response coordination platform. Connects volunteers with resources during crisis situations.",
+        title: "Volunteer Coordinator",
+        type: "Logistics",
+        desc: "Emergency response coordination platforms. Connect volunteers with resources during crisis situations efficiently.",
         tech: ["Next.js", "Twilio", "Geo-Location"],
         metrics: [
           { label: "Response", value: "Fast", icon: Zap },
           { label: "Coordination", value: "Seamless", icon: Users },
-          { label: "Lives Impacted", value: "High", icon: Heart }
+          { label: "Impact", value: "Real", icon: Heart }
         ],
         gradient: "from-fuchsia-500 via-purple-600 to-pink-600",
         accentColor: "fuchsia",
-        client: "Global Relief"
+        client: "Charities"
       }
     ]
   },
@@ -479,46 +479,46 @@ const industries = [
     description: "Tracking systems for fleets, freight, and deliveries.",
     projects: [
       {
-        title: "Global Fleet Tracking",
-        type: "Logistics Co",
-        desc: "Real-time IoT dashboard tracking 200+ trucks. Monitors fuel levels, driver behavior, and geo-fencing for security.",
+        title: "Fleet IoT Dashboard",
+        type: "Tracking System",
+        desc: "Real-time IoT dashboards. Monitor fuel levels, driver behavior, and geo-fencing for security across entire fleets.",
         tech: ["React", "IoT Sensors", "AWS"],
         metrics: [
-          { label: "Fuel Cost", value: "-15%", icon: TrendingUp },
-          { label: "Theft Incidents", value: "0", icon: CheckCircle2 },
+          { label: "Fuel", value: "Saved", icon: TrendingUp },
+          { label: "Security", value: "High", icon: CheckCircle2 },
           { label: "Maintenance", value: "Auto", icon: Zap }
         ],
         gradient: "from-cyan-500 via-blue-600 to-indigo-600",
         accentColor: "cyan",
-        client: "Global Fleet"
+        client: "Trucking Companies"
       },
       {
-        title: "Flash Courier App",
-        type: "Last-Mile Delivery",
-        desc: "Uber-style app for bike couriers. Customers book deliveries, track drivers on a map, and pay via secure link.",
+        title: "Courier Dispatch App",
+        type: "Delivery Tech",
+        desc: "Uber-style apps for couriers. Customers book deliveries, track drivers on a map, and pay via secure link.",
         tech: ["Flutter", "Google Maps", "Node.js"],
         metrics: [
-          { label: "Daily Deliveries", value: "1.2K", icon: Truck },
-          { label: "Avg Pickup", value: "4 min", icon: Clock },
-          { label: "Driver Payout", value: "Daily", icon: Zap }
+          { label: "Dispatch", value: "Auto", icon: Truck },
+          { label: "Pickups", value: "Fast", icon: Clock },
+          { label: "Payouts", value: "Easy", icon: Zap }
         ],
         gradient: "from-blue-500 via-cyan-600 to-teal-600",
         accentColor: "blue",
-        client: "Flash Logistics"
+        client: "Logistics Firms"
       },
       {
-        title: "Port Authority Manager",
-        type: "Freight Forwarder",
-        desc: "Digital documentation system for clearing containers. Replaced excel sheets with a cloud database accessible by clients.",
+        title: "Freight Documentation",
+        type: "Cloud System",
+        desc: "Digital documentation systems for clearing containers. Replace excel sheets with a cloud database accessible by clients.",
         tech: ["Angular", "Azure SQL", "Python"],
         metrics: [
-          { label: "Clearance Time", value: "-2 Days", icon: Clock },
-          { label: "Paper Saved", value: "100%", icon: CheckCircle2 },
-          { label: "Client Trust", value: "High", icon: Users }
+          { label: "Clearance", value: "Faster", icon: Clock },
+          { label: "Paper", value: "Digitized", icon: CheckCircle2 },
+          { label: "Access", value: "Cloud", icon: Users }
         ],
         gradient: "from-sky-500 via-blue-500 to-indigo-500",
         accentColor: "sky",
-        client: "Oceanic Freight"
+        client: "Freight Forwarders"
       }
     ]
   },
@@ -527,49 +527,49 @@ const industries = [
     title: "Fitness & Wellness",
     icon: Dumbbell,
     color: "green",
-    description: "Booking and tracking for gyms and spas.",
+    description: "Booking and tracking solutions for gyms and spas.",
     projects: [
       {
-        title: "Iron Temple Gym",
-        type: "Gym Franchise",
-        desc: "Member app with QR code entry. Replaced keycards, allowing 24/7 access management via smartphone.",
+        title: "Gym Access App",
+        type: "Member System",
+        desc: "Member apps with dynamic QR code entry. Replace keycards, allowing 24/7 access management via smartphone.",
         tech: ["PWA", "QR Gen", "Node.js"],
         metrics: [
-          { label: "Access", value: "Auto", icon: Zap },
-          { label: "Classes", value: "Full", icon: Users },
-          { label: "Admin Cost", value: "-30%", icon: TrendingUp }
+          { label: "Access", value: "24/7", icon: Zap },
+          { label: "Classes", value: "Booked", icon: Users },
+          { label: "Admin", value: "Reduced", icon: TrendingUp }
         ],
         gradient: "from-green-500 via-emerald-600 to-teal-600",
         accentColor: "green",
-        client: "Iron Temple"
+        client: "Gym Franchises"
       },
       {
-        title: "Coach Mike Online",
-        type: "Personal Trainer",
-        desc: "Custom workout & nutrition tracking app. Clients log reps, upload meal photos, and get feedback.",
+        title: "Coaching Platform",
+        type: "Progress App",
+        desc: "Custom workout & nutrition tracking apps. Clients log reps, upload meal photos, and get feedback from trainers.",
         tech: ["Supabase", "React Native", "Video"],
         metrics: [
-          { label: "Client Results", value: "Proven", icon: CheckCircle2 },
-          { label: "Retention", value: "+60%", icon: Users },
-          { label: "Capacity", value: "3x", icon: TrendingUp }
+          { label: "Results", value: "Tracked", icon: CheckCircle2 },
+          { label: "Retention", value: "High", icon: Users },
+          { label: "Scale", value: "Global", icon: TrendingUp }
         ],
         gradient: "from-emerald-500 via-teal-500 to-cyan-500",
         accentColor: "emerald",
-        client: "Coach Mike"
+        client: "Personal Trainers"
       },
       {
-        title: "Zen Wellness Spa",
-        type: "Luxury Spa",
-        desc: "Appointment booking system. Customers select therapists, treatments, and pay deposits online.",
+        title: "Spa Appointment System",
+        type: "Booking Engine",
+        desc: "Elegant appointment systems. Customers select therapists, treatments, and pay deposits online seamlessly.",
         tech: ["Calendly API", "WordPress", "Stripe"],
         metrics: [
-          { label: "Bookings", value: "+40%", icon: TrendingUp },
-          { label: "No-Shows", value: "Low", icon: CheckCircle2 },
-          { label: "Revenue", value: "High", icon: ShoppingBag }
+          { label: "Bookings", value: "Easy", icon: TrendingUp },
+          { label: "No-Shows", value: "Reduced", icon: CheckCircle2 },
+          { label: "Revenue", value: "Steady", icon: ShoppingBag }
         ],
         gradient: "from-teal-400 via-green-500 to-emerald-600",
         accentColor: "teal",
-        client: "Zen Wellness"
+        client: "Spas & Salons"
       }
     ]
   },
@@ -581,46 +581,46 @@ const industries = [
     description: "Apps for salons, fashion brands, and influencers.",
     projects: [
       {
-        title: "Luxe Salon",
-        type: "Hair Salon",
-        desc: "Booking app with style gallery. Clients browse previous work and book specific stylists.",
+        title: "Salon Booking App",
+        type: "Client App",
+        desc: "Booking apps with style galleries. Let clients browse your previous work and book specific stylists directly.",
         tech: ["Instagram API", "React", "Firebase"],
         metrics: [
-          { label: "New Clients", value: "+25%", icon: Users },
-          { label: "Phone Calls", value: "-80%", icon: Zap },
-          { label: "Avg Spend", value: "+15%", icon: ShoppingBag }
+          { label: "Clients", value: "New", icon: Users },
+          { label: "Calls", value: "Reduced", icon: Zap },
+          { label: "Spend", value: "Up", icon: ShoppingBag }
         ],
         gradient: "from-pink-400 via-rose-500 to-red-500",
         accentColor: "pink",
-        client: "Luxe Salon"
+        client: "Hair Salons"
       },
       {
-        title: "Glow Cosmetics",
-        type: "Beauty Brand",
-        desc: "E-commerce store with AR makeup try-on feature allowing users to see lipstick shades on their camera.",
+        title: "AR Makeup Try-On",
+        type: "E-Commerce",
+        desc: "E-commerce integrations with AR features, allowing users to see lipstick shades on their camera before buying.",
         tech: ["AR Kit", "Shopify", "React"],
         metrics: [
-          { label: "Conversion", value: "+3.5%", icon: TrendingUp },
-          { label: "Returns", value: "Low", icon: CheckCircle2 },
-          { label: "Engagement", value: "High", icon: Heart }
+          { label: "Sales", value: "Boosted", icon: TrendingUp },
+          { label: "Returns", value: "Minimal", icon: CheckCircle2 },
+          { label: "Fun", value: "High", icon: Heart }
         ],
         gradient: "from-rose-400 via-pink-500 to-fuchsia-500",
         accentColor: "rose",
-        client: "Glow Cosmetics"
+        client: "Cosmetic Brands"
       },
       {
-        title: "Style Influencer",
+        title: "Influencer Hub",
         type: "Personal Brand",
-        desc: "Blog and affiliate marketing hub. Integrates LTK links and newsletter signups.",
+        desc: "Blog and affiliate marketing hubs. Integrate LTK links and newsletter signups to monetize audiences.",
         tech: ["Ghost CMS", "Next.js", "ConvertKit"],
         metrics: [
-          { label: "Traffic", value: "100K", icon: Globe },
-          { label: "Ad Rev", value: "High", icon: TrendingUp },
-          { label: "Subscribers", value: "50K", icon: Users }
+          { label: "Traffic", value: "Owned", icon: Globe },
+          { label: "Ads", value: "Optimized", icon: TrendingUp },
+          { label: "Subs", value: "Growth", icon: Users }
         ],
         gradient: "from-fuchsia-400 via-pink-500 to-purple-500",
         accentColor: "fuchsia",
-        client: "Sarah Styles"
+        client: "Content Creators"
       }
     ]
   },
@@ -632,46 +632,46 @@ const industries = [
     description: "Secure fintech for brokers, banks, and startups.",
     projects: [
       {
-        title: "SafeGuard Brokers",
-        type: "Insurance Agency",
-        desc: "Lead generation funnel that calculates premium estimates instantly and emails a PDF quote.",
+        title: "Insurance Quote Engine",
+        type: "Lead Gen",
+        desc: "Lead generation funnels that calculate premium estimates instantly and email PDF quotes to potential clients.",
         tech: ["Vue.js", "Laravel", "SendGrid"],
         metrics: [
-          { label: "Leads", value: "3x", icon: Users },
-          { label: "Work", value: "Auto", icon: Zap },
-          { label: "Conv. Rate", value: "18%", icon: TrendingUp }
+          { label: "Leads", value: "More", icon: Users },
+          { label: "Quotes", value: "Auto", icon: Zap },
+          { label: "Conv.", value: "Higher", icon: TrendingUp }
         ],
         gradient: "from-emerald-600 via-green-700 to-teal-700",
         accentColor: "emerald",
-        client: "SafeGuard"
+        client: "Insurance Brokers"
       },
       {
-        title: "Capital Wealth",
-        type: "Investment Firm",
-        desc: "Secure client dashboard. Investors log in to view portfolio performance and download tax documents.",
+        title: "Investor Portal",
+        type: "Secure Dashboard",
+        desc: "Secure client dashboards. Investors log in to view portfolio performance and download tax documents safely.",
         tech: ["React", "FinTech API", "AWS"],
         metrics: [
           { label: "Security", value: "Bank Lv", icon: CheckCircle2 },
-          { label: "Trust", value: "High", icon: Heart },
-          { label: "Assets", value: "$50M+", icon: Landmark }
+          { label: "Trust", value: "Built", icon: Heart },
+          { label: "Assets", value: "Safe", icon: Landmark }
         ],
         gradient: "from-green-600 via-emerald-800 to-teal-900",
         accentColor: "green",
-        client: "Capital Wealth"
+        client: "Investment Firms"
       },
       {
-        title: "MicroLend",
-        type: "Microfinance",
-        desc: "Loan application app with AI credit scoring algorithm. Replaces manual background checks.",
+        title: "Loan Application App",
+        type: "FinTech App",
+        desc: "Loan application apps with AI credit scoring algorithms. Replace manual background checks with instant decisions.",
         tech: ["Python", "AI Model", "React"],
         metrics: [
-          { label: "Approval", value: "5min", icon: Clock },
-          { label: "Risk", value: "Low", icon: CheckCircle2 },
-          { label: "Loans/Day", value: "500", icon: TrendingUp }
+          { label: "Decision", value: "Instant", icon: Clock },
+          { label: "Risk", value: "Lower", icon: CheckCircle2 },
+          { label: "Volume", value: "High", icon: TrendingUp }
         ],
         gradient: "from-teal-600 via-green-700 to-emerald-800",
         accentColor: "teal",
-        client: "MicroLend Inc."
+        client: "Microfinance"
       }
     ]
   },
@@ -683,46 +683,46 @@ const industries = [
     description: "Launchpads for entrepreneurs and new ventures.",
     projects: [
       {
-        title: "LaunchPad SaaS",
-        type: "Tech Startup",
-        desc: "MVP (Minimum Viable Product) development for a B2B software platform. Scaled from 0 to 1000 users.",
+        title: "SaaS MVP Build",
+        type: "Product Dev",
+        desc: "Rapid MVP (Minimum Viable Product) development for B2B software. Get your idea to market in weeks, not months.",
         tech: ["Next.js", "Supabase", "Stripe"],
         metrics: [
-          { label: "Launch", value: "4 Wks", icon: Rocket },
-          { label: "Users", value: "Growing", icon: TrendingUp },
-          { label: "Churn", value: "< 2%", icon: CheckCircle2 }
+          { label: "Launch", value: "Fast", icon: Rocket },
+          { label: "Scale", value: "Ready", icon: TrendingUp },
+          { label: "Code", value: "Clean", icon: CheckCircle2 }
         ],
         gradient: "from-violet-500 via-purple-500 to-indigo-500",
         accentColor: "violet",
-        client: "LaunchPad"
+        client: "Tech Founders"
       },
       {
-        title: "Disrupt App",
+        title: "Social Networking App",
         type: "Mobile Startup",
-        desc: "Social networking app with real-time chat and geolocation features.",
+        desc: "Scalable social apps with real-time chat, geolocation, and notification features built for high user loads.",
         tech: ["React Native", "Firebase", "Redis"],
         metrics: [
-          { label: "Downloads", value: "10K+", icon: Smartphone },
-          { label: "Uptime", value: "99%", icon: Zap },
-          { label: "Rating", value: "4.7", icon: Heart }
+          { label: "Chat", value: "Live", icon: Smartphone },
+          { label: "Uptime", value: "Stable", icon: Zap },
+          { label: "UX", value: "Addictive", icon: Heart }
         ],
         gradient: "from-purple-500 via-fuchsia-500 to-pink-500",
         accentColor: "purple",
-        client: "Disrupt Inc."
+        client: "Social Startups"
       },
       {
-        title: "EcoTech Data",
-        type: "Green Startup",
-        desc: "Data platform for tracking carbon footprint for enterprises.",
+        title: "Data Analytics Platform",
+        type: "Big Data",
+        desc: "Data platforms for tracking complex metrics. We build the architecture to handle millions of data points.",
         tech: ["Python", "React", "BigQuery"],
         metrics: [
-          { label: "Data", value: "Accurate", icon: CheckCircle2 },
-          { label: "Impact", value: "High", icon: Globe },
-          { label: "Clients", value: "Fortune 500", icon: Briefcase }
+          { label: "Data", value: "Visual", icon: CheckCircle2 },
+          { label: "Speed", value: "Fast", icon: Globe },
+          { label: "Clients", value: "Enterprise", icon: Briefcase }
         ],
         gradient: "from-fuchsia-500 via-pink-500 to-purple-600",
         accentColor: "fuchsia",
-        client: "EcoTech"
+        client: "Data Companies"
       }
     ]
   },
@@ -734,46 +734,46 @@ const industries = [
     description: "Digital presence for local businesses and entrepreneurs.",
     projects: [
       {
-        title: "Local Bistro Site",
-        type: "Local Business",
-        desc: "SEO-optimized website designed to rank #1 on Google Maps in the local area.",
+        title: "Local SEO Website",
+        type: "Web Presence",
+        desc: "SEO-optimized websites designed to rank high on Google Maps in your local area and drive foot traffic.",
         tech: ["Astro", "Tailwind", "SEO"],
         metrics: [
-          { label: "Rank", value: "#1", icon: TrendingUp },
-          { label: "Calls", value: "+50%", icon: Smartphone },
-          { label: "Visits", value: "+30%", icon: Users }
+          { label: "Ranking", value: "Top", icon: TrendingUp },
+          { label: "Calls", value: "More", icon: Smartphone },
+          { label: "Visits", value: "Increased", icon: Users }
         ],
         gradient: "from-gray-500 via-slate-600 to-zinc-600",
         accentColor: "gray",
-        client: "The Local Bistro"
+        client: "Local Shops"
       },
       {
-        title: "City Cleaners",
-        type: "Service Business",
-        desc: "Online booking form for home cleaning services. Replaced phone scheduling.",
+        title: "Service Booking Form",
+        type: "Automation",
+        desc: "Online booking forms for service providers. Replace phone tag with a seamless digital scheduling experience.",
         tech: ["WordPress", "Stripe", "Zapier"],
         metrics: [
           { label: "Bookings", value: "Auto", icon: Zap },
           { label: "Admin", value: "Low", icon: Clock },
-          { label: "Revenue", value: "Stable", icon: CheckCircle2 }
+          { label: "Revenue", value: "Consistent", icon: CheckCircle2 }
         ],
         gradient: "from-slate-500 via-gray-600 to-zinc-700",
         accentColor: "slate",
-        client: "City Cleaners"
+        client: "Cleaning Services"
       },
       {
-        title: "HandyMan Pro",
-        type: "Contractor",
-        desc: "Professional portfolio site showcasing past projects, reviews, and services.",
+        title: "Professional Portfolio",
+        type: "Brand Site",
+        desc: "High-end portfolio sites to showcase your past projects, reviews, and services to win bigger contracts.",
         tech: ["Next.js", "Sanity"],
         metrics: [
-          { label: "Trust", value: "High", icon: CheckCircle2 },
-          { label: "Jobs Won", value: "+20%", icon: TrendingUp },
-          { label: "Inquiries", value: "Quality", icon: Users }
+          { label: "Trust", value: "Built", icon: CheckCircle2 },
+          { label: "Jobs", value: "Won", icon: TrendingUp },
+          { label: "Image", value: "Pro", icon: Users }
         ],
         gradient: "from-zinc-500 via-stone-600 to-neutral-700",
         accentColor: "zinc",
-        client: "HandyMan Pro"
+        client: "Contractors"
       }
     ]
   }
@@ -837,14 +837,14 @@ const BigCaseStudyCard = ({ study }: any) => {
         {/* Floating Abstract UI Elements */}
         <div className="absolute inset-0 flex items-center justify-center p-8">
            <div className="w-full max-w-sm bg-white rounded-xl shadow-xl border border-gray-100 p-6 relative transform group-hover:scale-105 group-hover:-rotate-1 transition-all duration-500">
-              {/* Fake UI Header */}
-              <div className="flex items-center gap-2 mb-4">
+             {/* Fake UI Header */}
+             <div className="flex items-center gap-2 mb-4">
                  <div className="w-3 h-3 rounded-full bg-red-400/80"></div>
                  <div className="w-3 h-3 rounded-full bg-yellow-400/80"></div>
                  <div className="w-3 h-3 rounded-full bg-green-400/80"></div>
-              </div>
-              {/* Fake UI Body */}
-              <div className="space-y-3">
+             </div>
+             {/* Fake UI Body */}
+             <div className="space-y-3">
                  <div className="flex gap-4">
                     <div className="w-1/3 h-20 rounded-lg bg-gray-50 animate-pulse"></div>
                     <div className="w-2/3 space-y-2">
@@ -862,7 +862,7 @@ const BigCaseStudyCard = ({ study }: any) => {
                     <div className={`w-1/5 h-full rounded-t bg-gradient-to-t ${study.gradient} opacity-80`}></div>
                     <div className={`w-1/5 h-3/4 rounded-t bg-gradient-to-t ${study.gradient} opacity-70`}></div>
                  </div>
-              </div>
+             </div>
            </div>
         </div>
 
@@ -906,10 +906,10 @@ const BigCaseStudyCard = ({ study }: any) => {
         {/* Footer: Client & CTA */}
         <div className="pt-6 border-t border-gray-100 flex items-center justify-between">
            <div className="text-xs font-bold text-gray-400 uppercase tracking-widest">
-             Client: {study.client}
+             Ideal For: {study.client}
            </div>
            <button className={`flex items-center gap-2 text-sm font-bold ${styles.badge} group-hover:translate-x-1 transition-transform`}>
-             View Case Study <ArrowRight size={16} />
+             View Details <ArrowRight size={16} />
            </button>
         </div>
 
@@ -932,17 +932,17 @@ export default function CaseStudiesPage() {
           <div className="flex items-center gap-2 mb-4">
             <Sparkles className="text-blue-600" size={24} />
             <span className="text-blue-600 font-bold tracking-wide uppercase text-sm">
-              Global Portfolio
+              Our Capabilities
             </span>
           </div>
           <h1 className="text-5xl md:text-7xl font-extrabold text-gray-900 mb-6 leading-tight">
-            We Transform <br />
+            We Build Systems That <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 animate-gradient">
-              Entire Industries
+              Transform Industries
             </span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl leading-relaxed">
-            From Healthcare in Europe to Logistics in America. Explore how our engineering solves complex business problems at scale.
+            From Healthcare to Logistics. Explore the engineering solutions we offer to solve complex business problems at scale.
           </p>
         </div>
       </section>
@@ -972,7 +972,7 @@ export default function CaseStudiesPage() {
                 </div>
                 <div className="hidden md:block">
                    <button className="text-gray-900 font-bold hover:text-blue-600 transition-colors flex items-center gap-2">
-                     View All {industry.title} Projects <ArrowRight size={20}/>
+                     See All {industry.title} Solutions <ArrowRight size={20}/>
                    </button>
                 </div>
               </div>
@@ -997,7 +997,7 @@ export default function CaseStudiesPage() {
             Don't See Your Industry?
           </h2>
           <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
-            We have also built solutions for Non-Profits and Automotive. Our engineering principles work universally.
+            We also build solutions for Non-Profits and Automotive. Our engineering principles work universally.
           </p>
           <button className="bg-white text-gray-900 px-10 py-5 rounded-full font-bold text-lg hover:bg-gray-100 transition-all hover:scale-105 shadow-xl inline-flex items-center gap-3">
             Start Your Custom Project <ArrowRight size={20}/>
@@ -1007,7 +1007,7 @@ export default function CaseStudiesPage() {
 
       {/* SIMPLE FOOTER */}
       <footer className="bg-white py-10 border-t border-gray-100 text-center text-gray-500">
-        <p>© 2024 Vidi Agency. International Engineering Standard.</p>
+        <p>© 2026 Vidi Agency. International Engineering Standard.</p>
       </footer>
 
     </main>
