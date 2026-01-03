@@ -2,47 +2,22 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation'; // <--- FIXED: Added missing import
-import { supabase } from '@/lib/supabase';   // <--- FIXED: Added missing import
-import { sendQuoteEmail } from '@/lib/emailService';
+import { useRouter } from 'next/navigation';
+import { supabase } from '@/lib/supabase';
 import { 
   ArrowRight, ArrowLeft, Check,  Zap, Clock, 
   Code2, Smartphone, Bot, LayoutDashboard, Workflow, Database,
   Globe, Palette, ShoppingCart, Rocket, Users, Mail, Phone, User,
-  Building2, MessageSquare, CheckCircle2, PartyPopper, RefreshCw,PaintBucket,
-  Shield, Cpu, Send, Loader2, Star,Cloud, FileText, Video, LifeBuoy,BarChart,
-  PenTool,
-  Code,
-  Server,
-  TrendingUp,
-  Target,
-  Wrench,
-  Fingerprint,  // For Biometrics
-  Key,          // For 2FA
-  Lock,         // For Encryption
-  Sparkles,     // For AI
-  Share2,       // For Social Integration
-  Trophy,       // For Gamification
-  Moon,         // For Dark Mode
-  Watch,        // For Wearables
-  Mic,          // For Voice Command
-  UploadCloud,  // For App Store Submission
-  Split,
-  Headphones,   // For Human Takeover
-  Layers,       // For Multi-platform
-  LineChart,    // For Detailed Analytics
-  Languages,    // For Multi-language
-  ShieldCheck,  // For AI Safety
-  Bell,         // For Hot Lead Alertsy
-  CalendarCheck,// Appointment Booking
-  UserMinus,    // Spam Blocking
-  Forward,      // Call Transfer
-  Voicemail,    // Voicemail management
-  Activity      // Dashboard/Status
+  Building2, MessageSquare, CheckCircle2, PartyPopper, RefreshCw, PaintBucket,
+  Shield, Cloud, FileText, LifeBuoy, BarChart,
+  PenTool, Code, Server, TrendingUp, Target, Wrench,
+  Fingerprint, Key, Lock, Sparkles, Share2, Trophy, Moon, Watch, Mic, UploadCloud,
+  Split, Headphones, Layers, LineChart, Languages, ShieldCheck, Bell, CalendarCheck,
+  UserMinus, Forward, Activity, Send, Loader2, Star
 } from 'lucide-react';
 
 // ============================================================================
-// PRICING DATA STRUCTURE 
+// DATA STRUCTURE (Prices kept for backend calculation, hidden from UI)
 // ============================================================================
 
 interface Feature {
@@ -70,7 +45,7 @@ const services: Service[] = [
   name: "Website Development",
   description: "Custom-built, high-performance websites tailored for the US market.",
   icon: Code2,
-  basePrice: 700, // FIXED: Starting price as requested
+  basePrice: 700, 
   gradient: "from-blue-600 to-indigo-600",
   features: [
   // --- CORE STRUCTURE ---
@@ -105,8 +80,8 @@ const services: Service[] = [
   id: "website-redesign",
   name: "Website Redesign",
   description: "Modernize your outdated site with better performance & conversion.",
-  icon: PaintBucket, // Assuming you have an icon like this, or use 'Layout'
-  basePrice: 600, // FIXED: Slightly lower entry than "New Build" to hook them
+  icon: PaintBucket, 
+  basePrice: 600, 
   gradient: "from-purple-600 to-pink-600",
   features: [
     // --- VISUAL & EXPERIENCE (The "Facelift") ---
@@ -134,8 +109,8 @@ const services: Service[] = [
   id: "app-development",
   name: "Mobile App Development",
   description: "Native & Cross-platform apps for iOS and Android.",
-  icon: Smartphone, // Already imported
-  basePrice: 2000, // FIXED: A "steal" in the US, but high enough to be credible
+  icon: Smartphone, 
+  basePrice: 2000, 
   gradient: "from-green-500 to-emerald-600",
   features: [
   // --- SECURITY ---
@@ -168,7 +143,7 @@ const services: Service[] = [
   name: "AI & Chatbot Automation",
   description: "Smart assistants that sell to customers 24/7.",
   icon: Bot, 
-  basePrice: 1500, // FIXED: A competitive entry price for Custom AI
+  basePrice: 1500, 
   gradient: "from-purple-500 to-indigo-500",
   features: [
     // --- INTEGRATIONS (Connecting to their tools) ---
@@ -231,7 +206,7 @@ const services: Service[] = [
   name: "AI Phone Receptionist",
   description: "A human-like voice assistant that answers calls & books appointments 24/7.",
   icon: Phone,
-  basePrice: 1200, // FIXED: Setup fee. Cheaper than 2 weeks of a human receptionist.
+  basePrice: 1200, 
   gradient: "from-pink-500 to-rose-500",
   features: [
     // --- CORE CALL HANDLING ---
@@ -268,7 +243,7 @@ const timelines = [
 // ============================================================================
 
 export default function GetStartedPage() {
-  const router = useRouter(); // <--- FIXED: Initialized Router
+  const router = useRouter(); 
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedService, setSelectedService] = useState<Service | null>(null);
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
@@ -277,12 +252,13 @@ export default function GetStartedPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isAccepted, setIsAccepted] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
-  const [animatedPrice, setAnimatedPrice] = useState(0);
+  
+  // NOTE: Price animation removed from UI, but calculations remain for backend.
   
   const totalSteps = 5;
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Calculate total price
+  // Calculate total price (Internal Logic Only)
   const calculatePrice = () => {
     if (!selectedService) return 0;
     
@@ -299,29 +275,6 @@ export default function GetStartedPage() {
   };
 
   const totalPrice = calculatePrice();
-
-  // Animate price counter
-  useEffect(() => {
-    const duration = 500;
-    const steps = 20;
-    let current = animatedPrice;
-    const increment = (totalPrice - current) / steps;
-    let stepCount = 0;
-
-    const timer = setInterval(() => {
-      stepCount++;
-      current += increment;
-      setAnimatedPrice(Math.round(current));
-      
-      if (stepCount >= steps) {
-        setAnimatedPrice(totalPrice);
-        clearInterval(timer);
-      }
-    }, duration / steps);
-
-    return () => clearInterval(timer);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [totalPrice]);
 
   // Handle feature toggle
   const toggleFeature = (featureId: string) => {
@@ -344,7 +297,8 @@ export default function GetStartedPage() {
       service: selectedService?.name || 'Unknown',
       features: selectedFeatures.join(', '),
       timeline: selectedTimeline.name,
-      total_price: `$${totalPrice.toLocaleString()}`,
+      // NOTE: You still receive the price in email, but client doesn't see it
+      total_estimated_value: `$${totalPrice.toLocaleString()}`, 
       message: contactInfo.message || 'No message',
     };
 
@@ -353,10 +307,10 @@ export default function GetStartedPage() {
 
       // 2. SEND WITH THE CORRECT COMBINATION
       await emailjs.send(
-        'service_npei2gf',       // <--- Your REAL Service ID 
-        'template_2u2lhr9',      // <--- Your Verified New Template ID
+        'service_npei2gf',       
+        'template_2u2lhr9',      
         quoteData,
-        '-IObU0502rQ2VlNHa'      // <--- Your Public Key 
+        '-IObU0502rQ2VlNHa'      
       );
 
       console.log('SUCCESS! Email sent.');
@@ -387,8 +341,8 @@ export default function GetStartedPage() {
             phone: contactInfo.phone,
             company: contactInfo.company || 'Not Provided',
             service: selectedService.name,
-            package: totalPrice > 2000 ? 'Grow' : 'Launch', // Simple logic to pick package
-            amount: totalPrice, 
+            package: 'Custom', // Changed to Generic
+            amount: totalPrice, // YOU still get the amount in database
             paid: 0,
             status: 'Not Started',
             industry: `Features: ${selectedFeatures.join(', ')}. Timeline: ${selectedTimeline.name}`
@@ -405,8 +359,10 @@ export default function GetStartedPage() {
         // Show confetti briefly
         setShowConfetti(true); 
         
-        // Wait 1 second then go to payment
+        // Wait 1 second then go to payment/dashboard
         setTimeout(() => {
+          // You might want to change this redirect if you aren't charging immediately
+          // router.push(`/dashboard/${newClientId}`); 
           router.push(`/pay/${newClientId}`);
         }, 1000);
       }
@@ -474,7 +430,7 @@ export default function GetStartedPage() {
         <span>Features</span>
         <span>Timeline</span>
         <span>Contact</span>
-        <span>Quote</span>
+        <span>Review</span>
       </div>
     </div>
   );
@@ -533,9 +489,10 @@ export default function GetStartedPage() {
                 {service.description}
               </p>
               
-              {/* Price indicator */}
-              <div className={`text-sm font-bold ${isSelected ? 'text-white' : 'text-blue-600'}`}>
-                Starting at ${service.basePrice.toLocaleString()}
+              {/* Price REMOVED for User */}
+              <div className={`text-sm font-bold flex items-center gap-1 ${isSelected ? 'text-white' : 'text-blue-600'}`}>
+                <span>Select Service</span>
+                <ArrowRight size={14} />
               </div>
             </button>
           );
@@ -594,9 +551,9 @@ export default function GetStartedPage() {
                 <p className="text-sm text-gray-500">{feature.description}</p>
               </div>
               
-              {/* Price */}
+              {/* Price REMOVED from View */}
               <div className={`text-sm font-bold flex-shrink-0 ${isSelected ? 'text-blue-600' : 'text-gray-400'}`}>
-                {feature.price === 0 ? 'Included' : `+$${feature.price.toLocaleString()}`}
+                {feature.price === 0 ? 'Included' : ''} 
               </div>
             </button>
           );
@@ -611,7 +568,7 @@ export default function GetStartedPage() {
         <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
           When do you need it <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">delivered?</span>
         </h2>
-        <p className="text-gray-500 text-lg">Faster delivery requires more resources and has adjusted pricing</p>
+        <p className="text-gray-500 text-lg">We prioritize projects based on your required timeline</p>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
@@ -646,9 +603,9 @@ export default function GetStartedPage() {
                 {timeline.description}
               </p>
               
-              {/* Multiplier */}
+              {/* Logic REMOVED from View */}
               <div className={`text-sm font-bold ${isSelected ? 'text-white' : 'text-gray-400'}`}>
-                {timeline.multiplier === 1 ? 'Standard Rate' : `+${Math.round((timeline.multiplier - 1) * 100)}% Rush Fee`}
+                {timeline.id === 'rush' ? 'Priority Queue' : 'Standard Schedule'}
               </div>
             </button>
           );
@@ -663,7 +620,7 @@ export default function GetStartedPage() {
         <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
           Almost there! <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Tell us about you</span>
         </h2>
-        <p className="text-gray-500 text-lg">We'll prepare your personalized quote and get back to you shortly</p>
+        <p className="text-gray-500 text-lg">We'll review your scope and generate a custom proposal</p>
       </div>
       
       <div className="max-w-2xl mx-auto">
@@ -678,7 +635,7 @@ export default function GetStartedPage() {
                 type="text"
                 value={contactInfo.name}
                 onChange={(e) => setContactInfo({ ...contactInfo, name: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl border-2 border-gray-100 focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all outline-none"
+                className="w-full px-4 py-3 rounded-xl border-2 border-gray-100 text-gray-900 bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all outline-none"
                 placeholder="John Smith"
               />
             </div>
@@ -691,7 +648,7 @@ export default function GetStartedPage() {
                 type="text"
                 value={contactInfo.company}
                 onChange={(e) => setContactInfo({ ...contactInfo, company: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl border-2 border-gray-100 focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all outline-none"
+                className="w-full px-4 py-3 rounded-xl border-2 border-gray-100 text-gray-900 bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all outline-none"
                 placeholder="Acme Inc."
               />
             </div>
@@ -707,7 +664,7 @@ export default function GetStartedPage() {
                 type="email"
                 value={contactInfo.email}
                 onChange={(e) => setContactInfo({ ...contactInfo, email: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl border-2 border-gray-100 focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all outline-none"
+                className="w-full px-4 py-3 rounded-xl border-2 border-gray-100 text-gray-900 bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all outline-none"
                 placeholder="john@company.com"
               />
             </div>
@@ -720,7 +677,7 @@ export default function GetStartedPage() {
                 type="tel"
                 value={contactInfo.phone}
                 onChange={(e) => setContactInfo({ ...contactInfo, phone: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl border-2 border-gray-100 focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all outline-none"
+                className="w-full px-4 py-3 rounded-xl border-2 border-gray-100 text-gray-900 bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all outline-none"
                 placeholder="+1 (555) 000-0000"
               />
             </div>
@@ -735,7 +692,7 @@ export default function GetStartedPage() {
               value={contactInfo.message}
               onChange={(e) => setContactInfo({ ...contactInfo, message: e.target.value })}
               rows={4}
-              className="w-full px-4 py-3 rounded-xl border-2 border-gray-100 focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all outline-none resize-none"
+              className="w-full px-4 py-3 rounded-xl border-2 border-gray-100 text-gray-900 bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all outline-none resize-none"
               placeholder="Tell us more about your project, timeline, or any specific requirements..."
             />
           </div>
@@ -753,9 +710,9 @@ export default function GetStartedPage() {
               <CheckCircle2 size={40} className="text-white" />
             </div>
             <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
-              Your Quote is <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-500">Ready!</span>
+              Project Scope <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-500">Ready!</span>
             </h2>
-            <p className="text-gray-500 text-lg">We've sent a copy to {contactInfo.email}. Review your project details below.</p>
+            <p className="text-gray-500 text-lg">We've saved your requirements. Please review and confirm to request your quote.</p>
           </div>
           
           <div className="max-w-3xl mx-auto">
@@ -765,13 +722,13 @@ export default function GetStartedPage() {
               <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-6 text-white">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-blue-100 text-sm font-medium">Project Quote for</p>
+                    <p className="text-blue-100 text-sm font-medium">Project Scope for</p>
                     <h3 className="text-2xl font-bold">{contactInfo.name}</h3>
                     {contactInfo.company && <p className="text-blue-100">{contactInfo.company}</p>}
                   </div>
                   <div className="text-right">
-                    <p className="text-blue-100 text-sm font-medium">Estimated Total</p>
-                    <p className="text-4xl font-extrabold">${animatedPrice.toLocaleString()}</p>
+                    <p className="text-blue-100 text-sm font-medium">Status</p>
+                    <p className="text-2xl font-extrabold">Drafting Quote</p>
                   </div>
                 </div>
               </div>
@@ -787,7 +744,7 @@ export default function GetStartedPage() {
                     </div>
                     <div>
                       <p className="font-bold text-gray-900">{selectedService?.name}</p>
-                      <p className="text-sm text-gray-500">Base: ${selectedService?.basePrice.toLocaleString()}</p>
+                      <p className="text-sm text-gray-500">Professional Implementation</p>
                     </div>
                   </div>
                 </div>
@@ -805,9 +762,7 @@ export default function GetStartedPage() {
                             <Check size={16} className="text-green-500" />
                             <span className="text-gray-700">{feature.name}</span>
                           </div>
-                          <span className="text-gray-500 text-sm">
-                            {feature.price === 0 ? 'Included' : `+$${feature.price.toLocaleString()}`}
-                          </span>
+                          {/* Price removed here */}
                         </div>
                       );
                     })}
@@ -823,9 +778,6 @@ export default function GetStartedPage() {
                     </div>
                     <div>
                       <p className="font-bold text-gray-900">{selectedTimeline.name} ({selectedTimeline.description})</p>
-                      <p className="text-sm text-gray-500">
-                        {selectedTimeline.multiplier === 1 ? 'Standard rate applied' : `${Math.round((selectedTimeline.multiplier - 1) * 100)}% rush fee applied`}
-                      </p>
                     </div>
                   </div>
                 </div>
@@ -833,8 +785,8 @@ export default function GetStartedPage() {
                 {/* Total */}
                 <div className="flex items-center justify-between py-4 bg-gray-50 rounded-2xl px-6">
                   <span className="text-xl font-bold text-gray-900">Total Investment</span>
-                  <span className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-                    ${totalPrice.toLocaleString()}
+                  <span className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+                    Custom Quote
                   </span>
                 </div>
               </div>
@@ -847,7 +799,7 @@ export default function GetStartedPage() {
                 className="px-8 py-4 rounded-full font-bold text-gray-700 bg-white border-2 border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all flex items-center justify-center gap-2"
               >
                 <RefreshCw size={18} />
-                Adjust Quote
+                Adjust Scope
               </button>
               <button
                 onClick={handleAccept}
@@ -859,7 +811,7 @@ export default function GetStartedPage() {
                 ) : (
                   <Check size={18} />
                 )}
-                Accept & Proceed
+                Submit Request
               </button>
             </div>
           </div>
@@ -871,11 +823,11 @@ export default function GetStartedPage() {
             <PartyPopper size={48} className="text-white" />
           </div>
           <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">
-            🎉 You're All Set!
+            🎉 Request Received!
           </h2>
           <p className="text-xl text-gray-600 mb-4 max-w-2xl mx-auto">
             Thank you, <span className="font-bold text-blue-600">{contactInfo.name}</span>! 
-            We've received your project request and will get back to you within <span className="font-bold">24 hours</span>.
+            We've received your project requirements and will get back to you with a formal proposal within <span className="font-bold">24 hours</span>.
           </p>
           <p className="text-gray-500 mb-10">
             A confirmation email has been sent to <span className="font-bold">{contactInfo.email}</span>
@@ -890,11 +842,11 @@ export default function GetStartedPage() {
               </div>
               <div className="flex items-start gap-3">
                 <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 text-sm font-bold">2</div>
-                <p className="text-blue-800">We schedule a free discovery call to discuss your project</p>
+                <p className="text-blue-800">We analyze the timeline and resource needs</p>
               </div>
               <div className="flex items-start gap-3">
                 <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 text-sm font-bold">3</div>
-                <p className="text-blue-800">You receive a detailed proposal with timeline and milestones</p>
+                <p className="text-blue-800">You receive a detailed proposal with pricing options</p>
               </div>
             </div>
           </div>
@@ -951,13 +903,7 @@ export default function GetStartedPage() {
             <span className="text-gray-900">Agency</span>
           </Link>
           
-          {/* Live Price Display */}
-          {currentStep > 1 && currentStep < 5 && (
-            <div className="hidden sm:flex items-center gap-3 bg-gray-900 text-white px-6 py-2 rounded-full">
-              <span className="text-gray-400 text-sm">Estimated:</span>
-              <span className="text-xl font-bold">${animatedPrice.toLocaleString()}</span>
-            </div>
-          )}
+          {/* Price Display REMOVED from Header */}
           
           <Link 
             href="/"
@@ -999,13 +945,7 @@ export default function GetStartedPage() {
               Back
             </button>
             
-            {/* Mobile Price Display */}
-            {currentStep > 1 && (
-              <div className="sm:hidden text-center">
-                <p className="text-xs text-gray-400">Estimated</p>
-                <p className="text-lg font-bold text-gray-900">${animatedPrice.toLocaleString()}</p>
-              </div>
-            )}
+            {/* Mobile Price Display REMOVED */}
             
             <button
               onClick={currentStep === 4 ? handleSubmit : nextStep}
@@ -1024,7 +964,7 @@ export default function GetStartedPage() {
                 </>
               ) : currentStep === 4 ? (
                 <>
-                  Get My Quote
+                  Submit Request
                   <Send size={18} />
                 </>
               ) : (

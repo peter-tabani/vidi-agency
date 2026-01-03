@@ -4,7 +4,6 @@ import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Search, Eye, ArrowRight, BookOpen, ChevronRight } from 'lucide-react';
-
 import { Post } from '@/lib/posts';
 
 interface BlogClientProps {
@@ -172,15 +171,13 @@ export default function BlogClient({ allPosts, categories, allTags }: BlogClient
                             </div>
                           </div>
 
-                    
-                          {/* Views */}
-<div className="flex items-center justify-end pt-4 border-t border-gray-100 text-xs text-gray-500">
-  <span className="flex items-center gap-1">
-    <Eye size={14} />
-    {getViewCount(post.slug)} views
-  </span>
-</div>
-
+                          {/* Views Only (No Date) */}
+                          <div className="flex items-center justify-end pt-4 border-t border-gray-100 text-xs text-gray-500">
+                            <span className="flex items-center gap-1">
+                              <Eye size={14} />
+                              {getViewCount(post.slug)} views
+                            </span>
+                          </div>
                         </div>
                       </Link>
                     ))}

@@ -7,7 +7,7 @@ import {
   Smartphone, Globe, Bot, Database,
   Stethoscope, Home, Scale, GraduationCap, Plane, Utensils, ShoppingBag,
   HardHat, Heart, Truck, Dumbbell, Scissors, Landmark, Rocket, Briefcase,
-  Users, BookOpen // New Icons for Company Menu
+  Users, BookOpen, CreditCard // <-- ADDED CreditCard Icon
 } from 'lucide-react';
 
 // --- DATA: SERVICES MENU ---
@@ -63,16 +63,15 @@ const servicesData = [
 ];
 
 // --- DATA: INDUSTRIES MENU ---
-// Inside components/Navbar.tsx, replace the first two items in industriesData
 const industriesData = [
-  { name: "Healthcare", icon: Stethoscope, href: "/industries/healthcare" }, // <-- NEW LINK
+  { name: "Healthcare", icon: Stethoscope, href: "/industries/healthcare" },
   { name: "Real Estate", icon: Home, href: "/industries/real-estate" }, 
   { name: "Legal", icon: Scale, href: "/industries/legal" },
-  { name: "Education", icon: GraduationCap, href: "/case-studies#education-&-training" },
-  { name: "Hospitality", icon: Plane, href: "/case-studies#hospitality-&-travel" },
-  { name: "Food & Restaurant", icon: Utensils, href: "/case-studies#restaurants-&-food" },
-  { name: "Retail & E-Com", icon: ShoppingBag, href: "/case-studies#retail-&-e-commerce" },
-  { name: "Construction", icon: HardHat, href: "/case-studies#construction-&-engineering" },
+  { name: "Education", icon: GraduationCap, href: "/industries/education" },
+  { name: "Hospitality", icon: Plane, href: "/industries/hospitality" },
+  { name: "Food & Restaurant", icon: Utensils, href: "/industries/restaurant" },
+  { name: "Retail & E-Com", icon: ShoppingBag, href: "/industries/retail" },
+  { name: "Construction", icon: HardHat, href: "/industries/construction" },
   { name: "Non-Profit", icon: Heart, href: "/case-studies#churches-&-nonprofits" },
   { name: "Logistics", icon: Truck, href: "/case-studies#logistics-&-transport" },
   { name: "Fitness", icon: Dumbbell, href: "/case-studies#fitness-&-wellness" },
@@ -82,7 +81,7 @@ const industriesData = [
   { name: "Small Biz", icon: Briefcase, href: "/case-studies#small-business" },
 ];
 
-// --- DATA: COMPANY MENU (New!) ---
+// --- DATA: COMPANY MENU ---
 const companyData = [
   { name: "About Us", href: "/about", icon: Users, desc: "Our mission & team." },
   { name: "Blog", href: "/blog", icon: BookOpen, desc: "Latest tech insights." },
@@ -211,7 +210,12 @@ export default function Navbar() {
 
             <Link href="/case-studies" className="hover:text-blue-600 transition-colors">Case Studies</Link>
 
-            {/* 3. COMPANY MENU (New Dropdown) */}
+            {/* --- NEW PRICING LINK (DESKTOP) --- */}
+            <Link href="/pricing" className="hover:text-blue-600 transition-colors h-full flex items-center font-bold">
+              Pricing
+            </Link>
+
+            {/* 3. COMPANY MENU */}
             <div className="h-full flex items-center relative">
               <button 
                 onClick={() => toggleMenu('company')}
@@ -220,14 +224,13 @@ export default function Navbar() {
                 Company
                 <ChevronDown size={14} className={`transition-transform duration-300 ${activeMenu === 'company' ? 'rotate-180' : ''}`} />
               </button>
-              {/* Company Dropdown (Simpler list) */}
               <div className={`absolute top-[70px] left-1/2 -translate-x-1/2 w-[250px] bg-white/95 backdrop-blur-2xl shadow-2xl rounded-2xl border border-white/50 p-2 transition-all duration-300 origin-top transform ${activeMenu === 'company' ? 'opacity-100 visible scale-100 translate-y-0' : 'opacity-0 invisible scale-95 -translate-y-4'}`}>
                 {companyData.map((item, idx) => (
                   <Link key={idx} href={item.href} onClick={() => setActiveMenu(null)} className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-gray-50 transition-colors group">
                     <div className="text-gray-400 group-hover:text-blue-600">{React.createElement(item.icon, { size: 18 })}</div>
                     <div>
-                       <span className="font-bold text-gray-800 text-sm block group-hover:text-blue-600">{item.name}</span>
-                       <span className="text-[10px] text-gray-400 block">{item.desc}</span>
+                        <span className="font-bold text-gray-800 text-sm block group-hover:text-blue-600">{item.name}</span>
+                        <span className="text-[10px] text-gray-400 block">{item.desc}</span>
                     </div>
                   </Link>
                 ))}
@@ -257,7 +260,7 @@ export default function Navbar() {
             </Link>
             <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 text-gray-500 hover:bg-gray-100 rounded-full transition-colors"><X size={28} /></button>
          </div>
-                  <div className="flex flex-col px-6 py-4 overflow-y-auto h-[calc(100vh-80px)]">
+         <div className="flex flex-col px-6 py-4 overflow-y-auto h-[calc(100vh-80px)]">
             <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="py-4 text-lg font-medium text-gray-800 border-b border-gray-100">Home</Link>
             <Link href="/solutions" onClick={() => setIsMobileMenuOpen(false)} className="py-4 text-lg font-bold text-blue-600 border-b border-gray-100">Solutions</Link>
             
@@ -295,6 +298,12 @@ export default function Navbar() {
             </div>
 
             <Link href="/case-studies" onClick={() => setIsMobileMenuOpen(false)} className="py-4 text-lg font-medium text-gray-800 border-b border-gray-100">Case Studies</Link>
+
+            {/* --- NEW PRICING LINK (MOBILE) --- */}
+            <Link href="/pricing" onClick={() => setIsMobileMenuOpen(false)} className="py-4 text-lg font-medium text-gray-800 border-b border-gray-100 flex items-center gap-2">
+               Pricing 
+               {/* Optional: <CreditCard size={18} className="text-blue-600"/> */}
+            </Link>
 
             {/* Mobile Company Accordion */}
             <div className="border-b border-gray-100">

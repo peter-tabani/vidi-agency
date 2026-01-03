@@ -18,6 +18,8 @@ export interface Post {
   tags?: string[];
 }
 
+
+
 // Get all posts
 export function getAllPosts(): Post[] {
   if (!fs.existsSync(postsDirectory)) {
@@ -28,20 +30,43 @@ export function getAllPosts(): Post[] {
   const posts = fileNames
     .filter(fileName => fileName.endsWith('.md'))
     .map(fileName => {
-      const slug = fileName.replace(/\.md$/, '');
-      return getPostBySlug(slug);
+      try {
+        const slug = fileName.replace(/\.md$/, '');
+        return getPostBySlug(slug);
+      } catch (error) {
+        // Log the error but continue processing other files
+        console.error(`Error processing post file: ${fileName}`, error);
+        return null; // Return null for malformed posts
+      }
     })
+    .filter((post): post is Post => post !== null) // Filter out any nulls (malformed posts)
     .sort((post1, post2) => new Date(post2.date).getTime() - new Date(post1.date).getTime());
 
   return posts;
 }
 
+
+// In lib/posts.ts, replace the existing getPostBySlug function (lines 40-67) with this:
+
 // Get single post by slug
 export function getPostBySlug(slug: string): Post {
+  // Ensure the slug is clean (no .md extension)
   const realSlug = slug.replace(/\.md$/, '');
+  
+  // Construct the full path to the Markdown file
   const fullPath = path.join(postsDirectory, `${realSlug}.md`);
 
+  // Check if the file exists
   if (!fs.existsSync(fullPath)) {
+    // Check if the slug might be capitalized incorrectly (common Windows/Mac issue)
+    const fileNames = fs.readdirSync(postsDirectory);
+    const foundFileName = fileNames.find(name => name.replace(/\.md$/, '').toLowerCase() === realSlug.toLowerCase());
+    
+    if (foundFileName) {
+      // If found with different casing, recursively call with the correct slug
+      return getPostBySlug(foundFileName.replace(/\.md$/, ''));
+    }
+    
     throw new Error(`Post not found: ${slug}`);
   }
 
@@ -65,6 +90,7 @@ export function getPostBySlug(slug: string): Post {
     tags: data.tags || [],
   };
 }
+
 
 // Get posts by category
 export function getPostsByCategory(category: string): Post[] {

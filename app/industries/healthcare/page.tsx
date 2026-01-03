@@ -7,7 +7,8 @@ import Footer from "@/components/Footer";
 import { 
   Heart, Shield, Smartphone, Zap, Lock, Cloud, 
   Check, ArrowRight, Clock, Users, BarChart3, Stethoscope,
-  TrendingUp, AlertCircle, Eye, Cpu, Database, Workflow
+  TrendingUp, AlertCircle, Eye, Cpu, Database, Workflow,
+  Calendar, MessageSquare, Activity, FileText
 } from 'lucide-react';
 
 export default function HealthcarePage() {
@@ -19,38 +20,29 @@ export default function HealthcarePage() {
           HERO SECTION
           ============================================================================ */}
       <section className="pt-32 pb-20 px-6 md:px-12 lg:px-20 bg-gradient-to-br from-blue-50 via-white to-blue-50 relative overflow-hidden">
-        {/* Background decorative elements */}
-        <div className="absolute top-20 right-10 w-72 h-72 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-        
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 rounded-full mb-6">
-              <Heart size={16} className="text-blue-600" />
-              <span className="text-sm font-bold text-blue-600">Healthcare Solutions</span>
-            </div>
-            
-            <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
-              The Future of Healthcare is <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600">Digital</span>
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Software Solutions for Healthcare Practices
             </h1>
             
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              We engineer HIPAA-compliant digital solutions that transform patient experiences, streamline operations, and build trust. From secure patient portals to mobile apps that patients actually use.
+            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+              We build HIPAA-compliant systems that help medical practices manage 
+              patient communication, scheduling, and operations more efficiently.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
-                href="/get-started" 
-                className="px-8 py-4 rounded-full text-lg font-bold text-white bg-gradient-to-r from-blue-600 to-blue-700 hover:shadow-xl shadow-lg shadow-blue-200 transition-all"
+                href="/case-studies" 
+                className="px-8 py-3 rounded-lg text-lg font-medium text-blue-600 bg-white border-2 border-blue-200 hover:bg-blue-50 transition-all"
               >
-                Start Your Healthcare Project
-                <ArrowRight size={18} className="inline ml-2" />
+                View Healthcare Case Studies
               </Link>
               <Link 
-                href="/case-studies" 
-                className="px-8 py-4 rounded-full text-lg font-bold text-blue-600 bg-white border-2 border-blue-200 hover:bg-blue-50 transition-all"
+                href="/consultation" 
+                className="px-8 py-3 rounded-lg text-lg font-medium text-white bg-blue-600 hover:bg-blue-700 transition-all"
               >
-                See Healthcare Case Studies
+                Schedule Consultation
               </Link>
             </div>
           </div>
@@ -58,376 +50,298 @@ export default function HealthcarePage() {
       </section>
 
       {/* ============================================================================
-          SERVICES TABLE SECTION
+          COMMON CHALLENGES SECTION
           ============================================================================ */}
-      <section className="py-20 px-6 md:px-12 lg:px-20 bg-white">
+      <section className="py-16 px-6 md:px-12 lg:px-20 bg-white">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
-              Healthcare-Specific Solutions
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Common Challenges We Help Solve
             </h2>
-            <p className="text-xl text-gray-600">
-              Tailored services designed for modern medical practices
-            </p>
-          </div>
-
-          <div className="space-y-6">
-            {/* Custom Web Development */}
-            <div className="bg-gradient-to-br from-blue-50 to-white rounded-3xl p-8 border border-blue-100 hover:shadow-xl transition-all">
-              <div className="flex items-start gap-6">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center flex-shrink-0">
-                  <Stethoscope size={32} className="text-white" />
-                </div>
-                <div className="flex-grow">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Custom Web Development</h3>
-                  <p className="text-lg font-semibold text-blue-600 mb-3">Build Your Digital Clinic</p>
-                  <p className="text-gray-600 mb-4">
-                    We create high-performance, HIPAA-compliant websites that serve as the central hub for your practice. Includes integrated patient intake forms and secure provider portals.
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">Patient Portal</span>
-                    <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">Intake Forms</span>
-                    <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">HIPAA Compliant</span>
-                    <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">Secure Messaging</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Medical Web Redesign */}
-            <div className="bg-gradient-to-br from-cyan-50 to-white rounded-3xl p-8 border border-cyan-100 hover:shadow-xl transition-all">
-              <div className="flex items-start gap-6">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-500 to-cyan-600 flex items-center justify-center flex-shrink-0">
-                  <TrendingUp size={32} className="text-white" />
-                </div>
-                <div className="flex-grow">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Medical Web Redesign</h3>
-                  <p className="text-lg font-semibold text-cyan-600 mb-3">Modernize Your Patient Experience</p>
-                  <p className="text-gray-600 mb-4">
-                    Is your current site slow or outdated? We redesign medical websites to improve load speeds, mobile responsiveness, and patient trust, ensuring you don't lose leads to a "broken" first impression.
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-sm font-medium">Speed Optimization</span>
-                    <span className="px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-sm font-medium">Mobile First</span>
-                    <span className="px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-sm font-medium">Modern Design</span>
-                    <span className="px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-sm font-medium">SEO Ready</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Healthcare App Development */}
-            <div className="bg-gradient-to-br from-green-50 to-white rounded-3xl p-8 border border-green-100 hover:shadow-xl transition-all">
-              <div className="flex items-start gap-6">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center flex-shrink-0">
-                  <Smartphone size={32} className="text-white" />
-                </div>
-                <div className="flex-grow">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Healthcare App Development</h3>
-                  <p className="text-lg font-semibold text-green-600 mb-3">Your Practice in Their Pocket</p>
-                  <p className="text-gray-600 mb-4">
-                    Native iOS and Android apps for patient monitoring, medication reminders, and instant messaging between doctors and patients. Built for security and ease of use.
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">iOS & Android</span>
-                    <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">Push Notifications</span>
-                    <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">Secure Messaging</span>
-                    <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">Patient Monitoring</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-            {/* ============================================================================
-          WHY REDESIGN SECTION - BEFORE/AFTER COMPARISON
-          ============================================================================ */}
-      <section className="py-20 px-6 md:px-12 lg:px-20 bg-gray-50">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
-              Why Your Practice Needs a Digital Overhaul
-            </h2>
-            <p className="text-xl text-gray-600">
-              The difference between losing patients and building loyalty
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Streamline your practice operations with targeted automation solutions
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Old, Slow, Non-Compliant */}
-            <div className="bg-white rounded-3xl p-8 border-2 border-red-200 shadow-lg">
-              <div className="flex items-center gap-3 mb-6">
-                <AlertCircle size={32} className="text-red-500" />
-                <h3 className="text-2xl font-bold text-gray-900">Old, Slow, Non-Compliant</h3>
-              </div>
-              
-              <ul className="space-y-4">
-                {[
-                  "Outdated design that looks unprofessional",
-                  "Slow load times (patients bounce after 3 seconds)",
-                  "Not mobile responsive",
-                  "No HIPAA compliance measures",
-                  "Manual patient intake (paper forms)",
-                  "No online appointment booking",
-                  "Poor SEO - hard to find on Google",
-                  "Security vulnerabilities",
-                ].map((item, idx) => (
-                  <div key={idx} className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 mt-1">
-                      <span className="text-red-600 text-sm">✕</span>
-                    </div>
-                    <span className="text-gray-700">{item}</span>
-                  </div>
-                ))}
-              </ul>
-              
-              <div className="mt-8 p-4 bg-red-50 rounded-2xl">
-                <p className="text-sm text-red-700 font-semibold">
-                  📊 Result: 40% of potential patients never call because your site looks outdated
-                </p>
-              </div>
-            </div>
-
-            {/* Vidi-Engineered Medical Machine */}
-            <div className="bg-white rounded-3xl p-8 border-2 border-green-200 shadow-lg">
-              <div className="flex items-center gap-3 mb-6">
-                <Check size={32} className="text-green-500" />
-                <h3 className="text-2xl font-bold text-gray-900">Vidi-Engineered Medical Machine</h3>
-              </div>
-              
-              <ul className="space-y-4">
-                {[
-                  "Modern, professional design that builds trust",
-                  "Lightning-fast load times (under 2 seconds)",
-                  "Fully responsive on all devices",
-                  "HIPAA-compliant architecture",
-                  "Digital patient intake (paperless)",
-                  "Online appointment booking system",
-                  "SEO-optimized for local search",
-                  "Enterprise-grade security",
-                ].map((item, idx) => (
-                  <div key={idx} className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-1">
-                      <Check size={16} className="text-green-600" />
-                    </div>
-                    <span className="text-gray-700">{item}</span>
-                  </div>
-                ))}
-              </ul>
-              
-              <div className="mt-8 p-4 bg-green-50 rounded-2xl">
-                <p className="text-sm text-green-700 font-semibold">
-                  📈 Result: 60% increase in new patient inquiries within 3 months
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ============================================================================
-          APP ADVANTAGE SECTION
-          ============================================================================ */}
-      <section className="py-20 px-6 md:px-12 lg:px-20 bg-white">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
-              The App Advantage
-            </h2>
-            <p className="text-xl text-gray-600">
-              How a mobile app increases patient retention and reduces administrative burden
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                icon: Users,
-                title: "Increased Patient Retention",
-                description: "Patients with app access are 3x more likely to schedule follow-up appointments. Push notifications remind them about medications and appointments.",
-                stat: "3x Higher Retention"
+                icon: Clock,
+                title: "After-Hours Patient Inquiries",
+                description: "Automated systems to handle common questions and appointment requests outside office hours."
               },
               {
-                icon: Zap,
-                title: "Reduced Phone Calls",
-                description: "Patients can message doctors, refill prescriptions, and check test results in-app. Your staff handles 50% fewer routine calls.",
-                stat: "50% Fewer Calls"
+                icon: Calendar,
+                title: "Appointment Management",
+                description: "Reduce no-shows with automated reminders and simplified booking processes."
               },
               {
-                icon: BarChart3,
-                title: "Better Health Outcomes",
-                description: "Real-time patient monitoring, medication reminders, and instant doctor communication lead to better treatment compliance.",
-                stat: "Better Compliance"
+                icon: Workflow,
+                title: "System Integration",
+                description: "Connect your EHR, billing, and scheduling tools to reduce manual data entry."
               },
-            ].map((item, idx) => {
-              const Icon = item.icon;
-              return (
-                <div key={idx} className="bg-gradient-to-br from-blue-50 to-white rounded-3xl p-8 border border-blue-100 hover:shadow-xl transition-all">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center mb-6">
-                    <Icon size={28} className="text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
-                  <p className="text-gray-600 mb-6">{item.description}</p>
-                  <div className="p-3 bg-blue-100 rounded-xl">
-                    <p className="text-sm font-bold text-blue-700">{item.stat}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-            {/* ============================================================================
-          COMPLIANCE & SECURITY SECTION
-          ============================================================================ */}
-      <section className="py-20 px-6 md:px-12 lg:px-20 bg-gradient-to-br from-blue-50 to-white">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
-              Compliance & Security
-            </h2>
-            <p className="text-xl text-gray-600">
-              Your patient data is sacred. We treat it that way.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            {[
               {
                 icon: Shield,
-                title: "HIPAA Compliance",
-                description: "Full HIPAA compliance with Business Associate Agreements (BAA). All patient data is protected under the strictest healthcare regulations.",
-                features: ["Encrypted at rest", "Encrypted in transit", "Access logs", "Audit trails"]
-              },
-              {
-                icon: Lock,
-                title: "Data Encryption",
-                description: "Military-grade AES-256 encryption for all sensitive data. Patient information is encrypted before it ever leaves your device.",
-                features: ["End-to-end encryption", "TLS 1.3", "Key rotation", "Secure backup"]
-              },
-              {
-                icon: Cloud,
-                title: "Secure Cloud Hosting",
-                description: "Hosted on HIPAA-compliant cloud infrastructure with automatic backups, disaster recovery, and 99.99% uptime guarantee.",
-                features: ["AWS/Azure HIPAA", "Auto-scaling", "DDoS protection", "24/7 monitoring"]
-              },
-              {
-                icon: Database,
-                title: "Data Privacy",
-                description: "We never sell, share, or access your patient data. Your information stays yours. Full compliance with GDPR and CCPA.",
-                features: ["Zero-knowledge architecture", "Data ownership", "Privacy policy", "Compliance reports"]
+                title: "Patient Portals",
+                description: "Secure platforms for appointment booking, prescription refills, and communication that meet HIPAA standards."
               },
             ].map((item, idx) => {
               const Icon = item.icon;
               return (
-                <div key={idx} className="bg-white rounded-3xl p-8 border border-gray-200 hover:shadow-xl transition-all">
-                  <div className="flex items-start gap-4 mb-6">
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center flex-shrink-0">
-                      <Icon size={28} className="text-white" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-gray-900">{item.title}</h3>
-                    </div>
+                <div key={idx} className="bg-gray-50 rounded-xl p-6 border border-gray-200 hover:border-blue-200 transition-all">
+                  <div className="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center mb-4">
+                    <Icon size={24} className="text-blue-600" />
                   </div>
-                  <p className="text-gray-600 mb-6">{item.description}</p>
-                  <div className="space-y-2">
-                    {item.features.map((feature, fidx) => (
-                      <div key={fidx} className="flex items-center gap-2">
-                        <Check size={16} className="text-green-500" />
-                        <span className="text-sm text-gray-700">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">{item.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{item.description}</p>
                 </div>
               );
             })}
-          </div>
-
-          <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-3xl p-12 text-white text-center">
-            <h3 className="text-3xl font-bold mb-4">Ready to Transform Your Practice?</h3>
-            <p className="text-xl mb-8 text-blue-100">
-              Let's build a digital solution that your patients will love and your staff will thank you for.
-            </p>
-            <Link 
-              href="/get-started"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-600 rounded-full font-bold text-lg hover:bg-blue-50 transition-all shadow-lg"
-            >
-              Start Your Healthcare Project
-              <ArrowRight size={20} />
-            </Link>
           </div>
         </div>
       </section>
 
       {/* ============================================================================
-          FAQ SECTION
+          OUR EXPERIENCE SECTION
           ============================================================================ */}
-      <section className="py-20 px-6 md:px-12 lg:px-20 bg-white">
-        <div className="container mx-auto max-w-3xl">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
-              Frequently Asked Questions
+      <section className="py-16 px-6 md:px-12 lg:px-20 bg-blue-50">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                Our Healthcare Experience
+              </h2>
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                We've worked with multi-specialty clinics, private practices, and 
+                healthcare service providers to build custom solutions including:
+              </p>
+              
+              <ul className="space-y-3 mb-8">
+                {[
+                  "Patient communication systems",
+                  "Automated appointment scheduling",
+                  "Insurance verification workflows",
+                  "Custom dashboards for practice analytics"
+                ].map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-3">
+                    <Check size={20} className="text-green-500 mt-1 flex-shrink-0" />
+                    <span className="text-gray-700">{item}</span>
+                  </li>
+                ))}
+              </ul>
+              
+              <div className="bg-white rounded-xl p-6 border border-blue-200">
+                <h4 className="font-bold text-gray-900 mb-2">Compliance First</h4>
+                <p className="text-gray-600">
+                  All systems are architected with HIPAA requirements in mind, 
+                  including encryption, access controls, and audit logging.
+                </p>
+              </div>
+            </div>
+
+            {/* HOW WE APPROACH SECTION */}
+            <div className="bg-white rounded-2xl p-8 border border-gray-200">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                How We Approach Healthcare Projects
+              </h3>
+              
+              <div className="space-y-8">
+                {[
+                  {
+                    step: "1",
+                    title: "Understanding Your Workflow",
+                    description: "We start by learning how your practice currently operates and where automation could save time."
+                  },
+                  {
+                    step: "2",
+                    title: "Compliance First",
+                    description: "HIPAA compliance is built into the architecture from day one, not added as an afterthought."
+                  },
+                  {
+                    step: "3",
+                    title: "Integration Planning",
+                    description: "We map out connections to your existing EHR and billing systems to ensure smooth data flow."
+                  },
+                  {
+                    step: "4",
+                    title: "Staff Training",
+                    description: "Your team receives thorough training so they're comfortable with the new system."
+                  },
+                ].map((item, idx) => (
+                  <div key={idx} className="flex gap-4">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">
+                      {item.step}
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-gray-900 mb-2">{item.title}</h4>
+                      <p className="text-gray-600">{item.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================================
+          EXAMPLE PROJECT SECTION
+          ============================================================================ */}
+      <section className="py-16 px-6 md:px-12 lg:px-20 bg-white">
+        <div className="container mx-auto max-w-4xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Example Project
             </h2>
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 rounded-full">
+              <Activity size={16} className="text-blue-600" />
+              <span className="text-sm font-semibold text-blue-600">Multi-Specialty Clinic - Miami, FL</span>
+            </div>
           </div>
 
-          <div className="space-y-6">
-            {[
-              {
-                q: "Is your solution HIPAA compliant?",
-                a: "Yes, 100%. All our solutions are built with HIPAA compliance from the ground up. We provide Business Associate Agreements (BAA) and handle all encryption, access controls, and audit logging."
-              },
-              {
-                q: "How long does it take to build a healthcare website?",
-                a: "Typically 4-8 weeks depending on complexity. We work in sprints to get you live features quickly while maintaining security standards."
-              },
-              {
-                q: "Can you migrate my existing patient data?",
-                a: "Yes, we handle secure data migration from your current system. We ensure zero data loss and maintain HIPAA compliance throughout the process."
-              },
-              {
-                q: "What about ongoing support and updates?",
-                a: "We provide 24/7 monitoring, security updates, and technical support. Your system is always protected and up-to-date."
-              },
-              {
-                q: "Do you integrate with EHR systems like Epic or Cerner?",
-                a: "Yes, we can integrate with most major EHR systems. We'll discuss your specific needs during the discovery call."
-              },
-              {
-                q: "What's the cost?",
-                a: "Costs vary based on complexity and features. Use our quote calculator to get an estimate, or schedule a call to discuss your specific needs."
-              },
-            ].map((item, idx) => (
-              <details key={idx} className="group border border-gray-200 rounded-2xl p-6 hover:shadow-md transition-all cursor-pointer">
-                <summary className="flex items-center justify-between font-bold text-lg text-gray-900">
-                  {item.q}
-                  <span className="text-2xl text-gray-400 group-open:rotate-180 transition-transform">+</span>
-                </summary>
-                <p className="mt-4 text-gray-600 leading-relaxed">{item.a}</p>
-              </details>
-            ))}
+          <div className="bg-gray-50 rounded-2xl p-8 border border-gray-200">
+            <div className="mb-8">
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Challenge:</h3>
+              <p className="text-gray-600">
+                High no-show rate and front desk staff overwhelmed with appointment calls.
+              </p>
+            </div>
+
+            <div className="mb-8">
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Solution:</h3>
+              <ul className="space-y-2">
+                {[
+                  "Automated SMS appointment reminders",
+                  "AI-powered phone system for routine inquiries",
+                  "Analytics dashboard showing booking patterns"
+                ].map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-3">
+                    <Check size={20} className="text-green-500 mt-1 flex-shrink-0" />
+                    <span className="text-gray-700">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 border border-blue-200">
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Results:</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {[
+                  {
+                    label: "No-show Rate",
+                    from: "30%",
+                    to: "11%",
+                    icon: TrendingUp
+                  },
+                  {
+                    label: "Front Desk Capacity",
+                    value: "Freed up for complex needs",
+                    icon: Users
+                  },
+                  {
+                    label: "Practice Visibility",
+                    value: "Better operational insights",
+                    icon: BarChart3
+                  },
+                ].map((item, idx) => {
+                  const Icon = item.icon;
+                  return (
+                    <div key={idx} className="text-center">
+                      <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mx-auto mb-3">
+                        <Icon size={24} className="text-blue-600" />
+                      </div>
+                      <p className="font-semibold text-gray-900">{item.label}</p>
+                      {item.from ? (
+                        <p className="text-gray-600 text-sm">
+                          {item.from} → {item.to}
+                        </p>
+                      ) : (
+                        <p className="text-gray-600 text-sm">{item.value}</p>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================================
+          RESOURCES SECTION
+          ============================================================================ */}
+      <section className="py-16 px-6 md:px-12 lg:px-20 bg-blue-50">
+        <div className="container mx-auto max-w-4xl">
+          <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm">
+            <div className="flex flex-col lg:flex-row items-start lg:items-center gap-8">
+              <div className="lg:w-1/3">
+                <div className="w-16 h-16 rounded-xl bg-blue-100 flex items-center justify-center mb-4">
+                  <FileText size={32} className="text-blue-600" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                  Healthcare Practice Automation Planning Guide
+                </h3>
+                <p className="text-sm text-gray-500 mb-6">Free Download</p>
+                <Link 
+                  href="/download-guide"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-all"
+                >
+                  Download PDF
+                  <ArrowRight size={18} />
+                </Link>
+              </div>
+              
+              <div className="lg:w-2/3">
+                <h4 className="font-bold text-gray-900 mb-4">Covers:</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {[
+                    "Common automation opportunities",
+                    "HIPAA compliance considerations",
+                    "Questions to ask potential vendors",
+                    "ROI estimation framework"
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex items-start gap-2">
+                      <Check size={18} className="text-green-500 mt-1 flex-shrink-0" />
+                      <span className="text-gray-700">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================================
+          CTA SECTION
+          ============================================================================ */}
+      <section className="py-16 px-6 md:px-12 lg:px-20 bg-white">
+        <div className="container mx-auto max-w-4xl">
+          <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-12 text-center text-white">
+            <h3 className="text-3xl font-bold mb-4">Let's Discuss Your Needs</h3>
+            <p className="text-xl mb-8 text-blue-100">
+              We'll discuss your specific challenges and explore whether 
+              automation could help your practice.
+            </p>
+            
+            <div className="mb-8">
+              <Link 
+                href="/consultation"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-600 rounded-lg font-bold text-lg hover:bg-blue-50 transition-all shadow-lg"
+              >
+                Schedule a Consultation
+                <ArrowRight size={20} />
+              </Link>
+            </div>
+            
+            <p className="text-blue-200 text-sm">
+              No obligation. If we're not the right solution, we'll let you know.
+            </p>
           </div>
         </div>
       </section>
 
       <Footer />
-
-      {/* Custom animations */}
-      <style jsx>{`
-        @keyframes blob {
-          0%, 100% { transform: translate(0, 0) scale(1); }
-          33% { transform: translate(30px, -50px) scale(1.1); }
-          66% { transform: translate(-20px, 20px) scale(0.9); }
-        }
-        .animate-blob {
-          animation: blob 7s infinite;
-        }
-        .animation-delay-2000 {
-          animation-delay: 2s;
-        }
-      `}</style>
     </main>
   );
 }
-
-

@@ -31,33 +31,33 @@ const features = [
 const advancedFeatures = [
   {
     icon: <Bot className="text-purple-600" size={32} />, 
-    title: "24/7 AI Receptionist",
-    description: "Never lose a customer to voicemail again. Our AI answers calls, books appointments, and answers questions instantly—day or night."
+    title: "24/7 AI Sales & Support Hub",
+    description: "Instead of just answering calls, our 'Always-On' agents manage your entire front desk. They book appointments, qualify leads in real-time, and handle FAQs with human-level nuance."
   },
   {
     icon: <Workflow className="text-blue-600" size={32} />, 
-    title: "The 'Auto-Pilot' Growth System",
-    description: "Stop chasing leads manually. We build systems that automatically text, email, and schedule new clients on your calendar while you sleep."
+    title: "The 'Auto-Pilot' Lead Pipeline",
+    description: "Eliminate manual follow-ups. We architect systems that automatically engage new leads via SMS and Email the second they arrive, nurturing them until they are ready to buy."
   },
   {
     icon: <Database className="text-orange-600" size={32} />, 
-    title: "Your Business Command Center",
-    description: "Ditch the messy spreadsheets. Get a simple, custom dashboard that shows you exactly how much revenue you made today at a glance."
+    title: "Business Command Center",
+    description: "Ditch the spreadsheets. We build a single, secure dashboard where you see every dollar made and every lead captured today. Your entire business at a glance, powered by private data."
   },
   {
     icon: <Smartphone className="text-pink-600" size={32} />, 
-    title: "Your Brand in Their Pocket",
-    description: "Be just a tap away. We launch a dedicated, high-speed mobile app for your business on iPhone and Android to boost customer loyalty."
+    title: "Dedicated Mobile Ecosystem",
+    description: "Your brand belongs in their pocket, not just on their browser. We launch custom iOS and Android apps that give your customers a direct, high-speed line to your services."
   },
   {
     icon: <Inbox className="text-green-600" size={32} />, 
-    title: "The 'One-Screen' Sales Hub",
-    description: "Stop switching between apps. Manage WhatsApp, Instagram, Email, and SMS messages from one single screen so you never miss a deal."
+    title: "Unified Communication Stream",
+    description: "Stop tab-switching. We consolidate WhatsApp, Instagram, Email, and SMS into one single, high-clarity stream so you never miss a deal or a client request."
   },
   {
     icon: <Cpu className="text-indigo-600" size={32} />, 
-    title: "Zero-Touch Data Entry",
-    description: "Eliminate the boring admin work. We connect your payment and booking tools so data flows automatically—no more manual typing errors."
+    title: "Zero-Touch Data Automation",
+    description: "Manual data entry is a relic of the past. We connect your payment, booking, and CRM tools into a seamless loop. Data flows automatically, freeing your team for high-value work."
   }
 ];
 const TECHNOLOGIES = [
@@ -161,181 +161,197 @@ export default function Home() {
     <main className="flex flex-col min-h-screen">
       
       {/* MOBILE-READY HERO SECTION (Performance Optimized) */}
-      <section className="relative pt-32 lg:pt-28 pb-20 overflow-hidden min-h-screen lg:h-screen flex flex-col lg:justify-center bg-gradient-to-br from-white via-white to-blue-50">
+      <section className="relative pt-24 lg:pt-24 pb-12 overflow-hidden min-h-screen flex flex-col justify-center bg-gradient-to-br from-white via-white to-blue-50">
         
-        {/* 1. BACKGROUND */}
-        {/* Use a static SVG pattern which is very lightweight compared to large images */}
-        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
+    {/* 1. BACKGROUND */}
+    <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
 
-        {/* Main Content */}
-        <div className="container mx-auto px-6 md:px-12 lg:px-20 relative z-10 flex-grow flex flex-col lg:flex-row items-center justify-center lg:justify-between h-full">
-          
-          {/* LEFT SIDE: TEXT */}
-          <div className="w-full lg:max-w-3xl z-20 flex flex-col items-start text-left">
-            
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-white border border-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-bold mb-6 shadow-sm">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-              </span>
-              Accepting New Projects: NOW
-            </div>
-
-            {/* Headline */}
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-gray-900 tracking-tight mb-6 leading-[1.1]">
-              We Engineer <br />
-              {/* 'transform-gpu' forces this gradient text to be handled by the graphics card */}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 transform-gpu">
-                Digital Dominance
-              </span>
-            </h1>
-
-            {/* Paragraph */}
-            <p className="text-lg sm:text-xl text-gray-700 mb-8 leading-relaxed font-medium max-w-2xl">
-    We build custom <b>Apps, Websites, and Systems</b> designed for growth. 
-    Transform your business with 24/7 automation that captures leads, streamlines operations, and secures revenue while you sleep.
-</p>
-
-            {/* Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-10 w-full sm:w-auto">
-              <Link href="/get-started" className="bg-gray-900 text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-blue-700 shadow-xl shadow-blue-200/50 transition-all w-full sm:w-auto text-center">
-                Start Your Project
-              </Link>
-              <Link href="/case-studies" className="px-8 py-4 rounded-full text-lg font-bold text-gray-800 bg-white border border-gray-300 hover:bg-gray-50 transition-all shadow-sm w-full sm:w-auto text-center">
-                See Our Work
-              </Link>
-            </div>
-
-            {/* REVIEWS */}
-            <div className="flex flex-row items-center gap-4">
-                <div className="flex -space-x-4">
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <div key={i} className="w-12 h-12 rounded-full border-[3px] border-white bg-gray-200 overflow-hidden shadow-md">
-                      {/* loading="lazy" helps page load speed by not loading these until needed */}
-                      <img 
-                        src={`https://i.pravatar.cc/100?img=${i + 10}`} 
-                        alt="client" 
-                        loading="lazy"
-                        className="w-full h-full object-cover" 
-                      />
-                    </div>
-                  ))}
-                  <div className="w-12 h-12 rounded-full border-[3px] border-white bg-gray-900 text-white flex items-center justify-center text-xs font-bold shadow-md z-10">
-                    100+
-                  </div>
-                </div>
-                <div>
-                  <div className="flex text-yellow-500 mb-1">
-                    <Star size={16} fill="currentColor" />
-                    <Star size={16} fill="currentColor" />
-                    <Star size={16} fill="currentColor" />
-                    <Star size={16} fill="currentColor" />
-                    <Star size={16} fill="currentColor" />
-                  </div>
-                  <p className="text-sm font-bold text-gray-800">Trusted by 100+ Partners</p>
-                </div>
-            </div>
-
-          </div>
-
-          {/* RIGHT SIDE: ORBIT SYSTEM (HIDDEN ON MOBILE) */}
-          <div className="hidden lg:flex relative h-full w-full items-center justify-center">
-             {/* 'transform-gpu' and 'will-change-transform' optimize this heavy animation */}
-             <div className="relative w-[600px] h-[600px] flex items-center justify-center transform-gpu will-change-transform">
-                
-                {/* Center Core */}
-                <div className="absolute z-20 w-32 h-32 bg-white rounded-full shadow-[0_0_60px_-15px_rgba(37,99,235,0.5)] flex items-center justify-center border border-blue-100">
-                  <div className="text-center">
-                    <div className="bg-gradient-to-r from-blue-600 to-purple-600 w-16 h-16 mx-auto rounded-xl flex items-center justify-center text-white mb-2 shadow-lg">
-                      <Bot size={32} />
-                    </div>
-                    <span className="text-xs font-bold text-gray-900 block">AI CORE</span>
-                  </div>
-                </div>
-
-                {/* Orbit Rings - Optimized */}
-                <div className="absolute w-[90%] h-[90%] border border-dashed border-blue-200 rounded-full opacity-50 animate-spin-slow will-change-transform"></div>
-                <div className="absolute w-[65%] h-[65%] border border-blue-100 rounded-full opacity-50"></div>
-
-                {/* Revolving Items - Optimized */}
-                <div className="absolute w-full h-full animate-orbit-ring flex items-center justify-center will-change-transform">
-                  {/* ITEM 1 */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 animate-orbit-item will-change-transform">
-                    <div className="bg-white/90 backdrop-blur-md p-4 rounded-2xl border border-white shadow-xl flex items-center gap-3">
-                      <div className="bg-blue-100 p-2 rounded-lg text-blue-600"><LayoutDashboard size={20}/></div>
-                      <div className="text-sm font-bold text-gray-900">Custom Web Dev</div>
-                    </div>
-                  </div>
-                  {/* ITEM 2 */}
-                  <div className="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 w-56 animate-orbit-item will-change-transform">
-                    <div className="bg-white/90 backdrop-blur-md p-4 rounded-2xl border border-white shadow-xl flex items-center gap-3">
-                      <div className="bg-purple-100 p-2 rounded-lg text-purple-600"><Smartphone size={20}/></div>
-                      <div className="text-sm font-bold text-gray-900">iOS & Android Apps</div>
-                    </div>
-                  </div>
-                  {/* ITEM 3 */}
-                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-56 animate-orbit-item will-change-transform">
-                      <div className="bg-white/90 backdrop-blur-md p-4 rounded-2xl border border-white shadow-xl flex items-center gap-3">
-                      <div className="bg-green-100 p-2 rounded-lg text-green-600"><Workflow size={20}/></div>
-                      <div className="text-sm font-bold text-gray-900">Business Automation</div>
-                    </div>
-                  </div>
-                  {/* ITEM 4 */}
-                  <div className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 w-56 animate-orbit-item will-change-transform">
-                    <div className="bg-white/90 backdrop-blur-md p-4 rounded-2xl border border-white shadow-xl flex items-center gap-3">
-                      <div className="bg-orange-100 p-2 rounded-lg text-orange-600"><Database size={20}/></div>
-                      <div className="text-sm font-bold text-gray-900">Internal Dashboards</div>
-                    </div>
-                  </div>
-                </div>
-             </div>
-          </div>
-
+    {/* Main Content */}
+    <div className="container mx-auto px-6 md:px-12 lg:px-20 relative z-10 flex-grow grid lg:grid-cols-2 gap-8 items-center">
+      
+      {/* LEFT SIDE: TEXT */}
+      <div className="w-full flex flex-col items-start text-left z-20">
+        
+        {/* Badge - Reduced bottom margin */}
+        <div className="inline-flex items-center gap-2 bg-white border border-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-bold mb-4 shadow-sm">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+          </span>
+          Accepting New Projects: NOW
         </div>
 
-        {/* LOGO MARQUEE */}
-<div className="w-full bg-white py-12 relative overflow-hidden flex-shrink-0">
-   
-   {/* Gradients to hide the edges smoothly */}
-   <div className="absolute left-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-r from-white to-transparent pointer-events-none" />
-   <div className="absolute right-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-l from-white to-transparent pointer-events-none" />
+        {/* Headline - Reduced size slightly (7xl -> 6xl) for better fit */}
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight mb-4 leading-[1.1]">
+          We Build Custom Software <br />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 transform-gpu">
+            That Works Around the Clock
+          </span>
+        </h1>
 
-   {/* The Scrolling Track */}
-   <div className="flex w-max animate-scroll gap-32 items-center">
-     
-     {/* Set 1 */}
-     {TECHNOLOGIES.map((tech, index) => (
-       <img 
-         key={`tech-1-${index}`}
-         src={tech.logo} 
-         alt={`${tech.name} logo`} 
-         className={`${tech.className} object-contain`}
-       />
-     ))}
-     
-     {/* Set 2 (Duplicate) */}
-     {TECHNOLOGIES.map((tech, index) => (
-       <img 
-         key={`tech-2-${index}`}
-         src={tech.logo} 
-         alt={`${tech.name} logo`} 
-         className={`${tech.className} object-contain`}
-       />
-     ))}
+        {/* Sub-Headline & List */}
+        <div className="text-lg text-gray-700 mb-6 leading-relaxed font-medium max-w-2xl">
+          <p className="mb-4 text-base lg:text-lg">Web applications and AI systems designed for:</p>
+          
+          {/* List - Tighter spacing (space-y-1) */}
+          <ul className="space-y-2 mb-6">
+            {[
+              "Automated customer communication (24/7)",
+              "Smart scheduling and booking systems",
+              "Real-time business dashboards",
+              "Mobile apps for iOS and Android"
+            ].map((item, index) => (
+              <li key={index} className="flex items-center gap-3">
+                <div className="min-w-[18px] text-blue-600">
+                  <Check size={18} strokeWidth={3} />
+                </div>
+                <span className="text-base lg:text-lg">{item}</span>
+              </li>
+            ))}
+          </ul>
 
-     {/* Set 3 (Triple ensures no gaps on wide screens) */}
-     {TECHNOLOGIES.map((tech, index) => (
-       <img 
-         key={`tech-3-${index}`}
-         src={tech.logo} 
-         alt={`${tech.name} logo`} 
-         className={`${tech.className} object-contain`}
-       />
-     ))}
-   </div>
-</div>
-      </section>
+          {/* Ownership Hook */}
+          <p className="font-bold text-gray-900 flex items-center gap-2 text-sm lg:text-base">
+            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+            You own 100% of the code. No recurring license fees.
+          </p>
+        </div>
+
+        {/* Buttons - Reduced bottom margin */}
+        <div className="flex flex-col sm:flex-row gap-3 mb-8 w-full sm:w-auto">
+          <Link href="/get-started" className="bg-gray-900 text-white px-8 py-3.5 rounded-full text-base font-bold hover:bg-blue-700 shadow-xl shadow-blue-200/50 transition-all w-full sm:w-auto text-center">
+            Start Your Project
+          </Link>
+          <Link href="/case-studies" className="px-8 py-3.5 rounded-full text-base font-bold text-gray-800 bg-white border border-gray-300 hover:bg-gray-50 transition-all shadow-sm w-full sm:w-auto text-center">
+            See Our Work
+          </Link>
+        </div>
+
+        {/* TECH STACK BADGE (Honest & Premium) */}
+        <div className="flex flex-row items-center gap-4 mt-2">
+            <div className="flex -space-x-3">
+              {/* Icons for Next.js, React, TypeScript, Tailwind, OpenAI */}
+              <div className="w-10 h-10 rounded-full border-[2px] border-white bg-black flex items-center justify-center shadow-md z-10">
+                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" className="w-5 h-5 invert" alt="NextJS" />
+              </div>
+              <div className="w-10 h-10 rounded-full border-[2px] border-white bg-[#007acc] flex items-center justify-center shadow-md z-20">
+                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" className="w-5 h-5" alt="TS" />
+              </div>
+              <div className="w-10 h-10 rounded-full border-[2px] border-white bg-[#61DAFB] flex items-center justify-center shadow-md z-30">
+                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" className="w-5 h-5" alt="React" />
+              </div>
+              <div className="w-10 h-10 rounded-full border-[2px] border-white bg-[#412991] flex items-center justify-center shadow-md z-40">
+                 {/* Simple text for AI if no icon */}
+                 <span className="text-[10px] font-bold text-white">AI</span>
+              </div>
+            </div>
+            
+            <div>
+              <div className="flex items-center gap-1 mb-0.5">
+                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                <span className="text-xs font-bold text-green-700 uppercase tracking-wider">Enterprise Grade</span>
+              </div>
+              <p className="text-xs text-gray-500 font-medium">Built on Next.js & GPT-4</p>
+            </div>
+        </div>
+      </div>
+
+      {/* RIGHT SIDE: ORBIT SYSTEM */}
+      <div className="hidden lg:flex relative h-full w-full items-center justify-center scale-75 xl:scale-90">
+          <div className="relative w-[600px] h-[600px] flex items-center justify-center transform-gpu will-change-transform">
+            
+            {/* Center Core */}
+            <div className="absolute z-20 w-32 h-32 bg-white rounded-full shadow-[0_0_60px_-15px_rgba(37,99,235,0.5)] flex items-center justify-center border border-blue-100">
+              <div className="text-center">
+                <div className="bg-gradient-to-r from-blue-600 to-purple-600 w-16 h-16 mx-auto rounded-xl flex items-center justify-center text-white mb-2 shadow-lg">
+                  <Bot size={32} />
+                </div>
+                <span className="text-xs font-bold text-gray-900 block">AI CORE</span>
+              </div>
+            </div>
+
+            {/* Orbit Rings */}
+            <div className="absolute w-[90%] h-[90%] border border-dashed border-blue-200 rounded-full opacity-50 animate-spin-slow will-change-transform"></div>
+            <div className="absolute w-[65%] h-[65%] border border-blue-100 rounded-full opacity-50"></div>
+
+            {/* Revolving Items */}
+            <div className="absolute w-full h-full animate-orbit-ring flex items-center justify-center will-change-transform">
+              {/* ITEM 1 */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 animate-orbit-item will-change-transform">
+                <div className="bg-white/90 backdrop-blur-md p-3 rounded-2xl border border-white shadow-xl flex items-center gap-3">
+                  <div className="bg-blue-100 p-2 rounded-lg text-blue-600"><LayoutDashboard size={18}/></div>
+                  <div className="text-sm font-bold text-gray-900">Custom Web Dev</div>
+                </div>
+              </div>
+              {/* ITEM 2 */}
+              <div className="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 w-56 animate-orbit-item will-change-transform">
+                <div className="bg-white/90 backdrop-blur-md p-3 rounded-2xl border border-white shadow-xl flex items-center gap-3">
+                  <div className="bg-purple-100 p-2 rounded-lg text-purple-600"><Smartphone size={18}/></div>
+                  <div className="text-sm font-bold text-gray-900">iOS & Android Apps</div>
+                </div>
+              </div>
+              {/* ITEM 3 */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-56 animate-orbit-item will-change-transform">
+                  <div className="bg-white/90 backdrop-blur-md p-3 rounded-2xl border border-white shadow-xl flex items-center gap-3">
+                  <div className="bg-green-100 p-2 rounded-lg text-green-600"><Workflow size={18}/></div>
+                  <div className="text-sm font-bold text-gray-900">Business Automation</div>
+                </div>
+              </div>
+              {/* ITEM 4 */}
+              <div className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 w-56 animate-orbit-item will-change-transform">
+                <div className="bg-white/90 backdrop-blur-md p-3 rounded-2xl border border-white shadow-xl flex items-center gap-3">
+                  <div className="bg-orange-100 p-2 rounded-lg text-orange-600"><Database size={18}/></div>
+                  <div className="text-sm font-bold text-gray-900">Internal Dashboards</div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+
+    </div>
+
+    {/* LOGO MARQUEE */}
+    <div className="w-full bg-white py-8 relative overflow-hidden flex-shrink-0 mt-8">
+      
+      {/* Gradients */}
+      <div className="absolute left-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-r from-white to-transparent pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-l from-white to-transparent pointer-events-none" />
+
+      {/* The Scrolling Track */}
+      <div className="flex w-max animate-scroll gap-32 items-center">
+        
+        {/* Set 1 */}
+        {TECHNOLOGIES.map((tech, index) => (
+          <img 
+            key={`tech-1-${index}`}
+            src={tech.logo} 
+            alt={`${tech.name} logo`} 
+            className={`${tech.className} object-contain`}
+          />
+        ))}
+        
+        {/* Set 2 (Duplicate) */}
+        {TECHNOLOGIES.map((tech, index) => (
+          <img 
+            key={`tech-2-${index}`}
+            src={tech.logo} 
+            alt={`${tech.name} logo`} 
+            className={`${tech.className} object-contain`}
+          />
+        ))}
+
+        {/* Set 3 (Triple ensures no gaps on wide screens) */}
+        {TECHNOLOGIES.map((tech, index) => (
+          <img 
+            key={`tech-3-${index}`}
+            src={tech.logo} 
+            alt={`${tech.name} logo`} 
+            className={`${tech.className} object-contain`}
+          />
+        ))}
+      </div>
+    </div>
+</section>
       {/* ADVANCED CAPABILITIES SECTION */}
       <section id="services" className="py-24 relative overflow-hidden bg-gray-50">
         
