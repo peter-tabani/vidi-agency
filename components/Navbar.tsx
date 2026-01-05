@@ -72,7 +72,7 @@ const industriesData = [
   { name: "Food & Restaurant", icon: Utensils, href: "/industries/restaurant" },
   { name: "Retail & E-Com", icon: ShoppingBag, href: "/industries/retail" },
   { name: "Construction", icon: HardHat, href: "/industries/construction" },
-  { name: "Non-Profit", icon: Heart, href: "/case-studies#churches-&-nonprofits" },
+  { name: "Non-Profit", icon: Heart, href: "/industries/non-profit" },
   { name: "Logistics", icon: Truck, href: "/case-studies#logistics-&-transport" },
   { name: "Fitness", icon: Dumbbell, href: "/case-studies#fitness-&-wellness" },
   { name: "Beauty", icon: Scissors, href: "/case-studies#beauty-&-lifestyle" },

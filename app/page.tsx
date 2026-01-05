@@ -442,7 +442,7 @@ export default function Home() {
                 Start Your Project
               </Link>
             <button className="px-10 py-5 bg-transparent border border-gray-700 text-white rounded-full text-lg font-bold hover:bg-gray-800 transition-all">
-              Book a Strategy Call
+              Speak to an Expert
             </button>
           </div>
 

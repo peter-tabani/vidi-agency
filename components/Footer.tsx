@@ -64,10 +64,6 @@ export default function Footer() {
                 <Mail size={20} className="text-blue-500 flex-shrink-0"/>
                 <a href="mailto:hello@vidiagency.com" className="hover:text-white transition-colors">hello@vidiagency.com</a>
               </li>
-              <li className="flex items-center gap-3">
-                <Phone size={20} className="text-blue-500 flex-shrink-0"/>
-                <a href="tel:+15550000000" className="hover:text-white transition-colors">+1 (555) 000-0000</a>
-              </li>
             </ul>
           </div>
 
