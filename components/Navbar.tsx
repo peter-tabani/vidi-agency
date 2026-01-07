@@ -7,7 +7,7 @@ import {
   Smartphone, Globe, Bot, Database,
   Stethoscope, Home, Scale, GraduationCap, Plane, Utensils, ShoppingBag,
   HardHat, Heart, Truck, Dumbbell, Scissors, Landmark, Rocket, Briefcase,
-  Users, BookOpen, CreditCard // <-- ADDED CreditCard Icon
+  Users, BookOpen, CreditCard , BarChart // <-- ADDED CreditCard Icon
 } from 'lucide-react';
 
 // --- DATA: SERVICES MENU ---
@@ -73,13 +73,14 @@ const industriesData = [
   { name: "Retail & E-Com", icon: ShoppingBag, href: "/industries/retail" },
   { name: "Construction", icon: HardHat, href: "/industries/construction" },
   { name: "Non-Profit", icon: Heart, href: "/industries/non-profit" },
-  { name: "Logistics", icon: Truck, href: "/case-studies#logistics-&-transport" },
-  { name: "Fitness", icon: Dumbbell, href: "/case-studies#fitness-&-wellness" },
-  { name: "Beauty", icon: Scissors, href: "/case-studies#beauty-&-lifestyle" },
-  { name: "Fintech", icon: Landmark, href: "/case-studies#finance-&-insurance" },
-  { name: "Startups", icon: Rocket, href: "/case-studies#startups-&-tech" },
-  { name: "Small Biz", icon: Briefcase, href: "/case-studies#small-business" },
+  { name: "Logistics", icon: Truck, href: "/industries/logistics" },
+  { name: "Fitness", icon: Dumbbell, href: "/industries/fitness" },
+  { name: "Beauty", icon: Scissors, href: "/industries/beauty-lifestyle" },
+  { name: "Fintech", icon: Landmark, href: "/industries/fintech" },
+  { name: "Startups", icon: Rocket, href: "/industries/startups" },
+  { name: "Supply Chain & POS", icon: BarChart, href: "/industries/supply-chain-pos" },
 ];
+
 
 // --- DATA: COMPANY MENU ---
 const companyData = [
@@ -208,8 +209,7 @@ export default function Navbar() {
               </div>
             </div>
 
-            <Link href="/case-studies" className="hover:text-blue-600 transition-colors">Case Studies</Link>
-
+      
             {/* --- NEW PRICING LINK (DESKTOP) --- */}
             <Link href="/pricing" className="hover:text-blue-600 transition-colors h-full flex items-center font-bold">
               Pricing
@@ -297,7 +297,7 @@ export default function Navbar() {
               </div>
             </div>
 
-            <Link href="/case-studies" onClick={() => setIsMobileMenuOpen(false)} className="py-4 text-lg font-medium text-gray-800 border-b border-gray-100">Case Studies</Link>
+    
 
             {/* --- NEW PRICING LINK (MOBILE) --- */}
             <Link href="/pricing" onClick={() => setIsMobileMenuOpen(false)} className="py-4 text-lg font-medium text-gray-800 border-b border-gray-100 flex items-center gap-2">

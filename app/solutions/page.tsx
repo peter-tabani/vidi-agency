@@ -143,7 +143,7 @@ export default function SolutionsPage() {
             <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/20 border border-blue-400/30 rounded-full mb-6">
                 <Lightbulb size={16} className="text-blue-300" />
-                <span className="text-sm font-bold text-blue-300">No Fluff. Just Results.</span>
+                <span className="text-sm font-bold text-blue-300"> Results-focused</span>
             </div>
 
             <h1 className="text-5xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
