@@ -5,12 +5,7 @@ import { MessageSquare, X, Send, Sparkles, Zap, ChevronDown, Minimize2, MapPin }
 
 const ROBOT_IMAGE = "/vidi-avatar.jpeg"; 
 
-const QUICK_ACTIONS = [
-  { icon: "💰", text: "Pricing", prompt: "What are your pricing options?" },
-  { icon: "🚀", text: "The Method", prompt: "What is the Vidi Method?" },
-  { icon: "⚡", text: "Automation", prompt: "Tell me about your AI automation" },
-  { icon: "📱", text: "Start Project", prompt: "How do I start a project?" }
-];
+
 
 // Define Message Type
 type Message = {
@@ -37,7 +32,7 @@ export default function ReceptionistAI() {
     { 
       id: 'init-1', 
       role: 'assistant', 
-      content: '👋 Hi! I represent the Vidi Method.\n\nWe don\'t just build websites; we build "Sales Engines" that you own forever.\n\nHow can I help you today?' 
+      content: '👋 Hello, How can I help you today?' 
     }
   ]);
 
@@ -329,7 +324,7 @@ export default function ReceptionistAI() {
                 </div>
                 <div className="flex items-center gap-1 text-xs text-white/90">
                   {userLocation.city && <MapPin className="w-3 h-3" />}
-                  <span>{userLocation.city ? `Serving ${userLocation.city}` : 'Online'}</span>
+                  <span>{userLocation.city ? `Server: ${userLocation.city}` : 'Online'}</span>
                 </div>
               </div>
             </div>
@@ -375,22 +370,7 @@ export default function ReceptionistAI() {
                   </div>
                 )}
 
-                {/* Quick Actions */}
-                {showQuickActions && messages.length <= 2 && !isLoading && (
-                  <div className="grid grid-cols-2 gap-2 pt-2">
-                    {QUICK_ACTIONS.map((action, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => handleSendMessage(action.prompt)}
-                        className="flex items-center gap-2 p-3 bg-white hover:bg-blue-50 text-left rounded-xl border border-gray-200 transition-all hover:shadow-md hover:border-blue-200 group"
-                      >
-                        <span className="text-xl group-hover:scale-110 transition-transform">{action.icon}</span>
-                        <span className="text-xs font-semibold text-gray-600 group-hover:text-blue-600">{action.text}</span>
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
+                </div>
 
               {/* Input Area */}
               <div className="p-3 bg-white border-t border-gray-100">

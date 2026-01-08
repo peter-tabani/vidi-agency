@@ -1,10 +1,12 @@
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import ReceptionistAI from '@/components/ReceptionistAI';
+import TechIcons from '@/components/TechIcons';
 import { 
   ArrowRight, CheckCircle2, Bot, LayoutDashboard, Code2, Inbox, Lock, UploadCloud,
   Smartphone, Phone, BarChart3, Workflow, Database, Cpu, Check, XCircle, Plus, Star, Rocket, CreditCard, Mail, FileText, Play, Users// <--- Added Star
 } from "lucide-react";
+import { SiNextdotjs, SiTypescript, SiReact, SiOpenai } from 'react-icons/si';
 
 const features = [
   {
@@ -230,28 +232,14 @@ export default function Home() {
         {/* TECH STACK BADGE (Honest & Premium) */}
         <div className="flex flex-row items-center gap-4 mt-2">
             <div className="flex -space-x-3">
-              {/* Icons for Next.js, React, TypeScript, Tailwind, OpenAI */}
-              <div className="w-10 h-10 rounded-full border-[2px] border-white bg-black flex items-center justify-center shadow-md z-10">
-                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" className="w-5 h-5 invert" alt="NextJS" />
-              </div>
-              <div className="w-10 h-10 rounded-full border-[2px] border-white bg-[#007acc] flex items-center justify-center shadow-md z-20">
-                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" className="w-5 h-5" alt="TS" />
-              </div>
-              <div className="w-10 h-10 rounded-full border-[2px] border-white bg-[#61DAFB] flex items-center justify-center shadow-md z-30">
-                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" className="w-5 h-5" alt="React" />
-              </div>
-              <div className="w-10 h-10 rounded-full border-[2px] border-white bg-[#412991] flex items-center justify-center shadow-md z-40">
-                 {/* Simple text for AI if no icon */}
-                 <span className="text-[10px] font-bold text-white">AI</span>
-              </div>
+  <TechIcons />
             </div>
-            
             <div>
               <div className="flex items-center gap-1 mb-0.5">
                 <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
                 <span className="text-xs font-bold text-green-700 uppercase tracking-wider">Enterprise Grade</span>
               </div>
-              <p className="text-xs text-gray-500 font-medium">Built on Next.js & GPT-4</p>
+              <p className="text-xs text-gray-500 font-medium">Premium V.3</p>
             </div>
         </div>
       </div>
@@ -441,9 +429,9 @@ export default function Home() {
             <Link href="/get-started" className="px-10 py-5 bg-white text-gray-900 rounded-full text-lg font-bold hover:bg-gray-100 transition-all shadow-xl shadow-white/10 flex items-center gap-2">
                 Start Your Project
               </Link>
-            <button className="px-10 py-5 bg-transparent border border-gray-700 text-white rounded-full text-lg font-bold hover:bg-gray-800 transition-all">
+            <Link href="/contact" className="px-10 py-5 bg-transparent border border-gray-700 text-white rounded-full text-lg font-bold hover:bg-gray-800 transition-all">
               Speak to an Expert
-            </button>
+            </Link>
           </div>
 
           <p className="mt-8 text-sm text-gray-500">
