@@ -7,7 +7,7 @@ import {
   Smartphone, Globe, Bot, Database,
   Stethoscope, Home, Scale, GraduationCap, Plane, Utensils, ShoppingBag,
   HardHat, Heart, Truck, Dumbbell, Scissors, Landmark, Rocket, Briefcase,
-  Users, BookOpen, CreditCard, BarChart
+  Users, BookOpen, CreditCard, BarChart, MessageSquare
 } from 'lucide-react';
 
 // --- DATA: SERVICES MENU ---
@@ -116,7 +116,7 @@ export default function Navbar() {
   return (
     <>
       <nav ref={navRef} className="fixed top-0 z-50 w-full bg-white/80 backdrop-blur-xl border-b border-white/20 shadow-sm transition-all duration-300">
-        <div className="container mx-auto flex h-16 md:h-20 items-center justify-between px-4 sm:px-6 md:px-12 relative">
+        <div className="container mx-auto flex h-16 md:h-20 items-center justify-between px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 relative">
           
           <Link href="/" className="text-xl md:text-2xl font-bold flex items-center gap-1 cursor-pointer hover:opacity-80 transition-opacity z-50">
             <span className="text-blue-600">Vidi</span>
@@ -124,12 +124,12 @@ export default function Navbar() {
           </Link>
 
           {/* DESKTOP NAVIGATION */}
-          <div className="hidden md:flex items-center gap-4 lg:gap-6 text-sm font-semibold text-gray-600 h-full">
+          <div className="hidden md:flex items-center gap-3 lg:gap-4 xl:gap-6 text-sm font-semibold text-gray-600 h-full">
             
-            <Link href="/" className="hover:text-blue-600 transition-colors h-full flex items-center px-2 py-1 rounded-lg hover:bg-gray-50">
+            <Link href="/" className="hover:text-blue-600 transition-colors h-full flex items-center px-2 py-1 rounded-lg hover:bg-gray-50 text-xs lg:text-sm xl:text-base whitespace-nowrap">
               Home
             </Link>
-            <Link href="/solutions" className="hover:text-blue-600 transition-colors h-full flex items-center font-bold px-2 py-1 rounded-lg hover:bg-gray-50">
+            <Link href="/solutions" className="hover:text-blue-600 transition-colors h-full flex items-center font-bold px-2 py-1 rounded-lg hover:bg-gray-50 text-xs lg:text-sm xl:text-base whitespace-nowrap">
               Solutions
             </Link>
 
@@ -137,14 +137,14 @@ export default function Navbar() {
             <div className="h-full flex items-center relative">
               <button 
                 onClick={() => toggleMenu('services')}
-                className={`flex items-center gap-1 hover:text-blue-600 transition-all duration-300 px-3 py-1.5 rounded-full ${activeMenu === 'services' ? 'text-blue-600 bg-blue-50' : 'hover:bg-gray-50'}`}
+                className={`flex items-center gap-1 hover:text-blue-600 transition-all duration-300 px-3 py-1.5 rounded-full ${activeMenu === 'services' ? 'text-blue-600 bg-blue-50' : 'hover:bg-gray-50'} text-xs lg:text-sm xl:text-base whitespace-nowrap`}
               >
                 Services
                 <ChevronDown size={14} className={`transition-transform duration-300 ${activeMenu === 'services' ? 'rotate-180' : ''}`} />
               </button>
               <div className={`
                 absolute top-[60px] md:top-[70px] left-1/2 -translate-x-1/2 
-                w-[calc(100vw-2rem)] md:w-[700px] lg:w-[900px] max-w-[calc(100vw-2rem)]
+                w-[calc(100vw-2rem)] md:w-[calc(100vw-4rem)] lg:w-[calc(100vw-8rem)] xl:w-[calc(100vw-16rem)] max-w-[1200px]
                 bg-white/95 backdrop-blur-2xl shadow-2xl rounded-xl md:rounded-3xl 
                 border border-white/50 p-2 transition-all duration-300 origin-top transform 
                 ${activeMenu === 'services' ? 'opacity-100 visible scale-100 translate-y-0' : 'opacity-0 invisible scale-95 -translate-y-4'}
@@ -209,14 +209,14 @@ export default function Navbar() {
             <div className="h-full flex items-center relative">
               <button 
                 onClick={() => toggleMenu('industries')}
-                className={`flex items-center gap-1 hover:text-blue-600 transition-all duration-300 px-3 py-1.5 rounded-full ${activeMenu === 'industries' ? 'text-blue-600 bg-blue-50' : 'hover:bg-gray-50'}`}
+                className={`flex items-center gap-1 hover:text-blue-600 transition-all duration-300 px-3 py-1.5 rounded-full ${activeMenu === 'industries' ? 'text-blue-600 bg-blue-50' : 'hover:bg-gray-50'} text-xs lg:text-sm xl:text-base whitespace-nowrap`}
               >
                 Industries
                 <ChevronDown size={14} className={`transition-transform duration-300 ${activeMenu === 'industries' ? 'rotate-180' : ''}`} />
               </button>
               <div className={`
                 absolute top-[60px] md:top-[70px] left-1/2 -translate-x-1/2 
-                w-[calc(100vw-2rem)] md:w-[750px] lg:w-[950px] max-w-[calc(100vw-2rem)]
+                w-[calc(100vw-2rem)] md:w-[calc(100vw-4rem)] lg:w-[calc(100vw-8rem)] xl:w-[calc(100vw-16rem)] max-w-[1200px]
                 bg-white/95 backdrop-blur-2xl shadow-2xl rounded-xl md:rounded-[32px] 
                 border border-white/50 overflow-hidden transition-all duration-300 origin-top transform
                 ${activeMenu === 'industries' ? 'opacity-100 visible scale-100 translate-y-0' : 'opacity-0 invisible scale-95 -translate-y-4'}
@@ -267,7 +267,7 @@ export default function Navbar() {
                     onClick={() => setActiveMenu(null)}
                     className="px-4 md:px-6 py-2.5 md:py-3 bg-blue-600 text-white rounded-xl md:rounded-2xl 
                     font-bold text-xs md:text-sm hover:bg-blue-700 transition-all 
-                    shadow-lg shadow-blue-200/50 hover:shadow-blue-300 w-full md:w-auto text-center"
+                    shadow-lg shadow-blue-200/50 hover:shadow-blue-300 w-full md:w-auto text-center whitespace-nowrap"
                   >
                     View All Industries
                   </Link>
@@ -276,7 +276,7 @@ export default function Navbar() {
             </div>
 
             {/* PRICING LINK */}
-            <Link href="/pricing" className="hover:text-blue-600 transition-colors h-full flex items-center font-bold px-2 py-1 rounded-lg hover:bg-gray-50">
+            <Link href="/pricing" className="hover:text-blue-600 transition-colors h-full flex items-center font-bold px-2 py-1 rounded-lg hover:bg-gray-50 text-xs lg:text-sm xl:text-base whitespace-nowrap">
               Pricing
             </Link>
 
@@ -284,7 +284,7 @@ export default function Navbar() {
             <div className="h-full flex items-center relative">
               <button 
                 onClick={() => toggleMenu('company')}
-                className={`flex items-center gap-1 hover:text-blue-600 transition-all duration-300 px-3 py-1.5 rounded-full ${activeMenu === 'company' ? 'text-blue-600 bg-blue-50' : 'hover:bg-gray-50'}`}
+                className={`flex items-center gap-1 hover:text-blue-600 transition-all duration-300 px-3 py-1.5 rounded-full ${activeMenu === 'company' ? 'text-blue-600 bg-blue-50' : 'hover:bg-gray-50'} text-xs lg:text-sm xl:text-base whitespace-nowrap`}
               >
                 Company
                 <ChevronDown size={14} className={`transition-transform duration-300 ${activeMenu === 'company' ? 'rotate-180' : ''}`} />
@@ -320,11 +320,16 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* DESKTOP CTA BUTTON */}
-          <div className="hidden md:block">
-            <Link href="/contact" className="px-6 py-2.5 rounded-full text-white font-bold text-sm bg-gradient-to-r from-blue-600 to-purple-600 hover:opacity-90 transition-opacity shadow-lg shadow-blue-200">
-  Speak to an Expert
-</Link>
+          {/* DESKTOP CTA BUTTON - FIXED FOR RESPONSIVENESS */}
+          <div className="hidden md:flex items-center gap-3">
+            <Link 
+              href="/contact" 
+              className="inline-flex items-center justify-center gap-2 px-3 py-2 lg:px-4 lg:py-2.5 xl:px-6 xl:py-3 rounded-full text-white font-bold bg-gradient-to-r from-blue-600 to-purple-600 hover:opacity-90 transition-all shadow-lg shadow-blue-200 hover:shadow-blue-300 whitespace-nowrap min-w-[120px] text-xs lg:text-sm xl:text-base"
+            >
+              
+              <span className="hidden lg:inline">Speak to an Expert</span>
+              <span className="lg:hidden">Contact</span>
+            </Link>
           </div>
 
           {/* MOBILE MENU TOGGLE */}
@@ -433,11 +438,10 @@ export default function Navbar() {
             </button>
             <div className={`
               overflow-hidden transition-all duration-300 ease-in-out 
-              ${expandedMobileSection === 'industries' ? 'max-h-[900px] opacity-100 pb-4' : 'max-h-0 opacity-0'}
+              ${expandedMobileSection === 'industries' ? 'max-h-[600px] opacity-100 pb-4' : 'max-h-0 opacity-0'}
             `}>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 pt-3">
                 {industriesData.map((industry, idx) => {
-                  // Special handling for "Supply Chain & POS" to make it more readable
                   const isSupplyChain = industry.name === "Supply Chain & POS";
                   return (
                     <Link 
@@ -514,9 +518,15 @@ export default function Navbar() {
           </div>
 
           {/* Mobile CTA Button */}
-          <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="block w-full mt-8 py-3.5 rounded-full text-white font-bold bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg shadow-blue-200 text-center">
-  Speak to an Expert
-</Link>
+          <Link 
+            href="/contact" 
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="block w-full mt-8 py-3.5 rounded-full text-white font-bold 
+            bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg shadow-blue-200 text-center text-sm flex items-center justify-center gap-2"
+          >
+            
+            Speak to an Expert
+          </Link>
         </div>
       </div>
     </>

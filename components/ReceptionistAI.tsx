@@ -5,13 +5,12 @@ import { MessageSquare, X, Send, Sparkles, Zap, ChevronDown, Minimize2, MapPin }
 
 const ROBOT_IMAGE = "/vidi-avatar.jpeg"; 
 
-
-
 // Define Message Type
 type Message = {
   id: string;
   role: 'assistant' | 'user';
   content: string;
+  timestamp?: Date;
 };
 
 // Define Location Type
@@ -32,7 +31,8 @@ export default function ReceptionistAI() {
     { 
       id: 'init-1', 
       role: 'assistant', 
-      content: '👋 Hello, How can I help you today?' 
+      content: '👋 Hello! How can I help you today?',
+      timestamp: new Date()
     }
   ]);
 
@@ -44,7 +44,15 @@ export default function ReceptionistAI() {
   const [userLocation, setUserLocation] = useState<UserLocation>({ city: '', state: '', country: '' });
   const [greetingTime, setGreetingTime] = useState('Day');
   
- // Default messages (Before location loads)
+  // Quick action buttons for first-time users
+  const quickActions = [
+    { text: "💰 View Pricing", action: "What's your pricing?" },
+    { text: "🚀 Build an App", action: "I want to build a mobile app" },
+    { text: "🤖 AI Automation", action: "Tell me about AI automation" },
+    { text: "📞 Book a Call", action: "I'd like to schedule a consultation" }
+  ];
+
+  // Personalized rotating messages
   const [personalizedMessages, setPersonalizedMessages] = useState([
     { text: "Hello! We are here to bring your ideas to life.", color: "from-blue-600 to-indigo-600" },
     { text: "Looking for a Custom Website, Mobile App, or Redesign?", color: "from-indigo-600 to-purple-600" },
@@ -64,7 +72,7 @@ export default function ReceptionistAI() {
     return 'Evening';
   };
 
-  // --- 1. FETCH LOCATION (Logic kept, but text is generic) ---
+  // --- 1. FETCH LOCATION & PERSONALIZE ---
   useEffect(() => {
     const fetchLocation = async () => {
       const timeGreeting = getGreeting();
@@ -77,6 +85,8 @@ export default function ReceptionistAI() {
         const response = await fetch('https://ipapi.co/json/', { signal: controller.signal });
         clearTimeout(timeoutId);
         
+        if (!response.ok) throw new Error('Location fetch failed');
+        
         const data = await response.json();
         
         const location = {
@@ -87,10 +97,10 @@ export default function ReceptionistAI() {
         
         setUserLocation(location);
         
-        // --- UPDATED MESSAGES (Universal & Inclusive) ---
+        // Personalized messages
         setPersonalizedMessages([
           { 
-            text: `Good ${timeGreeting}! We are ready to bring your ideas to life.`, 
+            text: `Good ${timeGreeting}! We're ready to bring your ideas to life.`, 
             color: "from-blue-600 to-indigo-600"
           },
           { 
@@ -98,27 +108,28 @@ export default function ReceptionistAI() {
             color: "from-indigo-600 to-purple-600"
           },
           { 
-            text: `We build intelligent AI systems that handle your workload 24/7.`, 
+            text: `We build intelligent AI systems that work 24/7 for businesses like yours.`, 
             color: "from-purple-600 to-pink-600"
           },
           { 
-            text: `No matter your industry or size, we have the digital tools to help you scale.`, 
+            text: `From startups to enterprises, we have the digital tools to help you scale.`, 
             color: "from-purple-600 to-pink-600"
           },
           { 
-            text: `Explore our 'Solutions' menu to see how we can transform your operations.`, 
+            text: `Tap here to explore our Solutions and see what we can build together.`, 
             color: "from-pink-600 to-rose-600"
           }
         ]);
         
       } catch (error) {
-        // Fallback
+        console.error('Location fetch error:', error);
+        // Keep fallback messages
         setPersonalizedMessages([
-            { text: `Good ${timeGreeting}! We are ready to bring your ideas to life.`, color: "from-blue-600 to-indigo-600" },
-            { text: "Looking for a Custom Website, Mobile App, or System Redesign?", color: "from-indigo-600 to-purple-600" },
-            { text: "We build intelligent AI systems that handle your workload 24/7.", color: "from-purple-600 to-pink-600" },
-            { text: "No matter your industry or size, we have the digital tools to help you scale.", color: "from-purple-600 to-pink-600" },
-            { text: "Explore our 'Solutions' menu to see how we can transform your operations.", color: "from-pink-600 to-rose-600" }
+          { text: `Good ${timeGreeting}! We're ready to bring your ideas to life.`, color: "from-blue-600 to-indigo-600" },
+          { text: "Looking for a Custom Website, Mobile App, or System Redesign?", color: "from-indigo-600 to-purple-600" },
+          { text: "We build intelligent AI systems that work 24/7.", color: "from-purple-600 to-pink-600" },
+          { text: "No matter your industry or size, we have the tools to help you scale.", color: "from-purple-600 to-pink-600" },
+          { text: "Tap here to see how we can transform your operations.", color: "from-pink-600 to-rose-600" }
         ]);
       }
     };
@@ -146,7 +157,7 @@ export default function ReceptionistAI() {
     let timer: NodeJS.Timeout;
 
     if (isPeeking) {
-      // Show message for 5 seconds (slightly longer to read the new text)
+      // Show message for 5 seconds
       timer = setTimeout(() => {
         setIsPeeking(false);
         setTimeout(() => {
@@ -163,11 +174,11 @@ export default function ReceptionistAI() {
     return () => clearTimeout(timer);
   }, [isPeeking, isOpen, userHasInteracted, personalizedMessages.length]);
 
-  // --- 4. TEXTAREA RESIZE ---
+  // --- 4. TEXTAREA AUTO-RESIZE ---
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.style.height = 'auto';
-      inputRef.current.style.height = inputRef.current.scrollHeight + 'px';
+      inputRef.current.style.height = Math.min(inputRef.current.scrollHeight, 128) + 'px';
     }
   }, [inputValue]);
 
@@ -181,7 +192,14 @@ export default function ReceptionistAI() {
     setShowQuickActions(false);
     setUserHasInteracted(true);
     
-    const newMessages: Message[] = [...messages, { id: Date.now().toString(), role: 'user', content: textToSend }];
+    const userMessage: Message = { 
+      id: Date.now().toString(), 
+      role: 'user', 
+      content: textToSend,
+      timestamp: new Date()
+    };
+    
+    const newMessages: Message[] = [...messages, userMessage];
     setMessages(newMessages);
     setIsLoading(true);
 
@@ -189,37 +207,54 @@ export default function ReceptionistAI() {
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: newMessages }),
+        body: JSON.stringify({ 
+          messages: newMessages.map(m => ({ role: m.role, content: m.content }))
+        }),
       });
 
-      if (!response.ok) throw new Error("Network error");
+      if (!response.ok) {
+        throw new Error(`Server error: ${response.status}`);
+      }
 
       const aiMsgId = 'ai-' + Date.now();
-      setMessages((prev) => [...prev, { id: aiMsgId, role: 'assistant', content: '' }]);
+      const initialAiMessage: Message = { 
+        id: aiMsgId, 
+        role: 'assistant', 
+        content: '',
+        timestamp: new Date()
+      };
+      
+      setMessages((prev) => [...prev, initialAiMessage]);
 
       const reader = response.body?.getReader();
+      if (!reader) throw new Error('No response stream');
+      
       const decoder = new TextDecoder();
       let done = false;
       let aiText = "";
 
       while (!done) {
-        const { value, done: doneReading } = await reader?.read() || { done: true, value: undefined };
+        const { value, done: doneReading } = await reader.read();
         done = doneReading;
-        const chunkValue = decoder.decode(value, { stream: true });
-        aiText += chunkValue;
+        
+        if (value) {
+          const chunkValue = decoder.decode(value, { stream: !done });
+          aiText += chunkValue;
 
-        setMessages((prev) => 
-          prev.map(msg => 
-            msg.id === aiMsgId ? { ...msg, content: aiText } : msg
-          )
-        );
+          setMessages((prev) => 
+            prev.map(msg => 
+              msg.id === aiMsgId ? { ...msg, content: aiText } : msg
+            )
+          );
+        }
       }
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Chat Error:", error);
       setMessages((prev) => [...prev, { 
-        id: 'err', 
+        id: 'err-' + Date.now(), 
         role: 'assistant', 
-        content: "⚠️ I'm having trouble connecting to the server. Please try again or email us directly!" 
+        content: "⚠️ I'm having trouble connecting right now. Please try again or email us at hello@vidiagency.com", 
+        timestamp: new Date()
       }]);
     } finally {
       setIsLoading(false);
@@ -230,6 +265,11 @@ export default function ReceptionistAI() {
     setIsPeeking(false);
     setUserHasInteracted(true);
     setIsOpen(true);
+    
+    // Focus input after opening
+    setTimeout(() => {
+      inputRef.current?.focus();
+    }, 100);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -237,6 +277,10 @@ export default function ReceptionistAI() {
       e.preventDefault();
       handleSendMessage();
     }
+  };
+
+  const handleQuickAction = (action: string) => {
+    handleSendMessage(action);
   };
 
   const currentMessage = personalizedMessages[messageIndex] || personalizedMessages[0];
@@ -264,7 +308,7 @@ export default function ReceptionistAI() {
               {currentMessage.text}
             </p>
             {/* Shimmer Effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer rounded-2xl"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer rounded-2xl pointer-events-none"></div>
           </div>
 
           {/* Robot Avatar Circle */}
@@ -273,14 +317,14 @@ export default function ReceptionistAI() {
             <div className="relative w-20 h-20 rounded-full border-4 border-white overflow-hidden shadow-2xl bg-white group-hover:scale-110 transition-transform duration-300">
               <img 
                 src={ROBOT_IMAGE} 
-                alt="AI Assistant" 
+                alt="Vidi AI Assistant" 
                 className="w-full h-full object-cover"
-                onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-                    e.currentTarget.src = "https://img.freepik.com/free-photo/view-3d-robot-with-tech-elements_23-2150889222.jpg";
+                onError={(e) => {
+                  e.currentTarget.src = "https://img.freepik.com/free-photo/view-3d-robot-with-tech-elements_23-2150889222.jpg";
                 }}
               />
             </div>
-            {/* Online Dot (Replaced the time emoji) */}
+            {/* Online Status Dot */}
             <div className="absolute bottom-1 right-1 w-5 h-5 bg-green-500 border-2 border-white rounded-full animate-pulse shadow-lg"></div>
           </div>
         </div>
@@ -290,10 +334,16 @@ export default function ReceptionistAI() {
       {!isOpen && (
         <button
           onClick={openChat}
-          className="group relative bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 mb-6"
+          aria-label="Open chat"
+          className="group relative bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95"
         >
           <MessageSquare className="w-7 h-7" />
           <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full border-2 border-white animate-pulse"></span>
+          
+          {/* Tooltip */}
+          <span className="absolute bottom-full right-0 mb-2 px-3 py-1 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+            Chat with Vidi AI
+          </span>
         </button>
       )}
 
@@ -308,12 +358,12 @@ export default function ReceptionistAI() {
           
           {/* Header */}
           <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 p-4 flex justify-between items-center text-white relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer pointer-events-none"></div>
             
             <div className="flex items-center gap-3 relative z-10">
               <div className="relative">
                 <div className="w-10 h-10 rounded-full border-2 border-white overflow-hidden shadow-lg bg-white">
-                  <img src={ROBOT_IMAGE} alt="AI" className="w-full h-full object-cover" />
+                  <img src={ROBOT_IMAGE} alt="Vidi AI" className="w-full h-full object-cover" />
                 </div>
                 <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-400 border-2 border-white rounded-full"></div>
               </div>
@@ -323,17 +373,27 @@ export default function ReceptionistAI() {
                   {isLoading && <Zap className="w-4 h-4 text-yellow-300 animate-bounce" />}
                 </div>
                 <div className="flex items-center gap-1 text-xs text-white/90">
-                  {userLocation.city && <MapPin className="w-3 h-3" />}
-                  <span>{userLocation.city ? `Server: ${userLocation.city}` : 'Online'}</span>
-                </div>
+  {userLocation.city && <MapPin className="w-3 h-3" />}
+  <span className="truncate max-w-[150px]">
+    {userLocation.city ? `Server: ${userLocation.city}` : 'Online 24/7'}
+  </span>
+</div>
               </div>
             </div>
 
             <div className="flex gap-1 relative z-10">
-              <button onClick={() => setIsMinimized(!isMinimized)} className="hover:bg-white/20 p-2 rounded-lg transition-colors">
+              <button 
+                onClick={() => setIsMinimized(!isMinimized)} 
+                aria-label={isMinimized ? "Expand chat" : "Minimize chat"}
+                className="hover:bg-white/20 p-2 rounded-lg transition-colors"
+              >
                 {isMinimized ? <ChevronDown className="w-5 h-5" /> : <Minimize2 className="w-5 h-5" />}
               </button>
-              <button onClick={() => setIsOpen(false)} className="hover:bg-white/20 p-2 rounded-lg transition-colors">
+              <button 
+                onClick={() => setIsOpen(false)} 
+                aria-label="Close chat"
+                className="hover:bg-white/20 p-2 rounded-lg transition-colors"
+              >
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -353,24 +413,41 @@ export default function ReceptionistAI() {
                         ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-tr-none' 
                         : 'bg-white text-gray-800 border border-gray-200 rounded-tl-none'
                     }`}>
-                      <div className="whitespace-pre-wrap">{m.content}</div>
+                      <div className="whitespace-pre-wrap break-words">{m.content}</div>
                     </div>
                   </div>
                 ))}
+                
+                {/* Quick Actions - Show after initial message */}
+                {showQuickActions && messages.length <= 1 && (
+                  <div className="space-y-2 pt-2">
+                    <p className="text-xs text-gray-500 text-center font-medium">Quick Actions:</p>
+                    <div className="grid grid-cols-2 gap-2">
+                      {quickActions.map((qa, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => handleQuickAction(qa.action)}
+                          className="text-xs bg-white border border-gray-200 hover:border-purple-500 hover:bg-purple-50 rounded-xl p-3 transition-all text-left font-medium text-gray-700 hover:text-purple-700"
+                        >
+                          {qa.text}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
                 
                 {isLoading && (
                   <div className="flex justify-start animate-pulse">
                     <div className="bg-white border border-gray-200 rounded-2xl rounded-tl-none p-4 shadow-sm">
                       <div className="flex gap-2">
                         <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-75"></div>
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-150"></div>
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                       </div>
                     </div>
                   </div>
                 )}
-
-                </div>
+              </div>
 
               {/* Input Area */}
               <div className="p-3 bg-white border-t border-gray-100">
@@ -382,11 +459,14 @@ export default function ReceptionistAI() {
                     onKeyDown={handleKeyPress}
                     placeholder="Ask about Vidi Agency..."
                     rows={1}
-                    className="flex-1 bg-transparent px-3 py-2 text-sm focus:outline-none resize-none max-h-32 text-gray-700 placeholder-gray-400"
+                    disabled={isLoading}
+                    className="flex-1 bg-transparent px-3 py-2 text-sm focus:outline-none resize-none max-h-32 text-gray-700 placeholder-gray-400 disabled:opacity-50"
+                    aria-label="Chat message input"
                   />
                   <button 
                     onClick={() => handleSendMessage()}
                     disabled={isLoading || !inputValue.trim()} 
+                    aria-label="Send message"
                     className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white p-2.5 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed transition-transform hover:scale-105 active:scale-95 shadow-md"
                   >
                     <Send size={18} />
@@ -402,7 +482,7 @@ export default function ReceptionistAI() {
         </div>
       )}
 
-      <style>{`
+      <style jsx>{`
         @keyframes shimmer {
           0% { transform: translateX(-100%); }
           100% { transform: translateX(100%); }
