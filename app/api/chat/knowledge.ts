@@ -12,7 +12,7 @@ Value Proposition: We build the digital engines that power the next generation o
 Status: Accepting New Projects NOW
 Contact: hello@vidiagency.com
 
-Key Team: Peter (Founder) - Clients work directly with Peter and a dedicated project lead
+Key Team: Peter Frank (Founder) - Clients work directly with Peter and a dedicated project lead
 Communication: Direct line via Slack or WhatsApp (no account manager gatekeeping)
 
 =========================================
@@ -128,8 +128,7 @@ Vidi Custom Solution:
 SECTION 6: PRICING & TIMELINE
 =========================================
 
-Minimum Engagement: $600
-Budget Ranges: $1k-$5k, $5k-$20k, $20k-$50k, $50k+
+\
 
 Timelines:
 - AI Integration/Automation: 7-14 days
@@ -221,7 +220,7 @@ Q: Can you integrate AI into my existing site?
 A: Yes! We specialize in "retrofitting" AI into WordPress, Shopify, React apps without rebuilding.
 
 Q: How does pricing work?
-A: Transparent. Flat-fee for small AI setups. Detailed proposals for larger builds. Minimum $600.
+A: Transparent. Flat-fee for small AI setups. Detailed proposals for larger builds. 
 
 Q: Will I work directly with the team?
 A: Yes. Direct line to Peter (Founder) and project lead via Slack/WhatsApp. No gatekeeping.
@@ -311,7 +310,7 @@ RESPONSE GUIDELINES
 
 When answering:
 1. Be confident and specific
-2. Reference exact pricing ($600 minimum)
+
 3. Always emphasize 100% code ownership advantage
 4. Highlight direct communication with Peter and team
 5. Stress 24/7 AI automation capabilities

@@ -651,7 +651,7 @@ export default function Home() {
                   </span>
                 </summary>
                 <div className="px-4 md:px-6 pb-4 md:pb-6 text-gray-600 leading-relaxed text-sm md:text-base">
-                  We believe in transparency. For small AI setups, we often have flat-fee packages. For larger custom builds, we provide a detailed proposal based on features. <b>Our minimum engagement typically starts at $600</b>, ensuring we can deliver premium quality.
+                  We believe in transparency.We offer different payment options . First payment is usually after you reviewed and approved the initial project milestone.. For larger custom builds, we provide a detailed proposal based on features. 
                 </div>
               </details>
             </div>
@@ -666,7 +666,7 @@ export default function Home() {
                   </span>
                 </summary>
                 <div className="px-4 md:px-6 pb-4 md:pb-6 text-gray-600 leading-relaxed text-sm md:text-base">
-                  You will work directly with Peter (our Founder) and a dedicated project lead. We do not use "account managers" to gatekeep you. You get a direct line to the people actually building your product via Slack or WhatsApp.
+                  You will work directly with our experts and even Peter (our Founder) .You get a direct line to the experts building your product .
                 </div>
               </details>
             </div>

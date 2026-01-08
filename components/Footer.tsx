@@ -41,7 +41,7 @@ export default function Footer() {
               <li><Link href="/about" className="hover:text-blue-500 transition-colors">About Us</Link></li>
               <li><Link href="/case-studies" className="hover:text-blue-500 transition-colors">Case Studies</Link></li>
               <li><Link href="/#process" className="hover:text-blue-500 transition-colors">Our Process</Link></li>
-              <li><a href="#" className="hover:text-blue-500 transition-colors">Careers</a> <span className="text-xs bg-blue-900 text-blue-300 px-2 py-0.5 rounded-full ml-2">Hiring</span></li>
+              <li><a href="/career" className="hover:text-blue-500 transition-colors">Careers</a> <span className="text-xs bg-blue-900 text-blue-300 px-2 py-0.5 rounded-full ml-2">Hiring</span></li>
             </ul>
           </div>
 
@@ -51,8 +51,8 @@ export default function Footer() {
             <ul className="space-y-4 text-sm text-gray-400">
               <li><Link href="/privacy" className="hover:text-blue-500 transition-colors">Privacy Policy</Link></li>
               <li><Link href="/terms" className="hover:text-blue-500 transition-colors">Terms of Service</Link></li>
-              <li><Link href="/cookies" className="hover:text-blue-500 transition-colors">Cookie Policy</Link></li>
-              <li><a href="#" className="hover:text-blue-500 transition-colors">SLA Agreement</a></li>
+              <li><Link href="/cookie-policy" className="hover:text-blue-500 transition-colors">Cookie Policy</Link></li>
+              <li><a href="sla-agreement" className="hover:text-blue-500 transition-colors">SLA Agreement</a></li>
             </ul>
           </div>
 
