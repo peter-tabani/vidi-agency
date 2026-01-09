@@ -74,114 +74,107 @@ export default function RealEstatePage() {
               </div>
 
               {/* Quick Stats */}
-              <div className="grid grid-cols-3 gap-4">
-                {[
-                  { label: "Avg Lead Increase", value: "+340%", icon: TrendingUp },
-                  { label: "Conversion Rate", value: "45%", icon: CheckCircle2 },
-                  { label: "Revenue Growth", value: "+$280K", icon: DollarSign }
-                ].map((stat, idx) => {
-                  const Icon = stat.icon;
-                  return (
-                    <div key={idx} className="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/10">
-                      <Icon size={20} className="text-blue-300 mb-2" />
-                      <p className="text-2xl font-bold text-white">{stat.value}</p>
-                      <p className="text-xs text-blue-200">{stat.label}</p>
-                    </div>
-                  );
-                })}
-              </div>
+              {/* Trust Indicators */}
+<div className="grid grid-cols-3 gap-4">
+  {[
+    { label: "Custom Built", icon: CheckCircle2 },
+    { label: "Mobile First", icon: Smartphone },
+    { label: "SEO Ready", icon: TrendingUp }
+  ].map((stat, idx) => {
+    const Icon = stat.icon;
+    return (
+      <div key={idx} className="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/10">
+        <Icon size={24} className="text-blue-300 mb-2" />
+        <p className="text-sm font-bold text-white">{stat.label}</p>
+      </div>
+    );
+  })}
+</div>
             </div>
 
             {/* Right: Visual Element */}
-            <div className="relative hidden lg:block">
-              <div className="relative w-full aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-blue-400/20 to-cyan-400/20 border border-white/10 backdrop-blur-md">
-                {/* Placeholder for property showcase */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-32 h-32 rounded-2xl bg-gradient-to-br from-blue-400 to-cyan-400 mx-auto mb-6 flex items-center justify-center">
-                      <Building2 size={64} className="text-white opacity-50" />
-                    </div>
-                    <p className="text-white/60 font-semibold">Premium Property Showcase</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* Right: Visual Element */}
+<div className="relative hidden lg:block">
+  <div className="relative w-full aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-blue-400/20 to-cyan-400/20 border border-white/10 backdrop-blur-md">
+    <img 
+      src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80" 
+      alt="Modern luxury home"
+      className="w-full h-full object-cover opacity-90"
+    />
+    <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent"></div>
+    <div className="absolute bottom-8 left-8 right-8 text-white">
+      <p className="text-sm font-semibold mb-2">Premium Property Showcase</p>
+      <p className="text-2xl font-bold">Sell Homes Faster Online</p>
+    </div>
+  </div>
+</div>
           </div>
         </div>
       </section>
             {/* ============================================================================
           PROBLEM/SOLUTION SECTION
           ============================================================================ */}
-      <section className="py-20 px-6 md:px-12 lg:px-20 bg-gray-50">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
-              Why Real Estate Agents Fail Online
-            </h2>
-            <p className="text-xl text-gray-600">
-              And how we fix it
-            </p>
-          </div>
+      {/* ============================================================================
+    REAL CHALLENGES WE SOLVE
+    ============================================================================ */}
+<section className="py-20 px-6 md:px-12 lg:px-20 bg-gray-50">
+  <div className="container mx-auto max-w-6xl">
+    <div className="text-center mb-16">
+      <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
+        Common Real Estate Website Challenges
+      </h2>
+      <p className="text-xl text-gray-600">
+        Issues we help agents and brokers overcome
+      </p>
+    </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Problem */}
-            <div className="bg-white rounded-3xl p-8 border-2 border-red-200 shadow-lg hover:shadow-xl transition-all">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center">
-                  <span className="text-2xl">❌</span>
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900">The Problem</h3>
-              </div>
-              
-              <ul className="space-y-4">
-                {[
-                  "Outdated websites that don't showcase properties",
-                  "Slow load times lose buyers before they see listings",
-                  "No mobile optimization - 80% of buyers search on phones",
-                  "Missing virtual tours and 3D walkthroughs",
-                  "No lead capture or follow-up automation",
-                  "Competing with 100+ other agents in your area",
-                  "No SEO - invisible on Google for local searches",
-                  "Manual processes waste hours on admin work"
-                ].map((item, idx) => (
-                  <div key={idx} className="flex items-start gap-3">
-                    <span className="text-red-500 font-bold mt-1">•</span>
-                    <span className="text-gray-700">{item}</span>
-                  </div>
-                ))}
-              </ul>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {[
+        {
+          icon: Clock,
+          title: "Outdated Design",
+          description: "Your website looks like it's from 2010. Modern buyers expect premium experiences."
+        },
+        {
+          icon: Smartphone,
+          title: "Poor Mobile Experience",
+          description: "Over 70% of property searches happen on mobile. Your site needs to work perfectly on phones."
+        },
+        {
+          icon: Search,
+          title: "Not Found on Google",
+          description: "Potential clients can't find you when searching for '[Your City] real estate agent'."
+        },
+        {
+          icon: MessageSquare,
+          title: "No Lead Capture",
+          description: "Visitors browse your listings but you have no way to follow up or nurture them."
+        },
+        {
+          icon: Eye,
+          title: "Poor Property Showcase",
+          description: "Static images don't sell properties. You need virtual tours and immersive experiences."
+        },
+        {
+          icon: BarChart3,
+          title: "No Performance Data",
+          description: "You don't know which listings get views, where traffic comes from, or what converts."
+        }
+      ].map((item, idx) => {
+        const Icon = item.icon;
+        return (
+          <div key={idx} className="bg-white rounded-2xl p-6 border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all">
+            <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center mb-4">
+              <Icon size={24} className="text-blue-600" />
             </div>
-
-            {/* Solution */}
-            <div className="bg-white rounded-3xl p-8 border-2 border-green-200 shadow-lg hover:shadow-xl transition-all">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
-                  <span className="text-2xl">✅</span>
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900">Our Solution</h3>
-              </div>
-              
-              <ul className="space-y-4">
-                {[
-                  "Stunning property showcase websites that convert",
-                  "Lightning-fast load times (under 1 second)",
-                  "Mobile-first design optimized for all devices",
-                  "Integrated virtual tours & 3D property walkthroughs",
-                  "Automated lead capture & CRM integration",
-                  "SEO-optimized for local real estate keywords",
-                  "Rank #1 on Google for your area & property types",
-                  "AI-powered chatbots handle inquiries 24/7"
-                ].map((item, idx) => (
-                  <div key={idx} className="flex items-start gap-3">
-                    <CheckCircle2 size={20} className="text-green-500 flex-shrink-0 mt-1" />
-                    <span className="text-gray-700">{item}</span>
-                  </div>
-                ))}
-              </ul>
-            </div>
+            <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
+            <p className="text-gray-600">{item.description}</p>
           </div>
-        </div>
-      </section>
+        );
+      })}
+    </div>
+  </div>
+</section>
 
       {/* ============================================================================
           SPECIALIZED SERVICES FOR REAL ESTATE
@@ -329,48 +322,61 @@ export default function RealEstatePage() {
       {/* ============================================================================
           ROI & RESULTS SECTION
           ============================================================================ */}
-      <section className="py-20 px-6 md:px-12 lg:px-20 bg-gradient-to-br from-blue-600 to-blue-800 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
-        </div>
+      {/* ============================================================================
+    WHAT WE BUILD FOR YOU
+    ============================================================================ */}
+<section className="py-20 px-6 md:px-12 lg:px-20 bg-gradient-to-br from-blue-600 to-blue-800 relative overflow-hidden">
+  <div className="absolute inset-0 opacity-10">
+    <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
+  </div>
 
-        <div className="container mx-auto max-w-6xl relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
-              Real Results from Real Agents
-            </h2>
-            <p className="text-xl text-blue-100">
-              See what our real estate solutions deliver
-            </p>
-          </div>
+  <div className="container mx-auto max-w-6xl relative z-10">
+    <div className="text-center mb-16">
+      <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
+        Solutions Built for Real Estate Professionals
+      </h2>
+      <p className="text-xl text-blue-100">
+        Everything you need to stand out in a competitive market
+      </p>
+    </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                metric: "340%",
-                label: "Average Lead Increase",
-                desc: "Agents see 3-4x more qualified leads within 90 days"
-              },
-              {
-                metric: "45%",
-                label: "Conversion Rate",
-                desc: "Website visitors convert to inquiries at 45% (industry avg: 2%)"
-              },
-              {
-                metric: "+$280K",
-                label: "Average Revenue Growth",
-                desc: "Annual revenue increase from improved online presence"
-              }
-            ].map((item, idx) => (
-              <div key={idx} className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 text-center">
-                <p className="text-5xl font-extrabold text-white mb-2">{item.metric}</p>
-                <p className="text-xl font-bold text-blue-100 mb-3">{item.label}</p>
-                <p className="text-blue-200">{item.desc}</p>
-              </div>
-            ))}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {[
+        {
+          icon: Globe,
+          title: "Agent Websites",
+          desc: "Professional portfolio showcasing your brand and listings"
+        },
+        {
+          icon: Eye,
+          title: "Virtual Tours",
+          desc: "3D walkthroughs and immersive property experiences"
+        },
+        {
+          icon: Zap,
+          title: "Lead Automation",
+          desc: "Capture and nurture leads automatically 24/7"
+        },
+        {
+          icon: Search,
+          title: "Local SEO",
+          desc: "Rank higher on Google for your target neighborhoods"
+        }
+      ].map((item, idx) => {
+        const Icon = item.icon;
+        return (
+          <div key={idx} className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 text-center hover:bg-white/20 transition-all">
+            <div className="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center mx-auto mb-4">
+              <Icon size={32} className="text-white" />
+            </div>
+            <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
+            <p className="text-blue-100 text-sm">{item.desc}</p>
           </div>
-        </div>
-      </section>
+        );
+      })}
+    </div>
+  </div>
+</section>
             {/* ============================================================================
           FEATURES COMPARISON
           ============================================================================ */}
@@ -430,76 +436,101 @@ export default function RealEstatePage() {
       {/* ============================================================================
           TESTIMONIALS/SOCIAL PROOF
           ============================================================================ */}
-      <section className="py-20 px-6 md:px-12 lg:px-20 bg-gray-50">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
-              Trusted by Top Real Estate Professionals
-            </h2>
-          </div>
+      {/* ============================================================================
+    WHO WE WORK WITH
+    ============================================================================ */}
+<section className="py-20 px-6 md:px-12 lg:px-20 bg-gray-50">
+  <div className="container mx-auto max-w-6xl">
+    <div className="text-center mb-16">
+      <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
+        Built for Every Type of Real Estate Professional
+      </h2>
+    </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Sarah Mitchell",
-                role: "Top Real Estate Agent",
-                company: "Luxury Homes Realty",
-                testimonial: "My website now generates 5+ qualified leads per week. This is a game-changer for my business.",
-                rating: 5
-              },
-              {
-                name: "James Rodriguez",
-                role: "Brokerage Owner",
-                company: "Metropolitan Properties",
-                testimonial: "The lead distribution system has increased our team's efficiency by 60%. Best investment we've made.",
-                rating: 5
-              },
-              {
-                name: "Emma Chen",
-                role: "Property Developer",
-                company: "Urban Developments Inc",
-                testimonial: "Pre-launch sales exceeded expectations thanks to the stunning website and marketing strategy.",
-                rating: 5
-              }
-            ].map((testimonial, idx) => (
-              <div key={idx} className="bg-white rounded-3xl p-8 border border-gray-200 hover:shadow-xl transition-all">
-                <div className="flex gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} size={18} className="fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-                <p className="text-gray-700 mb-6 italic">"{testimonial.testimonial}"</p>
-                <div>
-                  <p className="font-bold text-gray-900">{testimonial.name}</p>
-                  <p className="text-sm text-gray-600">{testimonial.role}</p>
-                  <p className="text-sm text-blue-600 font-semibold">{testimonial.company}</p>
-                </div>
-              </div>
-            ))}
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {[
+        {
+          icon: Briefcase,
+          title: "Independent Agents",
+          features: [
+            "Personal branding websites",
+            "Property showcase systems",
+            "Lead capture forms",
+            "Local SEO optimization"
+          ]
+        },
+        {
+          icon: Building2,
+          title: "Brokerages",
+          features: [
+            "Multi-agent platforms",
+            "Team management dashboards",
+            "Lead distribution systems",
+            "Performance analytics"
+          ]
+        },
+        {
+          icon: Rocket,
+          title: "Developers",
+          features: [
+            "Project marketing sites",
+            "Interactive community maps",
+            "Pre-launch campaigns",
+            "Floor plan visualizations"
+          ]
+        }
+      ].map((item, idx) => {
+        const Icon = item.icon;
+        return (
+          <div key={idx} className="bg-white rounded-3xl p-8 border border-gray-200 hover:shadow-xl transition-all">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center mb-6">
+              <Icon size={32} className="text-white" />
+            </div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">{item.title}</h3>
+            <ul className="space-y-3">
+              {item.features.map((feature, fIdx) => (
+                <li key={fIdx} className="flex items-start gap-3">
+                  <CheckCircle2 size={20} className="text-green-500 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">{feature}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-        </div>
-      </section>
+        );
+      })}
+    </div>
+  </div>
+</section>
 
       {/* ============================================================================
           CTA SECTION
           ============================================================================ */}
       <section className="py-20 px-6 md:px-12 lg:px-20 bg-gradient-to-r from-blue-600 to-cyan-600">
-        <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
-            Ready to Dominate Your Market?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8">
-            Join hundreds of real estate professionals who are closing more deals with Vidi Agency.
-          </p>
-          <Link 
-            href="/get-started"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-600 rounded-full font-bold text-lg hover:bg-blue-50 transition-all shadow-lg"
-          >
-            Get Your Real Estate Website Today
-            <ArrowRight size={20} />
-          </Link>
-        </div>
-      </section>
+  <div className="container mx-auto max-w-4xl text-center">
+    <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
+      Ready to Upgrade Your Online Presence?
+    </h2>
+    <p className="text-xl text-blue-100 mb-8">
+      Let's discuss how a modern website can help you attract more qualified buyers and sellers.
+    </p>
+    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+      <Link 
+        href="/get-started"
+        className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-600 rounded-full font-bold text-lg hover:bg-blue-50 transition-all shadow-lg"
+      >
+        Start Your Project
+        <ArrowRight size={20} />
+      </Link>
+      <Link 
+        href="/contact"
+        className="inline-flex items-center gap-2 px-8 py-4 bg-transparent border-2 border-white text-white rounded-full font-bold text-lg hover:bg-white/10 transition-all"
+      >
+        Schedule Consultation
+        <Calendar size={20} />
+      </Link>
+    </div>
+  </div>
+</section>
 
       <Footer />
 

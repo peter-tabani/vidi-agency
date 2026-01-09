@@ -408,8 +408,7 @@ export default function GetStartedPage() {
       <div className="flex items-center justify-between mb-4">
         {[1, 2, 3, 4, 5].map((step) => (
           <div key={step} className="flex items-center">
-            <div className={`
-              w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm transition-all duration-500
+            <div className={`w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center font-bold text-xs md:text-sm
               ${currentStep >= step 
                 ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-200' 
                 : 'bg-gray-100 text-gray-400'}
@@ -418,14 +417,14 @@ export default function GetStartedPage() {
               {currentStep > step ? <Check size={18} /> : step}
             </div>
             {step < 5 && (
-              <div className={`w-12 sm:w-20 md:w-32 h-1 mx-2 rounded-full transition-all duration-500 ${
+  <div className={`w-8 sm:w-20 md:w-32 h-1 mx-1 sm:mx-2 rounded-full transition-all duration-500 ${
                 currentStep > step ? 'bg-gradient-to-r from-blue-600 to-purple-600' : 'bg-gray-200'
               }`} />
             )}
           </div>
         ))}
       </div>
-      <div className="flex justify-between text-xs font-medium text-gray-500">
+      <div className="hidden sm:flex justify-between text-xs font-medium text-gray-500">
         <span>Service</span>
         <span>Features</span>
         <span>Timeline</span>
@@ -915,7 +914,7 @@ export default function GetStartedPage() {
       </header>
       
       {/* Main Content */}
-      <div ref={containerRef} className="pt-24 pb-32 container mx-auto px-6 md:px-12 lg:px-20 max-w-6xl">
+      <div ref={containerRef} className="pt-20 pb-40 container mx-auto px-4 md:px-12 lg:px-20 max-w-6xl">
         {renderProgressBar()}
         
         <div className="min-h-[500px]">
@@ -929,13 +928,13 @@ export default function GetStartedPage() {
       
       {/* Fixed Bottom Navigation */}
       {currentStep < 5 && (
-        <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 py-4 px-6 z-40">
+        <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 py-3 px-4 z-40 safe-bottom">
           <div className="container mx-auto max-w-6xl flex items-center justify-between">
             <button
-              onClick={prevStep}
-              disabled={currentStep === 1}
-              className={`
-                flex items-center gap-2 px-6 py-3 rounded-full font-bold transition-all
+  onClick={prevStep}
+  disabled={currentStep === 1}
+  className={`
+    flex items-center gap-2 px-4 md:px-6 py-2.5 md:py-3 rounded-full font-bold text-sm md:text-base transition-all
                 ${currentStep === 1 
                   ? 'text-gray-300 cursor-not-allowed' 
                   : 'text-gray-700 hover:bg-gray-100'}
@@ -948,10 +947,10 @@ export default function GetStartedPage() {
             {/* Mobile Price Display REMOVED */}
             
             <button
-              onClick={currentStep === 4 ? handleSubmit : nextStep}
-              disabled={!canProceed() || isSubmitting}
-              className={`
-                flex items-center gap-2 px-8 py-3 rounded-full font-bold transition-all
+  onClick={currentStep === 4 ? handleSubmit : nextStep}
+  disabled={!canProceed() || isSubmitting}
+  className={`
+    flex items-center gap-2 px-6 md:px-8 py-2.5 md:py-3 rounded-full font-bold text-sm md:text-base transition-all
                 ${canProceed() 
                   ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-200 hover:shadow-xl' 
                   : 'bg-gray-200 text-gray-400 cursor-not-allowed'}
@@ -994,6 +993,9 @@ export default function GetStartedPage() {
         .animate-confetti {
           animation: confetti 3s ease-out forwards;
         }
+          .safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
       `}</style>
     </main>
   );

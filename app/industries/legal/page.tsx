@@ -32,7 +32,7 @@ export default function LegalPage() {
 
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/20 border border-blue-400/30 rounded-full mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/20 border b  order-blue-400/30 rounded-full mb-6">
               <Scale size={16} className="text-blue-300" />
               <span className="text-sm font-bold text-blue-300">Legal Technology Solutions</span>
             </div>
@@ -42,8 +42,9 @@ export default function LegalPage() {
             </h1>
 
             <p className="text-xl text-slate-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Secure, compliant, and sophisticated digital solutions designed specifically for law firms, legal departments, and compliance professionals. Elevate your practice with enterprise-grade technology.
-            </p>
+  Modern, secure digital solutions designed for law firms, legal departments, and compliance professionals. 
+  We build technology that helps you work more efficiently while maintaining the highest security standards.
+</p>
 
             <Link 
               href="/get-started"
@@ -54,6 +55,7 @@ export default function LegalPage() {
             </Link>
           </div>
         </div>
+        
       </section>
 
       {/* ============================================================================
@@ -157,10 +159,10 @@ export default function LegalPage() {
                 desc: 'Military-grade AES-256 encryption for all data in transit and at rest.'
               },
               {
-                icon: Shield,
-                title: 'SOC 2 Type II Certified',
-                desc: 'Annual third-party audits ensure compliance and security standards.'
-              },
+  icon: Shield,
+  title: 'Security Certifications',
+  desc: 'Built with enterprise security standards and best practices in mind.'
+},
               {
                 icon: Eye,
                 title: 'Audit Trails & Logging',
@@ -188,9 +190,9 @@ export default function LegalPage() {
               },
               {
                 icon: CheckCircle2,
-                title: 'Regular Penetration Testing',
-                desc: 'Quarterly security assessments by certified ethical hackers.'
-              }
+  title: 'Regular Security Audits',
+  desc: 'Ongoing security assessments and vulnerability testing.'
+}
             ].map((item, idx) => {
               const Icon = item.icon;
               return (
@@ -224,53 +226,53 @@ export default function LegalPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
-                type: 'Solo & Small Firms (1-10 attorneys)',
-                benefits: [
-                  'Affordable, scalable pricing',
-                  'Easy-to-use interface',
-                  'Automated intake & lead management',
-                  'Time tracking & billing',
-                  'Client portal',
-                  'Mobile access'
-                ],
-                roi: 'Save 15+ hours/week on admin'
-              },
-              {
-                type: 'Mid-Size Firms (11-50 attorneys)',
-                benefits: [
-                  'Multi-user collaboration',
-                  'Advanced case management',
-                  'Team workflows & automation',
-                  'Custom reporting',
-                  'API integrations',
-                  'Dedicated support'
-                ],
-                roi: 'Increase revenue by 40%'
-              },
-              {
-                type: 'Large Firms (50+ attorneys)',
-                benefits: [
-                  'Enterprise features',
-                  'Custom integrations',
-                  'White-label options',
-                  'Advanced security',
-                  'Dedicated account manager',
-                  'Custom development'
-                ],
-                roi: 'Reduce costs by $500K+/year'
-              },
-              {
-                type: 'In-House Legal Departments',
-                benefits: [
-                  'Contract management',
-                  'Compliance tracking',
-                  'Matter management',
-                  'Budget tracking',
-                  'Vendor management',
-                  'Risk assessment'
-                ],
-                roi: 'Improve compliance by 95%'
-              }
+  type: 'Solo & Small Firms (1-10 attorneys)',
+  benefits: [
+    'Affordable, scalable pricing',
+    'Easy-to-use interface',
+    'Automated intake & lead management',
+    'Time tracking & billing',
+    'Client portal',
+    'Mobile access'
+  ],
+  highlight: 'Perfect for growing practices' // Changed from fake ROI
+},
+{
+  type: 'Mid-Size Firms (11-50 attorneys)',
+  benefits: [
+    'Multi-user collaboration',
+    'Advanced case management',
+    'Team workflows & automation',
+    'Custom reporting',
+    'API integrations',
+    'Dedicated support'
+  ],
+  highlight: 'Scale your operations' // Changed from fake ROI
+},
+{
+  type: 'Large Firms (50+ attorneys)',
+  benefits: [
+    'Enterprise features',
+    'Custom integrations',
+    'White-label options',
+    'Advanced security',
+    'Dedicated account manager',
+    'Custom development'
+  ],
+  highlight: 'Enterprise-grade solutions' // Changed from fake ROI
+},
+{
+  type: 'In-House Legal Departments',
+  benefits: [
+    'Contract management',
+    'Compliance tracking',
+    'Matter management',
+    'Budget tracking',
+    'Vendor management',
+    'Risk assessment'
+  ],
+  highlight: 'Streamline legal operations' // Changed from fake ROI
+}
             ].map((item, idx) => (
               <div key={idx} className="bg-gradient-to-br from-blue-50 to-slate-50 rounded-3xl p-8 border border-blue-200 hover:shadow-xl transition-all">
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">{item.type}</h3>
@@ -283,8 +285,8 @@ export default function LegalPage() {
                   ))}
                 </ul>
                 <div className="pt-6 border-t border-blue-200">
-                  <p className="text-sm text-gray-600 mb-2">Expected ROI</p>
-                  <p className="text-2xl font-bold text-blue-600">{item.roi}</p>
+                  <p className="text-sm text-gray-600 mb-2">Highlight</p>
+                  <p className="text-2xl font-bold text-blue-600">{item.highlight}</p>
                 </div>
               </div>
             ))}
@@ -295,87 +297,125 @@ export default function LegalPage() {
       {/* ============================================================================
           SUCCESS METRICS
           ============================================================================ */}
-      <section className="py-20 px-6 md:px-12 lg:px-20 bg-gradient-to-r from-blue-600 to-blue-700">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
-              Proven Results for Legal Professionals
-            </h2>
-          </div>
+      {/* ============================================================================
+    WHAT WE BUILD FOR LEGAL PROFESSIONALS
+    ============================================================================ */}
+<section className="py-20 px-6 md:px-12 lg:px-20 bg-gradient-to-r from-blue-600 to-blue-700">
+  <div className="container mx-auto max-w-6xl">
+    <div className="text-center mb-16">
+      <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
+        Technology That Works for Your Practice
+      </h2>
+      <p className="text-xl text-blue-100">
+        Modern solutions built specifically for legal professionals
+      </p>
+    </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {[
-              { metric: '70%', label: 'Faster Legal Research' },
-              { metric: '80%', label: 'Less Manual Data Entry' },
-              { metric: '+45%', label: 'Billable Hours Increase' },
-              { metric: '99.99%', label: 'System Uptime' }
-            ].map((item, idx) => (
-              <div key={idx} className="text-center">
-                <div className="text-5xl font-extrabold text-white mb-2">{item.metric}</div>
-                <p className="text-blue-100">{item.label}</p>
-              </div>
-            ))}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {[
+        { 
+          icon: Lock, 
+          label: 'Encrypted & Secure',
+          desc: 'Military-grade data protection'
+        },
+        { 
+          icon: CheckCircle2, 
+          label: 'Compliance Ready',
+          desc: 'Built for legal requirements'
+        },
+        { 
+          icon: Zap, 
+          label: 'Fast Implementation',
+          desc: '2-4 week setup process'
+        },
+        { 
+          icon: Users, 
+          label: '24/7 Support',
+          desc: 'Always here when you need us'
+        }
+      ].map((item, idx) => {
+        const Icon = item.icon;
+        return (
+          <div key={idx} className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 text-center">
+            <div className="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center mx-auto mb-4">
+              <Icon size={32} className="text-white" />
+            </div>
+            <p className="text-xl font-bold text-white mb-2">{item.label}</p>
+            <p className="text-blue-100 text-sm">{item.desc}</p>
           </div>
-        </div>
-      </section>
+        );
+      })}
+    </div>
+  </div>
+</section>
             {/* ============================================================================
-          CASE STUDY - LEGAL SUCCESS
-          ============================================================================ */}
-      <section className="py-20 px-6 md:px-12 lg:px-20 bg-white">
-        <div className="container mx-auto max-w-4xl">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
-              Case Study: Legal Excellence in Action
-            </h2>
-          </div>
+    HOW WE HELP LAW FIRMS
+    ============================================================================ */}
+<section className="py-20 px-6 md:px-12 lg:px-20 bg-white">
+  <div className="container mx-auto max-w-6xl">
+    <div className="text-center mb-16">
+      <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
+        Common Challenges We Solve
+      </h2>
+      <p className="text-xl text-gray-600">
+        Real problems legal professionals face every day
+      </p>
+    </div>
 
-          <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-3xl p-12 border border-slate-200">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              <div>
-                <div className="inline-block px-4 py-2 bg-blue-100 rounded-full mb-6">
-                  <p className="text-sm font-bold text-blue-700">Real Client Success</p>
-                </div>
-                <h3 className="text-3xl font-bold text-gray-900 mb-4">
-                  Mid-Size IP Firm Increases Revenue by 45%
-                </h3>
-                <p className="text-gray-700 mb-6">
-                  A 25-attorney intellectual property firm was struggling with manual processes, losing billable hours to administrative work, and missing client deadlines due to disorganized case management.
-                </p>
-                <div className="space-y-4">
-                  <div>
-                    <p className="text-sm text-gray-600 mb-1">Challenge</p>
-                    <p className="font-bold text-gray-900">Manual intake process taking 3 hours per client</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-600 mb-1">Solution</p>
-                    <p className="font-bold text-gray-900">Automated intake, AI research tools, and practice analytics</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-600 mb-1">Result</p>
-                    <p className="font-bold text-blue-600 text-lg">+45% revenue growth in 6 months</p>
-                  </div>
-                </div>
-              </div>
-              <div className="bg-white rounded-2xl p-8 border border-slate-200">
-                <h4 className="font-bold text-gray-900 mb-6">Key Metrics</h4>
-                <div className="space-y-6">
-                  {[
-                    { label: 'Intake Time Reduced', value: '90%' },
-                    { label: 'Billable Hours Increase', value: '+35%' },
-                    { label: 'Client Satisfaction', value: '+28%' },
-                    { label: 'Administrative Cost Savings', value: '$180K/year' }
-                  ].map((metric, idx) => (
-                    <div key={idx} className="flex justify-between items-center pb-4 border-b border-slate-100">
-                      <span className="text-gray-700">{metric.label}</span>
-                      <span className="font-bold text-blue-600 text-lg">{metric.value}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {[
+        {
+          challenge: "Time-Consuming Client Intake",
+          solution: "Automated intake forms with intelligent document collection and e-signature integration",
+          icon: FileText
+        },
+        {
+          challenge: "Disorganized Case Management",
+          solution: "Centralized case tracking with deadlines, documents, and client communications in one place",
+          icon: Layers
+        },
+        {
+          challenge: "Manual Time Tracking",
+          solution: "Automated time tracking with mobile apps and billing integration",
+          icon: Clock
+        },
+        {
+          challenge: "Inefficient Legal Research",
+          solution: "AI-powered research tools that find relevant cases and precedents faster",
+          icon: Database
+        },
+        {
+          challenge: "Client Communication Gaps",
+          solution: "Secure client portals with messaging, document sharing, and case updates",
+          icon: MessageSquare
+        },
+        {
+          challenge: "Data Security Concerns",
+          solution: "Enterprise-grade encryption, audit trails, and compliance certifications",
+          icon: Shield
+        }
+      ].map((item, idx) => {
+        const Icon = item.icon;
+        return (
+          <div key={idx} className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl p-8 border border-slate-200 hover:shadow-lg transition-all">
+            <div className="w-12 h-12 rounded-xl bg-blue-600 flex items-center justify-center mb-4">
+              <Icon size={24} className="text-white" />
+            </div>
+            <div className="mb-4">
+              <span className="text-xs font-bold text-gray-500 uppercase tracking-wide">Challenge</span>
+              <h3 className="text-xl font-bold text-gray-900 mt-1">{item.challenge}</h3>
+            </div>
+            <div>
+              <span className="text-xs font-bold text-blue-600 uppercase tracking-wide">Our Solution</span>
+              <p className="text-gray-700 mt-1">{item.solution}</p>
             </div>
           </div>
-        </div>
-      </section>
+        );
+      })}
+    </div>
+  </div>
+</section>
+      
 
       {/* ============================================================================
           FAQ
@@ -391,21 +431,21 @@ export default function LegalPage() {
           <div className="space-y-6">
             {[
               {
-                q: "Is my client data truly secure?",
-                a: "Yes. We use military-grade AES-256 encryption, maintain SOC 2 Type II certification, and undergo quarterly penetration testing. Your data is protected with enterprise-grade security."
-              },
+  q: "Is my client data truly secure?",
+  a: "Yes. We use industry-standard AES-256 encryption for data at rest and in transit, implement role-based access controls, and follow security best practices. We take data protection seriously and can provide detailed security documentation upon request."
+},
               {
-                q: "How does this comply with attorney-client privilege?",
-                a: "Our system is specifically designed for legal professionals. We maintain privilege logs, implement role-based access controls, and ensure all communications are protected under privilege."
-              },
+  q: "How does this comply with attorney-client privilege?",
+  a: "Our system is designed with legal professionals in mind. We implement access controls, secure communications, and can configure privilege protection features. However, we recommend consulting with your IT and compliance teams to ensure our solution meets your specific requirements."
+},
               {
                 q: "Can I integrate with my existing tools?",
                 a: "Absolutely. We integrate with LexisNexis, Westlaw, Clio, TimeSolv, and most major legal tech platforms via API."
               },
               {
-                q: "What about data portability if I leave?",
-                a: "You own your data. We provide complete data exports in standard formats (CSV, JSON, PDF) at any time, with no lock-in contracts."
-              },
+  q: "What about data portability if I leave?",
+  a: "You own your data completely. We provide data exports in standard formats (CSV, JSON, PDF) at any time. No lock-in, no hassle."
+},
               {
                 q: "How long does implementation take?",
                 a: "Typically 2-4 weeks for full implementation, depending on firm size and complexity. We provide dedicated implementation support."

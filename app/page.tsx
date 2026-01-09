@@ -224,7 +224,7 @@ export default function Home() {
 
             {/* Buttons - Responsive */}
             <div className="flex flex-col sm:flex-row gap-3 mb-6 md:mb-8 w-full">
-              <Link href="/contact" className="bg-gray-900 text-white px-6 sm:px-8 py-3 md:py-3.5 rounded-full text-sm md:text-base font-bold hover:bg-blue-700 shadow-xl shadow-blue-200/50 transition-all w-full sm:w-auto text-center">
+              <Link href="/get-started" className="bg-gray-900 text-white px-6 sm:px-8 py-3 md:py-3.5 rounded-full text-sm md:text-base font-bold hover:bg-blue-700 shadow-xl shadow-blue-200/50 transition-all w-full sm:w-auto text-center">
                 Start Your Project
               </Link>
               <Link href="/case-studies" className="px-6 sm:px-8 py-3 md:py-3.5 rounded-full text-sm md:text-base font-bold text-gray-800 bg-white border border-gray-300 hover:bg-gray-50 transition-all shadow-sm w-full sm:w-auto text-center">
@@ -433,7 +433,7 @@ export default function Home() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center">
-            <Link href="/contact" className="px-6 sm:px-8 md:px-10 py-3 md:py-4 lg:py-5 bg-white text-gray-900 rounded-full text-sm md:text-base lg:text-lg font-bold hover:bg-gray-100 transition-all shadow-xl shadow-white/10 flex items-center gap-2 w-full sm:w-auto text-center">
+            <Link href="/get-started" className="px-6 sm:px-8 md:px-10 py-3 md:py-4 lg:py-5 bg-white text-gray-900 rounded-full text-sm md:text-base lg:text-lg font-bold hover:bg-gray-100 transition-all shadow-xl shadow-white/10 flex items-center gap-2 w-full sm:w-auto text-center">
               Start Your Project
             </Link>
             <Link href="/contact" className="px-6 sm:px-8 md:px-10 py-3 md:py-4 lg:py-5 bg-transparent border border-gray-700 text-white rounded-full text-sm md:text-base lg:text-lg font-bold hover:bg-gray-800 transition-all w-full sm:w-auto text-center">

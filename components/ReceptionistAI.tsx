@@ -349,12 +349,12 @@ export default function ReceptionistAI() {
 
       {/* --- MAIN CHAT WINDOW --- */}
       {isOpen && (
-        <div className={`
-          mb-2 bg-white w-[calc(100vw-32px)] sm:w-[400px] max-w-full 
-          ${isMinimized ? 'h-16' : 'h-[600px]'} 
-          rounded-2xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden 
-          transition-all duration-300 ease-in-out
-        `}>
+  <div className={`
+    mb-2 bg-white w-[calc(100vw-32px)] sm:w-[400px] max-w-full 
+    ${isMinimized ? 'h-16' : 'h-[85vh] sm:h-[600px]'} 
+    rounded-2xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden 
+    transition-all duration-300 ease-in-out
+  `}>
           
           {/* Header */}
           <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 p-4 flex justify-between items-center text-white relative overflow-hidden">
@@ -375,7 +375,7 @@ export default function ReceptionistAI() {
                 <div className="flex items-center gap-1 text-xs text-white/90">
   {userLocation.city && <MapPin className="w-3 h-3" />}
   <span className="truncate max-w-[150px]">
-    {userLocation.city ? `Server: ${userLocation.city}` : 'Online 24/7'}
+    {userLocation.city ? `Server: ${userLocation.city}` : ''}
   </span>
 </div>
               </div>

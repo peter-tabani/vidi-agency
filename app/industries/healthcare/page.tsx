@@ -39,12 +39,26 @@ export default function HealthcarePage() {
                 View Healthcare Case Studies
               </Link>
               <Link 
-                href="/consultation" 
+                href="/contact" 
                 className="px-8 py-3 rounded-lg text-lg font-medium text-white bg-blue-600 hover:bg-blue-700 transition-all"
               >
                 Schedule Consultation
               </Link>
             </div>
+            <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-sm text-gray-500">
+  <div className="flex items-center gap-2">
+    <Shield size={20} className="text-blue-600" />
+    <span>HIPAA Compliant</span>
+  </div>
+  <div className="flex items-center gap-2">
+    <Lock size={20} className="text-blue-600" />
+    <span>Encrypted Data</span>
+  </div>
+  <div className="flex items-center gap-2">
+    <Cloud size={20} className="text-blue-600" />
+    <span>Secure Cloud Hosting</span>
+  </div>
+</div>
           </div>
         </div>
       </section>
@@ -187,85 +201,91 @@ export default function HealthcarePage() {
       {/* ============================================================================
           EXAMPLE PROJECT SECTION
           ============================================================================ */}
-      <section className="py-16 px-6 md:px-12 lg:px-20 bg-white">
-        <div className="container mx-auto max-w-4xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Example Project
-            </h2>
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 rounded-full">
-              <Activity size={16} className="text-blue-600" />
-              <span className="text-sm font-semibold text-blue-600">Multi-Specialty Clinic - Miami, FL</span>
+      {/* ============================================================================
+    WHAT WE CAN BUILD FOR YOU
+    ============================================================================ */}
+<section className="py-16 px-6 md:px-12 lg:px-20 bg-white">
+  <div className="container mx-auto max-w-6xl">
+    <div className="text-center mb-12">
+      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        What We Can Build for Your Practice
+      </h2>
+      <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+        Custom solutions designed specifically for healthcare operations
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {[
+        {
+          icon: MessageSquare,
+          title: "AI Phone Receptionist",
+          description: "24/7 voice assistant that answers calls, books appointments, and handles routine inquiries .",
+          features: ["Appointment scheduling", "Call routing", "After-hours coverage"]
+        },
+        {
+          icon: Calendar,
+          title: "Patient Portal",
+          description: "Secure platform where patients can book appointments, request refills, and communicate with your staff.",
+          features: ["Online booking", "Prescription refills", "HIPAA-compliant messaging"]
+        },
+        {
+          icon: Workflow,
+          title: "Automated Reminders",
+          description: "Smart SMS and email system that reduces no-shows with personalized appointment reminders.",
+          features: ["SMS reminders", "Email confirmations", "Cancellation management"]
+        },
+        {
+          icon: BarChart3,
+          title: "Practice Dashboard",
+          description: "Real-time analytics showing patient volume, revenue, no-show rates, and operational metrics.",
+          features: ["Revenue tracking", "Patient analytics", "Staff performance"]
+        },
+        {
+          icon: Database,
+          title: "EHR Integration",
+          description: "Connect your existing systems to eliminate manual data entry and sync patient information automatically.",
+          features: ["Data sync", "API connections", "Reduced errors"]
+        },
+        {
+          icon: Shield,
+          title: "Compliance Tools",
+          description: "Built-in HIPAA compliance features including encryption, audit logs, and access controls.",
+          features: ["Data encryption", "Audit trails", "Access management"]
+        },
+      ].map((item, idx) => {
+        const Icon = item.icon;
+        return (
+          <div key={idx} className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl p-6 border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all">
+            <div className="w-14 h-14 rounded-xl bg-blue-600 flex items-center justify-center mb-4">
+              <Icon size={28} className="text-white" />
+            </div>
+            <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
+            <p className="text-gray-600 mb-4 leading-relaxed">{item.description}</p>
+            <div className="space-y-2">
+              {item.features.map((feature, fIdx) => (
+                <div key={fIdx} className="flex items-center gap-2">
+                  <Check size={16} className="text-green-500 flex-shrink-0" />
+                  <span className="text-sm text-gray-700">{feature}</span>
+                </div>
+              ))}
             </div>
           </div>
+        );
+      })}
+    </div>
 
-          <div className="bg-gray-50 rounded-2xl p-8 border border-gray-200">
-            <div className="mb-8">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Challenge:</h3>
-              <p className="text-gray-600">
-                High no-show rate and front desk staff overwhelmed with appointment calls.
-              </p>
-            </div>
-
-            <div className="mb-8">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Solution:</h3>
-              <ul className="space-y-2">
-                {[
-                  "Automated SMS appointment reminders",
-                  "AI-powered phone system for routine inquiries",
-                  "Analytics dashboard showing booking patterns"
-                ].map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-3">
-                    <Check size={20} className="text-green-500 mt-1 flex-shrink-0" />
-                    <span className="text-gray-700">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="bg-white rounded-xl p-6 border border-blue-200">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Results:</h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {[
-                  {
-                    label: "No-show Rate",
-                    from: "30%",
-                    to: "11%",
-                    icon: TrendingUp
-                  },
-                  {
-                    label: "Front Desk Capacity",
-                    value: "Freed up for complex needs",
-                    icon: Users
-                  },
-                  {
-                    label: "Practice Visibility",
-                    value: "Better operational insights",
-                    icon: BarChart3
-                  },
-                ].map((item, idx) => {
-                  const Icon = item.icon;
-                  return (
-                    <div key={idx} className="text-center">
-                      <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mx-auto mb-3">
-                        <Icon size={24} className="text-blue-600" />
-                      </div>
-                      <p className="font-semibold text-gray-900">{item.label}</p>
-                      {item.from ? (
-                        <p className="text-gray-600 text-sm">
-                          {item.from} → {item.to}
-                        </p>
-                      ) : (
-                        <p className="text-gray-600 text-sm">{item.value}</p>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    <div className="mt-12 text-center">
+      <Link 
+        href="/get-started"
+        className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 text-white rounded-xl font-bold text-lg hover:bg-blue-700 transition-all shadow-lg hover:shadow-xl"
+      >
+        Start Your Project
+        <ArrowRight size={20} />
+      </Link>
+    </div>
+  </div>
+</section>
 
       {/* ============================================================================
           RESOURCES SECTION
@@ -279,16 +299,17 @@ export default function HealthcarePage() {
                   <FileText size={32} className="text-blue-600" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                  Healthcare Practice Automation Planning Guide
-                </h3>
-                <p className="text-sm text-gray-500 mb-6">Free Download</p>
-                <Link 
-                  href="/download-guide"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-all"
-                >
-                  Download PDF
-                  <ArrowRight size={18} />
-                </Link>
+  Free Healthcare Automation Checklist
+</h3>
+                <p className="text-sm text-gray-500 mb-6">Essential planning guide for medical practices</p>
+                <a 
+  href="/healthcare-automation-guide.pdf"
+  download="Vidi-Healthcare-Automation-Guide.pdf"
+  className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-all"
+>
+  Download PDF
+  <ArrowRight size={18} />
+</a>
               </div>
               
               <div className="lg:w-2/3">
@@ -318,15 +339,15 @@ export default function HealthcarePage() {
       <section className="py-16 px-6 md:px-12 lg:px-20 bg-white">
         <div className="container mx-auto max-w-4xl">
           <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-12 text-center text-white">
-            <h3 className="text-3xl font-bold mb-4">Let's Discuss Your Needs</h3>
-            <p className="text-xl mb-8 text-blue-100">
-              We'll discuss your specific challenges and explore whether 
-              automation could help your practice.
-            </p>
+            <h3 className="text-3xl font-bold mb-4">Ready to Modernize Your Practice?</h3>
+<p className="text-xl mb-8 text-blue-100">
+  Book a consultation to discuss how automation can 
+  reduce administrative burden and improve patient experience.
+</p>
             
             <div className="mb-8">
               <Link 
-                href="/consultation"
+                href="/contact"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-600 rounded-lg font-bold text-lg hover:bg-blue-50 transition-all shadow-lg"
               >
                 Schedule a Consultation
