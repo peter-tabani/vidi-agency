@@ -33,19 +33,43 @@ export default function BeautyLifestylePage() {
   type PortfolioType = Record<PortfolioKey, PortfolioItem[]>;
 
   const portfolio: PortfolioType = {
-    salons: [
-      { title: 'Luxe Salon NYC', desc: 'Booking increased 300%', image: '/api/placeholder/400/300' },
-      { title: 'Bliss Spa Retreat', desc: 'Automated appointment system', image: '/api/placeholder/400/300' },
-    ],
-    fashion: [
-      { title: 'Chic Boutique', desc: 'E-commerce redesign', image: '/api/placeholder/400/300' },
-      { title: 'Sustainable Fashion', desc: 'Brand storytelling platform', image: '/api/placeholder/400/300' },
-    ],
-    influencers: [
-      { title: '@StyleWithSarah', desc: 'Content monetization platform', image: '/api/placeholder/400/300' },
-      { title: 'Beauty Vlogger Pro', desc: 'Integrated brand deals system', image: '/api/placeholder/400/300' },
-    ]
-  };
+  salons: [
+    { 
+      title: 'Salon Booking System', 
+      desc: 'Online booking with automated reminders', 
+      image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&q=80' 
+    },
+    { 
+      title: 'Spa Client Portal', 
+      desc: 'Membership management and package tracking', 
+      image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&q=80' 
+    },
+  ],
+  fashion: [
+    { 
+      title: 'Fashion E-Commerce', 
+      desc: 'Lookbook integration with cart system', 
+      image: 'https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=400&q=80' 
+    },
+    { 
+      title: 'Brand Showcase Site', 
+      desc: 'Story-driven product presentation', 
+      image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=400&q=80' 
+    },
+  ],
+  influencers: [
+    { 
+      title: 'Creator Portfolio', 
+      desc: 'Media kit and brand collaboration hub', 
+      image: 'https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=400&q=80' 
+    },
+    { 
+      title: 'Content Monetization', 
+      desc: 'Subscription and exclusive content platform', 
+      image: 'https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=400&q=80' 
+    },
+  ]
+};
 
   const toggleVideo = () => {
     if (videoRef.current) {
@@ -442,22 +466,21 @@ export default function BeautyLifestylePage() {
               </div>
               
               <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 text-white">
-                <h3 className="text-2xl font-bold mb-4">The Cost of Ordinary</h3>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center pb-2 border-b border-gray-700">
-                    <span>Missed appointments</span>
-                    <span className="text-red-400 font-bold">-28% revenue</span>
-                  </div>
-                  <div className="flex justify-between items-center pb-2 border-b border-gray-700">
-                    <span>Social media gaps</span>
-                    <span className="text-red-400 font-bold">-42% engagement</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span>Brand inconsistency</span>
-                    <span className="text-red-400 font-bold">-35% retention</span>
-                  </div>
-                </div>
-              </div>
+  <h3 className="text-2xl font-bold mb-4">Common Challenges</h3>
+  <div className="space-y-4">
+    {[
+      "No online booking system",
+      "Disconnected social presence",
+      "Manual appointment management",
+      "No customer data insights"
+    ].map((issue, idx) => (
+      <div key={idx} className="flex items-center gap-3 pb-2 border-b border-gray-700">
+        <X className="w-4 h-4 text-red-400 flex-shrink-0" />
+        <span>{issue}</span>
+      </div>
+    ))}
+  </div>
+</div>
             </div>
 
             {/* Right Column - After */}
@@ -485,22 +508,21 @@ export default function BeautyLifestylePage() {
               </div>
               
               <div className="bg-gradient-to-br from-pink-600 to-rose-600 rounded-2xl p-8 text-white">
-                <h3 className="text-2xl font-bold mb-4">The Value of Extraordinary</h3>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center pb-2 border-b border-pink-500">
-                    <span>Automated bookings</span>
-                    <span className="text-yellow-300 font-bold">+65% efficiency</span>
-                  </div>
-                  <div className="flex justify-between items-center pb-2 border-b border-pink-500">
-                    <span>Social integration</span>
-                    <span className="text-yellow-300 font-bold">+320% engagement</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span>Customer retention</span>
-                    <span className="text-yellow-300 font-bold">+78% loyalty</span>
-                  </div>
-                </div>
-              </div>
+  <h3 className="text-2xl font-bold mb-4">What We Build</h3>
+  <div className="space-y-4">
+    {[
+      "Automated booking & reminders",
+      "Social media integration",
+      "Customer analytics dashboard",
+      "Mobile-friendly experience"
+    ].map((benefit, idx) => (
+      <div key={idx} className="flex items-center gap-3 pb-2 border-b border-pink-500">
+        <CheckCircle className="w-4 h-4 text-yellow-300 flex-shrink-0" />
+        <span>{benefit}</span>
+      </div>
+    ))}
+  </div>
+</div>
             </div>
           </div>
 
@@ -523,23 +545,55 @@ export default function BeautyLifestylePage() {
                 </div>
               </div>
               
-              <div className="lg:w-2/3">
-                <div className="flex items-center gap-2 mb-4">
-                  {[1,2,3,4,5].map(i => (
-                    <Star key={i} className="w-6 h-6 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                <h3 className="text-3xl font-bold text-gray-900 mb-6">
-                  "Our online bookings tripled in 90 days. Vidi created an experience that feels as luxurious as our salon."
-                </h3>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-pink-400 to-rose-400" />
-                  <div>
-                    <p className="font-bold text-gray-900">Sophia Chen</p>
-                    <p className="text-gray-600">Founder, Éclat Salon Group</p>
-                  </div>
-                </div>
-              </div>
+              {/* What We Can Build */}
+<div className="bg-white rounded-3xl p-12 shadow-2xl border border-gray-100">
+  <div className="text-center mb-12">
+    <h3 className="text-3xl font-bold text-gray-900 mb-4">
+      What We Build for Beauty Brands
+    </h3>
+    <p className="text-gray-600 max-w-2xl mx-auto">
+      From salons to influencers, we create digital experiences that match your brand's aesthetic
+    </p>
+  </div>
+  
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    {[
+      {
+        icon: Calendar,
+        title: "Smart Booking",
+        features: ["Online appointments", "Automated reminders", "Waitlist management"]
+      },
+      {
+        icon: ShoppingBag,
+        title: "E-Commerce",
+        features: ["Product catalogs", "Secure checkout", "Inventory tracking"]
+      },
+      {
+        icon: Smartphone,
+        title: "Social Integration",
+        features: ["Instagram feeds", "Shoppable posts", "Content scheduling"]
+      }
+    ].map((service, idx) => {
+      const Icon = service.icon;
+      return (
+        <div key={idx} className="text-center">
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-pink-100 to-rose-100 flex items-center justify-center mx-auto mb-4">
+            <Icon className="w-8 h-8 text-pink-600" />
+          </div>
+          <h4 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h4>
+          <ul className="space-y-2">
+            {service.features.map((feature, fIdx) => (
+              <li key={fIdx} className="text-sm text-gray-600 flex items-center justify-center gap-2">
+                <CheckCircle className="w-4 h-4 text-green-500" />
+                {feature}
+              </li>
+            ))}
+          </ul>
+        </div>
+      );
+    })}
+  </div>
+</div>
             </div>
           </div>
         </div>
@@ -566,98 +620,76 @@ export default function BeautyLifestylePage() {
             </p>
           </div>
 
-          <div className="bg-white rounded-3xl p-12 shadow-2xl border border-gray-100">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <div className="space-y-8">
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">What to Expect</h3>
-                  <ul className="space-y-4">
-                    {[
-                      "Personalized brand aesthetic analysis",
-                      "Competitive landscape review",
-                      "Digital strategy roadmap",
-                      "Implementation timeline estimate",
-                      "Investment structure discussion"
-                    ].map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-3">
-                        <div className="w-6 h-6 rounded-full bg-gradient-to-r from-pink-100 to-rose-100 flex items-center justify-center flex-shrink-0">
-                          <CheckCircle className="w-4 h-4 text-pink-600" />
-                        </div>
-                        <span className="text-gray-700">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                
-                <div className="bg-gradient-to-r from-pink-50 to-rose-50 rounded-xl p-6">
-                  <div className="flex items-center gap-3 mb-4">
-                    <Shield className="w-6 h-6 text-pink-600" />
-                    <h4 className="font-bold text-gray-900">Confidential & Custom</h4>
-                  </div>
-                  <p className="text-gray-600 text-sm">
-                    Every consultation is tailored to your specific brand needs. 
-                    We sign NDAs and work exclusively within the beauty and lifestyle space.
-                  </p>
-                </div>
-              </div>
-
-              <div className="space-y-6">
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-900 mb-2">Brand Name *</label>
-                    <input
-                      type="text"
-                      className="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-200"
-                      placeholder="Your brand or business"
-                    />
-                  </div>
-                  
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-900 mb-2">Your Name *</label>
-                      <input
-                        type="text"
-                        className="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-200"
-                        placeholder="First and last"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-900 mb-2">Email *</label>
-                      <input
-                        type="email"
-                        className="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-200"
-                        placeholder="you@brand.com"
-                      />
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-gray-900 mb-2">Primary Focus *</label>
-                    <select className="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-200">
-                      <option>Select your focus</option>
-                      <option>Salon/Spa Digital Experience</option>
-                      <option>Fashion E-commerce</option>
-                      <option>Influencer Platform</option>
-                      <option>Wellness Brand</option>
-                      <option>Complete Digital Transformation</option>
-                    </select>
-                  </div>
-                </div>
-                
-                <button className="w-full py-4 rounded-xl bg-gradient-to-r from-pink-600 to-rose-600 text-white font-bold text-lg hover:shadow-xl hover:shadow-pink-500/30 transition-all duration-300 flex items-center justify-center gap-3 group">
-                  <span>Schedule Luxury Consultation</span>
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
-                </button>
-                
-                <div className="text-center text-sm text-gray-500 pt-4 border-t border-gray-200">
-                  <p className="flex items-center justify-center gap-2">
-                    <Sparkle className="w-4 h-4 text-pink-500" />
-                    <span>Typically respond within 24 hours</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <form 
+  action="/api/contact" 
+  method="POST"
+  className="space-y-6"
+  onSubmit={(e) => {
+    e.preventDefault();
+    // Add your form submission logic here
+    alert('Thank you! We\'ll be in touch within 24 hours.');
+  }}
+>
+  <div className="space-y-4">
+    <div>
+      <label className="block text-sm font-medium text-gray-900 mb-2">Brand Name *</label>
+      <input
+        type="text"
+        name="brand"
+        required
+        className="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-200"
+        placeholder="Your brand or business"
+      />
+    </div>
+    
+    <div className="grid grid-cols-2 gap-4">
+      <div>
+        <label className="block text-sm font-medium text-gray-900 mb-2">Your Name *</label>
+        <input
+          type="text"
+          name="name"
+          required
+          className="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-200"
+          placeholder="First and last"
+        />
+      </div>
+      <div>
+        <label className="block text-sm font-medium text-gray-900 mb-2">Email *</label>
+        <input
+          type="email"
+          name="email"
+          required
+          className="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-200"
+          placeholder="you@brand.com"
+        />
+      </div>
+    </div>
+    
+    <div>
+      <label className="block text-sm font-medium text-gray-900 mb-2">Primary Focus *</label>
+      <select 
+        name="focus"
+        required
+        className="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-200"
+      >
+        <option value="">Select your focus</option>
+        <option>Salon/Spa Digital Experience</option>
+        <option>Fashion E-commerce</option>
+        <option>Influencer Platform</option>
+        <option>Wellness Brand</option>
+        <option>Complete Digital Transformation</option>
+      </select>
+    </div>
+  </div>
+  
+  <button 
+    type="submit"
+    className="w-full py-4 rounded-xl bg-gradient-to-r from-pink-600 to-rose-600 text-white font-bold text-lg hover:shadow-xl hover:shadow-pink-500/30 transition-all duration-300 flex items-center justify-center gap-3 group"
+  >
+    <span>Schedule Consultation</span>
+    <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+  </button>
+</form>
 
           {/* Final CTA */}
           <div className="text-center mt-20">

@@ -54,9 +54,9 @@ export default function AboutPage() {
             </h1>
             
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-12">
-              We architect and implement scalable technology solutions for organizations 
-              focused on measurable impact and long-term value creation.
-            </p>
+  We build custom software solutions that help businesses automate operations, 
+  improve customer experiences, and scale efficiently.
+</p>
           </div>
           
           {/* Key Differentiators */}
@@ -141,25 +141,38 @@ export default function AboutPage() {
             </div>
             
             <div className="bg-white border border-gray-200 rounded-xl p-8 shadow-sm">
-              <div className="mb-6">
-                <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg flex items-center justify-center mb-4">
-                  <Target className="w-6 h-6 text-white" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Client Portfolio</h3>
-                <p className="text-gray-600 text-sm">
-                  We've partnered with organizations across multiple sectors:
-                </p>
-              </div>
-              
-              <div className="grid grid-cols-2 gap-4">
-                {clients.map((client, idx) => (
-                  <div key={idx} className="p-3 bg-gray-50 rounded-lg">
-                    <div className="font-medium text-gray-900 text-sm">{client.name}</div>
-                    <div className="text-gray-500 text-xs mt-1">{client.industry}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
+  <div className="mb-6">
+    <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg flex items-center justify-center mb-4">
+      <Target className="w-6 h-6 text-white" />
+    </div>
+    <h3 className="text-xl font-semibold text-gray-900 mb-2">Who We Serve</h3>
+    <p className="text-gray-600 text-sm">
+      We work with organizations across multiple sectors:
+    </p>
+  </div>
+  
+  <div className="grid grid-cols-2 gap-4">
+    {[
+      "Healthcare",
+      "Real Estate",
+      "Legal Services",
+      "Education",
+      "Hospitality",
+      "Retail & E-Commerce",
+      "Construction",
+      "Nonprofits",
+      "Startups",
+      "Small Business",
+      "Finance",
+      "Logistics"
+    ].map((industry, idx) => (
+      <div key={idx} className="p-3 bg-gray-50 rounded-lg flex items-center gap-2">
+        <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0" />
+        <span className="text-gray-900 text-sm font-medium">{industry}</span>
+      </div>
+    ))}
+  </div>
+</div>
           </div>
         </div>
       </section>
@@ -192,7 +205,7 @@ export default function AboutPage() {
               {/* CEO Name & Title */}
               <h3 className="text-2xl font-medium text-gray-900 mb-2">Peter Frank</h3>
               <p className="text-blue-600 font-medium mb-8">Founder & CEO</p>
-              
+          
               {/* CEO Quote */}
               <blockquote className="text-gray-700 italic text-lg max-w-2xl mx-auto">
                 "Great ideas deserve great execution. Let us be the team that turns your vision into reality."
@@ -205,11 +218,10 @@ export default function AboutPage() {
             <h3 className="text-xl font-medium text-gray-700 mb-8 text-center">Technical Leadership</h3>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
               {[
-                { name: "Jakes Joel", role: "Technical Lead", initials: "JJ" },
-                { name: "W. Sarah", role: "Design Director", initials: "WS" },
-                { name: "Dawson Johnson", role: "Development Lead", initials: "DJ" },
-                { name: "Abigael Roberts", role: "Project Manager", initials: "AR" },
-                { name: "Emmannuel Douglas", role: "Systems Architect", initials: "ED" }
+                { name: "", role: "Design Director", initials: "WS" },
+                { name: "", role: "Development Lead", initials: "DJ" },
+                { name: "", role: "Project Manager", initials: "AR" },
+                { name: "", role: "Systems Architect", initials: "ED" }
               ].map((member, idx) => (
                 <div key={idx} className="text-center">
                   <div className="w-20 h-20 rounded-full bg-gradient-to-r from-gray-100 to-gray-200 flex items-center justify-center mx-auto mb-3 border border-gray-300">
@@ -439,39 +451,47 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+                                                                                                                                          
 
       {/* --- CTA SECTION --- */}
       <section className="py-20 px-6 md:px-12 lg:px-24">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-white border border-gray-200 rounded-xl p-12 text-center shadow-sm">
-            <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-6">
-              Begin Your Digital Transformation
-            </h2>
-            
-            <p className="text-gray-600 max-w-2xl mx-auto mb-10 text-lg">
-              Schedule a consultation to discuss how our enterprise technology 
-              solutions can address your specific business challenges and objectives.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2">
-                Schedule Consultation
-                <MessageCircle className="w-4 h-4" />
-              </button>
-              
-              <button className="px-8 py-3 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition-colors">
-                View Case Studies
-              </button>
-            </div>
-            
-            <div className="mt-12 pt-8 border-t border-gray-100">
-              <p className="text-sm text-gray-500">
-                Response time: Within 24 business hours • Initial consultation: 45 minutes
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+  <div className="max-w-4xl mx-auto">
+    <div className="bg-gradient-to-br from-blue-50 to-white border border-blue-200 rounded-2xl p-12 text-center">
+      <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-6">
+        Ready to Start Your Project?
+      </h2>
+      
+      <p className="text-gray-600 max-w-2xl mx-auto mb-10 text-lg">
+        Let's discuss your project requirements and explore how we can help you build 
+        the software solution your business needs.
+      </p>
+      
+      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="/get-started"
+          className="px-8 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
+        >
+          Start Your Project
+          <ArrowRight className="w-4 h-4" />
+        </a>
+        
+        <a 
+          href="/contact"
+          className="px-8 py-3 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition-colors flex items-center justify-center gap-2"
+        >
+          Schedule Consultation
+          <MessageCircle className="w-4 h-4" />
+        </a>
+      </div>
+      
+      <div className="mt-12 pt-8 border-t border-gray-200">
+        <p className="text-sm text-gray-500">
+          Free consultation • Typical response time: 24 hours
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* --- ORIGINAL FOOTER with HIDDEN LINKS --- */}
       <footer className="py-8 border-t border-gray-200">
