@@ -167,169 +167,304 @@ export default function Home() {
     <main className="flex flex-col min-h-screen w-full overflow-x-hidden">
       
       {/* HERO SECTION - Fixed responsiveness */}
-      <section className="relative pt-20 md:pt-24 lg:pt-28 overflow-hidden min-h-[90vh] md:min-h-[100svh] flex flex-col bg-gradient-to-br from-white via-white to-blue-50">
+      <section className="relative overflow-hidden bg-gradient-to-br from-white via-white to-blue-50">
   {/* BACKGROUND */}
   <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
 
   {/* HERO CONTENT */}
-  <div className="relative z-10 flex-1 flex items-center">
-    {/* Wider than container to reduce side whitespace */}
-    <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 md:px-10 lg:px-14">
-      {/* IMPORTANT: only 2 columns on lg+ (tablet stays 1 column) */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
-        {/* LEFT SIDE */}
-        <div className="w-full flex flex-col items-center lg:items-start text-center lg:text-left z-20 max-w-2xl mx-auto lg:mx-0">
+  <div className="relative z-10">
+    {/* Container with proper breakpoints */}
+    <div className="mx-auto w-full px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16
+                    max-w-[440px] sm:max-w-[640px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1280px] 2xl:max-w-[1536px]">
+      
+      {/* Tighter padding to save vertical space */}
+      <div className="pt-16 sm:pt-20 md:pt-22 lg:pt-24 xl:pt-28 pb-10 sm:pb-12 md:pb-14 lg:pb-16">
+        
+        {/* Grid with fluid gaps */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] xl:grid-cols-[1fr_1fr] 
+                        gap-6 sm:gap-8 md:gap-10 lg:gap-14 xl:gap-18 2xl:gap-20 
+                        items-start lg:items-center">
+          
+          {/* ========== LEFT COLUMN ========== */}
+          <div className="w-full flex flex-col items-center lg:items-start text-center lg:text-left">
 
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-white border border-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-bold mb-4 shadow-sm">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
-            </span>
-            Accepting New Projects: NOW
-          </div>
-
-          {/* Headline */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-extrabold text-gray-900 tracking-tight mb-4 leading-[1.05]">
-            We Build Custom Software{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
-              That Works Around the Clock
-            </span>
-          </h1>
-
-          {/* Sub-Headline & List */}
-          <div className="text-base md:text-lg lg:text-xl text-gray-700 mb-6 leading-relaxed font-medium">
-            <p className="mb-4">Web applications and AI systems designed for:</p>
-
-            <ul className="space-y-2 md:space-y-3 mb-6">
-              {[
-                "Automated customer communication (24/7)",
-                "Smart scheduling and booking systems",
-                "Real-time business dashboards",
-                "Mobile apps for iOS and Android",
-              ].map((item, index) => (
-                <li key={index} className="flex items-center gap-3">
-                  <div className="min-w-[18px] text-blue-600">
-                    <Check size={18} strokeWidth={3} />
-                  </div>
-                  <span className="text-sm md:text-base lg:text-lg">{item}</span>
-                </li>
-              ))}
-            </ul>
-
-            <p className="font-bold text-gray-900 flex items-center gap-2 text-sm md:text-base">
-              <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-              You own 100% of the system. No recurring license fees.
-            </p>
-          </div>
-
-          {/* Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 mb-6 md:mb-8 w-full">
-            <Link
-              href="/get-started"
-              className="bg-gray-900 text-white px-6 sm:px-8 py-3 md:py-3.5 rounded-full text-sm md:text-base font-bold hover:bg-blue-700 shadow-xl shadow-blue-200/50 transition-all w-full sm:w-auto text-center"
-            >
-              Start Your Project
-            </Link>
-            <Link
-              href="/case-studies"
-              className="px-6 sm:px-8 py-3 md:py-3.5 rounded-full text-sm md:text-base font-bold text-gray-800 bg-white border border-gray-300 hover:bg-gray-50 transition-all shadow-sm w-full sm:w-auto text-center"
-            >
-              See Our Work
-            </Link>
-          </div>
-
-          {/* TECH STACK BADGE */}
-          <div className="flex items-center gap-4 mt-2">
-            <div className="flex -space-x-3">
-              <TechIcons />
+            {/* Badge - Compact */}
+            <div className="inline-flex items-center gap-2 sm:gap-2.5 
+                            bg-white border border-blue-100 text-blue-800 
+                            px-3 sm:px-3.5 md:px-4 
+                            py-1 sm:py-1.5 
+                            rounded-full 
+                            text-[0.6875rem] sm:text-xs 
+                            font-bold mb-3 sm:mb-4 
+                            shadow-sm hover:shadow-md transition-shadow">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
+              </span>
+              <span className="whitespace-nowrap">Accepting New Projects • Now</span>
             </div>
-            <div>
-              <div className="flex items-center gap-1 mb-0.5">
-                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-xs font-bold text-green-700 uppercase tracking-wider">
-                  Enterprise Grade
-                </span>
+
+            {/* Headline - REDUCED SIZES for vertical space */}
+            <h1 className="font-extrabold text-gray-900 tracking-tight 
+                           leading-[1.15] sm:leading-[1.12] md:leading-[1.1] lg:leading-[1.08]
+                           mb-3 sm:mb-4 md:mb-4
+                           text-[clamp(1.875rem,4.5vw,2.25rem)] 
+                           sm:text-[clamp(2.25rem,5vw,2.75rem)] 
+                           md:text-[clamp(2.5rem,4.5vw,3rem)] 
+                           lg:text-[clamp(2.75rem,3.5vw,3.25rem)] 
+                           xl:text-[clamp(3.25rem,3.8vw,3.75rem)] 
+                           2xl:text-[clamp(3.75rem,4vw,4.25rem)]
+                           max-w-[20ch] lg:max-w-none">
+              We Build Custom Software{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
+                That Works Around the Clock
+              </span>
+            </h1>
+
+            {/* Sub-section with list - COMPACT */}
+            <div className="w-full max-w-xl lg:max-w-none
+                            text-gray-700 font-medium leading-relaxed
+                            text-[clamp(0.875rem,1.6vw,0.9375rem)] 
+                            sm:text-[clamp(0.9375rem,1.8vw,1rem)] 
+                            lg:text-[clamp(1rem,1.1vw,1.0625rem)]
+                            mb-4 sm:mb-5">
+              
+              <p className="mb-2.5 sm:mb-3">
+                Web applications and AI systems designed for:
+              </p>
+
+              <ul className="space-y-1.5 sm:space-y-2 mb-4 sm:mb-5">
+                {[
+                  "Automated customer communication (24/7)",
+                  "Smart scheduling and booking systems",
+                  "Real-time business dashboards",
+                  "Mobile apps for iOS and Android",
+                ].map((item, index) => (
+                  <li key={index} className="flex items-start gap-2 sm:gap-2.5">
+                    <div className="flex-shrink-0 w-[16px] h-[16px] sm:w-[18px] sm:h-[18px] 
+                                    text-blue-600 mt-0.5">
+                      <Check className="w-full h-full" strokeWidth={3} />
+                    </div>
+                    <span className="text-[0.8125rem] sm:text-[0.875rem] md:text-[0.9375rem] lg:text-base
+                                     text-gray-800 leading-snug">
+                      {item}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+
+              <p className="font-bold text-gray-900 
+                            flex items-center justify-center lg:justify-start gap-2
+                            text-[0.75rem] sm:text-[0.8125rem] md:text-sm">
+                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse flex-shrink-0" />
+                <span>You own 100% of the system. No recurring license fees.</span>
+              </p>
+            </div>
+
+            {/* CTA Buttons - COMPACT SPACING */}
+            <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 
+                            mb-4 sm:mb-5 
+                            w-full sm:w-auto">
+              <Link
+                href="/get-started"
+                className="bg-gray-900 text-white 
+                           px-6 sm:px-7 md:px-8 lg:px-9
+                           py-2.5 sm:py-3 md:py-3.5
+                           rounded-full 
+                           text-[0.8125rem] sm:text-sm md:text-[0.9375rem] lg:text-base
+                           font-bold 
+                           hover:bg-blue-700 
+                           shadow-xl shadow-blue-200/50 
+                           hover:shadow-2xl hover:shadow-blue-300/60
+                           transition-all duration-300
+                           w-full sm:w-auto text-center
+                           whitespace-nowrap">
+                Start Your Project
+              </Link>
+              <Link
+                href="/case-studies"
+                className="px-6 sm:px-7 md:px-8 lg:px-9
+                           py-2.5 sm:py-3 md:py-3.5
+                           rounded-full 
+                           text-[0.8125rem] sm:text-sm md:text-[0.9375rem] lg:text-base
+                           font-bold 
+                           text-gray-800 bg-white 
+                           border border-gray-300 
+                           hover:bg-gray-50 hover:border-gray-400
+                           transition-all duration-300
+                           shadow-sm hover:shadow-md
+                           w-full sm:w-auto text-center
+                           whitespace-nowrap">
+                See Our Work
+              </Link>
+            </div>
+
+            {/* Tech Stack Badge - Compact */}
+            <div className="flex items-center gap-3 sm:gap-4">
+              <div className="flex -space-x-2 sm:-space-x-2.5">
+                <TechIcons />
               </div>
-              <p className="text-xs text-gray-500 font-medium">Premium V.3</p>
+              <div>
+                <div className="flex items-center gap-1.5 mb-0.5">
+                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                  <span className="text-[0.625rem] sm:text-xs font-bold text-green-700 uppercase tracking-wider">
+                    Enterprise Grade
+                  </span>
+                </div>
+                <p className="text-[0.625rem] sm:text-xs text-gray-500 font-medium">
+                  Premium V.3
+                </p>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* RIGHT SIDE: ORBIT */}
-        {/* Tablet: shown BELOW text (because grid is 1 col until lg) */}
-        {/* Desktop: becomes the right column at lg */}
-        {/* RIGHT SIDE: ORBIT SYSTEM */}
-<div className="hidden lg:flex relative h-full w-full items-center justify-center">
-  {/* Scale OUTSIDE the rotating element */}
-  <div className="scale-75 xl:scale-90 2xl:scale-100">
-    {/* Force a perfect square so it’s always a circle */}
-    <div className="relative w-[520px] h-[520px] xl:w-[650px] xl:h-[650px] aspect-square flex items-center justify-center">
+          {/* ========== RIGHT COLUMN: ORBIT - LARGER BUT OPTIMIZED ========== */}
+          <div className="hidden lg:flex relative w-full items-center justify-center 
+                          min-h-[420px] lg:min-h-[480px] xl:min-h-[540px] 2xl:min-h-[600px]">
+            
+            {/* Responsive scaling wrapper */}
+            <div className="w-full h-full flex items-center justify-center
+                            scale-90 lg:scale-95 xl:scale-100
+                            transition-transform duration-500 ease-out">
+              
+              {/* Orbit container - Larger sizes */}
+              <div className="relative 
+                              w-[480px] h-[480px]
+                              lg:w-[520px] lg:h-[520px]
+                              xl:w-[580px] xl:h-[580px]
+                              2xl:w-[640px] 2xl:h-[640px]
+                              aspect-square 
+                              flex items-center justify-center">
 
-      {/* Center Core */}
-      <div className="absolute z-20 w-24 h-24 lg:w-32 lg:h-32 bg-white rounded-full shadow-[0_0_60px_-15px_rgba(37,99,235,0.5)] flex items-center justify-center border border-blue-100">
-        <div className="text-center">
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 w-12 h-12 lg:w-16 lg:h-16 mx-auto rounded-xl flex items-center justify-center text-white mb-2 shadow-lg">
-            <Bot size={24} className="lg:size-[32px]" />
+                {/* Center Core - Larger */}
+                <div className="absolute z-20 
+                                w-28 h-28 lg:w-32 lg:h-32 xl:w-36 xl:h-36 2xl:w-40 2xl:h-40
+                                bg-white rounded-full 
+                                shadow-[0_0_80px_-15px_rgba(37,99,235,0.6)] 
+                                flex items-center justify-center 
+                                border-2 border-blue-100
+                                transition-all duration-300">
+                  <div className="text-center">
+                    <div className="bg-gradient-to-r from-blue-600 to-purple-600 
+                                    w-14 h-14 lg:w-16 lg:h-16 xl:w-[4.5rem] xl:h-[4.5rem] 2xl:w-20 2xl:h-20
+                                    mx-auto rounded-xl 
+                                    flex items-center justify-center 
+                                    text-white mb-2 shadow-lg">
+                      <Bot className="w-7 h-7 lg:w-8 lg:h-8 xl:w-9 xl:h-9 2xl:w-10 2xl:h-10" />
+                    </div>
+                    <span className="text-[0.65rem] lg:text-xs xl:text-sm font-bold text-gray-900 block uppercase tracking-wide">
+                      AI Core
+                    </span>
+                  </div>
+                </div>
+
+                {/* Orbit Rings */}
+                <div className="absolute w-[90%] h-[90%] border-2 border-dashed border-blue-200 rounded-full opacity-40" />
+                <div className="absolute w-[68%] h-[68%] border-2 border-blue-100 rounded-full opacity-40" />
+
+                {/* Rotating Ring with Cards */}
+                <div className="absolute inset-0 animate-orbit-ring flex items-center justify-center">
+
+                  {/* TOP CARD */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 
+                                  w-[11rem] lg:w-52 xl:w-56 2xl:w-60
+                                  animate-orbit-item">
+                    <div className="bg-white/95 backdrop-blur-md 
+                                    p-3 lg:p-3.5 xl:p-4 
+                                    rounded-2xl border-2 border-white/80
+                                    shadow-[0_8px_30px_rgb(0,0,0,0.12)] 
+                                    hover:shadow-[0_12px_40px_rgb(0,0,0,0.16)]
+                                    transition-all duration-300
+                                    flex items-center gap-2.5 lg:gap-3">
+                      <div className="bg-blue-100 p-2 lg:p-2.5 rounded-lg text-blue-600 flex-shrink-0">
+                        <LayoutDashboard className="w-5 h-5 lg:w-[1.375rem] lg:h-[1.375rem]" />
+                      </div>
+                      <div className="text-xs lg:text-sm xl:text-[0.9375rem] font-bold text-gray-900 leading-tight">
+                        Custom Web Dev
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* RIGHT CARD */}
+                  <div className="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 
+                                  w-[11rem] lg:w-52 xl:w-56 2xl:w-60
+                                  animate-orbit-item">
+                    <div className="bg-white/95 backdrop-blur-md 
+                                    p-3 lg:p-3.5 xl:p-4 
+                                    rounded-2xl border-2 border-white/80
+                                    shadow-[0_8px_30px_rgb(0,0,0,0.12)] 
+                                    hover:shadow-[0_12px_40px_rgb(0,0,0,0.16)]
+                                    transition-all duration-300
+                                    flex items-center gap-2.5 lg:gap-3">
+                      <div className="bg-purple-100 p-2 lg:p-2.5 rounded-lg text-purple-600 flex-shrink-0">
+                        <Smartphone className="w-5 h-5 lg:w-[1.375rem] lg:h-[1.375rem]" />
+                      </div>
+                      <div className="text-xs lg:text-sm xl:text-[0.9375rem] font-bold text-gray-900 leading-tight">
+                        iOS & Android Apps
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* BOTTOM CARD */}
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 
+                                  w-[11rem] lg:w-52 xl:w-56 2xl:w-60
+                                  animate-orbit-item">
+                    <div className="bg-white/95 backdrop-blur-md 
+                                    p-3 lg:p-3.5 xl:p-4 
+                                    rounded-2xl border-2 border-white/80
+                                    shadow-[0_8px_30px_rgb(0,0,0,0.12)] 
+                                    hover:shadow-[0_12px_40px_rgb(0,0,0,0.16)]
+                                    transition-all duration-300
+                                    flex items-center gap-2.5 lg:gap-3">
+                      <div className="bg-green-100 p-2 lg:p-2.5 rounded-lg text-green-600 flex-shrink-0">
+                        <Workflow className="w-5 h-5 lg:w-[1.375rem] lg:h-[1.375rem]" />
+                      </div>
+                      <div className="text-xs lg:text-sm xl:text-[0.9375rem] font-bold text-gray-900 leading-tight">
+                        Business Automation
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* LEFT CARD */}
+                  <div className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 
+                                  w-[11rem] lg:w-52 xl:w-56 2xl:w-60
+                                  animate-orbit-item">
+                    <div className="bg-white/95 backdrop-blur-md 
+                                    p-3 lg:p-3.5 xl:p-4 
+                                    rounded-2xl border-2 border-white/80
+                                    shadow-[0_8px_30px_rgb(0,0,0,0.12)] 
+                                    hover:shadow-[0_12px_40px_rgb(0,0,0,0.16)]
+                                    transition-all duration-300
+                                    flex items-center gap-2.5 lg:gap-3">
+                      <div className="bg-orange-100 p-2 lg:p-2.5 rounded-lg text-orange-600 flex-shrink-0">
+                        <Database className="w-5 h-5 lg:w-[1.375rem] lg:h-[1.375rem]" />
+                      </div>
+                      <div className="text-xs lg:text-sm xl:text-[0.9375rem] font-bold text-gray-900 leading-tight">
+                        Internal Dashboards
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
           </div>
-          <span className="text-xs font-bold text-gray-900 block">AI CORE</span>
+
         </div>
-      </div>
-
-      {/* Rings (these do NOT need custom classes) */}
-      <div className="absolute w-[90%] h-[90%] border border-dashed border-blue-200 rounded-full opacity-50" />
-      <div className="absolute w-[65%] h-[65%] border border-blue-100 rounded-full opacity-50" />
-
-      {/* ✅ This is the rotating ring that MUST contain the items */}
-      <div className="absolute inset-0 animate-orbit-ring flex items-center justify-center">
-
-        {/* ITEM 1 */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 lg:w-56 animate-orbit-item">
-          <div className="bg-white/90 backdrop-blur-md p-3 rounded-2xl border border-white shadow-xl flex items-center gap-3">
-            <div className="bg-blue-100 p-2 rounded-lg text-blue-600"><LayoutDashboard size={18} /></div>
-            <div className="text-sm font-bold text-gray-900">Custom Web Dev</div>
-          </div>
-        </div>
-
-        {/* ITEM 2 */}
-        <div className="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 w-48 lg:w-56 animate-orbit-item">
-          <div className="bg-white/90 backdrop-blur-md p-3 rounded-2xl border border-white shadow-xl flex items-center gap-3">
-            <div className="bg-purple-100 p-2 rounded-lg text-purple-600"><Smartphone size={18} /></div>
-            <div className="text-sm font-bold text-gray-900">iOS & Android Apps</div>
-          </div>
-        </div>
-
-        {/* ITEM 3 */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-48 lg:w-56 animate-orbit-item">
-          <div className="bg-white/90 backdrop-blur-md p-3 rounded-2xl border border-white shadow-xl flex items-center gap-3">
-            <div className="bg-green-100 p-2 rounded-lg text-green-600"><Workflow size={18} /></div>
-            <div className="text-sm font-bold text-gray-900">Business Automation</div>
-          </div>
-        </div>
-
-        {/* ITEM 4 */}
-        <div className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 w-48 lg:w-56 animate-orbit-item">
-          <div className="bg-white/90 backdrop-blur-md p-3 rounded-2xl border border-white shadow-xl flex items-center gap-3">
-            <div className="bg-orange-100 p-2 rounded-lg text-orange-600"><Database size={18} /></div>
-            <div className="text-sm font-bold text-gray-900">Internal Dashboards</div>
-          </div>
-        </div>
-
       </div>
     </div>
   </div>
-</div>
 
-      </div>
-    </div>
-  </div>
+  {/* LOGO MARQUEE */}
+  <div className="w-full bg-white py-6 sm:py-7 md:py-8 lg:py-9 relative overflow-hidden border-t border-gray-100">
+    <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 lg:w-32 z-10 
+                    bg-gradient-to-r from-white to-transparent pointer-events-none" />
+    <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 lg:w-32 z-10 
+                    bg-gradient-to-l from-white to-transparent pointer-events-none" />
 
-  {/* LOGO MARQUEE (pinned, does not affect centering) */}
-  <div className="shrink-0 w-full bg-white py-6 md:py-8 relative overflow-hidden">
-    <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 z-10 bg-gradient-to-r from-white to-transparent pointer-events-none" />
-    <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 z-10 bg-gradient-to-l from-white to-transparent pointer-events-none" />
-
-    <div className="flex w-max animate-scroll gap-16 md:gap-24 lg:gap-32 items-center">
+    <div className="flex w-max animate-scroll 
+                    gap-12 sm:gap-16 md:gap-20 lg:gap-24 xl:gap-28 
+                    items-center">
       {TECHNOLOGIES.map((tech, index) => (
         <img
           key={`tech-1-${index}`}
