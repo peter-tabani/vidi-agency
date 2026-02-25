@@ -18,8 +18,8 @@ export default function Footer() {
               <span className="text-white">Agency</span>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
-              We build the digital engines that power the next generation of businesses. 
-              Enterprise-grade development, accessible to everyone.
+              AI automation studio for businesses. We build systems that capture leads, 
+              engage customers, and eliminate repetitive work.
             </p>
             <div className="flex gap-4">
               <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-blue-600 hover:text-white transition-all">
@@ -73,10 +73,10 @@ export default function Footer() {
         {/* BOTTOM BAR */}
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-gray-500 text-sm">
-            © {new Date().getFullYear()} Vidi Agency Inc. All rights reserved.
+            © {new Date().getFullYear()} Vidi Agency — AI Automation Studio. All rights reserved.
           </p>
           <div className="flex gap-6 text-xs text-gray-600 font-bold uppercase tracking-widest">
-            <span>Serving the World</span>
+            <span>AI Automation for Business</span>
           </div>
         </div>
 

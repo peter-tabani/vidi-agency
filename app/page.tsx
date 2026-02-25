@@ -9,57 +9,57 @@ import {
 
 const features = [
   {
-    title: "Website Development",
-    description: "Fully custom, responsive websites with professional UI/UX and SEO optimization.",
-    icon: <Code2 className="w-6 h-6 text-blue-600" />,
-  },
-  {
-    title: "AI Communication",
-    description: "Chatbots trained on your business data to answer FAQs and handle customers 24/7.",
+    title: "AI Lead Capture & Qualification",
+    description: "AI agents that engage every visitor, qualify leads in real time, and route them to your sales team 24/7.",
     icon: <Bot className="w-6 h-6 text-blue-600" />,
   },
   {
-    title: "Live Dashboard",
-    description: "View conversations, track leads, and manage your inbox from one simple location.",
-    icon: <LayoutDashboard className="w-6 h-6 text-blue-600" />,
+    title: "AI Customer Engagement & Support",
+    description: "Intelligent chatbots trained on your business data to answer questions and close deals around the clock.",
+    icon: <Inbox className="w-6 h-6 text-blue-600" />,
   },
   {
-    title: "AI Inbox Assistant",
-    description: "Drafts replies automatically and helps you respond to customers faster.",
-    icon: <Inbox className="w-6 h-6 text-blue-600" />,
+    title: "AI Workflow Automation",
+    description: "Eliminate repetitive tasks. Automate follow-ups, scheduling, data entry, and internal processes.",
+    icon: <Workflow className="w-6 h-6 text-blue-600" />,
+  },
+  {
+    title: "AI-Powered Websites & Apps",
+    description: "High-performance websites and apps built to support your AI systems and convert more customers.",
+    icon: <Code2 className="w-6 h-6 text-blue-600" />,
   },
 ];
 
 const advancedFeatures = [
   {
     icon: <Bot className="text-purple-600" size={32} />, 
-    title: "24/7 AI Sales & Support Hub",
-    description: "Instead of just answering calls, our 'Always-On' agents manage your entire front desk. They book appointments, qualify leads in real-time, and handle FAQs with human-level nuance."
+    title: "24/7 AI Lead Capture",
+    description: "Your AI agent greets every visitor, asks the right questions, and qualifies leads in real time. No missed opportunities, even at 2 AM."
   },
   {
     icon: <Workflow className="text-blue-600" size={32} />, 
-    title: "The 'Auto-Pilot' Lead Pipeline",
-    description: "Eliminate manual follow-ups. We architect systems that automatically engage new leads via SMS and Email the second they arrive, nurturing them until they are ready to buy."
-  },
-  {
-    icon: <Database className="text-orange-600" size={32} />, 
-    title: "Business Command Center",
-    description: "Ditch the spreadsheets. We build a single, secure dashboard where you see every dollar made and every lead captured today. Your entire business at a glance, powered by private data."
-  },
-  {
-    icon: <Smartphone className="text-pink-600" size={32} />, 
-    title: "Dedicated Mobile Ecosystem",
-    description: "Your brand belongs in their pocket, not just on their browser. We launch custom iOS and Android apps that give your customers a direct, high-speed line to your services."
+    title: "Automated Follow-Up Engine",
+    description: "New lead comes in? Your system instantly follows up via SMS, email, or WhatsApp. It nurtures prospects until they are ready to buy — without your team lifting a finger."
   },
   {
     icon: <Inbox className="text-green-600" size={32} />, 
-    title: "Unified Communication Stream",
-    description: "Stop tab-switching. We consolidate WhatsApp, Instagram, Email, and SMS into one single, high-clarity stream so you never miss a deal or a client request."
+    title: "AI Customer Support",
+    description: "Resolve common questions instantly. Our AI handles FAQs, order tracking, booking changes, and more — so your team focuses on high-value conversations."
+  },
+  {
+    icon: <Database className="text-orange-600" size={32} />, 
+    title: "Smart Business Dashboard",
+    description: "See every lead, every conversation, and every dollar in one place. Real-time data from your AI systems, CRM, and payment tools — all in a single view."
   },
   {
     icon: <Cpu className="text-indigo-600" size={32} />, 
-    title: "Zero-Touch Data Automation",
-    description: "Manual data entry is a relic of the past. We connect your payment, booking, and CRM tools into a seamless loop. Data flows automatically, freeing your team for high-value work."
+    title: "Workflow Automation",
+    description: "Connect your existing tools — CRM, email, payments, scheduling — into one seamless loop. Data flows automatically. Manual entry disappears."
+  },
+  {
+    icon: <Smartphone className="text-pink-600" size={32} />, 
+    title: "AI-Powered Websites & Apps",
+    description: "Need a website or app to support your AI systems? We build fast, modern platforms designed to convert visitors and integrate with your automation stack."
   }
 ];
 
@@ -98,42 +98,42 @@ const TECHNOLOGIES = [
 
 const pricingPlans = [
   {
-    name: "Tier 1",
-    price: "$399",
-    setup: "$500 Setup Fee",
-    description: "Perfect for small businesses starting with automation.",
+    name: "Starter",
+    price: "From $2,500",
+    setup: "One-Time Build",
+    description: "For businesses ready to automate lead capture and customer engagement.",
     features: [
-      "AI Chatbot (1-2 Platforms)",
-      "Basic Website Maintenance",
-      "Basic AI Inbox",
-      "Monthly Updates",
-      "Standard Support"
+      "AI Chatbot (Web + 1 Channel)",
+      "Lead Capture & Qualification",
+      "Basic Workflow Automation",
+      "Integration With Your CRM",
+      "30-Day Post-Launch Support"
     ],
     highlight: false
   },
   {
-    name: "Tier 2",
-    price: "$699",
-    setup: "$999 Setup Fee",
-    description: "The standard for growing businesses needing full coverage.",
+    name: "Growth",
+    price: "Custom Pricing",
+    setup: "One-Time Build",
+    description: "Full AI automation across channels with advanced workflows and reporting.",
     features: [
-      "Multi-platform AI (Web, WA, IG, FB)",
-      "AI Call Answering Agent",
-      "Automation Workflows",
-      "Weekly Updates",
-      "Priority Support"
+      "Multi-Channel AI (Web, WA, IG, SMS)",
+      "Automated Follow-Up Sequences",
+      "Smart Dashboard & Analytics",
+      "Deep System Integrations",
+      "Priority Support & Optimization"
     ],
     highlight: true
   },
   {
-    name: "Tier 3",
-    price: "$1200",
-    setup: "$1999 Setup Fee",
-    description: "Full agency partnership with custom internal tools.",
+    name: "Enterprise",
+    price: "Custom Pricing",
+    setup: "Dedicated Partnership",
+    description: "End-to-end AI infrastructure for complex operations and high volume.",
     features: [
-      "Full Business AI Suite",
-      "Custom AI Tools & Apps",
-      "Deep Analytics & Reporting",
+      "Full AI Automation Suite",
+      "Custom AI Agents & Tools",
+      "Advanced Analytics & Reporting",
       "Unlimited Integrations",
       "Dedicated Account Manager"
     ],
@@ -142,24 +142,24 @@ const pricingPlans = [
 ];
 
 const comparisonData = [
-  { feature: "Messaging Inbox", us: true, competitor: true },
-  { feature: "Basic Automations", us: true, competitor: true },
+  { feature: "Basic Chatbot", us: true, competitor: true },
+  { feature: "Simple Automations", us: true, competitor: true },
   { feature: "Platform Integrations", us: true, competitor: true },
-  { feature: "Custom Website Built For You", us: true, competitor: false },
-  { feature: "AI Trained on YOUR Business Data", us: true, competitor: false },
-  { feature: "AI Voice/Call Receptionist", us: true, competitor: false },
-  { feature: "Custom Internal AI Tools", us: true, competitor: false },
+  { feature: "AI Trained on Your Business Data", us: true, competitor: false },
+  { feature: "AI Lead Qualification & Routing", us: true, competitor: false },
+  { feature: "Custom Workflow Automation", us: true, competitor: false },
+  { feature: "Integrates With Your Existing Systems", us: true, competitor: false },
   { feature: "Dedicated Account Manager", us: true, competitor: false },
-  { feature: "Done-For-You Setup (No Learning Curve)", us: true, competitor: false },
+  { feature: "Done-For-You Build (No Learning Curve)", us: true, competitor: false },
 ];
 
 const serviceCards = [
-  { icon: <Code2 size={24} />, title: "Website Development", desc: "React, Next.js, High-Performance" },
-  { icon: <LayoutDashboard size={24} />, title: "Website Redesign", desc: "Modern UI/UX Overhaul" },
-  { icon: <Smartphone size={24} />, title: "Mobile App Building", desc: "iOS & Android (Kotlin/Flutter)" },
-  { icon: <Bot size={24} />, title: "AI Integration", desc: "Custom Chatbots & Agents" },
-  { icon: <Workflow size={24} />, title: "Business Automation", desc: "Streamline Workflows 24/7" },
-  { icon: <Database size={24} />, title: "Systems & Dashboards", desc: "Internal Tools & Analytics" },
+  { icon: <Bot size={24} />, title: "AI Lead Capture", desc: "Qualify & Route Leads 24/7" },
+  { icon: <Inbox size={24} />, title: "AI Customer Engagement", desc: "Automated Support & Sales" },
+  { icon: <Workflow size={24} />, title: "Workflow Automation", desc: "Eliminate Repetitive Tasks" },
+  { icon: <Database size={24} />, title: "System Integration", desc: "Connect Your Existing Tools" },
+  { icon: <Code2 size={24} />, title: "AI-Powered Websites", desc: "Built to Convert & Automate" },
+  { icon: <Smartphone size={24} />, title: "Mobile Apps", desc: "iOS & Android Support" },
 ];
 
 export default function Home() {
@@ -201,7 +201,7 @@ export default function Home() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
               </span>
-              <span className="whitespace-nowrap">Accepting New Projects • Now</span>
+              <span className="whitespace-nowrap">AI Automation for Business • Now Booking</span>
             </div>
 
             {/* Headline - REDUCED SIZES for vertical space */}
@@ -215,9 +215,9 @@ export default function Home() {
                            xl:text-[clamp(3.25rem,3.8vw,3.75rem)] 
                            2xl:text-[clamp(3.75rem,4vw,4.25rem)]
                            max-w-[20ch] lg:max-w-none">
-              We Build Custom Software{" "}
+              AI Systems That Capture Leads{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
-                That Works Around the Clock
+                and Grow Your Revenue
               </span>
             </h1>
 
@@ -230,15 +230,15 @@ export default function Home() {
                             mb-4 sm:mb-5">
               
               <p className="mb-2.5 sm:mb-3">
-                Web applications and AI systems designed for:
+                We build AI automation for B2B and e-commerce businesses:
               </p>
 
               <ul className="space-y-1.5 sm:space-y-2 mb-4 sm:mb-5">
                 {[
-                  "Automated customer communication (24/7)",
-                  "Smart scheduling and booking systems",
-                  "Real-time business dashboards",
-                  "Mobile apps for iOS and Android",
+                  "Capture and qualify leads around the clock",
+                  "Automate customer engagement and support",
+                  "Reduce repetitive work across your team",
+                  "Integrate with your existing systems — no rebuild",
                 ].map((item, index) => (
                   <li key={index} className="flex items-start gap-2 sm:gap-2.5">
                     <div className="flex-shrink-0 w-[16px] h-[16px] sm:w-[18px] sm:h-[18px] 
@@ -257,7 +257,7 @@ export default function Home() {
                             flex items-center justify-center lg:justify-start gap-2
                             text-[0.75rem] sm:text-[0.8125rem] md:text-sm">
                 <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse flex-shrink-0" />
-                <span>You own 100% of the system. No recurring license fees.</span>
+                <span>You own the system. One-time build, optional support.</span>
               </p>
             </div>
 
@@ -279,7 +279,7 @@ export default function Home() {
                            transition-all duration-300
                            w-full sm:w-auto text-center
                            whitespace-nowrap">
-                Start Your Project
+                Book a Demo
               </Link>
               <Link
                 href="/case-studies"
@@ -295,7 +295,7 @@ export default function Home() {
                            shadow-sm hover:shadow-md
                            w-full sm:w-auto text-center
                            whitespace-nowrap">
-                See Our Work
+                See How It Works
               </Link>
             </div>
 
@@ -308,11 +308,11 @@ export default function Home() {
                 <div className="flex items-center gap-1.5 mb-0.5">
                   <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                   <span className="text-[0.625rem] sm:text-xs font-bold text-green-700 uppercase tracking-wider">
-                    Enterprise Grade
+                    Production Ready
                   </span>
                 </div>
                 <p className="text-[0.625rem] sm:text-xs text-gray-500 font-medium">
-                  Premium V.3
+                  Enterprise AI Stack
                 </p>
               </div>
             </div>
@@ -380,7 +380,7 @@ export default function Home() {
                         <LayoutDashboard className="w-5 h-5 lg:w-[1.375rem] lg:h-[1.375rem]" />
                       </div>
                       <div className="text-xs lg:text-sm xl:text-[0.9375rem] font-bold text-gray-900 leading-tight">
-                        Custom Web Dev
+                        AI Lead Capture
                       </div>
                     </div>
                   </div>
@@ -400,7 +400,7 @@ export default function Home() {
                         <Smartphone className="w-5 h-5 lg:w-[1.375rem] lg:h-[1.375rem]" />
                       </div>
                       <div className="text-xs lg:text-sm xl:text-[0.9375rem] font-bold text-gray-900 leading-tight">
-                        iOS & Android Apps
+                        Smart Engagement
                       </div>
                     </div>
                   </div>
@@ -420,7 +420,7 @@ export default function Home() {
                         <Workflow className="w-5 h-5 lg:w-[1.375rem] lg:h-[1.375rem]" />
                       </div>
                       <div className="text-xs lg:text-sm xl:text-[0.9375rem] font-bold text-gray-900 leading-tight">
-                        Business Automation
+                        Workflow Automation
                       </div>
                     </div>
                   </div>
@@ -440,7 +440,7 @@ export default function Home() {
                         <Database className="w-5 h-5 lg:w-[1.375rem] lg:h-[1.375rem]" />
                       </div>
                       <div className="text-xs lg:text-sm xl:text-[0.9375rem] font-bold text-gray-900 leading-tight">
-                        Internal Dashboards
+                        System Integration
                       </div>
                     </div>
                   </div>
@@ -514,16 +514,16 @@ export default function Home() {
           {/* Section Header */}
           <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
             <h2 className="text-blue-600 font-bold tracking-wide uppercase text-xs md:text-sm mb-2 md:mb-3">
-              Beyond Basic Websites
+              What We Build
             </h2>
             <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 md:mb-6 leading-tight">
-              We Build Systems That <br className="hidden sm:block" />
+              AI Automation That <br className="hidden sm:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
-                Run Your Business
+                Works While You Sleep
               </span>
             </h3>
             <p className="text-sm md:text-base lg:text-lg text-gray-600 max-w-2xl mx-auto">
-              We design and build web applications that streamline operations, simplify management, and support long-term growth.
+              From lead capture to customer support to internal workflows — we build AI systems that save time, reduce costs, and drive revenue.
             </p>
           </div>
 
@@ -569,31 +569,31 @@ export default function Home() {
         <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 relative z-10 text-center">
           
           <h2 className="text-blue-400 font-bold tracking-widest uppercase text-xs md:text-sm mb-3 md:mb-4">
-            Ready to Dominate?
+            Ready to Automate?
           </h2>
           
           <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white mb-4 md:mb-6 leading-tight">
-            Let's Engineer Your <br className="hidden sm:block" />
+            Stop Losing Leads. <br className="hidden sm:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
-              Digital Breakthrough.
+              Start Automating Growth.
             </span>
           </h3>
 
           <p className="text-base md:text-lg lg:text-xl text-gray-400 mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed">
-            Whether you need a high-performance website, a custom mobile app, or an AI system to automate your operations—we build it to scale.
+            Whether you need AI lead capture, automated customer engagement, or workflow automation — we build systems that deliver measurable results.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center">
             <Link href="/get-started" className="px-6 sm:px-8 md:px-10 py-3 md:py-4 lg:py-5 bg-white text-gray-900 rounded-full text-sm md:text-base lg:text-lg font-bold hover:bg-gray-100 transition-all shadow-xl shadow-white/10 flex items-center gap-2 w-full sm:w-auto text-center">
-              Start Your Project
+              Book a Demo
             </Link>
             <Link href="/contact" className="px-6 sm:px-8 md:px-10 py-3 md:py-4 lg:py-5 bg-transparent border border-gray-700 text-white rounded-full text-sm md:text-base lg:text-lg font-bold hover:bg-gray-800 transition-all w-full sm:w-auto text-center">
-              Speak to an Expert
+              Talk to Our Team
             </Link>
           </div>
 
           <p className="mt-6 md:mt-8 text-xs md:text-sm text-gray-500">
-            Fast response times. Solutions tailored to your budget.
+            Fast deployment. Measurable results. No forced subscriptions.
           </p>
         </div>
       </section>
@@ -610,10 +610,10 @@ export default function Home() {
           {/* Header */}
           <div className="text-center max-w-3xl mx-auto mb-12 md:mb-20">
             <h2 className="text-blue-600 font-bold tracking-wide uppercase text-xs md:text-sm mb-2 md:mb-3">
-              The Ownership Advantage
+              The Vidi Advantage
             </h2>
             <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight">
-              Why Rent A Generic Tool <br className="hidden sm:block" /> When You Can <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Own The Engine?</span>
+              Why Rent a Generic Tool <br className="hidden sm:block" /> When You Can <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Own a Custom AI System?</span>
             </h3>
           </div>
 
@@ -629,30 +629,30 @@ export default function Home() {
                    <div className="w-12 h-12 md:w-16 md:h-16 bg-gray-200 rounded-xl md:rounded-2xl flex items-center justify-center text-gray-500 mb-6 md:mb-8 shadow-sm">
                      <Lock size={24} className="md:size-[32px]" />
                    </div>
-                   <h4 className="text-xl md:text-2xl font-bold text-gray-700 mb-3 md:mb-4">Standard SaaS "Rental"</h4>
-                   <p className="text-gray-500 mb-6 md:mb-8 font-medium text-sm md:text-base">You pay monthly forever, but you never own anything. You are trapped in their ecosystem and limited by their features.</p>
+                   <h4 className="text-xl md:text-2xl font-bold text-gray-700 mb-3 md:mb-4">Generic SaaS Tools</h4>
+                   <p className="text-gray-500 mb-6 md:mb-8 font-medium text-sm md:text-base">You pay monthly forever for features everyone else has. No customization. No real AI. Limited by their roadmap, not yours.</p>
                    
                    {/* The "Restrictions" List */}
                    <ul className="space-y-4 md:space-y-6">
                      <li className="flex items-start gap-3 md:gap-4 opacity-70">
                        <XCircle size={20} className="text-red-400 flex-shrink-0 mt-0.5 md:mt-1"/>
                        <div>
-                         <strong className="block text-gray-700 text-sm md:text-base">Monthly "Tax" Forever</strong>
-                         <span className="text-xs md:text-sm text-gray-500">Stop paying, and your business system disappears overnight.</span>
+                         <strong className="block text-gray-700 text-sm md:text-base">Monthly Fees Forever</strong>
+                         <span className="text-xs md:text-sm text-gray-500">Stop paying, and your automation disappears overnight.</span>
                        </div>
                      </li>
                      <li className="flex items-start gap-3 md:gap-4 opacity-70">
                        <XCircle size={20} className="text-red-400 flex-shrink-0 mt-0.5 md:mt-1"/>
                        <div>
-                         <strong className="block text-gray-700 text-sm md:text-base">Feature Lock-in</strong>
-                         <span className="text-xs md:text-sm text-gray-500">Need a custom feature? Too bad. You get what everyone else gets.</span>
+                         <strong className="block text-gray-700 text-sm md:text-base">One-Size-Fits-All</strong>
+                         <span className="text-xs md:text-sm text-gray-500">Need a custom workflow? Too bad. You get what everyone else gets.</span>
                        </div>
                      </li>
                      <li className="flex items-start gap-3 md:gap-4 opacity-70">
                         <XCircle size={20} className="text-red-400 flex-shrink-0 mt-0.5 md:mt-1"/>
                        <div>
-                         <strong className="block text-gray-700 text-sm md:text-base">Data Hostage</strong>
-                         <span className="text-xs md:text-sm text-gray-500">Your valuable customer data lives on their servers, not yours.</span>
+                         <strong className="block text-gray-700 text-sm md:text-base">Your Data, Their Servers</strong>
+                         <span className="text-xs md:text-sm text-gray-500">Your leads and customer data live on their platform, not yours.</span>
                        </div>
                      </li>
                    </ul>
@@ -671,30 +671,30 @@ export default function Home() {
                    <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl md:rounded-2xl flex items-center justify-center text-white mb-6 md:mb-8 shadow-lg shadow-blue-500/30">
                      <Rocket size={24} className="md:size-[32px]" />
                    </div>
-                   <h4 className="text-xl md:text-2xl font-bold text-gray-900 mb-3 md:mb-4">Your Custom Growth Engine</h4>
-                   <p className="text-gray-600 mb-6 md:mb-8 font-medium text-sm md:text-base">We build it, you own it. 100%. A tailored asset that scales infinitely with your business without recurring license fees.</p>
+                   <h4 className="text-xl md:text-2xl font-bold text-gray-900 mb-3 md:mb-4">Your Custom AI System</h4>
+                   <p className="text-gray-600 mb-6 md:mb-8 font-medium text-sm md:text-base">We build it. You own it. A custom AI system trained on your data, integrated with your tools, and designed to grow with your business.</p>
                    
                    {/* The "Benefits" List */}
                    <ul className="space-y-4 md:space-y-6">
                      <li className="flex items-start gap-3 md:gap-4">
                        <CheckCircle2 size={20} className="text-blue-600 flex-shrink-0 mt-0.5 md:mt-1 drop-shadow-sm"/>
                        <div>
-                         <strong className="block text-gray-900 text-sm md:text-base">One-Time Investment, Lifetime Asset</strong>
-                         <span className="text-xs md:text-sm text-gray-600">No monthly licensing fees. The software is your company property.</span>
+                         <strong className="block text-gray-900 text-sm md:text-base">One-Time Build, You Own It</strong>
+                         <span className="text-xs md:text-sm text-gray-600">No forced subscriptions. The AI system is your company asset.</span>
                        </div>
                      </li>
                      <li className="flex items-start gap-3 md:gap-4">
                        <CheckCircle2 size={20} className="text-blue-600 flex-shrink-0 mt-0.5 md:mt-1 drop-shadow-sm"/>
                        <div>
-                         <strong className="block text-gray-900 text-sm md:text-base">Limitless Customization</strong>
-                         <span className="text-xs md:text-sm text-gray-600">If you can dream it, we can code it. No feature is impossible.</span>
+                         <strong className="block text-gray-900 text-sm md:text-base">Built for Your Business</strong>
+                         <span className="text-xs md:text-sm text-gray-600">Custom AI agents, workflows, and integrations designed around how you actually work.</span>
                        </div>
                      </li>
                      <li className="flex items-start gap-3 md:gap-4">
                        <CheckCircle2 size={20} className="text-blue-600 flex-shrink-0 mt-0.5 md:mt-1 drop-shadow-sm"/>
                        <div>
-                         <strong className="block text-gray-900 text-sm md:text-base">Total Data Sovereignty</strong>
-                         <span className="text-xs md:text-sm text-gray-600">You own your data completely. Hosted securely where you want it.</span>
+                         <strong className="block text-gray-900 text-sm md:text-base">Total Data Ownership</strong>
+                         <span className="text-xs md:text-sm text-gray-600">Your leads, conversations, and customer data stay on your infrastructure.</span>
                        </div>
                      </li>
                    </ul>
@@ -709,7 +709,7 @@ export default function Home() {
           {/* Final Statement */}
           <div className="text-center mt-12 md:mt-16 max-w-2xl mx-auto">
             <p className="text-base md:text-lg font-medium text-gray-700">
-              Stop renting your business's potential. <br className="hidden sm:block" /> Let's build an engine tailored to <span className="text-blue-600 font-bold">your speed.</span>
+              Stop renting generic tools. <br className="hidden sm:block" /> Let’s build an AI system tailored to <span className="text-blue-600 font-bold">your business.</span>
             </p>
           </div>
         </div>
@@ -725,7 +725,7 @@ export default function Home() {
               Frequently Asked <span className="text-blue-600">Questions</span>
             </h2>
             <p className="text-gray-500 max-w-2xl mx-auto text-sm md:text-base">
-              Everything you need to know about how we build, how we work, and how we help you scale.
+              Everything you need to know about our AI automation systems and how we work with your business.
             </p>
           </div>
 
@@ -736,13 +736,13 @@ export default function Home() {
             <div className="group">
               <details className="group bg-white border border-gray-200 rounded-xl md:rounded-2xl overflow-hidden hover:border-blue-300 transition-colors duration-300 open:ring-2 open:ring-blue-50 open:border-blue-200">
                 <summary className="flex items-center justify-between p-4 md:p-6 cursor-pointer list-none text-base md:text-lg font-bold text-gray-800">
-                  <span>Do I own the code and intellectual property?</span>
+                  <span>Do I own the AI system you build?</span>
                   <span className="bg-gray-50 text-blue-600 rounded-full p-2 transition-transform group-open:rotate-45 group-open:bg-blue-50">
                     <Plus size={20} />
                   </span>
                 </summary>
                 <div className="px-4 md:px-6 pb-4 md:pb-6 text-gray-600 leading-relaxed text-sm md:text-base">
-                  Absolutely. Unlike SaaS platforms where you "rent" software, Vidi Agency builds custom assets for you. Once the final payment is made, <b>you own 100% of the source code, design assets, and database.</b> It is your property to keep, scale, or sell.
+                  Yes. Unlike SaaS platforms where you rent access, we build custom AI systems that belong to you. Once the project is complete, <b>you own 100% of the code, AI agents, workflows, and data.</b> It is your asset to keep, scale, or sell.
                 </div>
               </details>
             </div>
@@ -757,7 +757,7 @@ export default function Home() {
                   </span>
                 </summary>
                 <div className="px-4 md:px-6 pb-4 md:pb-6 text-gray-600 leading-relaxed text-sm md:text-base">
-                  It depends on complexity. A standard <b>AI Integration or Automation</b> can be live in 7-14 days. A fully custom <b>Website or Web App</b> typically takes 4-8 weeks. We work in 2-week "sprints" so you see progress constantly, not just at the end.
+                  It depends on scope. A focused <b>AI lead capture or chatbot system</b> can be live in 7–14 days. A full <b>multi-channel automation suite</b> typically takes 4–8 weeks. We work in short sprints so you see progress constantly.
                 </div>
               </details>
             </div>
@@ -766,13 +766,13 @@ export default function Home() {
             <div className="group">
               <details className="group bg-white border border-gray-200 rounded-xl md:rounded-2xl overflow-hidden hover:border-blue-300 transition-colors duration-300 open:ring-2 open:ring-blue-50 open:border-blue-200">
                 <summary className="flex items-center justify-between p-4 md:p-6 cursor-pointer list-none text-base md:text-lg font-bold text-gray-800">
-                  <span>What is your "Post-Launch" support?</span>
+                  <span>What happens after launch?</span>
                   <span className="bg-gray-50 text-blue-600 rounded-full p-2 transition-transform group-open:rotate-45 group-open:bg-blue-50">
                     <Plus size={20} />
                   </span>
                 </summary>
                 <div className="px-4 md:px-6 pb-4 md:pb-6 text-gray-600 leading-relaxed text-sm md:text-base">
-                  We don't disappear after launch. We offer a <b>30-day warranty period</b> where we fix any bugs for free. After that, we offer flexible "Growth Partner" maintenance packages to keep your system secure, updated, and optimized.
+                  We don’t disappear after launch. Every project includes a <b>30-day warranty period</b> for bug fixes. After that, we offer optional support packages to keep your AI system optimized, updated, and performing at its best.
                 </div>
               </details>
             </div>
@@ -781,13 +781,13 @@ export default function Home() {
             <div className="group">
               <details className="group bg-white border border-gray-200 rounded-xl md:rounded-2xl overflow-hidden hover:border-blue-300 transition-colors duration-300 open:ring-2 open:ring-blue-50 open:border-blue-200">
                 <summary className="flex items-center justify-between p-4 md:p-6 cursor-pointer list-none text-base md:text-lg font-bold text-gray-800">
-                  <span>Can you integrate AI into my existing website?</span>
+                  <span>Can you add AI to my existing website or systems?</span>
                   <span className="bg-gray-50 text-blue-600 rounded-full p-2 transition-transform group-open:rotate-45 group-open:bg-blue-50">
                     <Plus size={20} />
                   </span>
                 </summary>
                 <div className="px-4 md:px-6 pb-4 md:pb-6 text-gray-600 leading-relaxed text-sm md:text-base">
-                  Yes! We specialize in "retrofitting" AI. Whether you have a WordPress site, a Shopify store, or a custom React app, we can inject AI chatbots, lead capture agents, and automation workflows without rebuilding your entire site.
+                  Absolutely. We specialize in integrating AI into what you already have. Whether it’s a WordPress site, a Shopify store, or a custom app — we add AI chatbots, lead capture, and automation workflows <b>without rebuilding anything.</b>
                 </div>
               </details>
             </div>
@@ -802,7 +802,7 @@ export default function Home() {
                   </span>
                 </summary>
                 <div className="px-4 md:px-6 pb-4 md:pb-6 text-gray-600 leading-relaxed text-sm md:text-base">
-                  We believe in transparency.We offer different payment options . First payment is usually after you reviewed and approved the initial project milestone.. For larger custom builds, we provide a detailed proposal based on features. 
+                  Projects typically start at <b>$2,500</b> for a focused AI automation build. Pricing depends on scope and complexity. We provide a clear proposal with a fixed price before any work begins. <b>No hidden fees. No forced recurring charges.</b>
                 </div>
               </details>
             </div>
@@ -811,13 +811,13 @@ export default function Home() {
             <div className="group">
               <details className="group bg-white border border-gray-200 rounded-xl md:rounded-2xl overflow-hidden hover:border-blue-300 transition-colors duration-300 open:ring-2 open:ring-blue-50 open:border-blue-200">
                 <summary className="flex items-center justify-between p-4 md:p-6 cursor-pointer list-none text-base md:text-lg font-bold text-gray-800">
-                  <span>Will I work directly with the team?</span>
+                  <span>Will I work directly with your team?</span>
                   <span className="bg-gray-50 text-blue-600 rounded-full p-2 transition-transform group-open:rotate-45 group-open:bg-blue-50">
                     <Plus size={20} />
                   </span>
                 </summary>
                 <div className="px-4 md:px-6 pb-4 md:pb-6 text-gray-600 leading-relaxed text-sm md:text-base">
-                  You will work directly with our experts and even Peter (our Founder) .You get a direct line to the experts building your product .
+                  Yes. You work directly with the people building your system — including our founder. No account managers in between. You get a direct line to the engineers and AI specialists working on your project.
                 </div>
               </details>
             </div>
@@ -832,10 +832,10 @@ export default function Home() {
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-xs font-bold text-blue-600 uppercase tracking-widest mb-2 md:mb-3">Our Process</h2>
             <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mb-3 md:mb-4">
-              We Listen First, Then We Build.
+              Discover. Build. Integrate. Improve.
             </h3>
             <p className="text-gray-500 max-w-2xl mx-auto text-sm md:text-base">
-              We don't believe in cookie-cutter solutions. Our process ensures we understand your business deeply before writing a single line of code.
+              No rebuild required. We plug into your existing systems, deploy fast, and measure results from day one.
             </p>
           </div>
 
@@ -851,8 +851,8 @@ export default function Home() {
                 <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 bg-white border-4 border-white shadow-lg rounded-full flex items-center justify-center mb-4 md:mb-6 z-10 group-hover:border-blue-500 transition-colors">
                   <Users size={24} className="md:size-[32px] text-blue-600" />
                 </div>
-                <h4 className="font-bold text-gray-900 text-base md:text-lg mb-2">1. Let's Connect</h4>
-                <p className="text-xs md:text-sm text-gray-500 px-2">Book a free discovery call. We sit down to hear your vision, challenges, and goals.</p>
+                <h4 className="font-bold text-gray-900 text-base md:text-lg mb-2">1. Discover</h4>
+                <p className="text-xs md:text-sm text-gray-500 px-2">We learn your business, identify automation opportunities, and map out where AI creates the most impact.</p>
               </div>
 
               {/* Step 2: UNDERSTAND */}
@@ -860,8 +860,8 @@ export default function Home() {
                 <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 bg-white border-4 border-white shadow-lg rounded-full flex items-center justify-center mb-4 md:mb-6 z-10 group-hover:border-blue-500 transition-colors">
                   <Bot size={24} className="md:size-[32px] text-purple-600" />
                 </div>
-                <h4 className="font-bold text-gray-900 text-base md:text-lg mb-2">2. Deep Dive</h4>
-                <p className="text-xs md:text-sm text-gray-500 px-2">We analyze your requirements and architect a custom solution tailored to your specific needs.</p>
+                <h4 className="font-bold text-gray-900 text-base md:text-lg mb-2">2. Build</h4>
+                <p className="text-xs md:text-sm text-gray-500 px-2">We design and build your AI agents, workflows, and dashboards — trained on your business data.</p>
               </div>
 
               {/* Step 3: PROPOSAL */}
@@ -869,8 +869,8 @@ export default function Home() {
                 <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 bg-white border-4 border-white shadow-lg rounded-full flex items-center justify-center mb-4 md:mb-6 z-10 group-hover:border-blue-500 transition-colors">
                   <FileText size={24} className="md:size-[32px] text-green-600" />
                 </div>
-                <h4 className="font-bold text-gray-900 text-base md:text-lg mb-2">3. The Blueprint</h4>
-                <p className="text-xs md:text-sm text-gray-500 px-2">We present a clear proposal with a timeline and fixed price. You confirm exactly what you want.</p>
+                <h4 className="font-bold text-gray-900 text-base md:text-lg mb-2">3. Integrate</h4>
+                <p className="text-xs md:text-sm text-gray-500 px-2">We connect everything to your existing tools — CRM, website, email, payments — with zero disruption.</p>
               </div>
 
               {/* Step 4: EXECUTION */}
@@ -878,8 +878,8 @@ export default function Home() {
                 <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 bg-gray-900 border-4 border-gray-900 shadow-xl rounded-full flex items-center justify-center mb-4 md:mb-6 z-10">
                   <Rocket size={24} className="md:size-[32px] text-white fill-current" />
                 </div>
-                <h4 className="font-bold text-gray-900 text-base md:text-lg mb-2">4. Project Kickoff</h4>
-                <p className="text-xs md:text-sm text-gray-500 px-2">Once approved, our team starts building immediately. You stay updated every step of the way.</p>
+                <h4 className="font-bold text-gray-900 text-base md:text-lg mb-2">4. Improve</h4>
+                <p className="text-xs md:text-sm text-gray-500 px-2">We monitor performance, optimize AI responses, and refine workflows for measurable, ongoing results.</p>
               </div>
             </div>
           </div>
@@ -898,10 +898,10 @@ export default function Home() {
           {/* Header */}
           <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 md:mb-6">
-              Have a question or need a <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">custom quote?</span>
+              Ready to see what AI automation can do for <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">your business?</span>
             </h2>
             <p className="text-gray-500 text-base md:text-lg">
-              Our in-depth understanding of technology and innovation can turn your aspiration into a business reality.
+              Tell us about your goals. We’ll show you exactly how AI can capture more leads, engage customers, and save your team hours every week.
             </p>
           </div>
 
@@ -918,8 +918,8 @@ export default function Home() {
                   1
                 </div>
                 <div className="pt-1 md:pt-2">
-                  <h4 className="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">Free Technical Consultation</h4>
-                  <p className="text-gray-500 leading-relaxed text-sm md:text-base">We discuss your idea, feasibility, and tech stack. No sales pressure, just engineering advice.</p>
+                  <h4 className="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">Free AI Automation Consultation</h4>
+                  <p className="text-gray-500 leading-relaxed text-sm md:text-base">We discuss your business, identify automation opportunities, and outline what AI can do for you. No sales pressure.</p>
                 </div>
               </div>
 
@@ -929,8 +929,8 @@ export default function Home() {
                   2
                 </div>
                 <div className="pt-1 md:pt-2">
-                  <h4 className="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">Sign Mutual NDA</h4>
-                  <p className="text-gray-500 leading-relaxed text-sm md:text-base">Your intellectual property is safe. We sign a Non-Disclosure Agreement before looking at any code or data.</p>
+                  <h4 className="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">Review Your Custom Proposal</h4>
+                  <p className="text-gray-500 leading-relaxed text-sm md:text-base">We deliver a clear plan with scope, timeline, and fixed pricing. You know exactly what you’re getting before we start.</p>
                 </div>
               </div>
 
@@ -940,8 +940,8 @@ export default function Home() {
                   3
                 </div>
                 <div className="pt-1 md:pt-2">
-                  <h4 className="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">Strategic Roadmap</h4>
-                  <p className="text-gray-500 leading-relaxed text-sm md:text-base">We deliver a detailed project plan, timeline, and fixed-price quote. You know exactly what you get.</p>
+                  <h4 className="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">Build & Integrate</h4>
+                  <p className="text-gray-500 leading-relaxed text-sm md:text-base">We build your AI system and integrate it with your existing tools. You see progress every step of the way.</p>
                 </div>
               </div>
 
@@ -951,8 +951,8 @@ export default function Home() {
                   4
                 </div>
                 <div className="pt-1 md:pt-2">
-                  <h4 className="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">Kickoff & Execution</h4>
-                  <p className="text-gray-500 leading-relaxed text-sm md:text-base">Our team onboards instantly. You get access to our Slack and Jira to track progress in real-time.</p>
+                  <h4 className="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">Launch & Optimize</h4>
+                  <p className="text-gray-500 leading-relaxed text-sm md:text-base">Your AI system goes live. We monitor performance, optimize results, and ensure everything runs smoothly.</p>
                 </div>
               </div>
             </div>
@@ -993,7 +993,7 @@ export default function Home() {
 
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-gray-700 ml-1">Project Description</label>
-                  <textarea rows={4} placeholder="Tell us about your project goals, timeline, and any specific features you need..." className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all resize-none"></textarea>
+                  <textarea rows={4} placeholder="Tell us about your business goals, what you want to automate, and any systems you currently use..." className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all resize-none"></textarea>
                 </div>
 
                 {/* File Upload Area */}
@@ -1006,7 +1006,7 @@ export default function Home() {
                 </div>
 
                 <button className="w-full py-3 md:py-4 rounded-xl bg-gray-900 text-white font-bold text-base md:text-lg hover:bg-blue-700 shadow-xl shadow-blue-200/50 transition-all transform hover:-translate-y-1">
-                  Send Request
+                  Get Your Free AI Consultation
                 </button>
                 
                 <p className="text-center text-xs text-gray-400 mt-4">

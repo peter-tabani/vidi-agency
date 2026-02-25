@@ -13,51 +13,51 @@ import {
 // --- DATA: SERVICES MENU ---
 const servicesData = [
   {
-    id: "app-dev",
-    label: "Application Development",
-    icon: Smartphone,
-    headerDesc: "Scalable, high-performance apps for every device.",
+    id: "ai-lead-capture",
+    label: "AI Lead Capture & Qualification",
+    icon: Bot,
+    headerDesc: "Capture, qualify, and route leads 24/7 with AI agents.",
     subServices: [
-      { title: "iOS App Development", desc: "Native Swift apps for Apple ecosystem." },
-      { title: "Android Development", desc: "Kotlin apps for diverse verticals." },
-      { title: "Flutter Cross-Platform", desc: "One codebase, iOS & Android." },
-      { title: "React Native", desc: "Flexible, efficient mobile apps." }
+      { title: "AI Chatbots", desc: "Engage visitors and qualify leads in real time." },
+      { title: "Lead Routing", desc: "Auto-assign leads to your sales team." },
+      { title: "Multi-Channel Capture", desc: "Web, WhatsApp, Instagram, SMS." },
+      { title: "CRM Integration", desc: "Sync leads directly to your CRM." }
     ]
   },
   {
-    id: "web-dev",
-    label: "Website Development",
-    icon: Globe,
-    headerDesc: "Stunning, fast, SEO-optimized web experiences.",
+    id: "ai-engagement",
+    label: "AI Customer Engagement",
+    icon: MessageSquare,
+    headerDesc: "Automate customer support and engagement across channels.",
     subServices: [
-      { title: "Custom Web Dev", desc: "Tailor-made Next.js sites." },
-      { title: "E-Commerce", desc: "Shopify & Custom Stores." },
-      { title: "SaaS Platforms", desc: "Subscription software products." },
-      { title: "CMS Solutions", desc: "Sanity, Strapi, WordPress." }
+      { title: "AI Support Agents", desc: "Resolve FAQs and issues instantly." },
+      { title: "Automated Follow-Ups", desc: "SMS, email, and WhatsApp sequences." },
+      { title: "Booking & Scheduling", desc: "AI-powered appointment management." },
+      { title: "Unified Inbox", desc: "All channels in one stream." }
     ]
   },
   {
     id: "ai-automation",
-    label: "AI & Automation",
-    icon: Bot,
-    headerDesc: "Intelligent agents to automate your workflow.",
+    label: "AI Workflow Automation",
+    icon: Database,
+    headerDesc: "Eliminate repetitive work and connect your systems.",
     subServices: [
-      { title: "AI Chatbots", desc: "24/7 Support Agents (GPT-4)." },
-      { title: "Workflow Auto", desc: "Connect CRM, Email, & Finance." },
-      { title: "Predictive Analytics", desc: "Forecast trends with data." },
-      { title: "Custom Models", desc: "Fine-tuned AI for your niche." }
+      { title: "Process Automation", desc: "Automate data entry and internal tasks." },
+      { title: "System Integration", desc: "Connect CRM, email, payments, and more." },
+      { title: "Smart Dashboards", desc: "Real-time business analytics." },
+      { title: "Custom AI Tools", desc: "Tailored solutions for your workflows." }
     ]
   },
   {
-    id: "systems",
-    label: "Systems & Cloud",
-    icon: Database,
-    headerDesc: "Robust infrastructure powering your growth.",
+    id: "web-app-dev",
+    label: "AI-Powered Websites & Apps",
+    icon: Smartphone,
+    headerDesc: "High-performance websites and apps built to support your AI systems.",
     subServices: [
-      { title: "API Integration", desc: "Connect Stripe, Maps, Twilio." },
-      { title: "Cloud Architecture", desc: "Scalable AWS/Azure hosting." },
-      { title: "Internal Dashboards", desc: "Admin panels for operations." },
-      { title: "Legacy Migration", desc: "Modernize old software." }
+      { title: "Custom Websites", desc: "Next.js, React, high-performance." },
+      { title: "E-Commerce", desc: "Shopify & custom online stores." },
+      { title: "Mobile Apps", desc: "iOS & Android (Kotlin/Flutter)." },
+      { title: "SaaS Platforms", desc: "Subscription software products." }
     ]
   }
 ];
@@ -255,10 +255,10 @@ export default function Navbar() {
                     </div>
                     <div>
                       <h4 className="text-base md:text-lg font-bold text-gray-900">
-                        We Power Industries With Smart Solutions
+                        AI Automation for Every Industry
                       </h4>
                       <p className="text-xs md:text-sm text-gray-600 mt-1">
-                        Custom software services to digitally transform every industry.
+                        We build AI systems that capture leads and automate engagement across industries.
                       </p>
                     </div>
                   </div>
@@ -327,8 +327,8 @@ export default function Navbar() {
               className="inline-flex items-center justify-center gap-2 px-3 py-2 lg:px-4 lg:py-2.5 xl:px-6 xl:py-3 rounded-full text-white font-bold bg-gradient-to-r from-blue-600 to-purple-600 hover:opacity-90 transition-all shadow-lg shadow-blue-200 hover:shadow-blue-300 whitespace-nowrap min-w-[120px] text-xs lg:text-sm xl:text-base"
             >
               
-              <span className="hidden lg:inline">Speak to an Expert</span>
-              <span className="lg:hidden">Contact</span>
+              <span className="hidden lg:inline">Book a Demo</span>
+              <span className="lg:hidden">Demo</span>
             </Link>
           </div>
 
@@ -525,7 +525,7 @@ export default function Navbar() {
             bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg shadow-blue-200 text-center text-sm flex items-center justify-center gap-2"
           >
             
-            Speak to an Expert
+            Book a Demo
           </Link>
         </div>
       </div>
