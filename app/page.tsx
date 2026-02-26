@@ -167,9 +167,22 @@ export default function Home() {
     <main className="flex flex-col min-h-screen w-full overflow-x-hidden">
       
       {/* HERO SECTION - Fixed responsiveness */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-white via-white to-blue-50">
-  {/* BACKGROUND */}
-  <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
+      <section className="relative overflow-hidden bg-[#0a0a0f]">
+  {/* BACKGROUND LAYERS */}
+  {/* Layer 1: Base radial gradient */}
+  <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-20%,rgba(59,130,246,0.25),transparent_70%)]" />
+  {/* Layer 2: Secondary purple glow */}
+  <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_80%_50%,rgba(139,92,246,0.15),transparent_70%)]" />
+  {/* Layer 3: Blurred glow blobs */}
+  <div className="absolute top-[-10%] left-[15%] w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px] pointer-events-none" />
+  <div className="absolute bottom-[-5%] right-[10%] w-[400px] h-[400px] bg-purple-600/15 rounded-full blur-[100px] pointer-events-none" />
+  <div className="absolute top-[30%] right-[30%] w-[300px] h-[300px] bg-indigo-500/10 rounded-full blur-[80px] pointer-events-none" />
+  {/* Layer 4: SVG noise overlay */}
+  <div className="absolute inset-0 opacity-[0.035] pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`, backgroundRepeat: 'repeat', backgroundSize: '128px 128px' }} />
+  {/* Layer 5: Vignette overlay */}
+  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(0,0,0,0.6)_100%)] pointer-events-none" />
+  {/* Layer 6: Subtle grid */}
+  <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-[0.04] [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
 
   {/* HERO CONTENT */}
   <div className="relative z-10">
@@ -190,22 +203,22 @@ export default function Home() {
 
             {/* Badge - Compact */}
             <div className="inline-flex items-center gap-2 sm:gap-2.5 
-                            bg-white border border-blue-100 text-blue-800 
+                            bg-white/10 border border-white/20 text-blue-300 
                             px-3 sm:px-3.5 md:px-4 
                             py-1 sm:py-1.5 
                             rounded-full 
                             text-[0.6875rem] sm:text-xs 
                             font-bold mb-3 sm:mb-4 
-                            shadow-sm hover:shadow-md transition-shadow">
+                            shadow-sm hover:shadow-md transition-shadow backdrop-blur-sm">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
               </span>
-              <span className="whitespace-nowrap">AI Automation for Business • Now Booking</span>
+              <span className="whitespace-nowrap text-blue-200">AI Automation for Business • Now Booking</span>
             </div>
 
             {/* Headline - REDUCED SIZES for vertical space */}
-            <h1 className="font-extrabold text-gray-900 tracking-tight 
+            <h1 className="font-extrabold text-white tracking-tight 
                            leading-[1.15] sm:leading-[1.12] md:leading-[1.1] lg:leading-[1.08]
                            mb-3 sm:mb-4 md:mb-4
                            text-[clamp(1.875rem,4.5vw,2.25rem)] 
@@ -223,13 +236,13 @@ export default function Home() {
 
             {/* Sub-section with list - COMPACT */}
             <div className="w-full max-w-xl lg:max-w-none
-                            text-gray-700 font-medium leading-relaxed
+                            text-gray-300 font-medium leading-relaxed
                             text-[clamp(0.875rem,1.6vw,0.9375rem)] 
                             sm:text-[clamp(0.9375rem,1.8vw,1rem)] 
                             lg:text-[clamp(1rem,1.1vw,1.0625rem)]
                             mb-4 sm:mb-5">
               
-              <p className="mb-2.5 sm:mb-3">
+              <p className="mb-2.5 sm:mb-3 text-gray-300">
                 We build AI automation for B2B and e-commerce businesses:
               </p>
 
@@ -242,21 +255,21 @@ export default function Home() {
                 ].map((item, index) => (
                   <li key={index} className="flex items-start gap-2 sm:gap-2.5">
                     <div className="flex-shrink-0 w-[16px] h-[16px] sm:w-[18px] sm:h-[18px] 
-                                    text-blue-600 mt-0.5">
+                                    text-blue-400 mt-0.5">
                       <Check className="w-full h-full" strokeWidth={3} />
                     </div>
                     <span className="text-[0.8125rem] sm:text-[0.875rem] md:text-[0.9375rem] lg:text-base
-                                     text-gray-800 leading-snug">
+                                     text-gray-200 leading-snug">
                       {item}
                     </span>
                   </li>
                 ))}
               </ul>
 
-              <p className="font-bold text-gray-900 
+              <p className="font-bold text-gray-200 
                             flex items-center justify-center lg:justify-start gap-2
                             text-[0.75rem] sm:text-[0.8125rem] md:text-sm">
-                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse flex-shrink-0" />
+                <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse flex-shrink-0" />
                 <span>You own the system. One-time build, optional support.</span>
               </p>
             </div>
@@ -267,15 +280,15 @@ export default function Home() {
                             w-full sm:w-auto">
               <Link
                 href="/get-started"
-                className="bg-gray-900 text-white 
+                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white 
                            px-6 sm:px-7 md:px-8 lg:px-9
                            py-2.5 sm:py-3 md:py-3.5
                            rounded-full 
                            text-[0.8125rem] sm:text-sm md:text-[0.9375rem] lg:text-base
                            font-bold 
-                           hover:bg-blue-700 
-                           shadow-xl shadow-blue-200/50 
-                           hover:shadow-2xl hover:shadow-blue-300/60
+                           hover:from-blue-500 hover:to-purple-500 
+                           shadow-xl shadow-blue-500/25 
+                           hover:shadow-2xl hover:shadow-blue-500/40
                            transition-all duration-300
                            w-full sm:w-auto text-center
                            whitespace-nowrap">
@@ -288,10 +301,11 @@ export default function Home() {
                            rounded-full 
                            text-[0.8125rem] sm:text-sm md:text-[0.9375rem] lg:text-base
                            font-bold 
-                           text-gray-800 bg-white 
-                           border border-gray-300 
-                           hover:bg-gray-50 hover:border-gray-400
+                           text-white bg-white/10 
+                           border border-white/20 
+                           hover:bg-white/20 hover:border-white/30
                            transition-all duration-300
+                           backdrop-blur-sm
                            shadow-sm hover:shadow-md
                            w-full sm:w-auto text-center
                            whitespace-nowrap">
@@ -307,11 +321,11 @@ export default function Home() {
               <div>
                 <div className="flex items-center gap-1.5 mb-0.5">
                   <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                  <span className="text-[0.625rem] sm:text-xs font-bold text-green-700 uppercase tracking-wider">
+                  <span className="text-[0.625rem] sm:text-xs font-bold text-green-400 uppercase tracking-wider">
                     Production Ready
                   </span>
                 </div>
-                <p className="text-[0.625rem] sm:text-xs text-gray-500 font-medium">
+                <p className="text-[0.625rem] sm:text-xs text-gray-400 font-medium">
                   Enterprise AI Stack
                 </p>
               </div>
@@ -339,10 +353,10 @@ export default function Home() {
                 {/* Center Core - Larger */}
                 <div className="absolute z-20 
                                 w-28 h-28 lg:w-32 lg:h-32 xl:w-36 xl:h-36 2xl:w-40 2xl:h-40
-                                bg-white rounded-full 
-                                shadow-[0_0_80px_-15px_rgba(37,99,235,0.6)] 
+                                bg-white/10 backdrop-blur-xl rounded-full 
+                                shadow-[0_0_80px_-15px_rgba(59,130,246,0.5)] 
                                 flex items-center justify-center 
-                                border-2 border-blue-100
+                                border border-white/20
                                 transition-all duration-300">
                   <div className="text-center">
                     <div className="bg-gradient-to-r from-blue-600 to-purple-600 
@@ -352,15 +366,15 @@ export default function Home() {
                                     text-white mb-2 shadow-lg">
                       <Bot className="w-7 h-7 lg:w-8 lg:h-8 xl:w-9 xl:h-9 2xl:w-10 2xl:h-10" />
                     </div>
-                    <span className="text-[0.65rem] lg:text-xs xl:text-sm font-bold text-gray-900 block uppercase tracking-wide">
+                    <span className="text-[0.65rem] lg:text-xs xl:text-sm font-bold text-white block uppercase tracking-wide">
                       AI Core
                     </span>
                   </div>
                 </div>
 
                 {/* Orbit Rings */}
-                <div className="absolute w-[90%] h-[90%] border-2 border-dashed border-blue-200 rounded-full opacity-40" />
-                <div className="absolute w-[68%] h-[68%] border-2 border-blue-100 rounded-full opacity-40" />
+                <div className="absolute w-[90%] h-[90%] border border-dashed border-blue-500/20 rounded-full" />
+                <div className="absolute w-[68%] h-[68%] border border-blue-400/15 rounded-full" />
 
                 {/* Rotating Ring with Cards */}
                 <div className="absolute inset-0 animate-orbit-ring flex items-center justify-center">
@@ -369,17 +383,17 @@ export default function Home() {
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 
                                   w-[11rem] lg:w-52 xl:w-56 2xl:w-60
                                   animate-orbit-item">
-                    <div className="bg-white/95 backdrop-blur-md 
+                    <div className="bg-white/10 backdrop-blur-md 
                                     p-3 lg:p-3.5 xl:p-4 
-                                    rounded-2xl border-2 border-white/80
-                                    shadow-[0_8px_30px_rgb(0,0,0,0.12)] 
-                                    hover:shadow-[0_12px_40px_rgb(0,0,0,0.16)]
+                                    rounded-2xl border border-white/15
+                                    shadow-[0_8px_30px_rgba(59,130,246,0.1)] 
+                                    hover:shadow-[0_12px_40px_rgba(59,130,246,0.2)]
                                     transition-all duration-300
                                     flex items-center gap-2.5 lg:gap-3">
-                      <div className="bg-blue-100 p-2 lg:p-2.5 rounded-lg text-blue-600 flex-shrink-0">
+                      <div className="bg-blue-500/20 p-2 lg:p-2.5 rounded-lg text-blue-400 flex-shrink-0">
                         <LayoutDashboard className="w-5 h-5 lg:w-[1.375rem] lg:h-[1.375rem]" />
                       </div>
-                      <div className="text-xs lg:text-sm xl:text-[0.9375rem] font-bold text-gray-900 leading-tight">
+                      <div className="text-xs lg:text-sm xl:text-[0.9375rem] font-bold text-white leading-tight">
                         AI Lead Capture
                       </div>
                     </div>
@@ -389,17 +403,17 @@ export default function Home() {
                   <div className="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 
                                   w-[11rem] lg:w-52 xl:w-56 2xl:w-60
                                   animate-orbit-item">
-                    <div className="bg-white/95 backdrop-blur-md 
+                    <div className="bg-white/10 backdrop-blur-md 
                                     p-3 lg:p-3.5 xl:p-4 
-                                    rounded-2xl border-2 border-white/80
-                                    shadow-[0_8px_30px_rgb(0,0,0,0.12)] 
-                                    hover:shadow-[0_12px_40px_rgb(0,0,0,0.16)]
+                                    rounded-2xl border border-white/15
+                                    shadow-[0_8px_30px_rgba(139,92,246,0.1)] 
+                                    hover:shadow-[0_12px_40px_rgba(139,92,246,0.2)]
                                     transition-all duration-300
                                     flex items-center gap-2.5 lg:gap-3">
-                      <div className="bg-purple-100 p-2 lg:p-2.5 rounded-lg text-purple-600 flex-shrink-0">
+                      <div className="bg-purple-500/20 p-2 lg:p-2.5 rounded-lg text-purple-400 flex-shrink-0">
                         <Smartphone className="w-5 h-5 lg:w-[1.375rem] lg:h-[1.375rem]" />
                       </div>
-                      <div className="text-xs lg:text-sm xl:text-[0.9375rem] font-bold text-gray-900 leading-tight">
+                      <div className="text-xs lg:text-sm xl:text-[0.9375rem] font-bold text-white leading-tight">
                         Smart Engagement
                       </div>
                     </div>
@@ -409,17 +423,17 @@ export default function Home() {
                   <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 
                                   w-[11rem] lg:w-52 xl:w-56 2xl:w-60
                                   animate-orbit-item">
-                    <div className="bg-white/95 backdrop-blur-md 
+                    <div className="bg-white/10 backdrop-blur-md 
                                     p-3 lg:p-3.5 xl:p-4 
-                                    rounded-2xl border-2 border-white/80
-                                    shadow-[0_8px_30px_rgb(0,0,0,0.12)] 
-                                    hover:shadow-[0_12px_40px_rgb(0,0,0,0.16)]
+                                    rounded-2xl border border-white/15
+                                    shadow-[0_8px_30px_rgba(34,197,94,0.1)] 
+                                    hover:shadow-[0_12px_40px_rgba(34,197,94,0.2)]
                                     transition-all duration-300
                                     flex items-center gap-2.5 lg:gap-3">
-                      <div className="bg-green-100 p-2 lg:p-2.5 rounded-lg text-green-600 flex-shrink-0">
+                      <div className="bg-green-500/20 p-2 lg:p-2.5 rounded-lg text-green-400 flex-shrink-0">
                         <Workflow className="w-5 h-5 lg:w-[1.375rem] lg:h-[1.375rem]" />
                       </div>
-                      <div className="text-xs lg:text-sm xl:text-[0.9375rem] font-bold text-gray-900 leading-tight">
+                      <div className="text-xs lg:text-sm xl:text-[0.9375rem] font-bold text-white leading-tight">
                         Workflow Automation
                       </div>
                     </div>
@@ -429,17 +443,17 @@ export default function Home() {
                   <div className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 
                                   w-[11rem] lg:w-52 xl:w-56 2xl:w-60
                                   animate-orbit-item">
-                    <div className="bg-white/95 backdrop-blur-md 
+                    <div className="bg-white/10 backdrop-blur-md 
                                     p-3 lg:p-3.5 xl:p-4 
-                                    rounded-2xl border-2 border-white/80
-                                    shadow-[0_8px_30px_rgb(0,0,0,0.12)] 
-                                    hover:shadow-[0_12px_40px_rgb(0,0,0,0.16)]
+                                    rounded-2xl border border-white/15
+                                    shadow-[0_8px_30px_rgba(249,115,22,0.1)] 
+                                    hover:shadow-[0_12px_40px_rgba(249,115,22,0.2)]
                                     transition-all duration-300
                                     flex items-center gap-2.5 lg:gap-3">
-                      <div className="bg-orange-100 p-2 lg:p-2.5 rounded-lg text-orange-600 flex-shrink-0">
+                      <div className="bg-orange-500/20 p-2 lg:p-2.5 rounded-lg text-orange-400 flex-shrink-0">
                         <Database className="w-5 h-5 lg:w-[1.375rem] lg:h-[1.375rem]" />
                       </div>
-                      <div className="text-xs lg:text-sm xl:text-[0.9375rem] font-bold text-gray-900 leading-tight">
+                      <div className="text-xs lg:text-sm xl:text-[0.9375rem] font-bold text-white leading-tight">
                         System Integration
                       </div>
                     </div>
@@ -456,11 +470,11 @@ export default function Home() {
   </div>
 
   {/* LOGO MARQUEE */}
-  <div className="w-full bg-white py-6 sm:py-7 md:py-8 lg:py-9 relative overflow-hidden border-t border-gray-100">
+  <div className="w-full bg-[#0a0a0f] py-6 sm:py-7 md:py-8 lg:py-9 relative overflow-hidden border-t border-white/10">
     <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 lg:w-32 z-10 
-                    bg-gradient-to-r from-white to-transparent pointer-events-none" />
+                    bg-gradient-to-r from-[#0a0a0f] to-transparent pointer-events-none" />
     <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 lg:w-32 z-10 
-                    bg-gradient-to-l from-white to-transparent pointer-events-none" />
+                    bg-gradient-to-l from-[#0a0a0f] to-transparent pointer-events-none" />
 
     <div className="flex w-max animate-scroll 
                     gap-12 sm:gap-16 md:gap-20 lg:gap-24 xl:gap-28 
@@ -470,7 +484,7 @@ export default function Home() {
           key={`tech-1-${index}`}
           src={tech.logo}
           alt={`${tech.name} logo`}
-          className={tech.className}
+          className={`${tech.className} brightness-0 invert opacity-60`}
           loading="lazy"
         />
       ))}
@@ -479,7 +493,7 @@ export default function Home() {
           key={`tech-2-${index}`}
           src={tech.logo}
           alt={`${tech.name} logo`}
-          className={tech.className}
+          className={`${tech.className} brightness-0 invert opacity-60`}
           loading="lazy"
         />
       ))}
@@ -488,7 +502,7 @@ export default function Home() {
           key={`tech-3-${index}`}
           src={tech.logo}
           alt={`${tech.name} logo`}
-          className={tech.className}
+          className={`${tech.className} brightness-0 invert opacity-60`}
           loading="lazy"
         />
       ))}
