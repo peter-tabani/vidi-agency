@@ -167,22 +167,25 @@ export default function Home() {
     <main className="flex flex-col min-h-screen w-full overflow-x-hidden">
       
       {/* HERO SECTION - Fixed responsiveness */}
-      <section className="relative overflow-hidden bg-[#0a0a0f]">
-  {/* BACKGROUND LAYERS */}
-  {/* Layer 1: Base radial gradient */}
-  <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-20%,rgba(59,130,246,0.25),transparent_70%)]" />
-  {/* Layer 2: Secondary purple glow */}
-  <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_80%_50%,rgba(139,92,246,0.15),transparent_70%)]" />
-  {/* Layer 3: Blurred glow blobs */}
-  <div className="absolute top-[-10%] left-[15%] w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px] pointer-events-none" />
-  <div className="absolute bottom-[-5%] right-[10%] w-[400px] h-[400px] bg-purple-600/15 rounded-full blur-[100px] pointer-events-none" />
-  <div className="absolute top-[30%] right-[30%] w-[300px] h-[300px] bg-indigo-500/10 rounded-full blur-[80px] pointer-events-none" />
-  {/* Layer 4: SVG noise overlay */}
-  <div className="absolute inset-0 opacity-[0.035] pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`, backgroundRepeat: 'repeat', backgroundSize: '128px 128px' }} />
-  {/* Layer 5: Vignette overlay */}
-  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(0,0,0,0.6)_100%)] pointer-events-none" />
-  {/* Layer 6: Subtle grid */}
-  <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-[0.04] [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
+      <section className="relative overflow-hidden bg-[#05060b]">
+  {/* BACKGROUND: 3 Diagonal Slanted Panels */}
+  <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+    {/* Panel 1 (Left): Near-black charcoal */}
+    <div className="absolute inset-0 bg-[#05060b]" />
+    {/* Panel 2 (Middle): Dark navy — skewed diagonal */}
+    <div className="absolute top-0 bottom-0 left-[25%] right-[25%] bg-[#0a0f1e] origin-center -skew-x-[16deg] scale-x-[1.3]" />
+    {/* Panel 3 (Right): Vivid deep blue — skewed diagonal */}
+    <div className="absolute top-0 bottom-0 left-[55%] right-[-15%] bg-[#0c2d6b] origin-center -skew-x-[16deg] scale-x-[1.3]" />
+    {/* Soft edge blend between panels */}
+    <div className="absolute top-0 bottom-0 left-[20%] w-[20%] bg-gradient-to-r from-[#05060b] to-transparent" />
+    <div className="absolute top-0 bottom-0 left-[48%] w-[18%] bg-gradient-to-r from-[#0a0f1e]/80 to-transparent" />
+    {/* Subtle blue glow on right panel */}
+    <div className="absolute top-[-20%] right-[-5%] w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[120px]" />
+    {/* Noise overlay */}
+    <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`, backgroundRepeat: 'repeat', backgroundSize: '128px 128px' }} />
+    {/* Vignette */}
+    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(0,0,0,0.5)_100%)]" />
+  </div>
 
   {/* HERO CONTENT */}
   <div className="relative z-10">
@@ -218,7 +221,7 @@ export default function Home() {
             </div>
 
             {/* Headline - REDUCED SIZES for vertical space */}
-            <h1 className="font-extrabold text-white tracking-tight 
+            <h1 className="font-extrabold text-white tracking-tight font-space-grotesk
                            leading-[1.15] sm:leading-[1.12] md:leading-[1.1] lg:leading-[1.08]
                            mb-3 sm:mb-4 md:mb-4
                            text-[clamp(1.875rem,4.5vw,2.25rem)] 
@@ -229,7 +232,7 @@ export default function Home() {
                            2xl:text-[clamp(3.75rem,4vw,4.25rem)]
                            max-w-[20ch] lg:max-w-none">
               AI Systems That Capture Leads{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-300 to-sky-300">
                 and Grow Your Revenue
               </span>
             </h1>
@@ -470,11 +473,11 @@ export default function Home() {
   </div>
 
   {/* LOGO MARQUEE */}
-  <div className="w-full bg-[#0a0a0f] py-6 sm:py-7 md:py-8 lg:py-9 relative overflow-hidden border-t border-white/10">
+  <div className="w-full bg-[#05060b] py-6 sm:py-7 md:py-8 lg:py-9 relative overflow-hidden border-t border-white/10">
     <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 lg:w-32 z-10 
-                    bg-gradient-to-r from-[#0a0a0f] to-transparent pointer-events-none" />
+                    bg-gradient-to-r from-[#05060b] to-transparent pointer-events-none" />
     <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 lg:w-32 z-10 
-                    bg-gradient-to-l from-[#0a0a0f] to-transparent pointer-events-none" />
+                    bg-gradient-to-l from-[#05060b] to-transparent pointer-events-none" />
 
     <div className="flex w-max animate-scroll 
                     gap-12 sm:gap-16 md:gap-20 lg:gap-24 xl:gap-28 

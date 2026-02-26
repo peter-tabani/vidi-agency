@@ -4,7 +4,7 @@
 // ============================================================================
 
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import React from "react";
 import Navbar from "@/components/Navbar";
@@ -23,6 +23,12 @@ const inter = Inter({
   subsets: ["latin"],
   display: 'swap',
   variable: '--font-inter',
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  display: 'swap',
+  variable: '--font-space-grotesk',
 });
 
 // ============================================================================
@@ -77,7 +83,7 @@ export default function RootLayout({
   const websiteSchema = generateWebsiteSchema();
 
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <head>
         {/* Structured Data */}
         <script

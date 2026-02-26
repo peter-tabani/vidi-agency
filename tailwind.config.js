@@ -6,6 +6,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'space-grotesk': ['var(--font-space-grotesk)', 'sans-serif'],
+      },
       keyframes: {
         scroll: {
           '0%': { transform: 'translateX(0)' },
