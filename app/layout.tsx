@@ -107,7 +107,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://api.groq.com" />
         <link rel="dns-prefetch" href="https://supabase.co" />
       </head>
-      <body className={`${inter.className} bg-black text-white antialiased`}>
+      <body className={`${inter.className} bg-[#05060b] text-white antialiased`}>
         {/* Skip to main content link for accessibility */}
         <a 
           href="#main-content" 

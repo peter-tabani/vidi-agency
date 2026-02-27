@@ -213,7 +213,7 @@ export default function Home() {
             href="/get-started"
             className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-2xl text-base font-semibold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/30"
           >
-            <span className="relative z-10">Book a Demo</span>
+            <span className="relative z-10">Start your project</span>
             <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </Link>
           <Link

@@ -1,23 +1,24 @@
 "use client";
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabase';
 import { 
-  ArrowRight, ArrowLeft, Check,  Zap, Clock, 
+  ArrowRight, ArrowLeft, Check, Zap, Clock, 
   Code2, Smartphone, Bot, LayoutDashboard, Workflow, Database,
   Globe, Palette, ShoppingCart, Rocket, Users, Mail, Phone, User,
   Building2, MessageSquare, CheckCircle2, PartyPopper, RefreshCw, PaintBucket,
-  Shield, Cloud, FileText, LifeBuoy, BarChart,
-  PenTool, Code, Server, TrendingUp, Target, Wrench,
+  Shield, Cloud, FileText, LifeBuoy, BarChart, TrendingUp,
+  PenTool, Code, Server, Target, Wrench,
   Fingerprint, Key, Lock, Sparkles, Share2, Trophy, Moon, Watch, Mic, UploadCloud,
   Split, Headphones, Layers, LineChart, Languages, ShieldCheck, Bell, CalendarCheck,
-  UserMinus, Forward, Activity, Send, Loader2, Star
+  UserMinus, Forward, Activity, Send, Loader2, Star, Plug, PieChart, Award,
+  GitBranch, Cpu, Search
 } from 'lucide-react';
 
 // ============================================================================
-// DATA STRUCTURE (Prices kept for backend calculation, hidden from UI)
+// NEW SERVICE STRUCTURE (AI first, then others, grouped by category)
 // ============================================================================
 
 interface Feature {
@@ -37,199 +38,237 @@ interface Service {
   basePrice: number;
   gradient: string;
   features: Feature[];
+  category: string; // for grouping
 }
 
 const services: Service[] = [
+  // ---------- CATEGORY 1: AI Automation Systems ----------
   {
-  id: "web-development",
-  name: "Website Development",
-  description: "Custom-built, high-performance websites tailored for the US market.",
-  icon: Code2,
-  basePrice: 700, 
-  gradient: "from-blue-600 to-indigo-600",
-  features: [
-  // --- CORE STRUCTURE ---
-  { id: "pages-5", name: "Up to 5 Pages", description: "Standard site (Home, About, Services, Contact, etc.)", price: 0, icon: Globe },
-  { id: "pages-10", name: "Up to 10 Pages", description: "More space for extra services or detailed info", price: 600, icon: Globe },
-  { id: "pages-unlimited", name: "Unlimited Pages", description: "A massive site with no limits on content", price: 1800, icon: Globe },
-  
-  // --- SECURITY & COMPLIANCE ---
-  { id: "ssl", name: "SSL Security Certificate", description: "The 'Secure' padlock icon that builds trust", price: 0, icon: Shield },
-  { id: "privacy", name: "Legal & Privacy Compliance", description: "Required cookie pop-ups and legal pages", price: 300, icon: Shield, popular: true },
-  { id: "backups", name: "Daily Auto-Backups", description: "We save your site daily so you never lose data", price: 200, icon: Database },
-
-  // --- PERFORMANCE ---
-  { id: "mobile", name: "Mobile Friendly", description: "Looks perfect on all iPhones and Androids", price: 0, icon: Smartphone },
-  { id: "hosting", name: "Domain & Server Setup", description: "We connect your www.name.com to the internet", price: 150, icon: Cloud },
-  { id: "speed", name: "Speed Boost Package", description: "Makes your site load instantly (under 2 seconds)", price: 450, icon: Zap, popular: true },
-
-  // --- FUNCTIONALITY ---
-  { id: "cms", name: "Easy-Edit Admin Panel", description: "Change text and photos yourself easily", price: 500, icon: LayoutDashboard },
-  { id: "forms", name: "Smart Application Forms", description: "Forms that can take resumes or surveys", price: 350, icon: FileText },
-  { id: "booking", name: "Booking System", description: "Clients can schedule appointments online", price: 400, icon: Clock },
-  { id: "chat", name: "Live Chat Widget", description: "Chat with visitors via WhatsApp or Messenger", price: 200, icon: MessageSquare },
-  { id: "ecommerce-lite", name: "Online Store Setup", description: "Sell products and accept payments online", price: 1200, icon: ShoppingCart },
-
-  // --- GROWTH ---
-  { id: "seo", name: "Google Ranking (SEO)", description: "Helps your website show up on Google Search", price: 600, icon: Rocket, popular: true },
-  { id: "analytics", name: "Visitor Tracking", description: "See who visits your site and where they come from", price: 250, icon: BarChart },
-  { id: "maintenance", name: "3-Month Support", description: "We fix bugs and update software for 3 months", price: 500, icon: LifeBuoy },
-]
-},
+    id: "ai-lead-capture",
+    name: "AI Lead Capture & Qualification",
+    description: "AI website assistant that qualifies leads, books appointments, and integrates with your CRM.",
+    icon: Bot,
+    basePrice: 1000,
+    gradient: "from-blue-600 to-indigo-600",
+    category: "AI Automation Systems",
+    features: [
+      { id: "lead-website-assistant", name: "AI Website Assistant", description: "Engages every visitor 24/7", price: 0, icon: Bot },
+      { id: "lead-qualification-chatbot", name: "Lead Pre‑Qualification", description: "Asks the right questions to identify hot leads", price: 300, icon: MessageSquare },
+      { id: "appointment-booking", name: "Appointment Booking Automation", description: "Syncs with your calendar and books meetings", price: 400, icon: CalendarCheck, popular: true },
+      { id: "form-filtering", name: "Contact Form AI Filtering", description: "Filters spam and routes genuine inquiries", price: 200, icon: Shield },
+      { id: "crm-integration", name: "CRM Integration (HubSpot, Zoho, etc.)", description: "Leads automatically saved to your CRM", price: 500, icon: Database, popular: true },
+      { id: "hot-lead-alert", name: "Hot Lead SMS Alerts", description: "Instant notification when a hot lead converts", price: 150, icon: Bell },
+    ]
+  },
   {
-  id: "website-redesign",
-  name: "Website Redesign",
-  description: "Modernize your outdated site with better performance & conversion.",
-  icon: PaintBucket, 
-  basePrice: 600, 
-  gradient: "from-purple-600 to-pink-600",
-  features: [
-    // --- VISUAL & EXPERIENCE (The "Facelift") ---
-    { id: "ui-refresh", name: "UI/UX Modernization", description: "Fresh, modern look with 2025 design trends", price: 0, icon: Palette }, // Included standard
-    { id: "mobile-fix", name: "Mobile Responsiveness Fix", description: "Fixing layout issues on phones & tablets", price: 200, icon: Smartphone },
-    { id: "branding", name: "Brand Style Guide", description: "New color palette, typography & logo polish", price: 350, icon: PenTool },
-
-    // --- TECHNICAL IMPROVEMENTS (The "Fix") ---
-    { id: "speed-audit", name: "Speed & Performance Overhaul", description: "Fixing slow load times (Core Web Vitals)", price: 400, icon: Zap, popular: true },
-    { id: "code-cleanup", name: "Code Structure Cleanup", description: "Removing bloat & unused scripts", price: 250, icon: Code },
-    { id: "security-patch", name: "Security Hardening", description: "Fixing vulnerabilities & updating SSL", price: 200, icon: Shield },
-
-    // --- MIGRATION & DATA (The Hard Work) ---
-    { id: "migration-content", name: "Content Migration", description: "Safely moving blogs, images & text (up to 20 pages)", price: 400, icon: Database },
-    { id: "platform-switch", name: "Platform Migration", description: "Moving from Wix/WordPress to Custom/React", price: 800, icon: Server, popular: true },
-    { id: "seo-retain", name: "SEO Rank Protection", description: "301 redirects & sitemap updates to keep rankings", price: 500, icon: TrendingUp },
-
-    // --- CONVERSION FOCUS (Making Money) ---
-    { id: "cro", name: "Conversion Rate Optimization", description: "Redesigning CTAs & flows to get more leads", price: 450, icon: Target },
-    { id: "analytics-audit", name: "Analytics Re-setup", description: "Fixing broken tracking & events", price: 200, icon: BarChart },
-    { id: "integration-fix", name: "Integration Repair", description: "Fixing broken forms, maps, or API connections", price: 300, icon: Wrench },
-  ]
-},
+    id: "ai-customer-engagement",
+    name: "AI Customer Engagement",
+    description: "24/7 AI assistants across website, WhatsApp, Instagram, and email.",
+    icon: MessageSquare,
+    basePrice: 1500,
+    gradient: "from-purple-600 to-pink-600",
+    category: "AI Automation Systems",
+    features: [
+      { id: "24-7-website-assistant", name: "24/7 Website AI Assistant", description: "Always‑on chat support", price: 450, icon: Bot }, // reused in-app-support
+      { id: "whatsapp-automation", name: "WhatsApp DM Automation", description: "Automated replies and lead capture on WhatsApp", price: 500, icon: Layers, popular: true },
+      { id: "instagram-automation", name: "Instagram DM Automation", description: "Engage followers automatically via DM", price: 500, icon: Share2 },
+      { id: "email-autoresponder-ai", name: "AI Email Autoresponder", description: "Smart email follow‑ups based on customer behaviour", price: 400, icon: Mail, popular: true },
+      { id: "faq-ai-system", name: "FAQ AI System", description: "Train AI on your FAQs for instant answers", price: 300, icon: FileText },
+      { id: "multi-language", name: "Multi‑Language Support", description: "Chat in English, Spanish, French, etc.", price: 400, icon: Languages },
+    ]
+  },
   {
-  id: "app-development",
-  name: "Mobile App Development",
-  description: "Native & Cross-platform apps for iOS and Android.",
-  icon: Smartphone, 
-  basePrice: 2000, 
-  gradient: "from-green-500 to-emerald-600",
-  features: [
-  // --- SECURITY ---
-  { id: "biometrics", name: "Face ID / Fingerprint Login", description: "Let users log in quickly and securely", price: 300, icon: Fingerprint },
-  { id: "2fa", name: "2-Step Verification", description: "Extra safety via SMS codes (like banks use)", price: 400, icon: Key },
-  { id: "encryption", name: "Secure Data Encryption", description: "Makes chat and user data impossible to hack", price: 600, icon: Lock, popular: true },
-  { id: "app-privacy", name: "Privacy & Data Tools", description: "Tools that let users manage their own data", price: 300, icon: Shield },
-
-  // --- ENGAGEMENT ---
-  { id: "ai-personal", name: "Smart Recommendations", description: "App learns what users like and shows it to them", price: 900, icon: Sparkles, popular: true },
-  { id: "gamification", name: "Rewards & Badges", description: "Fun features to keep users coming back daily", price: 500, icon: Trophy },
-  { id: "social-share", name: "Social Sharing", description: "Users can share content to Instagram/TikTok", price: 250, icon: Share2 },
-  { id: "in-app-support", name: "Automated Support Bot", description: "An AI assistant to answer user questions 24/7", price: 450, icon: MessageSquare },
-
-  // --- FEATURES ---
-  { id: "dark-mode", name: "Dark Mode", description: "A dark theme option that is easy on the eyes", price: 300, icon: Moon },
-  { id: "voice-cmd", name: "Voice Controls", description: "Users can talk to the app to get things done", price: 400, icon: Mic },
-  { id: "wearables", name: "Smart Watch Connection", description: "App works on Apple Watch and other devices", price: 800, icon: Watch },
-  { id: "deep-linking", name: "Smart Ad Links", description: "Ads click straight into the right screen in the app", price: 200, icon: Link },
-
-  // --- LAUNCH & SUPPORT ---
-  { id: "store-submission", name: "App Store Publishing", description: "We handle the hard work of getting into Apple/Google", price: 500, icon: UploadCloud, popular: true },
-  { id: "cloud-backend", name: "Database Hosting", description: "Setup of the secure server where data lives", price: 600, icon: Cloud },
-  { id: "ab-testing", name: "Feature Testing Tools", description: "Test two versions to see which makes more money", price: 350, icon: Split },
-  { id: "app-maintenance", name: "3-Month Bug Fixes", description: "We keep the app running smoothly after launch", price: 700, icon: LifeBuoy },
-]
-},
-  {
-  id: "ai-automation",
-  name: "AI & Chatbot Automation",
-  description: "Smart assistants that sell to customers 24/7.",
-  icon: Bot, 
-  basePrice: 1500, 
-  gradient: "from-purple-500 to-indigo-500",
-  features: [
-    // --- INTEGRATIONS (Connecting to their tools) ---
-    { id: "crm-connect", name: "Auto-Save Leads (CRM)", description: "Send customer info directly to Salesforce/HubSpot", price: 600, icon: Users, popular: true },
-    { id: "human-takeover", name: "Human Takeover Switch", description: "You can jump into the chat whenever needed", price: 400, icon: Headphones },
-    { id: "omnichannel", name: "Works on WhatsApp/FB", description: "One bot that works on Website, Insta & WhatsApp", price: 500, icon: Layers },
-    
-    // --- DATA & RESULTS (Showing it works) ---
-    { id: "analytics-pro", name: "Success Dashboard", description: "See exactly how many leads the AI captured", price: 300, icon: LineChart },
-    { id: "transcripts", name: "Read Customer Chats", description: "Review full conversation history for quality", price: 200, icon: FileText }, // Uses existing FileText icon
-    { id: "ab-testing-ai", name: "Response Testing", description: "Test different answers to see which sells better", price: 350, icon: Split }, // Uses existing Split icon
-
-    // --- INTELLIGENCE & SAFETY (Trust) ---
-    { id: "ai-training", name: "Smart Learning Loop", description: "We train the AI weekly to get smarter answers", price: 500, icon: Sparkles }, // Uses existing Sparkles
-    { id: "ai-safety", name: "Brand Safety Guard", description: "Prevents the AI from saying anything incorrect/rude", price: 400, icon: ShieldCheck, popular: true },
-    { id: "multi-lang", name: "Auto-Translate", description: "Chat with customers in English, Spanish, French, etc.", price: 400, icon: Languages },
-
-    // --- LOOK & FEEL (Branding) ---
-    { id: "custom-ui", name: "Custom Brand Colors", description: "Chat bubble matches your logo and website colors", price: 200, icon: Palette },
-    { id: "hot-lead-alert", name: "Hot Lead Alerts", description: "Get a text/email instantly when a client wants to buy", price: 150, icon: Bell },
-  ]
-},
-  {
-    id: "automation",
-    name: "Business Automation",
-    description: "Streamline workflows and eliminate manual tasks",
+    id: "ai-workflow-automation",
+    name: "AI Workflow Automation",
+    description: "Automate repetitive tasks, CRM, email, sales pipelines, and internal processes.",
     icon: Workflow,
     basePrice: 2000,
     gradient: "from-indigo-500 to-violet-500",
+    category: "AI Automation Systems",
     features: [
       { id: "crm-integration", name: "CRM Integration", description: "Connect HubSpot, Salesforce, etc.", price: 500, icon: Database, popular: true },
-      { id: "email-automation", name: "Email Automation", description: "Drip campaigns & follow-ups", price: 400, icon: Mail },
-      { id: "invoice-automation", name: "Invoice Automation", description: "Auto-generate & send invoices", price: 600, icon: ShoppingCart },
-      { id: "data-sync", name: "Multi-Platform Sync", description: "Keep all tools in sync", price: 700, icon: RefreshCw },
-      { id: "custom-dashboard", name: "Custom Dashboard", description: "Real-time business metrics", price: 1200, icon: LayoutDashboard, popular: true },
+      { id: "email-automation", name: "Email Automation", description: "Drip campaigns & follow‑ups", price: 400, icon: Mail },
+      { id: "invoice-automation", name: "Invoice Automation", description: "Auto‑generate & send invoices", price: 600, icon: ShoppingCart },
+      { id: "data-sync", name: "Multi‑Platform Sync", description: "Keep all tools in sync", price: 700, icon: RefreshCw },
+      { id: "custom-dashboard", name: "Custom Dashboard", description: "Real‑time business metrics", price: 1200, icon: LayoutDashboard, popular: true },
       { id: "api-development", name: "Custom API Development", description: "Connect any system", price: 1500, icon: Code2 },
-      { id: "zapier-setup", name: "Zapier/Make Setup", description: "No-code automation flows", price: 350, icon: Zap },
+      { id: "zapier-setup", name: "Zapier/Make Setup", description: "No‑code automation flows", price: 350, icon: Zap },
     ]
   },
   {
-    id: "ecommerce",
-    name: "E-Commerce Store",
-    description: "Sell products online with a powerful storefront",
-    icon: ShoppingCart,
-    basePrice: 4000,
-    gradient: "from-pink-500 to-rose-500",
+    id: "ai-knowledge-systems",
+    name: "AI Knowledge Systems",
+    description: "Internal AI knowledge base trained on your documents, providing instant answers to employees or customers.",
+    icon: Database,
+    basePrice: 1500,
+    gradient: "from-amber-500 to-orange-600",
+    category: "AI Automation Systems",
     features: [
-      { id: "products-50", name: "Up to 50 Products", description: "Small catalog store", price: 0, icon: ShoppingCart },
-      { id: "products-500", name: "Up to 500 Products", description: "Medium-sized store", price: 800, icon: ShoppingCart },
-      { id: "products-unlimited", name: "Unlimited Products", description: "Enterprise catalog", price: 1500, icon: ShoppingCart },
-      { id: "payment-gateway", name: "Payment Gateway", description: "Stripe, PayPal integration", price: 400, icon: ShoppingCart, popular: true },
-      { id: "inventory-management", name: "Inventory Management", description: "Track stock levels", price: 600, icon: Database },
-      { id: "shipping-integration", name: "Shipping Integration", description: "Real-time shipping rates", price: 500, icon: Rocket },
-      { id: "abandoned-cart", name: "Abandoned Cart Recovery", description: "Win back lost sales", price: 450, icon: Mail, popular: true },
-      { id: "reviews", name: "Product Reviews", description: "Build social proof", price: 300, icon: Star },
+      { id: "internal-knowledge-base", name: "Internal Knowledge Base", description: "AI assistant for employees to find company info", price: 800, icon: Layers, popular: true },
+      { id: "document-search", name: "AI Document Search", description: "Search across all company documents", price: 500, icon: FileText },
+      { id: "support-assistant", name: "Customer Support Assistant", description: "AI that handles common support queries", price: 450, icon: Headphones },
+      { id: "document-training", name: "Train on Your Documents", description: "We train the AI on your PDFs, manuals, etc.", price: 500, icon: Cpu, popular: true },
+      { id: "multi-language", name: "Multi‑Language Support", description: "Answers in multiple languages", price: 400, icon: Languages },
+    ]
+  },
+
+  // ---------- CATEGORY 2: Digital Product & Web Services ----------
+  {
+    id: "web-development",
+    name: "Website Development",
+    description: "High‑performance, conversion‑optimised websites built with Next.js.",
+    icon: Code2,
+    basePrice: 700,
+    gradient: "from-blue-600 to-indigo-600",
+    category: "Digital Product & Web Services",
+    features: [
+      { id: "pages-5", name: "Up to 5 Pages", description: "Standard site (Home, About, Services, Contact)", price: 0, icon: Globe },
+      { id: "pages-10", name: "Up to 10 Pages", description: "More space for extra services", price: 600, icon: Globe },
+      { id: "pages-unlimited", name: "Unlimited Pages", description: "A massive site with no limits", price: 1800, icon: Globe },
+      { id: "ssl", name: "SSL Security", description: "The 'Secure' padlock icon", price: 0, icon: Shield },
+      { id: "privacy", name: "Legal & Privacy Compliance", description: "Cookie pop‑ups and legal pages", price: 300, icon: Shield, popular: true },
+      { id: "mobile", name: "Mobile Friendly", description: "Looks perfect on all devices", price: 0, icon: Smartphone },
+      { id: "speed", name: "Speed Boost", description: "Loads under 2 seconds", price: 450, icon: Zap, popular: true },
+      { id: "cms", name: "Easy‑Edit Admin Panel", description: "Change text and photos yourself", price: 500, icon: LayoutDashboard },
+      { id: "seo", name: "Google Ranking (SEO)", description: "Helps you show up on Google", price: 600, icon: Rocket, popular: true },
+      { id: "analytics", name: "Visitor Tracking", description: "See who visits your site", price: 250, icon: BarChart },
     ]
   },
   {
-  id: "ai-receptionist",
-  name: "AI Phone Receptionist",
-  description: "A human-like voice assistant that answers calls & books appointments 24/7.",
-  icon: Phone,
-  basePrice: 1200, 
-  gradient: "from-pink-500 to-rose-500",
-  features: [
-    // --- CORE CALL HANDLING ---
-    { id: "24-7-answer", name: "24/7 Call Answering", description: "Never miss a customer call, even at night or weekends", price: 0, icon: Clock }, // Standard Inclusion
-    { id: "human-voice", name: "Ultra-Realistic Voice", description: "Sounds exactly like a human (pauses, 'umms', & emotion)", price: 0, icon: Mic }, // Standard Inclusion
-    { id: "call-routing", name: "Smart Call Routing", description: "AI sends sales calls to Sales, support calls to Support", price: 300, icon: Forward },
+    id: "website-redesign",
+    name: "Website Redesign",
+    description: "Modernise your outdated site with better performance & conversion.",
+    icon: PaintBucket,
+    basePrice: 600,
+    gradient: "from-purple-600 to-pink-600",
+    category: "Digital Product & Web Services",
+    features: [
+      { id: "ui-refresh", name: "UI/UX Modernisation", description: "Fresh, modern 2025 design", price: 0, icon: Palette },
+      { id: "mobile-fix", name: "Mobile Responsiveness Fix", description: "Fix layout issues on phones", price: 200, icon: Smartphone },
+      { id: "branding", name: "Brand Style Guide", description: "New colours, typography, logo polish", price: 350, icon: PenTool },
+      { id: "speed-audit", name: "Speed & Performance Overhaul", description: "Fix slow load times", price: 400, icon: Zap, popular: true },
+      { id: "security-patch", name: "Security Hardening", description: "Fix vulnerabilities", price: 200, icon: Shield },
+      { id: "migration-content", name: "Content Migration", description: "Safely move blogs, images, text", price: 400, icon: Database },
+      { id: "platform-switch", name: "Platform Migration", description: "Move from Wix/WordPress to React", price: 800, icon: Server, popular: true },
+      { id: "seo-retain", name: "SEO Rank Protection", description: "301 redirects to keep rankings", price: 500, icon: TrendingUp },
+      { id: "cro", name: "Conversion Rate Optimisation", description: "Redesign CTAs to get more leads", price: 450, icon: Target },
+    ]
+  },
+  {
+    id: "web-app-development",
+    name: "Web App Development",
+    description: "Custom web applications, admin dashboards, internal tools, and SaaS MVPs.",
+    icon: Code2,
+    basePrice: 2500,
+    gradient: "from-cyan-500 to-blue-600",
+    category: "Digital Product & Web Services",
+    features: [
+      { id: "admin-dashboards", name: "Admin Dashboard", description: "Custom dashboard for your team", price: 1200, icon: LayoutDashboard },
+      { id: "internal-tools", name: "Internal Tools", description: "Tailored tools to streamline operations", price: 1500, icon: Wrench, popular: true },
+      { id: "customer-portals", name: "Customer Portals", description: "Secure login areas for clients", price: 2000, icon: Users },
+      { id: "saas-mvp", name: "SaaS MVP", description: "Minimum viable product for your SaaS idea", price: 3000, icon: Rocket, popular: true },
+      { id: "api-integration", name: "Custom API Development", description: "Connect any system", price: 1500, icon: Code2 },
+    ]
+  },
+  {
+    id: "ai-integration",
+    name: "AI Integration",
+    description: "Add AI chatbots, assistants, and automation to your existing website, Shopify, WordPress, or web app.",
+    icon: Plug,
+    basePrice: 1000,
+    gradient: "from-teal-500 to-emerald-600",
+    category: "Digital Product & Web Services",
+    features: [
+      { id: "existing-website-ai", name: "AI for Existing Website", description: "Add an AI assistant to your current site", price: 500, icon: Bot, popular: true },
+      { id: "shopify-ai", name: "Shopify AI Chatbot", description: "AI that helps customers on your Shopify store", price: 600, icon: ShoppingCart },
+      { id: "wordpress-ai", name: "WordPress AI Plugin", description: "AI assistant for WordPress sites", price: 600, icon: Globe },
+      { id: "webapp-ai", name: "AI Inside Web App", description: "Integrate AI into your web app via API", price: 800, icon: Code2 },
+      { id: "crm-ai-connect", name: "CRM AI Connection", description: "Connect AI to your CRM", price: 500, icon: Database },
+    ]
+  },
 
-    // --- BUSINESS ACTIONS (The Value) ---
-    { id: "booking-voice", name: "Auto-Appointment Booking", description: "AI checks your calendar and books times while on the phone", price: 500, icon: CalendarCheck, popular: true },
-    { id: "spam-blocker", name: "Spam & Robo-Call Blocker", description: "AI screens callers so you never talk to a spammer again", price: 250, icon: UserMinus },
-    { id: "sms-followup", name: "Instant SMS Follow-up", description: "Sends a text with links/info immediately after hanging up", price: 300, icon: MessageSquare },
+  // ---------- CATEGORY 3: Revenue Optimization ----------
+  {
+    id: "ecommerce-ai-optimization",
+    name: "E‑commerce AI Optimization",
+    description: "AI‑powered cart recovery, product recommendations, and automated follow‑ups for online stores.",
+    icon: ShoppingCart,
+    basePrice: 1200,
+    gradient: "from-pink-500 to-rose-500",
+    category: "Revenue Optimization",
+    features: [
+      { id: "cart-recovery", name: "Abandoned Cart Recovery", description: "Automated emails/SMS to recover lost sales", price: 450, icon: Mail, popular: true },
+      { id: "product-recommendations", name: "AI Product Recommendations", description: "Personalised suggestions for each visitor", price: 900, icon: Sparkles },
+      { id: "follow-up-sequences", name: "Automated Follow‑up Sequences", description: "Post‑purchase emails to increase repeat sales", price: 400, icon: GitBranch },
+      { id: "conversion-dashboard", name: "Conversion Dashboard", description: "Real‑time conversion tracking", price: 300, icon: BarChart },
+    ]
+  },
+  {
+    id: "sales-automation",
+    name: "Sales Automation Systems",
+    description: "Automate outbound follow‑ups, lead scoring, and CRM intelligence to boost sales.",
+    icon: TrendingUp,
+    basePrice: 1500,
+    gradient: "from-green-500 to-emerald-600",
+    category: "Revenue Optimization",
+    features: [
+      { id: "outbound-followups", name: "Automated Outbound Follow‑ups", description: "Sequences that nurture leads", price: 500, icon: Forward, popular: true },
+      { id: "lead-scoring", name: "AI Lead Scoring", description: "Automatically score leads based on behaviour", price: 600, icon: Target },
+      { id: "crm-intelligence", name: "CRM Intelligence", description: "Enhance CRM with AI insights", price: 500, icon: Database },
+      { id: "sales-pipeline", name: "Sales Pipeline Automation", description: "Move leads through stages automatically", price: 700, icon: GitBranch },
+    ]
+  },
 
-    // --- INTEGRATION & SETUP ---
-    { id: "crm-sync-voice", name: "CRM Auto-Entry", description: "Types out the call summary and saves it to your database", price: 450, icon: Database },
-    { id: "live-transfer", name: "Live Human Transfer", description: "AI patches the call through to your cell if it's urgent", price: 350, icon: Phone },
-    { id: "custom-number", name: "Local US Phone Number", description: "Setup of a dedicated business line for the AI", price: 150, icon: Globe },
+  // ---------- CATEGORY 4: Analytics & Intelligence ----------
+  {
+    id: "bi-dashboards",
+    name: "Business Intelligence Dashboards",
+    description: "Custom dashboards visualising KPIs, sales performance, and executive reports.",
+    icon: PieChart,
+    basePrice: 2000,
+    gradient: "from-blue-500 to-indigo-600",
+    category: "Analytics & Intelligence",
+    features: [
+      { id: "data-visualization", name: "Custom Data Visualisation", description: "Turn data into actionable charts", price: 1200, icon: BarChart },
+      { id: "kpi-dashboards", name: "KPI Tracking Dashboards", description: "Monitor key metrics in real time", price: 1000, icon: LayoutDashboard, popular: true },
+      { id: "sales-performance", name: "Sales Performance Tracking", description: "Dashboards for revenue and team performance", price: 800, icon: TrendingUp },
+      { id: "executive-reporting", name: "Executive Reporting", description: "High‑level summaries for leadership", price: 900, icon: Award },
+    ]
+  },
 
-    // --- ADVANCED ---
-    { id: "voice-clone", name: "Voice Cloning", description: "Train the AI to sound exactly like YOU or your staff", price: 600, icon: Fingerprint },
-    { id: "analytics-voice", name: "Call Recording & Analysis", description: "Dashboard to listen to calls and see success rates", price: 250, icon: Activity },
-    { id: "maintenance-voice", name: "Monthly Tuning", description: "We update the script and improve the voice monthly", price: 400, icon: LifeBuoy },
-  ]
-},
+  // ---------- CATEGORY 5: AI Infrastructure ----------
+  {
+    id: "ai-deployment",
+    name: "AI Deployment & Hosting",
+    description: "Secure cloud deployment, monitoring, and API management for your AI systems.",
+    icon: Cloud,
+    basePrice: 1000,
+    gradient: "from-gray-500 to-slate-600",
+    category: "AI Infrastructure",
+    features: [
+      { id: "secure-deployment", name: "Secure AI Deployment", description: "Deploy on AWS/Vercel with best practices", price: 600, icon: Lock, popular: true },
+      { id: "cloud-hosting", name: "Cloud Hosting Configuration", description: "Set up and manage cloud servers", price: 600, icon: Cloud },
+      { id: "usage-monitoring", name: "Usage Monitoring", description: "Track API calls, costs, and performance", price: 400, icon: Activity },
+      { id: "api-management", name: "API Management", description: "Manage and version your AI APIs", price: 500, icon: GitBranch },
+    ]
+  },
+
+  // ---------- CATEGORY 6: Consulting & Strategy ----------
+  {
+    id: "ai-consulting",
+    name: "AI Strategy Consulting",
+    description: "AI opportunity audits, workflow efficiency reviews, and automation roadmaps.",
+    icon: Target,
+    basePrice: 1000,
+    gradient: "from-purple-500 to-pink-600",
+    category: "Consulting & Strategy",
+    features: [
+      { id: "ai-audit", name: "AI Opportunity Audit", description: "Identify where AI can deliver the most value", price: 800, icon: Search, popular: true },
+      { id: "workflow-review", name: "Workflow Efficiency Review", description: "Analyse and optimise existing processes", price: 600, icon: Workflow },
+      { id: "automation-roadmap", name: "Automation Roadmap", description: "Step‑by‑step plan to implement AI", price: 700, icon: GitBranch },
+      { id: "integration-planning", name: "AI Integration Planning", description: "How to integrate AI with your current tools", price: 500, icon: Plug },
+    ]
+  }
 ];
 
 const timelines = [
@@ -247,36 +286,28 @@ export default function GetStartedPage() {
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedService, setSelectedService] = useState<Service | null>(null);
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
-  const [selectedTimeline, setSelectedTimeline] = useState(timelines[1]); // Default: Standard
+  const [selectedTimeline, setSelectedTimeline] = useState(timelines[1]);
   const [contactInfo, setContactInfo] = useState({ name: '', email: '', phone: '', company: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isAccepted, setIsAccepted] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
   
-  // NOTE: Price animation removed from UI, but calculations remain for backend.
-  
   const totalSteps = 5;
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Calculate total price (Internal Logic Only)
   const calculatePrice = () => {
     if (!selectedService) return 0;
-    
     let total = selectedService.basePrice;
-    
     selectedFeatures.forEach(featureId => {
       const feature = selectedService.features.find(f => f.id === featureId);
       if (feature) total += feature.price;
     });
-    
     total *= selectedTimeline.multiplier;
-    
     return Math.round(total);
   };
 
   const totalPrice = calculatePrice();
 
-  // Handle feature toggle
   const toggleFeature = (featureId: string) => {
     setSelectedFeatures(prev => 
       prev.includes(featureId) 
@@ -287,8 +318,6 @@ export default function GetStartedPage() {
 
   const handleSubmit = async () => {
     setIsSubmitting(true);
-    
-    // 1. Prepare Data
     const quoteData = {
       from_name: contactInfo.name,
       from_email: contactInfo.email,
@@ -297,26 +326,19 @@ export default function GetStartedPage() {
       service: selectedService?.name || 'Unknown',
       features: selectedFeatures.join(', '),
       timeline: selectedTimeline.name,
-      // NOTE: You still receive the price in email, but client doesn't see it
-      total_estimated_value: `$${totalPrice.toLocaleString()}`, 
+      total_estimated_value: `$${totalPrice.toLocaleString()}`,
       message: contactInfo.message || 'No message',
     };
-
     try {
       const emailjs = await import('@emailjs/browser');
-
-      // 2. SEND WITH THE CORRECT COMBINATION
       await emailjs.send(
         'service_npei2gf',       
         'template_2u2lhr9',      
         quoteData,
         '-IObU0502rQ2VlNHa'      
       );
-
-      console.log('SUCCESS! Email sent.');
       setIsSubmitting(false);
-      setCurrentStep(5); // Show Success Screen
-
+      setCurrentStep(5);
     } catch (error) {
       console.error('FAILED:', error);
       alert("Error sending email. Please check the console.");
@@ -324,14 +346,10 @@ export default function GetStartedPage() {
     }
   };
 
-  // --- FIXED HANDLE ACCEPT FUNCTION (Cleaned up the mess) ---
   const handleAccept = async () => {
-    // 1. Validate
     if (!selectedService) return;
     setIsSubmitting(true);
-    
     try {
-      // 2. Save Client to Database
       const { data, error } = await supabase
         .from('clients')
         .insert([
@@ -341,32 +359,20 @@ export default function GetStartedPage() {
             phone: contactInfo.phone,
             company: contactInfo.company || 'Not Provided',
             service: selectedService.name,
-            package: 'Custom', // Changed to Generic
-            amount: totalPrice, // YOU still get the amount in database
+            package: 'Custom',
+            amount: totalPrice,
             paid: 0,
             status: 'Not Started',
             industry: `Features: ${selectedFeatures.join(', ')}. Timeline: ${selectedTimeline.name}`
           }
         ])
         .select();
-
       if (error) throw error;
-
-      // 3. Redirect to Payment Portal
       if (data && data.length > 0) {
         const newClientId = data[0].id;
-        
-        // Show confetti briefly
-        setShowConfetti(true); 
-        
-        // Wait 1 second then go to payment/dashboard
-        setTimeout(() => {
-          // You might want to change this redirect if you aren't charging immediately
-          // router.push(`/dashboard/${newClientId}`); 
-          router.push(`/pay/${newClientId}`);
-        }, 1000);
+        setShowConfetti(true);
+        setTimeout(() => router.push(`/pay/${newClientId}`), 1000);
       }
-
     } catch (error) {
       console.error('Error creating project:', error);
       alert("System Error: Could not start project. Please check your connection.");
@@ -374,7 +380,6 @@ export default function GetStartedPage() {
     }
   };
 
-  // Navigation
   const nextStep = () => {
     if (currentStep < totalSteps) {
       setCurrentStep(prev => prev + 1);
@@ -393,7 +398,7 @@ export default function GetStartedPage() {
     switch (currentStep) {
       case 1: return selectedService !== null;
       case 2: return selectedFeatures.length > 0;
-      case 3: return true; // Timeline always has default
+      case 3: return true;
       case 4: return contactInfo.name && contactInfo.email && contactInfo.phone;
       default: return true;
     }
@@ -408,17 +413,17 @@ export default function GetStartedPage() {
       <div className="flex items-center justify-between mb-4">
         {[1, 2, 3, 4, 5].map((step) => (
           <div key={step} className="flex items-center">
-            <div className={`w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center font-bold text-xs md:text-sm
+            <div className={`w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center font-bold text-xs md:text-sm transition-all
               ${currentStep >= step 
-                ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-200' 
-                : 'bg-gray-100 text-gray-400'}
-              ${currentStep === step ? 'scale-110 ring-4 ring-blue-100' : ''}
+                ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-500/30' 
+                : 'bg-white/5 text-gray-500 border border-white/10'}
+              ${currentStep === step ? 'scale-110 ring-4 ring-blue-500/20' : ''}
             `}>
               {currentStep > step ? <Check size={18} /> : step}
             </div>
             {step < 5 && (
-  <div className={`w-8 sm:w-20 md:w-32 h-1 mx-1 sm:mx-2 rounded-full transition-all duration-500 ${
-                currentStep > step ? 'bg-gradient-to-r from-blue-600 to-purple-600' : 'bg-gray-200'
+              <div className={`w-8 sm:w-20 md:w-32 h-1 mx-1 sm:mx-2 rounded-full transition-all duration-500 ${
+                currentStep > step ? 'bg-gradient-to-r from-blue-600 to-purple-600' : 'bg-white/10'
               }`} />
             )}
           </div>
@@ -434,84 +439,89 @@ export default function GetStartedPage() {
     </div>
   );
 
+  // Group services by category for step 1
+  const groupedServices = services.reduce<Record<string, Service[]>>((acc, service) => {
+    if (!acc[service.category]) acc[service.category] = [];
+    acc[service.category].push(service);
+    return acc;
+  }, {});
+
   const renderStep1 = () => (
     <div className="animate-fadeIn">
       <div className="text-center mb-10">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
-          What would you like to <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">build?</span>
+        <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4 font-space-grotesk">
+          What would you like to <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-300 to-sky-300">build?</span>
         </h2>
-        <p className="text-gray-500 text-lg">Select the service that best fits your project needs</p>
+        <p className="text-gray-400 text-lg">Select the service that best fits your project needs</p>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {services.map((service) => {
-          const Icon = service.icon;
-          const isSelected = selectedService?.id === service.id;
-          
-          return (
-            <button
-              key={service.id}
-              onClick={() => {
-                setSelectedService(service);
-                setSelectedFeatures([service.features[0].id]); // Auto-select first feature
-              }}
-              className={`
-                relative p-6 rounded-3xl text-left transition-all duration-300 group
-                ${isSelected 
-                  ? 'bg-gradient-to-br from-blue-600 to-purple-600 text-white shadow-2xl shadow-blue-200 scale-[1.02]' 
-                  : 'bg-white border-2 border-gray-100 hover:border-blue-200 hover:shadow-xl'}
-              `}
-            >
-              {/* Selection indicator */}
-              <div className={`
-                absolute top-4 right-4 w-6 h-6 rounded-full flex items-center justify-center transition-all
-                ${isSelected ? 'bg-white text-blue-600' : 'bg-gray-100 text-transparent'}
-              `}>
-                <Check size={14} />
-              </div>
+      {Object.entries(groupedServices).map(([category, servicesList]) => (
+        <div key={category} className="mb-12 last:mb-0">
+          <h3 className="text-xl font-bold text-white mb-4 border-b border-white/10 pb-2">{category}</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {servicesList.map((service) => {
+              const Icon = service.icon;
+              const isSelected = selectedService?.id === service.id;
               
-              {/* Icon */}
-              <div className={`
-                w-14 h-14 rounded-2xl flex items-center justify-center mb-4 transition-all
-                ${isSelected 
-                  ? 'bg-white/20' 
-                  : `bg-gradient-to-br ${service.gradient} text-white`}
-              `}>
-                <Icon size={28} />
-              </div>
-              
-              {/* Content */}
-              <h3 className={`text-xl font-bold mb-2 ${isSelected ? 'text-white' : 'text-gray-900'}`}>
-                {service.name}
-              </h3>
-              <p className={`text-sm mb-4 ${isSelected ? 'text-blue-100' : 'text-gray-500'}`}>
-                {service.description}
-              </p>
-              
-              {/* Price REMOVED for User */}
-              <div className={`text-sm font-bold flex items-center gap-1 ${isSelected ? 'text-white' : 'text-blue-600'}`}>
-                <span>Select Service</span>
-                <ArrowRight size={14} />
-              </div>
-            </button>
-          );
-        })}
-      </div>
+              return (
+                <button
+                  key={service.id}
+                  onClick={() => {
+                    setSelectedService(service);
+                    setSelectedFeatures([service.features[0].id]); // auto‑select first feature
+                  }}
+                  className={`
+                    relative p-6 rounded-3xl text-left transition-all duration-300 group
+                    ${isSelected 
+                      ? 'bg-gradient-to-br from-blue-600 to-purple-600 text-white shadow-2xl shadow-blue-500/20 scale-[1.02] border-0' 
+                      : 'bg-white/5 border border-white/10 hover:border-blue-500/30 hover:bg-white/10 backdrop-blur-sm'}
+                  `}
+                >
+                  <div className={`
+                    absolute top-4 right-4 w-6 h-6 rounded-full flex items-center justify-center transition-all
+                    ${isSelected ? 'bg-white text-blue-600' : 'bg-white/10 text-transparent'}
+                  `}>
+                    <Check size={14} />
+                  </div>
+                  
+                  <div className={`
+                    w-14 h-14 rounded-2xl flex items-center justify-center mb-4 transition-all
+                    ${isSelected ? 'bg-white/20' : `bg-gradient-to-br ${service.gradient} text-white`}
+                  `}>
+                    <Icon size={28} />
+                  </div>
+                  
+                  <h3 className={`text-xl font-bold mb-2 ${isSelected ? 'text-white' : 'text-white'}`}>
+                    {service.name}
+                  </h3>
+                  <p className={`text-sm mb-4 ${isSelected ? 'text-blue-100' : 'text-gray-400'}`}>
+                    {service.description}
+                  </p>
+                  
+                  <div className={`text-sm font-bold flex items-center gap-1 ${isSelected ? 'text-white' : 'text-blue-400'}`}>
+                    <span>Select Service</span>
+                    <ArrowRight size={14} />
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      ))}
     </div>
   );
 
   const renderStep2 = () => (
     <div className="animate-fadeIn">
       <div className="text-center mb-10">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
-          Customize your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">{selectedService?.name}</span>
+        <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4 font-space-grotesk">
+          Customize your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-300 to-sky-300">{selectedService?.name}</span>
         </h2>
-        <p className="text-gray-500 text-lg">Select the features you need (you can always add more later)</p>
+        <p className="text-gray-400 text-lg">Select the features you need (you can always add more later)</p>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {selectedService?.features.map((feature) => {
-          const Icon = feature.icon;
           const isSelected = selectedFeatures.includes(feature.id);
           
           return (
@@ -521,37 +531,32 @@ export default function GetStartedPage() {
               className={`
                 relative p-5 rounded-2xl text-left transition-all duration-300 flex items-start gap-4
                 ${isSelected 
-                  ? 'bg-blue-50 border-2 border-blue-500 shadow-lg shadow-blue-100' 
-                  : 'bg-white border-2 border-gray-100 hover:border-gray-200 hover:shadow-md'}
+                  ? 'bg-blue-600/10 border-2 border-blue-500 shadow-lg shadow-blue-500/10' 
+                  : 'bg-white/5 border border-white/10 hover:border-blue-500/30 hover:bg-white/10 backdrop-blur-sm'}
               `}
             >
-              {/* Checkbox */}
               <div className={`
                 w-6 h-6 rounded-lg flex items-center justify-center flex-shrink-0 transition-all mt-0.5
-                ${isSelected 
-                  ? 'bg-blue-600 text-white' 
-                  : 'bg-gray-100 text-transparent'}
+                ${isSelected ? 'bg-blue-600 text-white' : 'bg-white/10 text-transparent'}
               `}>
                 <Check size={14} />
               </div>
               
-              {/* Content */}
               <div className="flex-grow">
                 <div className="flex items-center gap-2 mb-1">
-                  <h4 className={`font-bold ${isSelected ? 'text-blue-900' : 'text-gray-900'}`}>
+                  <h4 className={`font-bold ${isSelected ? 'text-white' : 'text-white'}`}>
                     {feature.name}
                   </h4>
                   {feature.popular && (
-                    <span className="px-2 py-0.5 bg-orange-100 text-orange-600 text-xs font-bold rounded-full">
+                    <span className="px-2 py-0.5 bg-orange-500/20 text-orange-400 text-xs font-bold rounded-full">
                       Popular
                     </span>
                   )}
                 </div>
-                <p className="text-sm text-gray-500">{feature.description}</p>
+                <p className="text-sm text-gray-400">{feature.description}</p>
               </div>
               
-              {/* Price REMOVED from View */}
-              <div className={`text-sm font-bold flex-shrink-0 ${isSelected ? 'text-blue-600' : 'text-gray-400'}`}>
+              <div className={`text-sm font-bold flex-shrink-0 ${isSelected ? 'text-blue-400' : 'text-gray-500'}`}>
                 {feature.price === 0 ? 'Included' : ''} 
               </div>
             </button>
@@ -564,10 +569,10 @@ export default function GetStartedPage() {
   const renderStep3 = () => (
     <div className="animate-fadeIn">
       <div className="text-center mb-10">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
-          When do you need it <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">delivered?</span>
+        <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4 font-space-grotesk">
+          When do you need it <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-300 to-sky-300">delivered?</span>
         </h2>
-        <p className="text-gray-500 text-lg">We prioritize projects based on your required timeline</p>
+        <p className="text-gray-400 text-lg">We prioritize projects based on your required timeline</p>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
@@ -582,28 +587,25 @@ export default function GetStartedPage() {
               className={`
                 relative p-8 rounded-3xl text-center transition-all duration-300
                 ${isSelected 
-                  ? 'bg-gradient-to-br from-blue-600 to-purple-600 text-white shadow-2xl shadow-blue-200 scale-105' 
-                  : 'bg-white border-2 border-gray-100 hover:border-blue-200 hover:shadow-xl'}
+                  ? 'bg-gradient-to-br from-blue-600 to-purple-600 text-white shadow-2xl shadow-blue-500/20 scale-105' 
+                  : 'bg-white/5 border border-white/10 hover:border-blue-500/30 hover:bg-white/10 backdrop-blur-sm'}
               `}
             >
-              {/* Icon */}
               <div className={`
                 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 transition-all
-                ${isSelected ? 'bg-white/20' : 'bg-gray-100'}
+                ${isSelected ? 'bg-white/20' : 'bg-white/10'}
               `}>
-                <Icon size={32} className={isSelected ? 'text-white' : 'text-gray-600'} />
+                <Icon size={32} className={isSelected ? 'text-white' : 'text-blue-400'} />
               </div>
               
-              {/* Content */}
-              <h3 className={`text-2xl font-bold mb-2 ${isSelected ? 'text-white' : 'text-gray-900'}`}>
+              <h3 className={`text-2xl font-bold mb-2 ${isSelected ? 'text-white' : 'text-white'}`}>
                 {timeline.name}
               </h3>
-              <p className={`text-lg mb-4 ${isSelected ? 'text-blue-100' : 'text-gray-500'}`}>
+              <p className={`text-lg mb-4 ${isSelected ? 'text-blue-100' : 'text-gray-400'}`}>
                 {timeline.description}
               </p>
               
-              {/* Logic REMOVED from View */}
-              <div className={`text-sm font-bold ${isSelected ? 'text-white' : 'text-gray-400'}`}>
+              <div className={`text-sm font-bold ${isSelected ? 'text-white' : 'text-gray-500'}`}>
                 {timeline.id === 'rush' ? 'Priority Queue' : 'Standard Schedule'}
               </div>
             </button>
@@ -616,17 +618,17 @@ export default function GetStartedPage() {
   const renderStep4 = () => (
     <div className="animate-fadeIn">
       <div className="text-center mb-10">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
-          Almost there! <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Tell us about you</span>
+        <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4 font-space-grotesk">
+          Almost there! <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-300 to-sky-300">Tell us about you</span>
         </h2>
-        <p className="text-gray-500 text-lg">We'll review your scope and generate a custom proposal</p>
+        <p className="text-gray-400 text-lg">We'll review your scope and generate a custom proposal</p>
       </div>
       
       <div className="max-w-2xl mx-auto">
-        <div className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
+        <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <div>
-              <label className="block text-sm font-bold text-gray-700 mb-2">
+              <label className="block text-sm font-bold text-gray-300 mb-2">
                 <User size={14} className="inline mr-2" />
                 Full Name *
               </label>
@@ -634,12 +636,12 @@ export default function GetStartedPage() {
                 type="text"
                 value={contactInfo.name}
                 onChange={(e) => setContactInfo({ ...contactInfo, name: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl border-2 border-gray-100 text-gray-900 bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all outline-none"
+                className="w-full px-4 py-3 rounded-xl border-2 border-white/10 bg-white/5 text-white placeholder-gray-600 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all outline-none"
                 placeholder="John Smith"
               />
             </div>
             <div>
-              <label className="block text-sm font-bold text-gray-700 mb-2">
+              <label className="block text-sm font-bold text-gray-300 mb-2">
                 <Building2 size={14} className="inline mr-2" />
                 Company (Optional)
               </label>
@@ -647,7 +649,7 @@ export default function GetStartedPage() {
                 type="text"
                 value={contactInfo.company}
                 onChange={(e) => setContactInfo({ ...contactInfo, company: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl border-2 border-gray-100 text-gray-900 bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all outline-none"
+                className="w-full px-4 py-3 rounded-xl border-2 border-white/10 bg-white/5 text-white placeholder-gray-600 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all outline-none"
                 placeholder="Acme Inc."
               />
             </div>
@@ -655,7 +657,7 @@ export default function GetStartedPage() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <div>
-              <label className="block text-sm font-bold text-gray-700 mb-2">
+              <label className="block text-sm font-bold text-gray-300 mb-2">
                 <Mail size={14} className="inline mr-2" />
                 Email Address *
               </label>
@@ -663,12 +665,12 @@ export default function GetStartedPage() {
                 type="email"
                 value={contactInfo.email}
                 onChange={(e) => setContactInfo({ ...contactInfo, email: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl border-2 border-gray-100 text-gray-900 bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all outline-none"
+                className="w-full px-4 py-3 rounded-xl border-2 border-white/10 bg-white/5 text-white placeholder-gray-600 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all outline-none"
                 placeholder="john@company.com"
               />
             </div>
             <div>
-              <label className="block text-sm font-bold text-gray-700 mb-2">
+              <label className="block text-sm font-bold text-gray-300 mb-2">
                 <Phone size={14} className="inline mr-2" />
                 Phone Number *
               </label>
@@ -676,14 +678,14 @@ export default function GetStartedPage() {
                 type="tel"
                 value={contactInfo.phone}
                 onChange={(e) => setContactInfo({ ...contactInfo, phone: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl border-2 border-gray-100 text-gray-900 bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all outline-none"
+                className="w-full px-4 py-3 rounded-xl border-2 border-white/10 bg-white/5 text-white placeholder-gray-600 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all outline-none"
                 placeholder="+1 (555) 000-0000"
               />
             </div>
           </div>
           
           <div>
-            <label className="block text-sm font-bold text-gray-700 mb-2">
+            <label className="block text-sm font-bold text-gray-300 mb-2">
               <MessageSquare size={14} className="inline mr-2" />
               Additional Details (Optional)
             </label>
@@ -691,7 +693,7 @@ export default function GetStartedPage() {
               value={contactInfo.message}
               onChange={(e) => setContactInfo({ ...contactInfo, message: e.target.value })}
               rows={4}
-              className="w-full px-4 py-3 rounded-xl border-2 border-gray-100 text-gray-900 bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all outline-none resize-none"
+              className="w-full px-4 py-3 rounded-xl border-2 border-white/10 bg-white/5 text-white placeholder-gray-600 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all outline-none resize-none"
               placeholder="Tell us more about your project, timeline, or any specific requirements..."
             />
           </div>
@@ -705,19 +707,17 @@ export default function GetStartedPage() {
       {!isAccepted ? (
         <>
           <div className="text-center mb-10">
-            <div className="w-20 h-20 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-green-200">
+            <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-green-500/30">
               <CheckCircle2 size={40} className="text-white" />
             </div>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
-              Project Scope <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-500">Ready!</span>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4 font-space-grotesk">
+              Project Scope <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400">Ready!</span>
             </h2>
-            <p className="text-gray-500 text-lg">We've saved your requirements. Please review and confirm to request your quote.</p>
+            <p className="text-gray-400 text-lg">We've saved your requirements. Please review and confirm to request your quote.</p>
           </div>
           
           <div className="max-w-3xl mx-auto">
-            {/* Quote Card */}
-            <div className="bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden mb-8">
-              {/* Header */}
+            <div className="bg-white/5 backdrop-blur-sm rounded-3xl shadow-2xl border border-white/10 overflow-hidden mb-8">
               <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-6 text-white">
                 <div className="flex items-center justify-between">
                   <div>
@@ -732,24 +732,21 @@ export default function GetStartedPage() {
                 </div>
               </div>
               
-              {/* Details */}
               <div className="p-6">
-                {/* Service */}
-                <div className="mb-6 pb-6 border-b border-gray-100">
+                <div className="mb-6 pb-6 border-b border-white/10">
                   <h4 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-3">Selected Service</h4>
                   <div className="flex items-center gap-3">
                     <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${selectedService?.gradient} flex items-center justify-center text-white`}>
                       {selectedService && <selectedService.icon size={24} />}
                     </div>
                     <div>
-                      <p className="font-bold text-gray-900">{selectedService?.name}</p>
-                      <p className="text-sm text-gray-500">Professional Implementation</p>
+                      <p className="font-bold text-white">{selectedService?.name}</p>
+                      <p className="text-sm text-gray-400">Professional Implementation</p>
                     </div>
                   </div>
                 </div>
                 
-                {/* Features */}
-                <div className="mb-6 pb-6 border-b border-gray-100">
+                <div className="mb-6 pb-6 border-b border-white/10">
                   <h4 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-3">Selected Features</h4>
                   <div className="space-y-2">
                     {selectedFeatures.map(featureId => {
@@ -759,43 +756,39 @@ export default function GetStartedPage() {
                         <div key={featureId} className="flex items-center justify-between py-2">
                           <div className="flex items-center gap-2">
                             <Check size={16} className="text-green-500" />
-                            <span className="text-gray-700">{feature.name}</span>
+                            <span className="text-gray-300">{feature.name}</span>
                           </div>
-                          {/* Price removed here */}
                         </div>
                       );
                     })}
                   </div>
                 </div>
                 
-                {/* Timeline */}
-                <div className="mb-6 pb-6 border-b border-gray-100">
+                <div className="mb-6 pb-6 border-b border-white/10">
                   <h4 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-3">Delivery Timeline</h4>
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center">
-                      <selectedTimeline.icon size={24} className="text-gray-600" />
+                    <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center">
+                      <selectedTimeline.icon size={24} className="text-blue-400" />
                     </div>
                     <div>
-                      <p className="font-bold text-gray-900">{selectedTimeline.name} ({selectedTimeline.description})</p>
+                      <p className="font-bold text-white">{selectedTimeline.name} ({selectedTimeline.description})</p>
                     </div>
                   </div>
                 </div>
                 
-                {/* Total */}
-                <div className="flex items-center justify-between py-4 bg-gray-50 rounded-2xl px-6">
-                  <span className="text-xl font-bold text-gray-900">Total Investment</span>
-                  <span className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+                <div className="flex items-center justify-between py-4 bg-white/10 rounded-2xl px-6">
+                  <span className="text-xl font-bold text-white">Total Investment</span>
+                  <span className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
                     Custom Quote
                   </span>
                 </div>
               </div>
             </div>
             
-            {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 onClick={() => setCurrentStep(1)}
-                className="px-8 py-4 rounded-full font-bold text-gray-700 bg-white border-2 border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all flex items-center justify-center gap-2"
+                className="px-8 py-4 rounded-full font-bold text-gray-300 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-blue-500/30 transition-all flex items-center justify-center gap-2"
               >
                 <RefreshCw size={18} />
                 Adjust Scope
@@ -803,7 +796,7 @@ export default function GetStartedPage() {
               <button
                 onClick={handleAccept}
                 disabled={isSubmitting}
-                className="px-8 py-4 rounded-full font-bold text-white bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 shadow-lg shadow-green-200 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                className="px-8 py-4 rounded-full font-bold text-white bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 shadow-lg shadow-green-500/20 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
               >
                 {isSubmitting ? (
                   <Loader2 size={18} className="animate-spin" />
@@ -816,43 +809,42 @@ export default function GetStartedPage() {
           </div>
         </>
       ) : (
-        /* Accepted State */
         <div className="text-center py-12">
-          <div className="w-24 h-24 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-8 shadow-2xl shadow-green-200 animate-bounce">
+          <div className="w-24 h-24 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-8 shadow-2xl shadow-green-500/30 animate-bounce">
             <PartyPopper size={48} className="text-white" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6 font-space-grotesk">
             🎉 Request Received!
           </h2>
-          <p className="text-xl text-gray-600 mb-4 max-w-2xl mx-auto">
-            Thank you, <span className="font-bold text-blue-600">{contactInfo.name}</span>! 
+          <p className="text-xl text-gray-400 mb-4 max-w-2xl mx-auto">
+            Thank you, <span className="font-bold text-blue-400">{contactInfo.name}</span>! 
             We've received your project requirements and will get back to you with a formal proposal within <span className="font-bold">24 hours</span>.
           </p>
           <p className="text-gray-500 mb-10">
             A confirmation email has been sent to <span className="font-bold">{contactInfo.email}</span>
           </p>
           
-          <div className="bg-blue-50 rounded-3xl p-8 max-w-xl mx-auto mb-10">
-            <h3 className="font-bold text-blue-900 mb-4">What happens next?</h3>
+          <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 max-w-xl mx-auto mb-10 border border-white/10">
+            <h3 className="font-bold text-blue-400 mb-4">What happens next?</h3>
             <div className="space-y-4 text-left">
               <div className="flex items-start gap-3">
                 <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 text-sm font-bold">1</div>
-                <p className="text-blue-800">Our team reviews your requirements in detail</p>
+                <p className="text-gray-300">Our team reviews your requirements in detail</p>
               </div>
               <div className="flex items-start gap-3">
                 <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 text-sm font-bold">2</div>
-                <p className="text-blue-800">We analyze the timeline and resource needs</p>
+                <p className="text-gray-300">We analyze the timeline and resource needs</p>
               </div>
               <div className="flex items-start gap-3">
                 <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 text-sm font-bold">3</div>
-                <p className="text-blue-800">You receive a detailed proposal with pricing options</p>
+                <p className="text-gray-300">You receive a detailed proposal with pricing options</p>
               </div>
             </div>
           </div>
           
           <Link 
             href="/"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-white bg-gray-900 hover:bg-blue-700 transition-all"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg shadow-blue-500/30 transition-all"
           >
             Back to Home
             <ArrowRight size={18} />
@@ -860,7 +852,6 @@ export default function GetStartedPage() {
         </div>
       )}
       
-      {/* Confetti Effect */}
       {showConfetti && (
         <div className="fixed inset-0 pointer-events-none z-50">
           {[...Array(50)].map((_, i) => (
@@ -893,27 +884,23 @@ export default function GetStartedPage() {
   // ============================================================================
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-100">
+    <main className="min-h-screen bg-[#05060b] text-white">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#05060b]/80 backdrop-blur-xl border-b border-white/10">
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="text-2xl font-bold flex items-center gap-1">
-            <span className="text-blue-600">Vidi</span>
-            <span className="text-gray-900">Agency</span>
+            <span className="text-blue-400">Vidi</span>
+            <span className="text-white">Agency</span>
           </Link>
-          
-          {/* Price Display REMOVED from Header */}
           
           <Link 
             href="/"
-            className="text-gray-500 hover:text-gray-900 text-sm font-medium transition-colors"
+            className="text-gray-400 hover:text-white text-sm font-medium transition-colors"
           >
             ← Back to site
           </Link>
         </div>
       </header>
       
-      {/* Main Content */}
       <div ref={containerRef} className="pt-20 pb-40 container mx-auto px-4 md:px-12 lg:px-20 max-w-6xl">
         {renderProgressBar()}
         
@@ -926,34 +913,31 @@ export default function GetStartedPage() {
         </div>
       </div>
       
-      {/* Fixed Bottom Navigation */}
       {currentStep < 5 && (
-        <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 py-3 px-4 z-40 safe-bottom">
+        <div className="fixed bottom-0 left-0 right-0 bg-[#05060b]/80 backdrop-blur-xl border-t border-white/10 py-3 px-4 z-40 safe-bottom">
           <div className="container mx-auto max-w-6xl flex items-center justify-between">
             <button
-  onClick={prevStep}
-  disabled={currentStep === 1}
-  className={`
-    flex items-center gap-2 px-4 md:px-6 py-2.5 md:py-3 rounded-full font-bold text-sm md:text-base transition-all
+              onClick={prevStep}
+              disabled={currentStep === 1}
+              className={`
+                flex items-center gap-2 px-4 md:px-6 py-2.5 md:py-3 rounded-full font-bold text-sm md:text-base transition-all
                 ${currentStep === 1 
-                  ? 'text-gray-300 cursor-not-allowed' 
-                  : 'text-gray-700 hover:bg-gray-100'}
+                  ? 'text-gray-600 cursor-not-allowed' 
+                  : 'text-gray-400 hover:text-white hover:bg-white/10'}
               `}
             >
               <ArrowLeft size={18} />
               Back
             </button>
             
-            {/* Mobile Price Display REMOVED */}
-            
             <button
-  onClick={currentStep === 4 ? handleSubmit : nextStep}
-  disabled={!canProceed() || isSubmitting}
-  className={`
-    flex items-center gap-2 px-6 md:px-8 py-2.5 md:py-3 rounded-full font-bold text-sm md:text-base transition-all
+              onClick={currentStep === 4 ? handleSubmit : nextStep}
+              disabled={!canProceed() || isSubmitting}
+              className={`
+                flex items-center gap-2 px-6 md:px-8 py-2.5 md:py-3 rounded-full font-bold text-sm md:text-base transition-all
                 ${canProceed() 
-                  ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-200 hover:shadow-xl' 
-                  : 'bg-gray-200 text-gray-400 cursor-not-allowed'}
+                  ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-500/30 hover:shadow-xl' 
+                  : 'bg-white/5 text-gray-500 cursor-not-allowed border border-white/10'}
               `}
             >
               {isSubmitting ? (
@@ -977,7 +961,6 @@ export default function GetStartedPage() {
         </div>
       )}
       
-      {/* Custom Styles */}
       <style jsx>{`
         @keyframes fadeIn {
           from { opacity: 0; transform: translateY(20px); }
@@ -993,9 +976,9 @@ export default function GetStartedPage() {
         .animate-confetti {
           animation: confetti 3s ease-out forwards;
         }
-          .safe-bottom {
-  padding-bottom: env(safe-area-inset-bottom);
-}
+        .safe-bottom {
+          padding-bottom: env(safe-area-inset-bottom);
+        }
       `}</style>
     </main>
   );
