@@ -167,348 +167,128 @@ export default function Home() {
     <main className="flex flex-col min-h-screen w-full overflow-x-hidden">
       
       {/* HERO SECTION - Fixed responsiveness */}
-      <section className="relative overflow-hidden bg-[#05060b]">
-  {/* BACKGROUND: 3 Diagonal Slanted Panels */}
-  <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-    {/* Panel 1 (Left): Near-black charcoal */}
+      <section className="relative overflow-hidden bg-[#05060b] min-h-screen flex items-center">
+  {/* Background for mobile/tablet – diagonal panels */}
+  <div className="absolute inset-0 pointer-events-none lg:hidden" aria-hidden="true">
     <div className="absolute inset-0 bg-[#05060b]" />
-    {/* Panel 2 (Middle): Dark navy — skewed diagonal */}
     <div className="absolute top-0 bottom-0 left-[25%] right-[25%] bg-[#0a0f1e] origin-center -skew-x-[16deg] scale-x-[1.3]" />
-    {/* Panel 3 (Right): Vivid deep blue — skewed diagonal */}
     <div className="absolute top-0 bottom-0 left-[55%] right-[-15%] bg-[#0c2d6b] origin-center -skew-x-[16deg] scale-x-[1.3]" />
-    {/* Soft edge blend between panels */}
     <div className="absolute top-0 bottom-0 left-[20%] w-[20%] bg-gradient-to-r from-[#05060b] to-transparent" />
     <div className="absolute top-0 bottom-0 left-[48%] w-[18%] bg-gradient-to-r from-[#0a0f1e]/80 to-transparent" />
-    {/* Subtle blue glow on right panel */}
     <div className="absolute top-[-20%] right-[-5%] w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[120px]" />
-    {/* Noise overlay */}
     <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`, backgroundRepeat: 'repeat', backgroundSize: '128px 128px' }} />
-    {/* Vignette */}
     <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(0,0,0,0.5)_100%)]" />
   </div>
 
-  {/* HERO CONTENT */}
-  <div className="relative z-10">
-    {/* Container with proper breakpoints */}
-    <div className="mx-auto w-full px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16
-                    max-w-[440px] sm:max-w-[640px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1280px] 2xl:max-w-[1536px]">
-      
-      {/* Tighter padding to save vertical space */}
-      <div className="pt-16 sm:pt-20 md:pt-22 lg:pt-24 xl:pt-28 pb-10 sm:pb-12 md:pb-14 lg:pb-16">
-        
-        {/* Grid with fluid gaps */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] xl:grid-cols-[1fr_1fr] 
-                        gap-6 sm:gap-8 md:gap-10 lg:gap-14 xl:gap-18 2xl:gap-20 
-                        items-start lg:items-center">
-          
-          {/* ========== LEFT COLUMN ========== */}
-          <div className="w-full flex flex-col items-center lg:items-start text-center lg:text-left">
-
-            {/* Badge - Compact */}
-            <div className="inline-flex items-center gap-2 sm:gap-2.5 
-                            bg-white/10 border border-white/20 text-blue-300 
-                            px-3 sm:px-3.5 md:px-4 
-                            py-1 sm:py-1.5 
-                            rounded-full 
-                            text-[0.6875rem] sm:text-xs 
-                            font-bold mb-3 sm:mb-4 
-                            shadow-sm hover:shadow-md transition-shadow backdrop-blur-sm">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
-              </span>
-              <span className="whitespace-nowrap text-blue-200">AI Automation for Business • Now Booking</span>
-            </div>
-
-            {/* Headline - REDUCED SIZES for vertical space */}
-            <h1 className="font-extrabold text-white tracking-tight font-space-grotesk
-                           leading-[1.15] sm:leading-[1.12] md:leading-[1.1] lg:leading-[1.08]
-                           mb-3 sm:mb-4 md:mb-4
-                           text-[clamp(1.875rem,4.5vw,2.25rem)] 
-                           sm:text-[clamp(2.25rem,5vw,2.75rem)] 
-                           md:text-[clamp(2.5rem,4.5vw,3rem)] 
-                           lg:text-[clamp(2.75rem,3.5vw,3.25rem)] 
-                           xl:text-[clamp(3.25rem,3.8vw,3.75rem)] 
-                           2xl:text-[clamp(3.75rem,4vw,4.25rem)]
-                           max-w-[20ch] lg:max-w-none">
-              AI Systems That Capture Leads{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-300 to-sky-300">
-                and Grow Your Revenue
-              </span>
-            </h1>
-
-            {/* Sub-section with list - COMPACT */}
-            <div className="w-full max-w-xl lg:max-w-none
-                            text-gray-300 font-medium leading-relaxed
-                            text-[clamp(0.875rem,1.6vw,0.9375rem)] 
-                            sm:text-[clamp(0.9375rem,1.8vw,1rem)] 
-                            lg:text-[clamp(1rem,1.1vw,1.0625rem)]
-                            mb-4 sm:mb-5">
-              
-              <p className="mb-2.5 sm:mb-3 text-gray-300">
-                We build AI automation for B2B and e-commerce businesses:
-              </p>
-
-              <ul className="space-y-1.5 sm:space-y-2 mb-4 sm:mb-5">
-                {[
-                  "Capture and qualify leads around the clock",
-                  "Automate customer engagement and support",
-                  "Reduce repetitive work across your team",
-                  "Integrate with your existing systems — no rebuild",
-                ].map((item, index) => (
-                  <li key={index} className="flex items-start gap-2 sm:gap-2.5">
-                    <div className="flex-shrink-0 w-[16px] h-[16px] sm:w-[18px] sm:h-[18px] 
-                                    text-blue-400 mt-0.5">
-                      <Check className="w-full h-full" strokeWidth={3} />
-                    </div>
-                    <span className="text-[0.8125rem] sm:text-[0.875rem] md:text-[0.9375rem] lg:text-base
-                                     text-gray-200 leading-snug">
-                      {item}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-
-              <p className="font-bold text-gray-200 
-                            flex items-center justify-center lg:justify-start gap-2
-                            text-[0.75rem] sm:text-[0.8125rem] md:text-sm">
-                <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse flex-shrink-0" />
-                <span>You own the system. One-time build, optional support.</span>
-              </p>
-            </div>
-
-            {/* CTA Buttons - COMPACT SPACING */}
-            <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 
-                            mb-4 sm:mb-5 
-                            w-full sm:w-auto">
-              <Link
-                href="/get-started"
-                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white 
-                           px-6 sm:px-7 md:px-8 lg:px-9
-                           py-2.5 sm:py-3 md:py-3.5
-                           rounded-full 
-                           text-[0.8125rem] sm:text-sm md:text-[0.9375rem] lg:text-base
-                           font-bold 
-                           hover:from-blue-500 hover:to-purple-500 
-                           shadow-xl shadow-blue-500/25 
-                           hover:shadow-2xl hover:shadow-blue-500/40
-                           transition-all duration-300
-                           w-full sm:w-auto text-center
-                           whitespace-nowrap">
-                Book a Demo
-              </Link>
-              <Link
-                href="/case-studies"
-                className="px-6 sm:px-7 md:px-8 lg:px-9
-                           py-2.5 sm:py-3 md:py-3.5
-                           rounded-full 
-                           text-[0.8125rem] sm:text-sm md:text-[0.9375rem] lg:text-base
-                           font-bold 
-                           text-white bg-white/10 
-                           border border-white/20 
-                           hover:bg-white/20 hover:border-white/30
-                           transition-all duration-300
-                           backdrop-blur-sm
-                           shadow-sm hover:shadow-md
-                           w-full sm:w-auto text-center
-                           whitespace-nowrap">
-                See How It Works
-              </Link>
-            </div>
-
-            {/* Tech Stack Badge - Compact */}
-            <div className="flex items-center gap-3 sm:gap-4">
-              <div className="flex -space-x-2 sm:-space-x-2.5">
-                <TechIcons />
-              </div>
-              <div>
-                <div className="flex items-center gap-1.5 mb-0.5">
-                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                  <span className="text-[0.625rem] sm:text-xs font-bold text-green-400 uppercase tracking-wider">
-                    Production Ready
-                  </span>
-                </div>
-                <p className="text-[0.625rem] sm:text-xs text-gray-400 font-medium">
-                  Enterprise AI Stack
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* ========== RIGHT COLUMN: ORBIT - LARGER BUT OPTIMIZED ========== */}
-          <div className="hidden lg:flex relative w-full items-center justify-center 
-                          min-h-[420px] lg:min-h-[480px] xl:min-h-[540px] 2xl:min-h-[600px]">
-            
-            {/* Responsive scaling wrapper */}
-            <div className="w-full h-full flex items-center justify-center
-                            scale-90 lg:scale-95 xl:scale-100
-                            transition-transform duration-500 ease-out">
-              
-              {/* Orbit container - Larger sizes */}
-              <div className="relative 
-                              w-[480px] h-[480px]
-                              lg:w-[520px] lg:h-[520px]
-                              xl:w-[580px] xl:h-[580px]
-                              2xl:w-[640px] 2xl:h-[640px]
-                              aspect-square 
-                              flex items-center justify-center">
-
-                {/* Center Core - Larger */}
-                <div className="absolute z-20 
-                                w-28 h-28 lg:w-32 lg:h-32 xl:w-36 xl:h-36 2xl:w-40 2xl:h-40
-                                bg-white/10 backdrop-blur-xl rounded-full 
-                                shadow-[0_0_80px_-15px_rgba(59,130,246,0.5)] 
-                                flex items-center justify-center 
-                                border border-white/20
-                                transition-all duration-300">
-                  <div className="text-center">
-                    <div className="bg-gradient-to-r from-blue-600 to-purple-600 
-                                    w-14 h-14 lg:w-16 lg:h-16 xl:w-[4.5rem] xl:h-[4.5rem] 2xl:w-20 2xl:h-20
-                                    mx-auto rounded-xl 
-                                    flex items-center justify-center 
-                                    text-white mb-2 shadow-lg">
-                      <Bot className="w-7 h-7 lg:w-8 lg:h-8 xl:w-9 xl:h-9 2xl:w-10 2xl:h-10" />
-                    </div>
-                    <span className="text-[0.65rem] lg:text-xs xl:text-sm font-bold text-white block uppercase tracking-wide">
-                      AI Core
-                    </span>
-                  </div>
-                </div>
-
-                {/* Orbit Rings */}
-                <div className="absolute w-[90%] h-[90%] border border-dashed border-blue-500/20 rounded-full" />
-                <div className="absolute w-[68%] h-[68%] border border-blue-400/15 rounded-full" />
-
-                {/* Rotating Ring with Cards */}
-                <div className="absolute inset-0 animate-orbit-ring flex items-center justify-center">
-
-                  {/* TOP CARD */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 
-                                  w-[11rem] lg:w-52 xl:w-56 2xl:w-60
-                                  animate-orbit-item">
-                    <div className="bg-white/10 backdrop-blur-md 
-                                    p-3 lg:p-3.5 xl:p-4 
-                                    rounded-2xl border border-white/15
-                                    shadow-[0_8px_30px_rgba(59,130,246,0.1)] 
-                                    hover:shadow-[0_12px_40px_rgba(59,130,246,0.2)]
-                                    transition-all duration-300
-                                    flex items-center gap-2.5 lg:gap-3">
-                      <div className="bg-blue-500/20 p-2 lg:p-2.5 rounded-lg text-blue-400 flex-shrink-0">
-                        <LayoutDashboard className="w-5 h-5 lg:w-[1.375rem] lg:h-[1.375rem]" />
-                      </div>
-                      <div className="text-xs lg:text-sm xl:text-[0.9375rem] font-bold text-white leading-tight">
-                        AI Lead Capture
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* RIGHT CARD */}
-                  <div className="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 
-                                  w-[11rem] lg:w-52 xl:w-56 2xl:w-60
-                                  animate-orbit-item">
-                    <div className="bg-white/10 backdrop-blur-md 
-                                    p-3 lg:p-3.5 xl:p-4 
-                                    rounded-2xl border border-white/15
-                                    shadow-[0_8px_30px_rgba(139,92,246,0.1)] 
-                                    hover:shadow-[0_12px_40px_rgba(139,92,246,0.2)]
-                                    transition-all duration-300
-                                    flex items-center gap-2.5 lg:gap-3">
-                      <div className="bg-purple-500/20 p-2 lg:p-2.5 rounded-lg text-purple-400 flex-shrink-0">
-                        <Smartphone className="w-5 h-5 lg:w-[1.375rem] lg:h-[1.375rem]" />
-                      </div>
-                      <div className="text-xs lg:text-sm xl:text-[0.9375rem] font-bold text-white leading-tight">
-                        Smart Engagement
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* BOTTOM CARD */}
-                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 
-                                  w-[11rem] lg:w-52 xl:w-56 2xl:w-60
-                                  animate-orbit-item">
-                    <div className="bg-white/10 backdrop-blur-md 
-                                    p-3 lg:p-3.5 xl:p-4 
-                                    rounded-2xl border border-white/15
-                                    shadow-[0_8px_30px_rgba(34,197,94,0.1)] 
-                                    hover:shadow-[0_12px_40px_rgba(34,197,94,0.2)]
-                                    transition-all duration-300
-                                    flex items-center gap-2.5 lg:gap-3">
-                      <div className="bg-green-500/20 p-2 lg:p-2.5 rounded-lg text-green-400 flex-shrink-0">
-                        <Workflow className="w-5 h-5 lg:w-[1.375rem] lg:h-[1.375rem]" />
-                      </div>
-                      <div className="text-xs lg:text-sm xl:text-[0.9375rem] font-bold text-white leading-tight">
-                        Workflow Automation
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* LEFT CARD */}
-                  <div className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 
-                                  w-[11rem] lg:w-52 xl:w-56 2xl:w-60
-                                  animate-orbit-item">
-                    <div className="bg-white/10 backdrop-blur-md 
-                                    p-3 lg:p-3.5 xl:p-4 
-                                    rounded-2xl border border-white/15
-                                    shadow-[0_8px_30px_rgba(249,115,22,0.1)] 
-                                    hover:shadow-[0_12px_40px_rgba(249,115,22,0.2)]
-                                    transition-all duration-300
-                                    flex items-center gap-2.5 lg:gap-3">
-                      <div className="bg-orange-500/20 p-2 lg:p-2.5 rounded-lg text-orange-400 flex-shrink-0">
-                        <Database className="w-5 h-5 lg:w-[1.375rem] lg:h-[1.375rem]" />
-                      </div>
-                      <div className="text-xs lg:text-sm xl:text-[0.9375rem] font-bold text-white leading-tight">
-                        System Integration
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
+  {/* Desktop background image */}
+  <div className="hidden lg:block absolute inset-0 w-full h-full">
+    <img
+      src="/hero-bg.jpg"
+      alt="AI background"
+      className="w-full h-full object-cover"
+    />
+    <div className="absolute inset-0 bg-black/60"></div>
+    <div className="absolute top-[-20%] right-[-5%] w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[120px]"></div>
   </div>
 
-  {/* LOGO MARQUEE */}
-  <div className="w-full bg-[#05060b] py-6 sm:py-7 md:py-8 lg:py-9 relative overflow-hidden border-t border-white/10">
-    <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 lg:w-32 z-10 
-                    bg-gradient-to-r from-[#05060b] to-transparent pointer-events-none" />
-    <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 lg:w-32 z-10 
-                    bg-gradient-to-l from-[#05060b] to-transparent pointer-events-none" />
+  {/* Content */}
+  <div className="relative z-10 container mx-auto px-6 md:px-8 lg:px-12 xl:px-16 py-16 md:py-20 lg:py-24 w-full">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-20 items-center">
 
-    <div className="flex w-max animate-scroll 
-                    gap-12 sm:gap-16 md:gap-20 lg:gap-24 xl:gap-28 
-                    items-center">
-      {TECHNOLOGIES.map((tech, index) => (
-        <img
-          key={`tech-1-${index}`}
-          src={tech.logo}
-          alt={`${tech.name} logo`}
-          className={`${tech.className} brightness-0 invert opacity-60`}
-          loading="lazy"
-        />
-      ))}
-      {TECHNOLOGIES.map((tech, index) => (
-        <img
-          key={`tech-2-${index}`}
-          src={tech.logo}
-          alt={`${tech.name} logo`}
-          className={`${tech.className} brightness-0 invert opacity-60`}
-          loading="lazy"
-        />
-      ))}
-      {TECHNOLOGIES.map((tech, index) => (
-        <img
-          key={`tech-3-${index}`}
-          src={tech.logo}
-          alt={`${tech.name} logo`}
-          className={`${tech.className} brightness-0 invert opacity-60`}
-          loading="lazy"
-        />
-      ))}
+      {/* LEFT COLUMN – refined title and buttons */}
+      <div className="text-center lg:text-left">
+        {/* Headline with premium typography */}
+        <h1 className="font-space-grotesk font-light text-white tracking-tight leading-[1.1] mb-8 text-5xl sm:text-6xl md:text-7xl lg:text-6xl xl:text-7xl">
+          The{' '}
+          <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-300 to-sky-300">
+            Leading
+          </span>
+          <br />
+          AI Automation Company
+        </h1>
+
+        {/* CTA Buttons – sleek and modern */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          <Link
+            href="/get-started"
+            className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-2xl text-base font-semibold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/30"
+          >
+            <span className="relative z-10">Book a Demo</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </Link>
+          <Link
+            href="/case-studies"
+            className="px-8 py-4 rounded-2xl text-base font-semibold text-white bg-white/5 border border-white/20 backdrop-blur-sm hover:bg-white/10 hover:border-white/30 transition-all duration-300"
+          >
+            See How It Works
+          </Link>
+        </div>
+
+        {/* Subtle decorative element – optional */}
+        <div className="hidden lg:block mt-16 w-24 h-px bg-gradient-to-r from-blue-500/50 to-transparent" />
+      </div>
+
+      {/* RIGHT COLUMN – ORBIT (fully restored, slightly adjusted scale) */}
+      <div className="hidden lg:flex relative w-full items-center justify-center min-h-[500px] xl:min-h-[600px]">
+        <div className="w-full h-full flex items-center justify-center scale-90 xl:scale-100 transition-transform duration-500">
+          <div className="relative w-[500px] h-[500px] xl:w-[600px] xl:h-[600px] aspect-square flex items-center justify-center">
+
+            {/* Center Core */}
+            <div className="absolute z-20 w-32 h-32 xl:w-40 xl:h-40 bg-white/10 backdrop-blur-xl rounded-full shadow-[0_0_80px_-10px_rgba(59,130,246,0.6)] flex items-center justify-center border border-white/20">
+              <div className="text-center">
+                <div className="bg-gradient-to-r from-blue-600 to-purple-600 w-16 h-16 xl:w-20 xl:h-20 mx-auto rounded-xl flex items-center justify-center text-white mb-2 shadow-lg">
+                  <Bot className="w-8 h-8 xl:w-10 xl:h-10" />
+                </div>
+                <span className="text-xs xl:text-sm font-bold text-white block uppercase tracking-wider">AI Core</span>
+              </div>
+            </div>
+
+            {/* Orbit Rings */}
+            <div className="absolute w-[90%] h-[90%] border border-dashed border-blue-500/20 rounded-full" />
+            <div className="absolute w-[68%] h-[68%] border border-blue-400/15 rounded-full" />
+
+            {/* Rotating Cards */}
+            <div className="absolute inset-0 animate-orbit-ring flex items-center justify-center">
+              {/* Top Card */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 xl:w-56 animate-orbit-item">
+                <div className="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/15 shadow-xl flex items-center gap-3">
+                  <div className="bg-blue-500/20 p-2.5 rounded-lg text-blue-400">
+                    <LayoutDashboard className="w-5 h-5 xl:w-6 xl:h-6" />
+                  </div>
+                  <span className="text-sm xl:text-base font-bold text-white">AI Lead Capture</span>
+                </div>
+              </div>
+              {/* Right Card */}
+              <div className="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 w-48 xl:w-56 animate-orbit-item">
+                <div className="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/15 shadow-xl flex items-center gap-3">
+                  <div className="bg-purple-500/20 p-2.5 rounded-lg text-purple-400">
+                    <Smartphone className="w-5 h-5 xl:w-6 xl:h-6" />
+                  </div>
+                  <span className="text-sm xl:text-base font-bold text-white">Smart Engagement</span>
+                </div>
+              </div>
+              {/* Bottom Card */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-48 xl:w-56 animate-orbit-item">
+                <div className="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/15 shadow-xl flex items-center gap-3">
+                  <div className="bg-green-500/20 p-2.5 rounded-lg text-green-400">
+                    <Workflow className="w-5 h-5 xl:w-6 xl:h-6" />
+                  </div>
+                  <span className="text-sm xl:text-base font-bold text-white">Workflow Automation</span>
+                </div>
+              </div>
+              {/* Left Card */}
+              <div className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 w-48 xl:w-56 animate-orbit-item">
+                <div className="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/15 shadow-xl flex items-center gap-3">
+                  <div className="bg-orange-500/20 p-2.5 rounded-lg text-orange-400">
+                    <Database className="w-5 h-5 xl:w-6 xl:h-6" />
+                  </div>
+                  <span className="text-sm xl:text-base font-bold text-white">System Integration</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -980,56 +760,77 @@ export default function Home() {
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-blue-400 to-sky-400"></div>
 
               <form className="space-y-4 md:space-y-6 relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-gray-300 ml-1">Name</label>
-                    <input type="text" className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm md:text-base text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/40 transition-all" />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-gray-300 ml-1">Email</label>
-                    <input type="email" className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm md:text-base text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/40 transition-all" />
-                  </div>
-                </div>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+    <div className="space-y-2">
+      <label className="text-sm font-bold text-gray-300 ml-1">Name</label>
+      <input 
+        type="text" 
+        className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm md:text-base text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/40 transition-all" 
+        suppressHydrationWarning   // ← ADD THIS
+      />
+    </div>
+    <div className="space-y-2">
+      <label className="text-sm font-bold text-gray-300 ml-1">Email</label>
+      <input 
+        type="email" 
+        className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm md:text-base text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/40 transition-all" 
+        suppressHydrationWarning   // ← ADD THIS
+      />
+    </div>
+  </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-gray-300 ml-1">Phone</label>
-                    <input type="tel" placeholder="+1 (555) 000-0000" className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm md:text-base text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/40 transition-all" />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-gray-300 ml-1">Budget (Optional)</label>
-                    <select className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/40 transition-all text-gray-400">
-                      <option>Select Range</option>
-                      <option>$1k - $5k</option>
-                      <option>$5k - $20k</option>
-                      <option>$20k - $50k</option>
-                      <option>$50k+</option>
-                    </select>
-                  </div>
-                </div>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+    <div className="space-y-2">
+      <label className="text-sm font-bold text-gray-300 ml-1">Phone</label>
+      <input 
+        type="tel" 
+        placeholder="+1 (555) 000-0000" 
+        className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm md:text-base text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/40 transition-all" 
+        suppressHydrationWarning   // ← ADD THIS
+      />
+    </div>
+    <div className="space-y-2">
+      <label className="text-sm font-bold text-gray-300 ml-1">Budget (Optional)</label>
+      <select 
+        className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/40 transition-all text-gray-400"
+        suppressHydrationWarning   // ← ADD THIS
+      >
+        <option>Select Range</option>
+        <option>$1k - $5k</option>
+        <option>$5k - $20k</option>
+        <option>$20k - $50k</option>
+        <option>$50k+</option>
+      </select>
+    </div>
+  </div>
 
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-gray-300 ml-1">Project Description</label>
-                  <textarea rows={4} placeholder="Tell us about your business goals, what you want to automate, and any systems you currently use..." className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm md:text-base text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/40 transition-all resize-none"></textarea>
-                </div>
+  <div className="space-y-2">
+    <label className="text-sm font-bold text-gray-300 ml-1">Project Description</label>
+    <textarea 
+      rows={4} 
+      placeholder="Tell us about your business goals, what you want to automate, and any systems you currently use..." 
+      className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm md:text-base text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/40 transition-all resize-none"
+      suppressHydrationWarning   // ← ADD THIS
+    ></textarea>
+  </div>
 
-                {/* File Upload Area */}
-                <div className="border-2 border-dashed border-white/[0.08] rounded-xl p-6 md:p-8 text-center hover:border-blue-500/30 hover:bg-blue-500/[0.03] transition-all cursor-pointer group">
-                  <UploadCloud size={24} className="md:size-[32px] mx-auto text-gray-500 group-hover:text-blue-400 transition-colors mb-2" />
-                  <p className="text-xs md:text-sm text-gray-500 font-medium">
-                    <span className="text-blue-400 font-bold">Click to upload</span> or drag and drop
-                  </p>
-                  <p className="text-xs text-gray-600 mt-1">PDF, DOCX, or PPT (Max 10MB)</p>
-                </div>
+  {/* File Upload Area (no change needed) */}
+  <div className="border-2 border-dashed border-white/[0.08] rounded-xl p-6 md:p-8 text-center hover:border-blue-500/30 hover:bg-blue-500/[0.03] transition-all cursor-pointer group">
+    <UploadCloud size={24} className="md:size-[32px] mx-auto text-gray-500 group-hover:text-blue-400 transition-colors mb-2" />
+    <p className="text-xs md:text-sm text-gray-500 font-medium">
+      <span className="text-blue-400 font-bold">Click to upload</span> or drag and drop
+    </p>
+    <p className="text-xs text-gray-600 mt-1">PDF, DOCX, or PPT (Max 10MB)</p>
+  </div>
 
-                <button className="w-full py-3 md:py-4 rounded-xl bg-blue-600 text-white font-bold text-base md:text-lg hover:bg-blue-500 shadow-xl shadow-blue-500/20 transition-all transform hover:-translate-y-1">
-                  Get Your Free AI Consultation
-                </button>
-                
-                <p className="text-center text-xs text-gray-600 mt-4">
-                  Protected by reCAPTCHA and our <a href="#" className="underline text-gray-500 hover:text-gray-300">Privacy Policy</a>.
-                </p>
-              </form>
+  <button className="w-full py-3 md:py-4 rounded-xl bg-blue-600 text-white font-bold text-base md:text-lg hover:bg-blue-500 shadow-xl shadow-blue-500/20 transition-all transform hover:-translate-y-1">
+    Get Your Free AI Consultation
+  </button>
+
+  <p className="text-center text-xs text-gray-600 mt-4">
+    Protected by reCAPTCHA and our <a href="#" className="underline text-gray-500 hover:text-gray-300">Privacy Policy</a>.
+  </p>
+</form>
             </div>
           </div>
         </div>

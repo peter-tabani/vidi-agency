@@ -275,10 +275,7 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* PRICING LINK */}
-            <Link href="/pricing" className="hover:text-white transition-colors h-full flex items-center font-bold px-2 py-1 rounded-lg hover:bg-white/[0.06] text-xs lg:text-sm xl:text-base whitespace-nowrap">
-              Pricing
-            </Link>
+            
 
             {/* 3. COMPANY MENU */}
             <div className="h-full flex items-center relative">
@@ -473,15 +470,7 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Pricing Link */}
-          <Link 
-            href="/pricing" 
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="py-3 text-base font-medium text-gray-300 border-b border-white/[0.06] flex items-center gap-2 min-h-[56px] hover:text-white transition-colors"
-          >
-            <CreditCard size={18} className="text-blue-400 flex-shrink-0" />
-            <span>Pricing</span>
-          </Link>
+          
 
           {/* Company Accordion */}
           <div className="border-b border-white/[0.06]">
