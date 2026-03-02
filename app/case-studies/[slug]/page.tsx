@@ -40,15 +40,15 @@ export default function CaseStudyDetailPage() {
   const IndustryIcon = industry.icon;
 
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="min-h-screen bg-[#05060b] text-white">
       <Navbar />
       
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden">
-        {/* Background Effects */}
+        {/* Background Effects - use blue/purple blurs for consistency */}
         <div className="absolute inset-0">
-          <div className={`absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-r ${project.gradient} opacity-20 blur-3xl rounded-full`} />
-          <div className={`absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-r ${project.gradient} opacity-10 blur-3xl rounded-full`} />
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/20 blur-3xl rounded-full" />
+          <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-purple-600/20 blur-3xl rounded-full" />
         </div>
         
         <div className="relative max-w-6xl mx-auto px-6">
@@ -78,7 +78,7 @@ export default function CaseStudyDetailPage() {
           </div>
           
           {/* Title */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 font-space-grotesk">
             <span className={`bg-gradient-to-r ${project.gradient} bg-clip-text text-transparent`}>
               {project.title}
             </span>
@@ -113,8 +113,8 @@ export default function CaseStudyDetailPage() {
       {/* Metrics Section */}
       <section className="py-16 border-t border-white/10">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-2xl font-bold mb-8 flex items-center gap-2">
-            <Sparkles className="w-6 h-6 text-yellow-400" aria-hidden="true" />
+          <h2 className="text-2xl font-bold mb-8 flex items-center gap-2 font-space-grotesk">
+            <Sparkles className="w-6 h-6 text-blue-400" aria-hidden="true" />
             Key Results
           </h2>
           
@@ -150,8 +150,8 @@ export default function CaseStudyDetailPage() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {project.challenge && (
                 <div className="space-y-4">
-                  <h3 className="text-xl font-bold text-red-400 flex items-center gap-2">
-                    <span className="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center text-sm">1</span>
+                  <h3 className="text-xl font-bold flex items-center gap-2 font-space-grotesk">
+                    <span className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center text-sm text-white">1</span>
                     The Challenge
                   </h3>
                   <p className="text-gray-300 leading-relaxed">{project.challenge}</p>
@@ -160,8 +160,8 @@ export default function CaseStudyDetailPage() {
               
               {project.solution && (
                 <div className="space-y-4">
-                  <h3 className="text-xl font-bold text-blue-400 flex items-center gap-2">
-                    <span className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-sm">2</span>
+                  <h3 className="text-xl font-bold flex items-center gap-2 font-space-grotesk">
+                    <span className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center text-sm text-white">2</span>
                     Our Solution
                   </h3>
                   <p className="text-gray-300 leading-relaxed">{project.solution}</p>
@@ -170,8 +170,8 @@ export default function CaseStudyDetailPage() {
               
               {project.results && (
                 <div className="space-y-4">
-                  <h3 className="text-xl font-bold text-green-400 flex items-center gap-2">
-                    <span className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center text-sm">3</span>
+                  <h3 className="text-xl font-bold flex items-center gap-2 font-space-grotesk">
+                    <span className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center text-sm text-white">3</span>
                     The Results
                   </h3>
                   <p className="text-gray-300 leading-relaxed">{project.results}</p>
@@ -185,7 +185,7 @@ export default function CaseStudyDetailPage() {
       {/* Tech Stack */}
       <section className="py-16 border-t border-white/10">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-2xl font-bold mb-8">Technology Stack</h2>
+          <h2 className="text-2xl font-bold mb-8 font-space-grotesk">Technology Stack</h2>
           
           <div className="flex flex-wrap gap-3">
             {project.tech.map((tech, index) => (
@@ -205,7 +205,7 @@ export default function CaseStudyDetailPage() {
         <section className="py-16 border-t border-white/10">
           <div className="max-w-4xl mx-auto px-6">
             <div className={`relative p-8 md:p-12 rounded-3xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10`}>
-              <Quote className={`absolute top-6 left-6 w-12 h-12 text-${project.accentColor}-500 opacity-30`} aria-hidden="true" />
+              <Quote className={`absolute top-6 left-6 w-12 h-12 text-blue-500/30`} aria-hidden="true" />
               
               <blockquote className="relative">
                 <p className="text-xl md:text-2xl text-gray-200 italic leading-relaxed mb-6">
@@ -232,7 +232,7 @@ export default function CaseStudyDetailPage() {
       {relatedProjects.length > 0 && (
         <section className="py-16 border-t border-white/10">
           <div className="max-w-6xl mx-auto px-6">
-            <h2 className="text-2xl font-bold mb-8">Related Case Studies</h2>
+            <h2 className="text-2xl font-bold mb-8 font-space-grotesk">Related Case Studies</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {relatedProjects.map((relatedProject, index) => (
@@ -263,7 +263,7 @@ export default function CaseStudyDetailPage() {
       {/* CTA Section */}
       <section className="py-20 border-t border-white/10">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 font-space-grotesk">
             Ready to Transform Your Business?
           </h2>
           <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
@@ -273,14 +273,14 @@ export default function CaseStudyDetailPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 
               href="/get-started"
-              className={`inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r ${project.gradient} text-white font-semibold hover:opacity-90 transition-opacity`}
+              className={`inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold hover:opacity-90 transition-opacity shadow-lg shadow-blue-500/30`}
             >
               Start Your Project
               <ArrowRight className="w-5 h-5" aria-hidden="true" />
             </Link>
             <Link 
               href="/case-studies"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-white/20 text-white font-semibold hover:bg-white/5 transition-colors"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-white/10 bg-white/5 text-white font-semibold hover:bg-white/10 transition-colors backdrop-blur-sm"
             >
               View More Case Studies
             </Link>

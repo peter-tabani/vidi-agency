@@ -4,7 +4,7 @@ import ReceptionistAI from '@/components/ReceptionistAI';
 import TechIcons from '@/components/TechIcons';
 import { 
   ArrowRight, CheckCircle2, Bot, LayoutDashboard, Code2, Inbox, Lock, UploadCloud,
-  Smartphone, Phone, BarChart3, Workflow, Database, Cpu, Check, XCircle, Plus, Star, Rocket, CreditCard, Mail, FileText, Play, Users
+  Smartphone, Phone, BarChart3, Workflow, Database, Cpu, Check, XCircle, Plus, Star, Rocket, CreditCard, Mail, FileText, Play, Users,Share2, Zap, Clock, ShieldCheck, TrendingUp
 } from "lucide-react";
 
 const features = [
@@ -199,12 +199,12 @@ export default function Home() {
       <div className="text-center lg:text-left">
         {/* Headline with premium typography */}
         <h1 className="font-space-grotesk font-light text-white tracking-tight leading-[1.1] mb-8 text-5xl sm:text-6xl md:text-7xl lg:text-6xl xl:text-7xl">
-          The{' '}
+          Advanced{' '}
           <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-300 to-sky-300">
-            Leading
+            AI
           </span>
           <br />
-          AI Automation Company
+          Automation Solutions
         </h1>
 
         {/* CTA Buttons – sleek and modern */}
@@ -294,225 +294,514 @@ export default function Home() {
 </section>
 
 
-      {/* ADVANCED CAPABILITIES SECTION - Fixed responsiveness */}
-      <section id="services" className="py-16 md:py-20 lg:py-24 relative overflow-hidden bg-[#07080e]">
+     
+
+      
+      {/* NATIVE ENVIRONMENT COMPATIBILITY STRIP */}
+      {/* NATIVE ENVIRONMENT COMPATIBILITY STRIP */}
+      {/* NATIVE ENVIRONMENT COMPATIBILITY STRIP */}
+      <section className="w-full bg-[#05060b] border-t border-b border-white/[0.04] py-8 md:py-10 relative z-20 overflow-hidden">
         
-        {/* Background Texture */}
-        <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none"></div>
-        
-        {/* Soft Background Glows */}
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-          <div className="absolute top-[20%] right-[10%] w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-blue-600/10 rounded-full filter blur-[120px]"></div>
-          <div className="absolute bottom-[10%] left-[10%] w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-purple-600/10 rounded-full filter blur-[120px]"></div>
+        {/* CSS for Infinite Marquee */}
+        <style>{`
+          @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          .animate-scroll {
+            animation: scroll 30s linear infinite;
+            width: max-content;
+          }
+          .animate-scroll:hover {
+            animation-play-state: paused;
+          }
+        `}</style>
+
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 relative">
+          <h2 className="text-center text-[10px] md:text-xs font-bold text-gray-500 uppercase tracking-[0.2em] mb-8 md:mb-10">
+            Native Environment Compatibility
+          </h2>
         </div>
 
-        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 relative z-10">
+        {/* Marquee Container with Edge Fades */}
+        <div className="relative w-full overflow-hidden flex items-center">
           
-          {/* Section Header */}
-          <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
-            <h2 className="text-blue-400 font-bold tracking-wide uppercase text-xs md:text-sm mb-2 md:mb-3">
-              What We Build
-            </h2>
-            <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4 md:mb-6 leading-tight font-space-grotesk">
-              AI Automation That <br className="hidden sm:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-300 to-sky-300">
-                Works While You Sleep
-              </span>
-            </h3>
-            <p className="text-sm md:text-base lg:text-lg text-gray-400 max-w-2xl mx-auto">
-              From lead capture to customer support to internal workflows — we build AI systems that save time, reduce costs, and drive revenue.
-            </p>
-          </div>
-
-          {/* Feature Grid - Fixed responsive grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-7xl mx-auto">
-            {advancedFeatures.map((feature, index) => (
-              <div 
-                key={index} 
-                className="group bg-white/[0.04] p-4 sm:p-6 md:p-8 rounded-xl md:rounded-2xl border border-white/[0.06] hover:border-white/[0.12] hover:bg-white/[0.07] transition-all duration-300 hover:-translate-y-1 md:hover:-translate-y-2 relative overflow-hidden"
-              >
+          {/* Left Edge Fade */}
+          <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-[#05060b] to-transparent z-10 pointer-events-none"></div>
+          
+          {/* Scrolling Track */}
+          <div className="flex animate-scroll items-center">
+            
+            {/* --- LOGO SET (Rendered twice for seamless looping) --- */}
+            {[1, 2].map((setIndex) => (
+              <div key={setIndex} className="flex items-center">
                 
-                {/* Hover Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.05] to-purple-500/[0.05] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                {/* Card Content */}
-                <div className="relative z-10">
-                  <div className="mb-4 md:mb-6 inline-block p-3 md:p-4 rounded-lg md:rounded-xl bg-white/[0.06] group-hover:bg-white/[0.1] transition-colors">
-                    <div className="scale-75 md:scale-100">
-                      {feature.icon}
-                    </div>
-                  </div>
-                  
-                  <h4 className="text-lg md:text-xl font-bold text-white mb-2 md:mb-3 group-hover:text-blue-400 transition-colors">
-                    {feature.title}
-                  </h4>
-                  
-                  <p className="text-gray-400 leading-relaxed text-xs md:text-sm">
-                    {feature.description}
-                  </p>
+                {/* Salesforce */}
+                <div className="flex items-center gap-1.5 text-[#00A1E0] mx-8 md:mx-12">
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7 md:w-8 md:h-8">
+                     <path d="M17.5 8c-.46 0-.91.1-1.33.28C15.42 5.2 13.04 4 10.5 4 6.36 4 3 7.36 3 11.5c0 4.14 3.36 7.5 7.5 7.5h7c3.03 0 5.5-2.47 5.5-5.5S20.53 8 17.5 8z" />
+                  </svg>
+                  <span className="text-xl md:text-2xl font-bold tracking-tighter lowercase text-white">salesforce</span>
                 </div>
+
+                {/* HubSpot */}
+                <div className="flex items-center gap-1.5 text-[#FF7A59] mx-8 md:mx-12">
+                   <Share2 className="w-6 h-6 md:w-7 md:h-7 stroke-[2.5]" />
+                   <span className="text-xl md:text-2xl font-bold tracking-tight text-white">HubSpot</span>
+                </div>
+
+                {/* Microsoft Dynamics 365 */}
+                <div className="flex items-center gap-2 text-[#0078D4] mx-8 md:mx-12">
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 md:w-6 md:h-6">
+                    <path d="M11.4 24H0V12.6h11.4V24zM24 24H12.6V12.6H24V24zM11.4 11.4H0V0h11.4v11.4zm12.6 0H12.6V0H24v11.4z"/>
+                  </svg>
+                  <span className="text-lg md:text-xl font-semibold tracking-tight text-white">Dynamics 365</span>
+                </div>
+
+                {/* Microsoft Outlook */}
+                <div className="flex items-center gap-1.5 text-[#0078D4] mx-8 md:mx-12">
+                   <Mail className="w-6 h-6 md:w-7 md:h-7 stroke-[2]" />
+                   <span className="text-lg md:text-xl font-semibold tracking-tight text-white">Outlook</span>
+                </div>
+
+                {/* Google Workspace */}
+                <div className="flex items-center gap-2 text-[#4285F4] mx-8 md:mx-12">
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 md:w-7 md:h-7">
+                    <path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/>
+                  </svg>
+                  <span className="text-lg md:text-xl font-medium tracking-tight text-white">Workspace</span>
+                </div>
+
+                {/* Zapier */}
+                <div className="flex items-center gap-1 text-[#FF4A00] mx-8 md:mx-12">
+                   <Zap className="w-5 h-5 md:w-6 md:h-6 fill-current stroke-none" />
+                   <span className="text-xl md:text-2xl font-black tracking-tighter text-white">_zapier</span>
+                </div>
+
               </div>
             ))}
+            
           </div>
+
+          {/* Right Edge Fade */}
+          <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-[#05060b] to-transparent z-10 pointer-events-none"></div>
+          
         </div>
       </section>
 
-      {/* CTA SECTION - Fixed responsiveness */}
-      <section className="py-16 md:py-20 lg:py-24 bg-[#05060b] relative overflow-hidden border-t border-white/[0.04]">
-        {/* Decorative Background Glows */}
-        <div className="absolute top-0 left-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-blue-600 rounded-full filter blur-[120px] opacity-10"></div>
-        <div className="absolute bottom-0 right-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-indigo-600 rounded-full filter blur-[120px] opacity-10"></div>
+      
 
-        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 relative z-10 text-center">
-          
-          <h2 className="text-blue-400 font-bold tracking-widest uppercase text-xs md:text-sm mb-3 md:mb-4">
-            Ready to Automate?
-          </h2>
-          
-          <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white mb-4 md:mb-6 leading-tight">
-            Stop Losing Leads. <br className="hidden sm:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
-              Start Automating Growth.
+      
+      {/* HIGH-IMPACT STATS SECTION (Replaces old CTA) */}
+      <section className="py-24 md:py-32 lg:py-40 bg-[#05060b] relative overflow-hidden border-t border-white/[0.04]">
+        {/* Center glowing orb to draw the eye directly to the text */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-blue-600/10 rounded-full filter blur-[120px] pointer-events-none"></div>
+
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 relative z-10 text-center max-w-5xl">
+        
+
+          {/* The Headline */}
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-10 md:mb-14 tracking-tight font-space-grotesk">
+            Recovering <br className="block sm:hidden" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-300 to-sky-300">
+              Sales Capacity.
             </span>
-          </h3>
+          </h2>
 
-          <p className="text-base md:text-lg lg:text-xl text-gray-400 mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed">
-            Whether you need AI lead capture, automated customer engagement, or workflow automation — we build systems that deliver measurable results.
+          {/* The High-Impact Copy */}
+          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-400 leading-relaxed font-light">
+          Manual data entry currently accounts for <strong className="text-white font-medium">32 hours per rep, per month</strong> in the industrial sector. AI-integrated workflows recapture this time, redirecting it toward <strong className="text-white font-medium">high-value client acquisition.</strong>
           </p>
-
-          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center">
-            <Link href="/get-started" className="px-6 sm:px-8 md:px-10 py-3 md:py-4 lg:py-5 bg-blue-600 text-white rounded-full text-sm md:text-base lg:text-lg font-bold hover:bg-blue-500 transition-all shadow-xl shadow-blue-500/20 flex items-center gap-2 w-full sm:w-auto text-center">
-              Book a Demo
-            </Link>
-            <Link href="/contact" className="px-6 sm:px-8 md:px-10 py-3 md:py-4 lg:py-5 bg-transparent border border-white/[0.12] text-white rounded-full text-sm md:text-base lg:text-lg font-bold hover:bg-white/[0.06] transition-all w-full sm:w-auto text-center">
-              Talk to Our Team
-            </Link>
-          </div>
-
-          <p className="mt-6 md:mt-8 text-xs md:text-sm text-gray-500">
-            Fast deployment. Measurable results. No forced subscriptions.
-          </p>
+          
         </div>
       </section>
 
       {/* COMPARISON SECTION - Fixed responsiveness */}
-      <section className="relative py-16 md:py-20 lg:py-24 z-10 overflow-hidden">
+      {/* SECTION 3: OPERATIONAL CAPABILITIES */}
+      <section className="relative py-24 md:py-32 z-10 overflow-hidden bg-[#07080e] border-t border-white/[0.04]">
         
-        <div className="absolute inset-0 bg-[#0a0b12] -z-20"></div>
-        <div className="absolute top-0 left-0 w-full h-32 md:h-64 bg-gradient-to-b from-[#05060b] to-transparent -z-10"></div>
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[300px] h-[150px] md:w-[800px] md:h-[400px] bg-blue-600/5 rounded-full blur-[120px] -z-10"></div>
-
-        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 relative pt-8 md:pt-12">
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 max-w-7xl relative">
           
-          {/* Header */}
-          <div className="text-center max-w-3xl mx-auto mb-12 md:mb-20">
-            <h2 className="text-blue-400 font-bold tracking-wide uppercase text-xs md:text-sm mb-2 md:mb-3">
-              The Vidi Advantage
+          {/* Centered Section Header */}
+          <div className="mb-20 md:mb-24 text-center">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight font-space-grotesk">
+              Operational <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-sky-300">Capabilities.</span>
             </h2>
-            <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-tight font-space-grotesk">
-              Why Rent a Generic Tool <br className="hidden sm:block" /> When You Can <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-300 to-sky-300">Own a Custom AI System?</span>
+          </div>
+
+          <div className="flex flex-col gap-20 md:gap-32">
+            
+            {/* FEATURE 1: Image Left, Text Right */}
+            <div className="flex flex-col md:flex-row items-center gap-10 lg:gap-16">
+              <div className="w-full md:w-1/2 order-1">
+                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/[0.08] shadow-2xl group">
+                  <img 
+                    src="/hero-bg.jpg" 
+                    alt="High-Fidelity Knowledge Ingestion" 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  {/* Dark gradient overlay for text readability */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#05060b] via-[#05060b]/40 to-transparent"></div>
+                  {/* Title overlay */}
+                  <div className="absolute bottom-6 left-6 right-6 md:bottom-8 md:left-8 md:right-8">
+                    <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-wide font-space-grotesk leading-tight">
+                      1. High-Fidelity Knowledge Ingestion
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <div className="w-full md:w-1/2 order-2 md:pl-8 lg:pl-12">
+                <p className="text-lg md:text-xl text-gray-400 font-light leading-relaxed">
+                  Proprietary safety manuals and technical specifications are ingested into a private vector database. This ensures the AI provides 100% accurate, safety-critical data in every interaction, removing the risk of "model drift" or generic responses.
+                </p>
+              </div>
+            </div>
+
+            {/* FEATURE 2: Image Right, Text Left */}
+            <div className="flex flex-col md:flex-row items-center gap-10 lg:gap-16">
+              <div className="w-full md:w-1/2 order-1 md:order-2">
+                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/[0.08] shadow-2xl group">
+                  <img 
+                    src="/hero-bg.jpg" 
+                    alt="Bi-Directional CRM Synchronization" 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#05060b] via-[#05060b]/40 to-transparent"></div>
+                  <div className="absolute bottom-6 left-6 right-6 md:bottom-8 md:left-8 md:right-8">
+                    <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-wide font-space-grotesk leading-tight">
+                      2. Bi-Directional CRM Synchronization
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <div className="w-full md:w-1/2 order-2 md:order-1 md:pr-8 lg:pr-12">
+                <p className="text-lg md:text-xl text-gray-400 font-light leading-relaxed">
+                  Real-time connectivity between customer dialogue and CRM environments. Lead qualification, contact details, and intent signals are mapped directly to existing sales pipelines without manual entry, recovering 70% of administrative time.
+                </p>
+              </div>
+            </div>
+
+            {/* FEATURE 3: Image Left, Text Right */}
+            <div className="flex flex-col md:flex-row items-center gap-10 lg:gap-16">
+              <div className="w-full md:w-1/2 order-1">
+                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/[0.08] shadow-2xl group">
+                  <img 
+                    src="/hero-bg.jpg" 
+                    alt="Conversational Email Architecture" 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#05060b] via-[#05060b]/40 to-transparent"></div>
+                  <div className="absolute bottom-6 left-6 right-6 md:bottom-8 md:left-8 md:right-8">
+                    <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-wide font-space-grotesk leading-tight">
+                      3. Conversational Email Architecture
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <div className="w-full md:w-1/2 order-2 md:pl-8 lg:pl-12">
+                <p className="text-lg md:text-xl text-gray-400 font-light leading-relaxed">
+                  Post-interaction, the system generates context-aware follow-up drafts within the representative's inbox. This maintains the "Speed to Lead" advantage, ensuring high-intent prospects receive technical specs within minutes, not days.
+                </p>
+              </div>
+            </div>
+
+            {/* FEATURE 4: Image Right, Text Left */}
+            <div className="flex flex-col md:flex-row items-center gap-10 lg:gap-16">
+              <div className="w-full md:w-1/2 order-1 md:order-2">
+                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/[0.08] shadow-2xl group">
+                  <img 
+                    src="/hero-bg.jpg" 
+                    alt="Autonomous Qualification & Routing" 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#05060b] via-[#05060b]/40 to-transparent"></div>
+                  <div className="absolute bottom-6 left-6 right-6 md:bottom-8 md:left-8 md:right-8">
+                    <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-wide font-space-grotesk leading-tight">
+                      4. Autonomous Qualification & Routing
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <div className="w-full md:w-1/2 order-2 md:order-1 md:pr-8 lg:pr-12">
+                <p className="text-lg md:text-xl text-gray-400 font-light leading-relaxed">
+                  The system identifies and qualifies prospects based on their specific industrial safety needs. Low-intent inquiries are handled autonomously, while high-value accounts are prioritized for immediate human intervention.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Learn More Button */}
+          <div className="mt-20 md:mt-24 text-center">
+            <Link 
+              href="/capabilities" 
+              className="inline-flex items-center gap-3 px-8 py-4 bg-transparent border border-white/[0.15] text-white rounded-full text-base lg:text-lg font-bold hover:bg-white/[0.05] hover:border-white/[0.3] transition-all duration-300"
+            >
+              Learn More
+              <ArrowRight className="w-5 h-5 text-blue-400" />
+            </Link>
+          </div>
+
+        </div>
+      </section>
+      {/* SECTION 4: THE BUSINESS CASE (Clean Data Table) */}
+      <section className="relative py-24 md:py-32 z-10 bg-[#05060b] border-t border-white/[0.04] overflow-hidden">
+        
+        {/* Subtle background glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/5 rounded-full blur-[150px] pointer-events-none"></div>
+
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 max-w-5xl relative z-10">
+          
+          {/* Section Header */}
+          <div className="mb-12 md:mb-16 text-center">
+            <h2 className="text-blue-400 font-bold tracking-widest uppercase text-xs md:text-sm mb-4">
+              Empirical Impact
+            </h2>
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight font-space-grotesk">
+              The Cost of <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-500">Inaction.</span>
             </h3>
           </div>
 
-          {/* THE VISUAL COMPARISON BATTLE */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-16 items-stretch max-w-6xl mx-auto">
-            
-            {/* LEFT SIDE: STANDARD SaaS */}
-            <div className="relative group">
-              <div className="h-full bg-white/[0.03] rounded-2xl md:rounded-3xl p-6 md:p-8 lg:p-10 border border-white/[0.06] relative overflow-hidden group-hover:border-white/[0.1] transition-all duration-500">
-                 <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
-                 
-                 <div className="relative z-10">
-                   <div className="w-12 h-12 md:w-16 md:h-16 bg-white/[0.06] rounded-xl md:rounded-2xl flex items-center justify-center text-gray-500 mb-6 md:mb-8">
-                     <Lock size={24} className="md:size-[32px]" />
-                   </div>
-                   <h4 className="text-xl md:text-2xl font-bold text-gray-300 mb-3 md:mb-4">Generic SaaS Tools</h4>
-                   <p className="text-gray-500 mb-6 md:mb-8 font-medium text-sm md:text-base">You pay monthly forever for features everyone else has. No customization. No real AI. Limited by their roadmap, not yours.</p>
-                   
-                   {/* The "Restrictions" List */}
-                   <ul className="space-y-4 md:space-y-6">
-                     <li className="flex items-start gap-3 md:gap-4 opacity-70">
-                       <XCircle size={20} className="text-red-500/70 flex-shrink-0 mt-0.5 md:mt-1"/>
-                       <div>
-                         <strong className="block text-gray-400 text-sm md:text-base">Monthly Fees Forever</strong>
-                         <span className="text-xs md:text-sm text-gray-600">Stop paying, and your automation disappears overnight.</span>
-                       </div>
-                     </li>
-                     <li className="flex items-start gap-3 md:gap-4 opacity-70">
-                       <XCircle size={20} className="text-red-500/70 flex-shrink-0 mt-0.5 md:mt-1"/>
-                       <div>
-                         <strong className="block text-gray-400 text-sm md:text-base">One-Size-Fits-All</strong>
-                         <span className="text-xs md:text-sm text-gray-600">Need a custom workflow? Too bad. You get what everyone else gets.</span>
-                       </div>
-                     </li>
-                     <li className="flex items-start gap-3 md:gap-4 opacity-70">
-                        <XCircle size={20} className="text-red-500/70 flex-shrink-0 mt-0.5 md:mt-1"/>
-                       <div>
-                         <strong className="block text-gray-400 text-sm md:text-base">Your Data, Their Servers</strong>
-                         <span className="text-xs md:text-sm text-gray-600">Your leads and customer data live on their platform, not yours.</span>
-                       </div>
-                     </li>
-                   </ul>
-                 </div>
-              </div>
-            </div>
+          {/* Premium Data Table */}
+          <div className="bg-white/[0.02] border border-white/[0.08] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl backdrop-blur-sm">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left border-collapse">
+                
+                {/* Table Header */}
+                <thead>
+                  <tr className="bg-white/[0.04] border-b border-white/[0.08]">
+                    <th className="py-5 px-6 md:px-8 text-xs md:text-sm font-bold text-gray-400 uppercase tracking-widest w-1/3 md:w-1/4">
+                      Impact Area
+                    </th>
+                    <th className="py-5 px-6 md:px-8 text-xs md:text-sm font-bold text-blue-400 uppercase tracking-widest w-2/3 md:w-3/4">
+                      Data Profile
+                    </th>
+                  </tr>
+                </thead>
+                
+                {/* Table Body */}
+                <tbody className="divide-y divide-white/[0.04]">
+                  
+                  {/* Row 1 */}
+                  <tr className="hover:bg-white/[0.02] transition-colors duration-300">
+                    <td className="py-6 px-6 md:px-8 font-semibold text-white text-base md:text-lg align-top">
+                      The Data Entry Tax
+                    </td>
+                    <td className="py-6 px-6 md:px-8 text-gray-300 font-light text-sm md:text-base leading-relaxed">
+                      Sales representatives spend nearly <strong className="text-blue-400 font-bold">32.7 hours per month</strong> on manual data entry and CRM management; AI automation recovers <strong className="text-blue-400 font-bold">70%</strong> of this time, effectively adding <strong className="text-blue-400 font-bold">23 selling days</strong> per year to every rep's schedule.
+                    </td>
+                  </tr>
 
-            {/* RIGHT SIDE: VIDI CUSTOM ENGINE */}
-            <div className="relative">
-              <div className="absolute -inset-1 md:-inset-2 bg-gradient-to-r from-blue-500 to-blue-400 rounded-[30px] md:rounded-[35px] blur-2xl opacity-20 animate-pulse-slow"></div>
-              
-              <div className="h-full bg-white/[0.05] backdrop-blur-xl md:backdrop-blur-2xl rounded-2xl md:rounded-3xl p-6 md:p-8 lg:p-10 border border-blue-500/20 shadow-xl md:shadow-2xl relative overflow-hidden z-10">
-                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.05] via-transparent to-indigo-500/[0.05]"></div>
-                 
-                 <div className="relative z-10">
-                   <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-r from-blue-600 to-blue-500 rounded-xl md:rounded-2xl flex items-center justify-center text-white mb-6 md:mb-8 shadow-lg shadow-blue-500/30">
-                     <Rocket size={24} className="md:size-[32px]" />
-                   </div>
-                   <h4 className="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">Your Custom AI System</h4>
-                   <p className="text-gray-400 mb-6 md:mb-8 font-medium text-sm md:text-base">We build it. You own it. A custom AI system trained on your data, integrated with your tools, and designed to grow with your business.</p>
-                   
-                   {/* The "Benefits" List */}
-                   <ul className="space-y-4 md:space-y-6">
-                     <li className="flex items-start gap-3 md:gap-4">
-                       <CheckCircle2 size={20} className="text-blue-400 flex-shrink-0 mt-0.5 md:mt-1"/>
-                       <div>
-                         <strong className="block text-white text-sm md:text-base">One-Time Build, You Own It</strong>
-                         <span className="text-xs md:text-sm text-gray-400">No forced subscriptions. The AI system is your company asset.</span>
-                       </div>
-                     </li>
-                     <li className="flex items-start gap-3 md:gap-4">
-                       <CheckCircle2 size={20} className="text-blue-400 flex-shrink-0 mt-0.5 md:mt-1"/>
-                       <div>
-                         <strong className="block text-white text-sm md:text-base">Built for Your Business</strong>
-                         <span className="text-xs md:text-sm text-gray-400">Custom AI agents, workflows, and integrations designed around how you actually work.</span>
-                       </div>
-                     </li>
-                     <li className="flex items-start gap-3 md:gap-4">
-                       <CheckCircle2 size={20} className="text-blue-400 flex-shrink-0 mt-0.5 md:mt-1"/>
-                       <div>
-                         <strong className="block text-white text-sm md:text-base">Total Data Ownership</strong>
-                         <span className="text-xs md:text-sm text-gray-400">Your leads, conversations, and customer data stay on your infrastructure.</span>
-                       </div>
-                     </li>
-                   </ul>
-                 </div>
-                 
-                 {/* Decorative Glass Reflection */}
-                 <div className="absolute top-0 right-0 -mt-8 -mr-8 md:-mt-12 md:-mr-12 w-32 h-32 md:w-48 md:h-48 bg-gradient-to-br from-blue-400/10 to-transparent blur-2xl rotate-45 pointer-events-none"></div>
-              </div>
+                  {/* Row 2 */}
+                  <tr className="hover:bg-white/[0.02] transition-colors duration-300">
+                    <td className="py-6 px-6 md:px-8 font-semibold text-white text-base md:text-lg align-top">
+                      The Cost of Inaction
+                    </td>
+                    <td className="py-6 px-6 md:px-8 text-gray-300 font-light text-sm md:text-base leading-relaxed">
+                      The average cost to process a single purchase order manually can reach as high as <strong className="text-blue-400 font-bold">$506.52</strong>, compared to just a fraction of that with AI-driven automation.
+                    </td>
+                  </tr>
+
+                  {/* Row 3 */}
+                  <tr className="hover:bg-white/[0.02] transition-colors duration-300">
+                    <td className="py-6 px-6 md:px-8 font-semibold text-white text-base md:text-lg align-top">
+                      Speed to Lead
+                    </td>
+                    <td className="py-6 px-6 md:px-8 text-gray-300 font-light text-sm md:text-base leading-relaxed">
+                      Contacting a new lead within <strong className="text-blue-400 font-bold">five minutes</strong> of their inquiry increases the likelihood of conversion by <strong className="text-blue-400 font-bold">9x</strong> compared to waiting just 30 minutes.
+                    </td>
+                  </tr>
+
+                  {/* Row 4 */}
+                  <tr className="hover:bg-white/[0.02] transition-colors duration-300">
+                    <td className="py-6 px-6 md:px-8 font-semibold text-white text-base md:text-lg align-top">
+                      Response Acceleration
+                    </td>
+                    <td className="py-6 px-6 md:px-8 text-gray-300 font-light text-sm md:text-base leading-relaxed">
+                      AI-generated client proposals are created <strong className="text-blue-400 font-bold">14 times faster</strong> than traditional methods, drastically shortening the time a lead stays "cold".
+                    </td>
+                  </tr>
+
+                  {/* Row 5 */}
+                  <tr className="hover:bg-white/[0.02] transition-colors duration-300">
+                    <td className="py-6 px-6 md:px-8 font-semibold text-white text-base md:text-lg align-top">
+                      Asset Uptime
+                    </td>
+                    <td className="py-6 px-6 md:px-8 text-gray-300 font-light text-sm md:text-base leading-relaxed">
+                      AI-powered predictive maintenance can increase asset uptime by an average of <strong className="text-blue-400 font-bold">20%</strong> and reduce overall factory maintenance costs by up to <strong className="text-blue-400 font-bold">40%</strong>.
+                    </td>
+                  </tr>
+
+                  {/* Row 6 */}
+                  <tr className="hover:bg-white/[0.02] transition-colors duration-300">
+                    <td className="py-6 px-6 md:px-8 font-semibold text-white text-base md:text-lg align-top">
+                      Precision Quality
+                    </td>
+                    <td className="py-6 px-6 md:px-8 text-gray-300 font-light text-sm md:text-base leading-relaxed">
+                      AI-driven computer vision can detect manufacturing defects with <strong className="text-blue-400 font-bold">99% accuracy</strong>, reducing waste and preventing costly product recalls.
+                    </td>
+                  </tr>
+
+                  {/* Row 7 */}
+                  <tr className="hover:bg-white/[0.02] transition-colors duration-300">
+                    <td className="py-6 px-6 md:px-8 font-semibold text-white text-base md:text-lg align-top">
+                      Profitability Boost
+                    </td>
+                    <td className="py-6 px-6 md:px-8 text-gray-300 font-light text-sm md:text-base leading-relaxed">
+                      Businesses adopting AI in their sales processes see an average <strong className="text-blue-400 font-bold">23% increase</strong> in net profit margins.
+                    </td>
+                  </tr>
+
+                  {/* Row 8 */}
+                  <tr className="hover:bg-white/[0.02] transition-colors duration-300">
+                    <td className="py-6 px-6 md:px-8 font-semibold text-white text-base md:text-lg align-top">
+                      Rapid Payback (ROI)
+                    </td>
+                    <td className="py-6 px-6 md:px-8 text-gray-300 font-light text-sm md:text-base leading-relaxed">
+                      The median ROI on AI investments for sales is achieved within just <strong className="text-blue-400 font-bold">5.2 months</strong>, with sustained annual returns averaging <strong className="text-blue-400 font-bold">317%</strong> thereafter.
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
             </div>
           </div>
           
-          {/* Final Statement */}
-          <div className="text-center mt-12 md:mt-16 max-w-2xl mx-auto">
-            <p className="text-base md:text-lg font-medium text-gray-400">
-              Stop renting generic tools. <br className="hidden sm:block" /> Let's build an AI system tailored to <span className="text-blue-400 font-bold">your business.</span>
-            </p>
-          </div>
         </div>
       </section>
 
-      {/* FAQ SECTION - Fixed responsiveness */}
+      
+      
+
+      {/* ONBOARDING FLOW - Fixed responsiveness */}
+      {/* SECTION 5: DEPLOYMENT ARCHITECTURE (Enterprise Pipeline Design) */}
+      {/* SECTION 5: DEPLOYMENT ARCHITECTURE (Enterprise Pipeline Design) */}
+      <section id="process" className="py-24 md:py-32 lg:py-40 bg-[#07080e] border-t border-white/[0.04] relative z-10 overflow-hidden">
+        
+        {/* Subtle grid background to look like engineering blueprint */}
+        <div className="absolute inset-0 opacity-[0.015]" style={{
+          backgroundImage: `linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)`,
+          backgroundSize: '40px 40px'
+        }}></div>
+
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 max-w-7xl relative">
+          
+          {/* Section Header */}
+          <div className="text-center md:text-left mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <div>
+              
+              <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight font-space-grotesk">
+                Deployment <br className="hidden md:block" />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-300 to-gray-600">Architecture.</span>
+              </h3>
+            </div>
+            
+          </div>
+
+          {/* THE ENTERPRISE PIPELINE GRID */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
+              
+            {/* Phase 01: Ingestion */}
+            <div className="relative p-8 md:p-12 bg-[#0a0b12] border border-white/[0.04] hover:border-white/[0.1] rounded-2xl md:rounded-[32px] overflow-hidden group transition-all duration-500 flex flex-col justify-between">
+              {/* Top Accent Line */}
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-transparent opacity-40 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              {/* Massive Watermark Number */}
+              <div className="absolute -right-4 -bottom-10 text-[120px] md:text-[160px] font-black text-white/[0.02] group-hover:text-blue-500/[0.04] transition-colors duration-700 pointer-events-none font-space-grotesk leading-none">
+                01
+              </div>
+
+              <div className="relative z-10 mb-12">
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/[0.03] border border-white/[0.05] rounded-md mb-8 md:mb-12">
+                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></div>
+                  <span className="text-xs font-mono text-gray-400 tracking-widest uppercase">Phase_01</span>
+                </div>
+                
+                <h4 className="text-2xl md:text-3xl font-bold text-white mb-4 tracking-tight font-space-grotesk">
+                  Secure Data <br/> Ingestion
+                </h4>
+                
+                <p className="text-base md:text-lg text-gray-400 font-light leading-relaxed">
+                  We train a private AI model on your safety manuals, product specs, and technical PDFs.
+                </p>
+              </div>
+
+              {/* Learn More Link */}
+              <div className="relative z-10 mt-auto pt-6 border-t border-white/[0.04] group-hover:border-white/[0.1] transition-colors duration-500">
+                <Link href="/deployment/ingestion" className="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-gray-500 group-hover:text-white transition-colors duration-300">
+                  Learn More 
+                  <ArrowRight className="w-4 h-4 text-gray-600 group-hover:text-blue-600 transform transition-all duration-300 group-hover:translate-x-1" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Phase 02: Integration */}
+            <div className="relative p-8 md:p-12 bg-[#0a0b12] border border-white/[0.04] hover:border-white/[0.1] rounded-2xl md:rounded-[32px] overflow-hidden group transition-all duration-500 flex flex-col justify-between">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-transparent opacity-40 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              <div className="absolute -right-4 -bottom-10 text-[120px] md:text-[160px] font-black text-white/[0.02] group-hover:text-blue-500/[0.04] transition-colors duration-700 pointer-events-none font-space-grotesk leading-none">
+                02
+              </div>
+
+              <div className="relative z-10 mb-12">
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/[0.03] border border-white/[0.05] rounded-md mb-8 md:mb-12">
+                  <div className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" style={{ animationDelay: "300ms" }}></div>
+                  <span className="text-xs font-mono text-gray-400 tracking-widest uppercase">Phase_02</span>
+                </div>
+                
+                <h4 className="text-2xl md:text-3xl font-bold text-white mb-4 tracking-tight font-space-grotesk">
+                  System <br/> Integration
+                </h4>
+                
+                <p className="text-base md:text-lg text-gray-400 font-light leading-relaxed">
+                  We connect the AI to your CRM and Email via secure API—no manual entry required.
+                </p>
+              </div>
+
+              {/* Learn More Link */}
+              <div className="relative z-10 mt-auto pt-6 border-t border-white/[0.04] group-hover:border-white/[0.1] transition-colors duration-500">
+                <Link href="/deployment/integration" className="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-gray-500 group-hover:text-white transition-colors duration-300">
+                  Learn More 
+                  <ArrowRight className="w-4 h-4 text-gray-600 group-hover:text-blue-400 transform transition-all duration-300 group-hover:translate-x-1" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Phase 03: Growth */}
+            <div className="relative p-8 md:p-12 bg-[#0a0b12] border border-white/[0.04] hover:border-white/[0.1] rounded-2xl md:rounded-[32px] overflow-hidden group transition-all duration-500 flex flex-col justify-between">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-sky-400 to-transparent opacity-40 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              <div className="absolute -right-4 -bottom-10 text-[120px] md:text-[160px] font-black text-white/[0.02] group-hover:text-blue-500/[0.04] transition-colors duration-700 pointer-events-none font-space-grotesk leading-none">
+                03
+              </div>
+
+              <div className="relative z-10 mb-12">
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/[0.03] border border-white/[0.05] rounded-md mb-8 md:mb-12">
+                  <div className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" style={{ animationDelay: "600ms" }}></div>
+                  <span className="text-xs font-mono text-gray-400 tracking-widest uppercase">Phase_03</span>
+                </div>
+                
+                <h4 className="text-2xl md:text-3xl font-bold text-white mb-4 tracking-tight font-space-grotesk">
+                  Autonomous <br/> Growth
+                </h4>
+                
+                <p className="text-base md:text-lg text-gray-400 font-light leading-relaxed">
+                  Your sales team receives pre-qualified leads and drafted follow-up emails, ready for a 1-click send.
+                </p>
+              </div>
+
+              {/* Learn More Link */}
+              <div className="relative z-10 mt-auto pt-6 border-t border-white/[0.04] group-hover:border-white/[0.1] transition-colors duration-500">
+                <Link href="/deployment/growth" className="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-gray-500 group-hover:text-white transition-colors duration-300">
+                  Learn More 
+                  <ArrowRight className="w-4 h-4 text-gray-600 group-hover:text-sky-400 transform transition-all duration-300 group-hover:translate-x-1" />
+                </Link>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
       <section className="py-16 md:py-20 lg:py-24 bg-[#07080e]">
         <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
           
@@ -617,67 +906,6 @@ export default function Home() {
                   Yes. You work directly with the people building your system — including our founder. No account managers in between. You get a direct line to the engineers and AI specialists working on your project.
                 </div>
               </details>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ONBOARDING FLOW - Fixed responsiveness */}
-      <section id="process" className="py-12 md:py-16 lg:py-20 bg-[#05060b] border-t border-white/[0.04] scroll-mt-24">
-        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
-          
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-xs font-bold text-blue-400 uppercase tracking-widest mb-2 md:mb-3">Our Process</h2>
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mb-3 md:mb-4 font-space-grotesk">
-              Discover. Build. Integrate. Improve.
-            </h3>
-            <p className="text-gray-400 max-w-2xl mx-auto text-sm md:text-base">
-              No rebuild required. We plug into your existing systems, deploy fast, and measure results from day one.
-            </p>
-          </div>
-
-          {/* THE 4-STEP CONSULTATIVE FLOW */}
-          <div className="relative max-w-5xl mx-auto">
-            {/* Connecting Line (Desktop) */}
-            <div className="hidden lg:block absolute top-12 left-0 w-full h-1 bg-white/[0.06] -z-10"></div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-              
-              {/* Step 1: CONNECT */}
-              <div className="relative flex flex-col items-center text-center group">
-                <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 bg-[#0c0d14] border-2 border-white/[0.08] shadow-lg shadow-blue-500/5 rounded-full flex items-center justify-center mb-4 md:mb-6 z-10 group-hover:border-blue-500/40 transition-colors">
-                  <Users size={24} className="md:size-[32px] text-blue-400" />
-                </div>
-                <h4 className="font-bold text-white text-base md:text-lg mb-2">1. Discover</h4>
-                <p className="text-xs md:text-sm text-gray-500 px-2">We learn your business, identify automation opportunities, and map out where AI creates the most impact.</p>
-              </div>
-
-              {/* Step 2: UNDERSTAND */}
-              <div className="relative flex flex-col items-center text-center group">
-                <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 bg-[#0c0d14] border-2 border-white/[0.08] shadow-lg shadow-blue-500/5 rounded-full flex items-center justify-center mb-4 md:mb-6 z-10 group-hover:border-blue-500/40 transition-colors">
-                  <Bot size={24} className="md:size-[32px] text-blue-400" />
-                </div>
-                <h4 className="font-bold text-white text-base md:text-lg mb-2">2. Build</h4>
-                <p className="text-xs md:text-sm text-gray-500 px-2">We design and build your AI agents, workflows, and dashboards — trained on your business data.</p>
-              </div>
-
-              {/* Step 3: PROPOSAL */}
-              <div className="relative flex flex-col items-center text-center group">
-                <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 bg-[#0c0d14] border-2 border-white/[0.08] shadow-lg shadow-blue-500/5 rounded-full flex items-center justify-center mb-4 md:mb-6 z-10 group-hover:border-blue-500/40 transition-colors">
-                  <FileText size={24} className="md:size-[32px] text-blue-400" />
-                </div>
-                <h4 className="font-bold text-white text-base md:text-lg mb-2">3. Integrate</h4>
-                <p className="text-xs md:text-sm text-gray-500 px-2">We connect everything to your existing tools — CRM, website, email, payments — with zero disruption.</p>
-              </div>
-
-              {/* Step 4: EXECUTION */}
-              <div className="relative flex flex-col items-center text-center group">
-                <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 bg-blue-600 border-2 border-blue-500 shadow-xl shadow-blue-500/20 rounded-full flex items-center justify-center mb-4 md:mb-6 z-10">
-                  <Rocket size={24} className="md:size-[32px] text-white fill-current" />
-                </div>
-                <h4 className="font-bold text-white text-base md:text-lg mb-2">4. Improve</h4>
-                <p className="text-xs md:text-sm text-gray-500 px-2">We monitor performance, optimize AI responses, and refine workflows for measurable, ongoing results.</p>
-              </div>
             </div>
           </div>
         </div>

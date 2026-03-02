@@ -9,7 +9,7 @@ import {
   Leaf, Smartphone, Globe, Cpu, Activity
 } from 'lucide-react';
 
-// --- 1. THE SERVICES & SOLUTIONS CATALOG ---
+// --- 1. THE SERVICES & SOLUTIONS CATALOG (FULL, UNCHANGED) ---
 
 const industries = [
   // 1. HEALTHCARE
@@ -779,34 +779,32 @@ const industries = [
   }
 ];
 
-// --- 2. HELPERS & COMPONENTS ---
-
-// Helper to map color names to Tailwind classes
+// Helper to map color names to dark‑theme Tailwind classes
 const getColorStyles = (color: string) => {
   const styles: any = {
-    teal: { badge: "text-teal-600", box: "text-teal-600 bg-teal-50 border-teal-200" },
-    indigo: { badge: "text-indigo-600", box: "text-indigo-600 bg-indigo-50 border-indigo-200" },
-    slate: { badge: "text-slate-600", box: "text-slate-600 bg-slate-50 border-slate-200" },
-    blue: { badge: "text-blue-600", box: "text-blue-600 bg-blue-50 border-blue-200" },
-    orange: { badge: "text-orange-600", box: "text-orange-600 bg-orange-50 border-orange-200" },
-    rose: { badge: "text-rose-600", box: "text-rose-600 bg-rose-50 border-rose-200" },
-    amber: { badge: "text-amber-600", box: "text-amber-600 bg-amber-50 border-amber-200" },
-    green: { badge: "text-green-600", box: "text-green-600 bg-green-50 border-green-200" },
-    emerald: { badge: "text-emerald-600", box: "text-emerald-600 bg-emerald-50 border-emerald-200" },
-    violet: { badge: "text-violet-600", box: "text-violet-600 bg-violet-50 border-violet-200" },
-    cyan: { badge: "text-cyan-600", box: "text-cyan-600 bg-cyan-50 border-cyan-200" },
-    pink: { badge: "text-pink-600", box: "text-pink-600 bg-pink-50 border-pink-200" },
-    fuchsia: { badge: "text-fuchsia-600", box: "text-fuchsia-600 bg-fuchsia-50 border-fuchsia-200" },
-    red: { badge: "text-red-600", box: "text-red-600 bg-red-50 border-red-200" },
-    yellow: { badge: "text-yellow-600", box: "text-yellow-600 bg-yellow-50 border-yellow-200" },
-    sky: { badge: "text-sky-600", box: "text-sky-600 bg-sky-50 border-sky-200" },
-    gray: { badge: "text-gray-600", box: "text-gray-600 bg-gray-50 border-gray-200" },
-    zinc: { badge: "text-zinc-600", box: "text-zinc-600 bg-zinc-50 border-zinc-200" },
+    teal: { badge: "text-teal-400", box: "text-teal-400 bg-teal-500/10 border-teal-500/20" },
+    indigo: { badge: "text-indigo-400", box: "text-indigo-400 bg-indigo-500/10 border-indigo-500/20" },
+    slate: { badge: "text-slate-400", box: "text-slate-400 bg-slate-500/10 border-slate-500/20" },
+    blue: { badge: "text-blue-400", box: "text-blue-400 bg-blue-500/10 border-blue-500/20" },
+    orange: { badge: "text-orange-400", box: "text-orange-400 bg-orange-500/10 border-orange-500/20" },
+    rose: { badge: "text-rose-400", box: "text-rose-400 bg-rose-500/10 border-rose-500/20" },
+    amber: { badge: "text-amber-400", box: "text-amber-400 bg-amber-500/10 border-amber-500/20" },
+    green: { badge: "text-green-400", box: "text-green-400 bg-green-500/10 border-green-500/20" },
+    emerald: { badge: "text-emerald-400", box: "text-emerald-400 bg-emerald-500/10 border-emerald-500/20" },
+    violet: { badge: "text-violet-400", box: "text-violet-400 bg-violet-500/10 border-violet-500/20" },
+    cyan: { badge: "text-cyan-400", box: "text-cyan-400 bg-cyan-500/10 border-cyan-500/20" },
+    pink: { badge: "text-pink-400", box: "text-pink-400 bg-pink-500/10 border-pink-500/20" },
+    fuchsia: { badge: "text-fuchsia-400", box: "text-fuchsia-400 bg-fuchsia-500/10 border-fuchsia-500/20" },
+    red: { badge: "text-red-400", box: "text-red-400 bg-red-500/10 border-red-500/20" },
+    yellow: { badge: "text-yellow-400", box: "text-yellow-400 bg-yellow-500/10 border-yellow-500/20" },
+    sky: { badge: "text-sky-400", box: "text-sky-400 bg-sky-500/10 border-sky-500/20" },
+    gray: { badge: "text-gray-400", box: "text-gray-400 bg-gray-500/10 border-gray-500/20" },
+    zinc: { badge: "text-zinc-400", box: "text-zinc-400 bg-zinc-500/10 border-zinc-500/20" },
   };
   return styles[color] || styles.blue;
 };
 
-// Component: The Metric Box (Smaller size as requested)
+// Metric Card (dark version)
 const MetricCard = ({ metric, accentColor }: any) => {
   const Icon = metric.icon;
   const styles = getColorStyles(accentColor);
@@ -816,27 +814,27 @@ const MetricCard = ({ metric, accentColor }: any) => {
       <Icon size={16} />
       <div className="flex flex-col">
         <span className="text-[9px] uppercase tracking-wider font-semibold opacity-70 leading-none">{metric.label}</span>
-        <span className="text-base font-bold leading-none mt-0.5">{metric.value}</span>
+        <span className="text-base font-bold leading-none mt-0.5 text-white">{metric.value}</span>
       </div>
     </div>
   );
 };
 
-// Component: The BIG Case Study Card
+// Big Case Study Card (dark version)
 const BigCaseStudyCard = ({ study }: any) => {
   const styles = getColorStyles(study.accentColor);
   
   return (
-    <div className="group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 border border-gray-100 flex flex-col h-full">
+    <div className="group bg-white/5 backdrop-blur-sm rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/10 hover:border-white/20 flex flex-col h-full">
       
-      {/* 1. ABSTRACT VISUAL HEADER (The "Screen" Look) */}
-      <div className="relative h-64 w-full bg-gray-50 overflow-hidden shrink-0">
+      {/* Abstract Visual Header */}
+      <div className="relative h-64 w-full bg-[#0a0f1e] overflow-hidden shrink-0">
         {/* Animated Background */}
         <div className={`absolute inset-0 bg-gradient-to-br ${study.gradient} opacity-10 group-hover:opacity-20 transition-opacity duration-700`}></div>
         
         {/* Floating Abstract UI Elements */}
         <div className="absolute inset-0 flex items-center justify-center p-8">
-           <div className="w-full max-w-sm bg-white rounded-xl shadow-xl border border-gray-100 p-6 relative transform group-hover:scale-105 group-hover:-rotate-1 transition-all duration-500">
+           <div className="w-full max-w-sm bg-white/10 backdrop-blur-md rounded-xl shadow-xl border border-white/20 p-6 relative transform group-hover:scale-105 group-hover:-rotate-1 transition-all duration-500">
              {/* Fake UI Header */}
              <div className="flex items-center gap-2 mb-4">
                  <div className="w-3 h-3 rounded-full bg-red-400/80"></div>
@@ -846,14 +844,14 @@ const BigCaseStudyCard = ({ study }: any) => {
              {/* Fake UI Body */}
              <div className="space-y-3">
                  <div className="flex gap-4">
-                    <div className="w-1/3 h-20 rounded-lg bg-gray-50 animate-pulse"></div>
+                    <div className="w-1/3 h-20 rounded-lg bg-white/10 animate-pulse"></div>
                     <div className="w-2/3 space-y-2">
-                       <div className="w-full h-3 rounded bg-gray-100"></div>
-                       <div className="w-3/4 h-3 rounded bg-gray-100"></div>
-                       <div className="w-1/2 h-3 rounded bg-gray-100"></div>
+                       <div className="w-full h-3 rounded bg-white/20"></div>
+                       <div className="w-3/4 h-3 rounded bg-white/20"></div>
+                       <div className="w-1/2 h-3 rounded bg-white/20"></div>
                     </div>
                  </div>
-                 <div className="w-full h-2 rounded bg-gradient-to-r from-transparent via-gray-100 to-transparent"></div>
+                 <div className="w-full h-2 rounded bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
                  {/* Mini Chart */}
                  <div className="flex items-end gap-1 h-12 pt-2">
                     <div className={`w-1/5 h-1/3 rounded-t bg-gradient-to-t ${study.gradient} opacity-40`}></div>
@@ -868,21 +866,21 @@ const BigCaseStudyCard = ({ study }: any) => {
 
         {/* Floating Type Badge */}
         <div className="absolute top-4 left-4">
-           <span className={`px-4 py-2 bg-white/95 backdrop-blur-md text-xs font-bold uppercase tracking-wider rounded-full shadow-sm border border-gray-100 ${styles.badge}`}>
+           <span className={`px-4 py-2 bg-black/50 backdrop-blur-md text-xs font-bold uppercase tracking-wider rounded-full shadow-sm border border-white/10 ${styles.badge}`}>
              {study.type}
            </span>
         </div>
       </div>
 
-      {/* 2. CONTENT BODY */}
+      {/* Content Body */}
       <div className="p-8 flex flex-col flex-grow">
         
         {/* Title & Desc */}
         <div className="mb-6">
-           <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 transition-all">
+           <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all">
              {study.title}
            </h3>
-           <p className="text-gray-600 leading-relaxed">
+           <p className="text-gray-400 leading-relaxed">
              {study.desc}
            </p>
         </div>
@@ -890,13 +888,13 @@ const BigCaseStudyCard = ({ study }: any) => {
         {/* Tech Stack Pills */}
         <div className="flex flex-wrap gap-2 mb-8">
            {study.tech.map((t: string, i: number) => (
-             <span key={i} className="px-3 py-1 bg-gray-50 text-gray-700 text-xs font-semibold rounded-md border border-gray-200">
+             <span key={i} className="px-3 py-1 bg-white/5 text-gray-300 text-xs font-semibold rounded-md border border-white/10">
                {t}
              </span>
            ))}
         </div>
 
-        {/* Metrics Grid (The Analysis) */}
+        {/* Metrics Grid */}
         <div className="grid grid-cols-3 gap-2 mb-8 mt-auto">
            {study.metrics.map((m: any, i: number) => (
              <MetricCard key={i} metric={m} accentColor={study.accentColor} />
@@ -904,8 +902,8 @@ const BigCaseStudyCard = ({ study }: any) => {
         </div>
 
         {/* Footer: Client & CTA */}
-        <div className="pt-6 border-t border-gray-100 flex items-center justify-between">
-           <div className="text-xs font-bold text-gray-400 uppercase tracking-widest">
+        <div className="pt-6 border-t border-white/10 flex items-center justify-between">
+           <div className="text-xs font-bold text-gray-500 uppercase tracking-widest">
              Ideal For: {study.client}
            </div>
            <button className={`flex items-center gap-2 text-sm font-bold ${styles.badge} group-hover:translate-x-1 transition-transform`}>
@@ -918,30 +916,29 @@ const BigCaseStudyCard = ({ study }: any) => {
   );
 };
 
-
 // --- 3. MAIN PAGE COMPONENT ---
 
 export default function CaseStudiesPage() {
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-[#05060b]">
       <Navbar />
       
       {/* HEADER */}
-      <section className="pt-32 pb-16 px-6 md:px-12 lg:px-20 bg-white border-b border-gray-100">
+      <section className="pt-32 pb-16 px-6 md:px-12 lg:px-20 border-b border-white/10">
         <div className="container mx-auto">
           <div className="flex items-center gap-2 mb-4">
-            <Sparkles className="text-blue-600" size={24} />
-            <span className="text-blue-600 font-bold tracking-wide uppercase text-sm">
+            <Sparkles className="text-blue-400" size={24} />
+            <span className="text-blue-400 font-bold tracking-wide uppercase text-sm">
               Our Capabilities
             </span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-extrabold text-gray-900 mb-6 leading-tight">
+          <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight font-space-grotesk">
             We Build Systems That <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 animate-gradient">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 animate-gradient">
               Transform Industries
             </span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl leading-relaxed">
+          <p className="text-xl text-gray-400 max-w-3xl leading-relaxed">
             From Healthcare to Logistics. Explore the engineering solutions we offer to solve complex business problems at scale.
           </p>
         </div>
@@ -958,20 +955,20 @@ export default function CaseStudiesPage() {
             <section key={index} id={industry.title.toLowerCase().replace(/ /g, '-')}>
               
               {/* Industry Header */}
-              <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 border-b border-gray-200 pb-6">
+              <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 border-b border-white/10 pb-6">
                 <div className="flex items-start gap-4">
                   <div className={`p-4 rounded-2xl ${style.box} shadow-sm`}>
                     <Icon size={32} />
                   </div>
                   <div>
-                    <h2 className="text-3xl font-bold text-gray-900 mb-2">{industry.title}</h2>
-                    <p className="text-lg text-gray-500 max-w-xl">
+                    <h2 className="text-3xl font-bold text-white mb-2 font-space-grotesk">{industry.title}</h2>
+                    <p className="text-lg text-gray-400 max-w-xl">
                       {industry.description}
                     </p>
                   </div>
                 </div>
                 <div className="hidden md:block">
-                   <button className="text-gray-900 font-bold hover:text-blue-600 transition-colors flex items-center gap-2">
+                   <button className="text-gray-400 font-bold hover:text-blue-400 transition-colors flex items-center gap-2">
                      See All {industry.title} Solutions <ArrowRight size={20}/>
                    </button>
                 </div>
@@ -991,12 +988,12 @@ export default function CaseStudiesPage() {
       </div>
 
       {/* CTA FOOTER */}
-      <section className="bg-gray-900 py-24 px-6">
+      <section className="bg-gradient-to-br from-blue-600 to-purple-600 py-24 px-6">
         <div className="container mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 font-space-grotesk">
             Don't See Your Industry?
           </h2>
-          <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+          <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
             We also build solutions for Non-Profits and Automotive. Our engineering principles work universally.
           </p>
           <button className="bg-white text-gray-900 px-10 py-5 rounded-full font-bold text-lg hover:bg-gray-100 transition-all hover:scale-105 shadow-xl inline-flex items-center gap-3">
@@ -1006,7 +1003,7 @@ export default function CaseStudiesPage() {
       </section>
 
       {/* SIMPLE FOOTER */}
-      <footer className="bg-white py-10 border-t border-gray-100 text-center text-gray-500">
+      <footer className="bg-[#05060b] py-10 border-t border-white/10 text-center text-gray-500">
         <p>© 2026 Vidi Agency. International Engineering Standard.</p>
       </footer>
 

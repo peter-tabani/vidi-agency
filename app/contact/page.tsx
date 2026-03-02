@@ -69,23 +69,22 @@ export default function TalkToExpertPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50/30">
+    <div className="min-h-screen bg-[#05060b]">
       {/* Navigation */}
-      <nav className="fixed top-0 z-50 w-full bg-white/90 backdrop-blur-xl border-b border-gray-100">
+      <nav className="fixed top-0 z-50 w-full bg-[#05060b]/80 backdrop-blur-xl border-b border-white/10">
         <div className="container mx-auto flex h-20 items-center justify-between px-6">
           <Link href="/" className="text-2xl font-bold flex items-center gap-1">
-            <span className="text-blue-600">Vidi</span>
-            <span className="text-gray-900">Agency</span>
+            <span className="text-blue-400">Vidi</span>
+            <span className="text-white">Agency</span>
           </Link>
           <div className="flex items-center gap-8">
-            <Link href="/" className="text-gray-600 hover:text-blue-600 transition-colors">
+            <Link href="/" className="text-gray-400 hover:text-white transition-colors">
               Back to Home
             </Link>
             
-            <Link href="/get-started" className="px-6 py-2.5 rounded-full text-white font-bold text-sm bg-gradient-to-r from-blue-600 to-purple-600 hover:opacity-90 transition-all shadow-lg shadow-blue-200"
-            >
-            Start Project
-          </Link>
+            <Link href="/get-started" className="px-6 py-2.5 rounded-full text-white font-bold text-sm bg-gradient-to-r from-blue-600 to-purple-600 hover:opacity-90 transition-all shadow-lg shadow-blue-500/30">
+              Start Project
+            </Link>
           </div>
         </div>
       </nav>
@@ -95,19 +94,19 @@ export default function TalkToExpertPage() {
         <div className="container mx-auto px-6">
           {/* Header */}
           <div className="max-w-4xl mx-auto text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+            <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-blue-400 px-4 py-2 rounded-full text-sm font-semibold mb-6">
               <Sparkles size={16} />
               <span>Schedule A Demo</span>
             </div>
             
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 font-space-grotesk">
               Connect with Our{' '}
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-400 via-blue-300 to-sky-300 bg-clip-text text-transparent">
                 Technical Experts
               </span>
             </h1>
             
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
               Share your project details and receive a comprehensive proposal with a custom strategy from our technical team.
             </p>
           </div>
@@ -115,17 +114,17 @@ export default function TalkToExpertPage() {
           <div className="max-w-7xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12">
               {/* Left Column: Form */}
-              <div className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl shadow-blue-100/30 border border-gray-100">
+              <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-2xl border border-white/10">
                 {submitted ? (
                   <div className="text-center py-12">
-                    <div className="w-24 h-24 bg-gradient-to-r from-green-100 to-emerald-100 rounded-full flex items-center justify-center mx-auto mb-8">
-                      <CheckCircle className="w-12 h-12 text-green-600" />
+                    <div className="w-24 h-24 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-8 shadow-lg shadow-green-500/30">
+                      <CheckCircle className="w-12 h-12 text-white" />
                     </div>
-                    <h2 className="text-3xl font-bold text-gray-900 mb-4">Request Received!</h2>
-                    <p className="text-gray-600 text-lg mb-8">
+                    <h2 className="text-3xl font-bold text-white mb-4 font-space-grotesk">Request Received!</h2>
+                    <p className="text-gray-400 text-lg mb-8">
                       Thank you for your interest. Our technical team will review your project details and send you a comprehensive proposal within 24 hours.
                     </p>
-                    <div className="flex items-center justify-center gap-4 text-gray-500">
+                    <div className="flex items-center justify-center gap-4 text-gray-400">
                       <div className="flex items-center gap-2">
                         <MessageSquare size={18} />
                         <span>Email Confirmation</span>
@@ -139,19 +138,19 @@ export default function TalkToExpertPage() {
                 ) : (
                   <>
                     <div className="flex items-center gap-4 mb-8">
-                      <div className="p-3 bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl">
-                        <Calendar className="w-6 h-6 text-blue-600" />
+                      <div className="p-3 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl">
+                        <Calendar className="w-6 h-6 text-blue-400" />
                       </div>
                       <div>
-                        <h2 className="text-2xl font-bold text-gray-900">Share Your Project Details</h2>
-                        <p className="text-gray-500">Complete the form below and we'll send you a detailed proposal.</p>
+                        <h2 className="text-2xl font-bold text-white">Share Your Project Details</h2>
+                        <p className="text-gray-400">Complete the form below and we'll send you a detailed proposal.</p>
                       </div>
                     </div>
 
                     <form onSubmit={handleSubmit} className="space-y-6">
                       <div className="grid md:grid-cols-2 gap-6">
                         <div className="space-y-2">
-                          <label className="text-sm font-semibold text-gray-700">
+                          <label className="text-sm font-semibold text-gray-300">
                             First Name *
                           </label>
                           <input
@@ -160,13 +159,13 @@ export default function TalkToExpertPage() {
                             value={formData.firstName}
                             onChange={handleChange}
                             required
-                            className="w-full px-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                            className="w-full px-4 py-3.5 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/40 transition-all text-white placeholder-gray-600"
                             placeholder="First name"
                           />
                         </div>
                         
                         <div className="space-y-2">
-                          <label className="text-sm font-semibold text-gray-700">
+                          <label className="text-sm font-semibold text-gray-300">
                             Last Name *
                           </label>
                           <input
@@ -175,14 +174,14 @@ export default function TalkToExpertPage() {
                             value={formData.lastName}
                             onChange={handleChange}
                             required
-                            className="w-full px-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                            className="w-full px-4 py-3.5 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/40 transition-all text-white placeholder-gray-600"
                             placeholder="Last name"
                           />
                         </div>
                       </div>
 
                       <div className="space-y-2">
-                        <label className="text-sm font-semibold text-gray-700">
+                        <label className="text-sm font-semibold text-gray-300">
                           Email Address *
                         </label>
                         <input
@@ -191,14 +190,14 @@ export default function TalkToExpertPage() {
                           value={formData.email}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                          className="w-full px-4 py-3.5 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/40 transition-all text-white placeholder-gray-600"
                           placeholder="your.email@example.com"
                         />
                       </div>
 
                       <div className="grid md:grid-cols-2 gap-6">
                         <div className="space-y-2">
-                          <label className="text-sm font-semibold text-gray-700">
+                          <label className="text-sm font-semibold text-gray-300">
                             Company Name
                           </label>
                           <input
@@ -206,13 +205,13 @@ export default function TalkToExpertPage() {
                             name="company"
                             value={formData.company}
                             onChange={handleChange}
-                            className="w-full px-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                            className="w-full px-4 py-3.5 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/40 transition-all text-white placeholder-gray-600"
                             placeholder="Your company"
                           />
                         </div>
                         
                         <div className="space-y-2">
-                          <label className="text-sm font-semibold text-gray-700">
+                          <label className="text-sm font-semibold text-gray-300">
                             Website
                           </label>
                           <input
@@ -220,14 +219,14 @@ export default function TalkToExpertPage() {
                             name="website"
                             value={formData.website}
                             onChange={handleChange}
-                            className="w-full px-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                            className="w-full px-4 py-3.5 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/40 transition-all text-white placeholder-gray-600"
                             placeholder="https://"
                           />
                         </div>
                       </div>
 
                       <div className="space-y-2">
-                        <label className="text-sm font-semibold text-gray-700">
+                        <label className="text-sm font-semibold text-gray-300">
                           Project Details & Requirements *
                         </label>
                         <textarea
@@ -236,7 +235,7 @@ export default function TalkToExpertPage() {
                           onChange={handleChange}
                           required
                           rows={6}
-                          className="w-full px-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all resize-none"
+                          className="w-full px-4 py-3.5 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/40 transition-all text-white placeholder-gray-600 resize-none"
                           placeholder="Please describe your project, goals, timeline, and any specific requirements..."
                         />
                       </div>
@@ -248,9 +247,9 @@ export default function TalkToExpertPage() {
                           checked={formData.agree}
                           onChange={handleChange}
                           required
-                          className="mt-1 w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
+                          className="mt-1 w-5 h-5 bg-white/5 border-white/20 text-blue-600 rounded focus:ring-blue-500/50 focus:ring-offset-0"
                         />
-                        <label className="text-sm text-gray-600">
+                        <label className="text-sm text-gray-400">
                           By submitting this form, I agree to receive project proposals and communications from VidiAgency. I understand that VidiAgency will process my data in accordance with their Privacy Policy.
                         </label>
                       </div>
@@ -258,7 +257,7 @@ export default function TalkToExpertPage() {
                       <button
                         type="submit"
                         disabled={loading}
-                        className="w-full py-4 px-6 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold text-lg rounded-xl transition-all duration-300 shadow-xl shadow-blue-200 hover:shadow-blue-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+                        className="w-full py-4 px-6 bg-gradient-to-r from-blue-600 to-purple-600 hover:opacity-90 text-white font-bold text-lg rounded-xl transition-all duration-300 shadow-lg shadow-blue-500/30 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
                       >
                         {loading ? (
                           <>
@@ -333,19 +332,19 @@ export default function TalkToExpertPage() {
                 </div>
 
                 {/* Benefits */}
-                <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-lg">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-6">What You'll Receive</h3>
+                <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10">
+                  <h3 className="text-2xl font-bold text-white mb-6 font-space-grotesk">What You'll Receive</h3>
                   <div className="grid sm:grid-cols-2 gap-6">
                     {benefits.map((benefit, index) => {
                       const Icon = benefit.icon;
                       return (
                         <div key={index} className="flex items-start gap-4">
-                          <div className="p-3 bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl flex-shrink-0">
-                            <Icon className="w-6 h-6 text-blue-600" />
+                          <div className="p-3 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl flex-shrink-0">
+                            <Icon className="w-6 h-6 text-blue-400" />
                           </div>
                           <div>
-                            <h4 className="font-bold text-gray-900 mb-1">{benefit.title}</h4>
-                            <p className="text-sm text-gray-600">{benefit.description}</p>
+                            <h4 className="font-bold text-white mb-1">{benefit.title}</h4>
+                            <p className="text-sm text-gray-400">{benefit.description}</p>
                           </div>
                         </div>
                       );
@@ -354,36 +353,36 @@ export default function TalkToExpertPage() {
                 </div>
 
                 {/* Process Steps */}
-                <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-8 text-white">
-                  <h3 className="text-2xl font-bold mb-6">Our Process</h3>
+                <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-8 text-white border border-white/10">
+                  <h3 className="text-2xl font-bold mb-6 font-space-grotesk">Our Process</h3>
                   <div className="space-y-6">
                     <div className="flex items-start gap-4">
-                      <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-purple-400 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center flex-shrink-0">
                         <span className="font-bold">1</span>
                       </div>
                       <div>
                         <h4 className="font-bold mb-1">Submit Your Details</h4>
-                        <p className="text-sm text-white/70">Share your project requirements through our secure form</p>
+                        <p className="text-sm text-gray-400">Share your project requirements through our secure form</p>
                       </div>
                     </div>
                     
                     <div className="flex items-start gap-4">
-                      <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-purple-400 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center flex-shrink-0">
                         <span className="font-bold">2</span>
                       </div>
                       <div>
                         <h4 className="font-bold mb-1">Technical Analysis</h4>
-                        <p className="text-sm text-white/70">Our experts review your requirements and prepare a custom solution</p>
+                        <p className="text-sm text-gray-400">Our experts review your requirements and prepare a custom solution</p>
                       </div>
                     </div>
                     
                     <div className="flex items-start gap-4">
-                      <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-purple-400 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center flex-shrink-0">
                         <span className="font-bold">3</span>
                       </div>
                       <div>
                         <h4 className="font-bold mb-1">Receive Your Proposal</h4>
-                        <p className="text-sm text-white/70">Get a detailed proposal with timeline, technology stack, and pricing</p>
+                        <p className="text-sm text-gray-400">Get a detailed proposal with timeline, technology stack, and pricing</p>
                       </div>
                     </div>
                   </div>

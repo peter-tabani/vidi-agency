@@ -324,7 +324,7 @@ export default function Navbar() {
               className="inline-flex items-center justify-center gap-2 px-3 py-2 lg:px-4 lg:py-2.5 xl:px-6 xl:py-3 rounded-full text-white font-bold font-space-grotesk bg-blue-600 hover:bg-blue-500 transition-all shadow-lg shadow-blue-500/20 whitespace-nowrap min-w-[120px] text-xs lg:text-sm xl:text-base"
             >
               
-              <span className="hidden lg:inline">Book a Demo</span>
+              <span className="hidden lg:inline">Speak to an Expert</span>
               <span className="lg:hidden">Demo</span>
             </Link>
           </div>
