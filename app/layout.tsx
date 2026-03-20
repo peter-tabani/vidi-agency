@@ -38,11 +38,10 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   ...defaultMetadata,
   title: {
-    default: `${siteConfig.name} | Premium Web Development & AI Automation`,
-    template: `%s | ${siteConfig.name}`,
-  },
-  description: "Full-service website development and AI automation systems. We build stunning websites, powerful web applications, and intelligent automation solutions for businesses worldwide.",
-  manifest: '/manifest.json',
+  default: 'Vidi Agency Ltd | Enterprise Knowledge Infrastructure',
+  template: `%s | Vidi Agency Ltd`,
+},
+description: "Enterprise Knowledge Infrastructure for industrial and institutional organisations. Private RAG systems. Zero hallucination. Built for precision.",
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
