@@ -14,12 +14,9 @@ import {
   Fingerprint, Key, Lock, Sparkles, Share2, Trophy, Moon, Watch, Mic, UploadCloud,
   Split, Headphones, Layers, LineChart, Languages, ShieldCheck, Bell, CalendarCheck,
   UserMinus, Forward, Activity, Send, Loader2, Star, Plug, PieChart, Award,
-  GitBranch, Cpu, Search
+  GitBranch, Cpu, Search, HardHat, Truck, Cog, Anchor, FlaskConical,
+  Package, Camera, MapPin
 } from 'lucide-react';
-
-// ============================================================================
-// NEW SERVICE STRUCTURE (AI first, then others, grouped by category)
-// ============================================================================
 
 interface Feature {
   id: string;
@@ -38,235 +35,176 @@ interface Service {
   basePrice: number;
   gradient: string;
   features: Feature[];
-  category: string; // for grouping
+  category: string;
 }
 
+// ============================================================================
+// INDUSTRIAL MANUFACTURING SERVICES – only these
+// ============================================================================
 const services: Service[] = [
-  // ---------- CATEGORY 1: AI Automation Systems ----------
   {
-    id: "ai-lead-capture",
-    name: "AI Lead Capture & Qualification",
-    description: "AI website assistant that qualifies leads, books appointments, and integrates with your CRM.",
-    icon: Bot,
-    basePrice: 1000,
+    id: "ai-engineering-knowledge",
+    name: "Engineering Knowledge Assistant",
+    description: "AI trained on your manuals, drawings, and CMMS records – engineers get instant answers.",
+    icon: Database,
+    basePrice: 1500,
     gradient: "from-blue-600 to-indigo-600",
     category: "AI Automation Systems",
     features: [
-      { id: "lead-website-assistant", name: "AI Website Assistant", description: "Engages every visitor 24/7", price: 0, icon: Bot },
-      { id: "lead-qualification-chatbot", name: "Lead Pre‑Qualification", description: "Asks the right questions to identify hot leads", price: 300, icon: MessageSquare },
-      { id: "appointment-booking", name: "Appointment Booking Automation", description: "Syncs with your calendar and books meetings", price: 400, icon: CalendarCheck, popular: true },
-      { id: "form-filtering", name: "Contact Form AI Filtering", description: "Filters spam and routes genuine inquiries", price: 200, icon: Shield },
-      { id: "crm-integration", name: "CRM Integration (HubSpot, Zoho, etc.)", description: "Leads automatically saved to your CRM", price: 500, icon: Database, popular: true },
-      { id: "hot-lead-alert", name: "Hot Lead SMS Alerts", description: "Instant notification when a hot lead converts", price: 150, icon: Bell },
+      { id: "eng-knowledge-base", name: "Private Knowledge Base", description: "Ingest PDFs, CAD files, SOPs", price: 800, icon: FileText, popular: true },
+      { id: "drawing-search", name: "Drawing & Spec Search", description: "Natural language search over P&IDs", price: 600, icon: Search },
+      { id: "cmms-integration", name: "CMMS Integration", description: "Connect to your maintenance system", price: 500, icon: Database },
+      { id: "multi-language", name: "Multi‑Language Support", description: "Answers in multiple languages", price: 400, icon: Languages },
     ]
   },
   {
-    id: "ai-customer-engagement",
-    name: "AI Customer Engagement",
-    description: "24/7 AI assistants across website, WhatsApp, Instagram, and email.",
-    icon: MessageSquare,
-    basePrice: 1500,
+    id: "ai-quoting-engine",
+    name: "AI Quoting Engine",
+    description: "Sales engineers describe requirements; AI drafts quotes with specs, pricing, and lead times.",
+    icon: TrendingUp,
+    basePrice: 2000,
     gradient: "from-purple-600 to-pink-600",
     category: "AI Automation Systems",
     features: [
-      { id: "24-7-website-assistant", name: "24/7 Website AI Assistant", description: "Always‑on chat support", price: 450, icon: Bot }, // reused in-app-support
-      { id: "whatsapp-automation", name: "WhatsApp DM Automation", description: "Automated replies and lead capture on WhatsApp", price: 500, icon: Layers, popular: true },
-      { id: "instagram-automation", name: "Instagram DM Automation", description: "Engage followers automatically via DM", price: 500, icon: Share2 },
-      { id: "email-autoresponder-ai", name: "AI Email Autoresponder", description: "Smart email follow‑ups based on customer behaviour", price: 400, icon: Mail, popular: true },
-      { id: "faq-ai-system", name: "FAQ AI System", description: "Train AI on your FAQs for instant answers", price: 300, icon: FileText },
-      { id: "multi-language", name: "Multi‑Language Support", description: "Chat in English, Spanish, French, etc.", price: 400, icon: Languages },
+      { id: "quote-generation", name: "Automated Quote Generation", description: "Draft quotes in minutes", price: 700, icon: FileText, popular: true },
+      { id: "product-database", name: "Product & Pricing DB", description: "Train on your catalog", price: 600, icon: Database },
+      { id: "crm-sync", name: "CRM Sync", description: "Push quotes to your CRM", price: 500, icon: Workflow },
+      { id: "pdf-export", name: "PDF Export", description: "Professional branded quotes", price: 300, icon: FileText },
     ]
   },
   {
-    id: "ai-workflow-automation",
-    name: "AI Workflow Automation",
-    description: "Automate repetitive tasks, CRM, email, sales pipelines, and internal processes.",
-    icon: Workflow,
-    basePrice: 2000,
-    gradient: "from-indigo-500 to-violet-500",
+    id: "predictive-maintenance",
+    name: "Predictive Maintenance AI",
+    description: "Monitor equipment with IoT sensors; AI predicts failures before they happen.",
+    icon: Activity,
+    basePrice: 2500,
+    gradient: "from-emerald-500 to-teal-500",
     category: "AI Automation Systems",
     features: [
-      { id: "crm-integration", name: "CRM Integration", description: "Connect HubSpot, Salesforce, etc.", price: 500, icon: Database, popular: true },
-      { id: "email-automation", name: "Email Automation", description: "Drip campaigns & follow‑ups", price: 400, icon: Mail },
-      { id: "invoice-automation", name: "Invoice Automation", description: "Auto‑generate & send invoices", price: 600, icon: ShoppingCart },
-      { id: "data-sync", name: "Multi‑Platform Sync", description: "Keep all tools in sync", price: 700, icon: RefreshCw },
-      { id: "custom-dashboard", name: "Custom Dashboard", description: "Real‑time business metrics", price: 1200, icon: LayoutDashboard, popular: true },
-      { id: "api-development", name: "Custom API Development", description: "Connect any system", price: 1500, icon: Code2 },
-      { id: "zapier-setup", name: "Zapier/Make Setup", description: "No‑code automation flows", price: 350, icon: Zap },
+      { id: "sensor-integration", name: "IoT Sensor Integration", description: "Connect to PLCs and sensors", price: 800, icon: Cpu, popular: true },
+      { id: "anomaly-detection", name: "Anomaly Detection", description: "AI identifies abnormal patterns", price: 700, icon: Activity },
+      { id: "alert-system", name: "Alert System", description: "SMS/email alerts for pending failures", price: 400, icon: Bell },
+      { id: "dashboard", name: "Maintenance Dashboard", description: "Real‑time equipment health", price: 500, icon: LayoutDashboard },
     ]
   },
   {
-    id: "ai-knowledge-systems",
-    name: "AI Knowledge Systems",
-    description: "Internal AI knowledge base trained on your documents, providing instant answers to employees or customers.",
-    icon: Database,
+    id: "ehs-compliance-ai",
+    name: "EHS Compliance Assistant",
+    description: "Instant retrieval of safety data sheets, inspection records, and regulatory documents.",
+    icon: ShieldCheck,
     basePrice: 1500,
     gradient: "from-amber-500 to-orange-600",
     category: "AI Automation Systems",
     features: [
-      { id: "internal-knowledge-base", name: "Internal Knowledge Base", description: "AI assistant for employees to find company info", price: 800, icon: Layers, popular: true },
-      { id: "document-search", name: "AI Document Search", description: "Search across all company documents", price: 500, icon: FileText },
-      { id: "support-assistant", name: "Customer Support Assistant", description: "AI that handles common support queries", price: 450, icon: Headphones },
-      { id: "document-training", name: "Train on Your Documents", description: "We train the AI on your PDFs, manuals, etc.", price: 500, icon: Cpu, popular: true },
-      { id: "multi-language", name: "Multi‑Language Support", description: "Answers in multiple languages", price: 400, icon: Languages },
-    ]
-  },
-
-  // ---------- CATEGORY 2: Digital Product & Web Services ----------
-  {
-    id: "web-development",
-    name: "Website Development",
-    description: "High‑performance, conversion‑optimised websites built with Next.js.",
-    icon: Code2,
-    basePrice: 700,
-    gradient: "from-blue-600 to-indigo-600",
-    category: "Digital Product & Web Services",
-    features: [
-      { id: "pages-5", name: "Up to 5 Pages", description: "Standard site (Home, About, Services, Contact)", price: 0, icon: Globe },
-      { id: "pages-10", name: "Up to 10 Pages", description: "More space for extra services", price: 600, icon: Globe },
-      { id: "pages-unlimited", name: "Unlimited Pages", description: "A massive site with no limits", price: 1800, icon: Globe },
-      { id: "ssl", name: "SSL Security", description: "The 'Secure' padlock icon", price: 0, icon: Shield },
-      { id: "privacy", name: "Legal & Privacy Compliance", description: "Cookie pop‑ups and legal pages", price: 300, icon: Shield, popular: true },
-      { id: "mobile", name: "Mobile Friendly", description: "Looks perfect on all devices", price: 0, icon: Smartphone },
-      { id: "speed", name: "Speed Boost", description: "Loads under 2 seconds", price: 450, icon: Zap, popular: true },
-      { id: "cms", name: "Easy‑Edit Admin Panel", description: "Change text and photos yourself", price: 500, icon: LayoutDashboard },
-      { id: "seo", name: "Google Ranking (SEO)", description: "Helps you show up on Google", price: 600, icon: Rocket, popular: true },
-      { id: "analytics", name: "Visitor Tracking", description: "See who visits your site", price: 250, icon: BarChart },
+      { id: "ehs-doc-ingest", name: "EHS Document Ingestion", description: "Upload SDS, manuals, audit logs", price: 600, icon: FileText, popular: true },
+      { id: "regulatory-alerts", name: "Regulatory Update Alerts", description: "Stay compliant with changes", price: 500, icon: Bell },
+      { id: "incident-reporting", name: "Incident Reporting", description: "Report near‑misses, track trends", price: 400, icon: MessageSquare },
+      { id: "audit-ready", name: "Audit‑Ready Reports", description: "Generate compliance reports", price: 300, icon: CheckCircle2 },
     ]
   },
   {
-    id: "website-redesign",
-    name: "Website Redesign",
-    description: "Modernise your outdated site with better performance & conversion.",
-    icon: PaintBucket,
-    basePrice: 600,
-    gradient: "from-purple-600 to-pink-600",
-    category: "Digital Product & Web Services",
-    features: [
-      { id: "ui-refresh", name: "UI/UX Modernisation", description: "Fresh, modern 2025 design", price: 0, icon: Palette },
-      { id: "mobile-fix", name: "Mobile Responsiveness Fix", description: "Fix layout issues on phones", price: 200, icon: Smartphone },
-      { id: "branding", name: "Brand Style Guide", description: "New colours, typography, logo polish", price: 350, icon: PenTool },
-      { id: "speed-audit", name: "Speed & Performance Overhaul", description: "Fix slow load times", price: 400, icon: Zap, popular: true },
-      { id: "security-patch", name: "Security Hardening", description: "Fix vulnerabilities", price: 200, icon: Shield },
-      { id: "migration-content", name: "Content Migration", description: "Safely move blogs, images, text", price: 400, icon: Database },
-      { id: "platform-switch", name: "Platform Migration", description: "Move from Wix/WordPress to React", price: 800, icon: Server, popular: true },
-      { id: "seo-retain", name: "SEO Rank Protection", description: "301 redirects to keep rankings", price: 500, icon: TrendingUp },
-      { id: "cro", name: "Conversion Rate Optimisation", description: "Redesign CTAs to get more leads", price: 450, icon: Target },
-    ]
-  },
-  {
-    id: "web-app-development",
-    name: "Web App Development",
-    description: "Custom web applications, admin dashboards, internal tools, and SaaS MVPs.",
-    icon: Code2,
-    basePrice: 2500,
+    id: "dock-scheduler",
+    name: "Dock Scheduling System",
+    description: "Coordinate dock appointments, truck arrivals, and equipment availability.",
+    icon: Truck,
+    basePrice: 2000,
     gradient: "from-cyan-500 to-blue-600",
-    category: "Digital Product & Web Services",
+    category: "Industrial Software & Web Apps",
     features: [
-      { id: "admin-dashboards", name: "Admin Dashboard", description: "Custom dashboard for your team", price: 1200, icon: LayoutDashboard },
-      { id: "internal-tools", name: "Internal Tools", description: "Tailored tools to streamline operations", price: 1500, icon: Wrench, popular: true },
-      { id: "customer-portals", name: "Customer Portals", description: "Secure login areas for clients", price: 2000, icon: Users },
-      { id: "saas-mvp", name: "SaaS MVP", description: "Minimum viable product for your SaaS idea", price: 3000, icon: Rocket, popular: true },
-      { id: "api-integration", name: "Custom API Development", description: "Connect any system", price: 1500, icon: Code2 },
+      { id: "appointment-booking", name: "Appointment Booking", description: "Carriers book slots online", price: 500, icon: CalendarCheck, popular: true },
+      { id: "automated-notifications", name: "Automated Notifications", description: "SMS/email reminders", price: 300, icon: Bell },
+      { id: "dashboard", name: "Operations Dashboard", description: "Real‑time dock status", price: 600, icon: LayoutDashboard },
+      { id: "erp-integration", name: "ERP/WMS Integration", description: "Sync with your systems", price: 700, icon: Database },
     ]
   },
   {
-    id: "ai-integration",
-    name: "AI Integration",
-    description: "Add AI chatbots, assistants, and automation to your existing website, Shopify, WordPress, or web app.",
-    icon: Plug,
-    basePrice: 1000,
-    gradient: "from-teal-500 to-emerald-600",
-    category: "Digital Product & Web Services",
+    id: "inventory-optimization",
+    name: "Inventory Optimization AI",
+    description: "Predict spare parts demand, prevent stockouts, and automate reordering.",
+    icon: Package,
+    basePrice: 1800,
+    gradient: "from-indigo-500 to-violet-500",
+    category: "Industrial Software & Web Apps",
     features: [
-      { id: "existing-website-ai", name: "AI for Existing Website", description: "Add an AI assistant to your current site", price: 500, icon: Bot, popular: true },
-      { id: "shopify-ai", name: "Shopify AI Chatbot", description: "AI that helps customers on your Shopify store", price: 600, icon: ShoppingCart },
-      { id: "wordpress-ai", name: "WordPress AI Plugin", description: "AI assistant for WordPress sites", price: 600, icon: Globe },
-      { id: "webapp-ai", name: "AI Inside Web App", description: "Integrate AI into your web app via API", price: 800, icon: Code2 },
-      { id: "crm-ai-connect", name: "CRM AI Connection", description: "Connect AI to your CRM", price: 500, icon: Database },
+      { id: "demand-forecast", name: "Demand Forecasting", description: "Predict parts needed", price: 600, icon: TrendingUp, popular: true },
+      { id: "auto-reorder", name: "Auto‑Reorder", description: "Generate purchase orders", price: 500, icon: ShoppingCart },
+      { id: "supplier-integration", name: "Supplier Portal", description: "Share forecasts with vendors", price: 500, icon: Users },
+      { id: "inventory-dashboard", name: "Inventory Dashboard", description: "Track stock levels", price: 400, icon: BarChart },
     ]
   },
-
-  // ---------- CATEGORY 3: Revenue Optimization ----------
   {
-    id: "ecommerce-ai-optimization",
-    name: "E‑commerce AI Optimization",
-    description: "AI‑powered cart recovery, product recommendations, and automated follow‑ups for online stores.",
-    icon: ShoppingCart,
-    basePrice: 1200,
+    id: "field-service-app",
+    name: "Field Service Mobile App",
+    description: "Technicians access manuals, log work orders, and capture data from the field.",
+    icon: Smartphone,
+    basePrice: 2500,
     gradient: "from-pink-500 to-rose-500",
-    category: "Revenue Optimization",
+    category: "Industrial Software & Web Apps",
     features: [
-      { id: "cart-recovery", name: "Abandoned Cart Recovery", description: "Automated emails/SMS to recover lost sales", price: 450, icon: Mail, popular: true },
-      { id: "product-recommendations", name: "AI Product Recommendations", description: "Personalised suggestions for each visitor", price: 900, icon: Sparkles },
-      { id: "follow-up-sequences", name: "Automated Follow‑up Sequences", description: "Post‑purchase emails to increase repeat sales", price: 400, icon: GitBranch },
-      { id: "conversion-dashboard", name: "Conversion Dashboard", description: "Real‑time conversion tracking", price: 300, icon: BarChart },
+      { id: "mobile-forms", name: "Mobile Work Orders", description: "Create and update orders", price: 500, icon: FileText, popular: true },
+      { id: "offline-mode", name: "Offline Mode", description: "Work without internet sync", price: 600, icon: Cloud },
+      { id: "photo-capture", name: "Photo & Signature Capture", description: "Document work", price: 300, icon: Camera },
+      { id: "gps-tracking", name: "GPS Location", description: "Track technician location", price: 400, icon: MapPin },
     ]
   },
   {
-    id: "sales-automation",
-    name: "Sales Automation Systems",
-    description: "Automate outbound follow‑ups, lead scoring, and CRM intelligence to boost sales.",
-    icon: TrendingUp,
-    basePrice: 1500,
+    id: "production-analytics",
+    name: "Production Line Analytics",
+    description: "Monitor OEE, throughput, and downtime with real‑time dashboards.",
+    icon: LineChart,
+    basePrice: 2000,
     gradient: "from-green-500 to-emerald-600",
-    category: "Revenue Optimization",
+    category: "Analytics & Intelligence",
     features: [
-      { id: "outbound-followups", name: "Automated Outbound Follow‑ups", description: "Sequences that nurture leads", price: 500, icon: Forward, popular: true },
-      { id: "lead-scoring", name: "AI Lead Scoring", description: "Automatically score leads based on behaviour", price: 600, icon: Target },
-      { id: "crm-intelligence", name: "CRM Intelligence", description: "Enhance CRM with AI insights", price: 500, icon: Database },
-      { id: "sales-pipeline", name: "Sales Pipeline Automation", description: "Move leads through stages automatically", price: 700, icon: GitBranch },
+      { id: "oee-tracking", name: "OEE Dashboard", description: "Availability, performance, quality", price: 600, icon: LayoutDashboard, popular: true },
+      { id: "downtime-analysis", name: "Downtime Analysis", description: "Root cause identification", price: 500, icon: Activity },
+      { id: "scada-integration", name: "SCADA/PLC Integration", description: "Pull real‑time data", price: 800, icon: Database },
+      { id: "custom-reports", name: "Custom Reporting", description: "Export for leadership", price: 400, icon: FileText },
     ]
   },
-
-  // ---------- CATEGORY 4: Analytics & Intelligence ----------
   {
     id: "bi-dashboards",
     name: "Business Intelligence Dashboards",
-    description: "Custom dashboards visualising KPIs, sales performance, and executive reports.",
+    description: "Custom dashboards for KPIs, financials, and operational metrics.",
     icon: PieChart,
-    basePrice: 2000,
+    basePrice: 2500,
     gradient: "from-blue-500 to-indigo-600",
     category: "Analytics & Intelligence",
     features: [
-      { id: "data-visualization", name: "Custom Data Visualisation", description: "Turn data into actionable charts", price: 1200, icon: BarChart },
-      { id: "kpi-dashboards", name: "KPI Tracking Dashboards", description: "Monitor key metrics in real time", price: 1000, icon: LayoutDashboard, popular: true },
-      { id: "sales-performance", name: "Sales Performance Tracking", description: "Dashboards for revenue and team performance", price: 800, icon: TrendingUp },
-      { id: "executive-reporting", name: "Executive Reporting", description: "High‑level summaries for leadership", price: 900, icon: Award },
+      { id: "data-visualization", name: "Custom Visualizations", description: "Charts and graphs", price: 800, icon: BarChart },
+      { id: "kpi-tracker", name: "KPI Tracking", description: "Monitor key metrics", price: 600, icon: Target, popular: true },
+      { id: "executive-reports", name: "Executive Reports", description: "Summaries for leadership", price: 500, icon: Award },
+      { id: "data-warehouse", name: "Data Warehouse Setup", description: "Consolidate data sources", price: 1000, icon: Database },
     ]
   },
-
-  // ---------- CATEGORY 5: AI Infrastructure ----------
-  {
-    id: "ai-deployment",
-    name: "AI Deployment & Hosting",
-    description: "Secure cloud deployment, monitoring, and API management for your AI systems.",
-    icon: Cloud,
-    basePrice: 1000,
-    gradient: "from-gray-500 to-slate-600",
-    category: "AI Infrastructure",
-    features: [
-      { id: "secure-deployment", name: "Secure AI Deployment", description: "Deploy on AWS/Vercel with best practices", price: 600, icon: Lock, popular: true },
-      { id: "cloud-hosting", name: "Cloud Hosting Configuration", description: "Set up and manage cloud servers", price: 600, icon: Cloud },
-      { id: "usage-monitoring", name: "Usage Monitoring", description: "Track API calls, costs, and performance", price: 400, icon: Activity },
-      { id: "api-management", name: "API Management", description: "Manage and version your AI APIs", price: 500, icon: GitBranch },
-    ]
-  },
-
-  // ---------- CATEGORY 6: Consulting & Strategy ----------
   {
     id: "ai-consulting",
     name: "AI Strategy Consulting",
-    description: "AI opportunity audits, workflow efficiency reviews, and automation roadmaps.",
+    description: "Identify high‑impact AI opportunities for your plant or manufacturing operations.",
     icon: Target,
     basePrice: 1000,
     gradient: "from-purple-500 to-pink-600",
     category: "Consulting & Strategy",
     features: [
-      { id: "ai-audit", name: "AI Opportunity Audit", description: "Identify where AI can deliver the most value", price: 800, icon: Search, popular: true },
-      { id: "workflow-review", name: "Workflow Efficiency Review", description: "Analyse and optimise existing processes", price: 600, icon: Workflow },
-      { id: "automation-roadmap", name: "Automation Roadmap", description: "Step‑by‑step plan to implement AI", price: 700, icon: GitBranch },
-      { id: "integration-planning", name: "AI Integration Planning", description: "How to integrate AI with your current tools", price: 500, icon: Plug },
+      { id: "ai-audit", name: "AI Opportunity Audit", description: "Find where AI delivers most value", price: 800, icon: Search, popular: true },
+      { id: "workflow-review", name: "Workflow Efficiency Review", description: "Analyze current processes", price: 600, icon: Workflow },
+      { id: "automation-roadmap", name: "Automation Roadmap", description: "Step‑by‑step plan", price: 700, icon: GitBranch },
+      { id: "integration-plan", name: "Integration Planning", description: "How to connect AI to your systems", price: 500, icon: Plug },
+    ]
+  },
+  {
+    id: "digital-transformation",
+    name: "Digital Transformation Roadmap",
+    description: "Strategic plan to digitize operations and improve efficiency.",
+    icon: Rocket,
+    basePrice: 2000,
+    gradient: "from-amber-500 to-orange-600",
+    category: "Consulting & Strategy",
+    features: [
+      { id: "current-state", name: "Current State Assessment", description: "Document systems and pain points", price: 600, icon: FileText },
+      { id: "future-state", name: "Future State Design", description: "Target architecture", price: 700, icon: Target, popular: true },
+      { id: "implementation-plan", name: "Implementation Plan", description: "Phased rollout", price: 800, icon: GitBranch },
+      { id: "change-management", name: "Change Management", description: "Training and adoption", price: 500, icon: Users },
     ]
   }
 ];
@@ -277,12 +215,8 @@ const timelines = [
   { id: "rush", name: "Rush", description: "2-3 weeks", multiplier: 1.4, icon: Rocket },
 ];
 
-// ============================================================================
-// MAIN COMPONENT
-// ============================================================================
-
 export default function GetStartedPage() {
-  const router = useRouter(); 
+  const router = useRouter();
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedService, setSelectedService] = useState<Service | null>(null);
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
@@ -324,7 +258,7 @@ export default function GetStartedPage() {
       phone: contactInfo.phone,
       company: contactInfo.company || 'Not provided',
       service: selectedService?.name || 'Unknown',
-      features: selectedFeatures.join(', '),
+      features: selectedFeatures.map(id => selectedService?.features.find(f => f.id === id)?.name).filter(Boolean).join(', '),
       timeline: selectedTimeline.name,
       total_estimated_value: `$${totalPrice.toLocaleString()}`,
       message: contactInfo.message || 'No message',
@@ -363,7 +297,7 @@ export default function GetStartedPage() {
             amount: totalPrice,
             paid: 0,
             status: 'Not Started',
-            industry: `Features: ${selectedFeatures.join(', ')}. Timeline: ${selectedTimeline.name}`
+            industry: `Features: ${selectedFeatures.map(id => selectedService?.features.find(f => f.id === id)?.name).join(', ')}. Timeline: ${selectedTimeline.name}`
           }
         ])
         .select();
@@ -404,9 +338,11 @@ export default function GetStartedPage() {
     }
   };
 
-  // ============================================================================
-  // RENDER FUNCTIONS
-  // ============================================================================
+  const groupedServices = services.reduce<Record<string, Service[]>>((acc, service) => {
+    if (!acc[service.category]) acc[service.category] = [];
+    acc[service.category].push(service);
+    return acc;
+  }, {});
 
   const renderProgressBar = () => (
     <div className="w-full mb-8">
@@ -439,20 +375,13 @@ export default function GetStartedPage() {
     </div>
   );
 
-  // Group services by category for step 1
-  const groupedServices = services.reduce<Record<string, Service[]>>((acc, service) => {
-    if (!acc[service.category]) acc[service.category] = [];
-    acc[service.category].push(service);
-    return acc;
-  }, {});
-
   const renderStep1 = () => (
     <div className="animate-fadeIn">
       <div className="text-center mb-10">
         <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4 font-space-grotesk">
           What would you like to <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-300 to-sky-300">build?</span>
         </h2>
-        <p className="text-gray-400 text-lg">Select the service that best fits your project needs</p>
+        <p className="text-gray-400 text-lg">Select the industrial AI solution that best fits your project needs</p>
       </div>
       
       {Object.entries(groupedServices).map(([category, servicesList]) => (
@@ -468,7 +397,14 @@ export default function GetStartedPage() {
                   key={service.id}
                   onClick={() => {
                     setSelectedService(service);
-                    setSelectedFeatures([service.features[0].id]); // auto‑select first feature
+                    const popular = service.features.filter(f => f.popular).map(f => f.id);
+                    if (popular.length > 0) {
+                      setSelectedFeatures(popular);
+                    } else if (service.features.length > 0) {
+                      setSelectedFeatures([service.features[0].id]);
+                    } else {
+                      setSelectedFeatures([]);
+                    }
                   }}
                   className={`
                     relative p-6 rounded-3xl text-left transition-all duration-300 group
@@ -511,60 +447,63 @@ export default function GetStartedPage() {
     </div>
   );
 
-  const renderStep2 = () => (
-    <div className="animate-fadeIn">
-      <div className="text-center mb-10">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4 font-space-grotesk">
-          Customize your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-300 to-sky-300">{selectedService?.name}</span>
-        </h2>
-        <p className="text-gray-400 text-lg">Select the features you need (you can always add more later)</p>
-      </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {selectedService?.features.map((feature) => {
-          const isSelected = selectedFeatures.includes(feature.id);
-          
-          return (
-            <button
-              key={feature.id}
-              onClick={() => toggleFeature(feature.id)}
-              className={`
-                relative p-5 rounded-2xl text-left transition-all duration-300 flex items-start gap-4
-                ${isSelected 
-                  ? 'bg-blue-600/10 border-2 border-blue-500 shadow-lg shadow-blue-500/10' 
-                  : 'bg-white/5 border border-white/10 hover:border-blue-500/30 hover:bg-white/10 backdrop-blur-sm'}
-              `}
-            >
-              <div className={`
-                w-6 h-6 rounded-lg flex items-center justify-center flex-shrink-0 transition-all mt-0.5
-                ${isSelected ? 'bg-blue-600 text-white' : 'bg-white/10 text-transparent'}
-              `}>
-                <Check size={14} />
-              </div>
-              
-              <div className="flex-grow">
-                <div className="flex items-center gap-2 mb-1">
-                  <h4 className={`font-bold ${isSelected ? 'text-white' : 'text-white'}`}>
-                    {feature.name}
-                  </h4>
-                  {feature.popular && (
-                    <span className="px-2 py-0.5 bg-orange-500/20 text-orange-400 text-xs font-bold rounded-full">
-                      Popular
-                    </span>
-                  )}
+  const renderStep2 = () => {
+    if (!selectedService) return null;
+    return (
+      <div className="animate-fadeIn">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4 font-space-grotesk">
+            Customize your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-300 to-sky-300">{selectedService.name}</span>
+          </h2>
+          <p className="text-gray-400 text-lg">Select the features you need (you can always add more later)</p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {selectedService.features.map((feature) => {
+            const isSelected = selectedFeatures.includes(feature.id);
+            
+            return (
+              <button
+                key={feature.id}
+                onClick={() => toggleFeature(feature.id)}
+                className={`
+                  relative p-5 rounded-2xl text-left transition-all duration-300 flex items-start gap-4
+                  ${isSelected 
+                    ? 'bg-blue-600/10 border-2 border-blue-500 shadow-lg shadow-blue-500/10' 
+                    : 'bg-white/5 border border-white/10 hover:border-blue-500/30 hover:bg-white/10 backdrop-blur-sm'}
+                `}
+              >
+                <div className={`
+                  w-6 h-6 rounded-lg flex items-center justify-center flex-shrink-0 transition-all mt-0.5
+                  ${isSelected ? 'bg-blue-600 text-white' : 'bg-white/10 text-transparent'}
+                `}>
+                  <Check size={14} />
                 </div>
-                <p className="text-sm text-gray-400">{feature.description}</p>
-              </div>
-              
-              <div className={`text-sm font-bold flex-shrink-0 ${isSelected ? 'text-blue-400' : 'text-gray-500'}`}>
-                {feature.price === 0 ? 'Included' : ''} 
-              </div>
-            </button>
-          );
-        })}
+                
+                <div className="flex-grow">
+                  <div className="flex items-center gap-2 mb-1">
+                    <h4 className={`font-bold ${isSelected ? 'text-white' : 'text-white'}`}>
+                      {feature.name}
+                    </h4>
+                    {feature.popular && (
+                      <span className="px-2 py-0.5 bg-orange-500/20 text-orange-400 text-xs font-bold rounded-full">
+                        Popular
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-sm text-gray-400">{feature.description}</p>
+                </div>
+                
+                <div className={`text-sm font-bold flex-shrink-0 ${isSelected ? 'text-blue-400' : 'text-gray-500'}`}>
+                  {feature.price === 0 ? 'Included' : `+$${feature.price}`}
+                </div>
+              </button>
+            );
+          })}
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   const renderStep3 = () => (
     <div className="animate-fadeIn">
@@ -879,10 +818,6 @@ export default function GetStartedPage() {
     </div>
   );
 
-  // ============================================================================
-  // MAIN RENDER
-  // ============================================================================
-
   return (
     <main className="min-h-screen bg-[#05060b] text-white">
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#05060b]/80 backdrop-blur-xl border-b border-white/10">
@@ -891,7 +826,6 @@ export default function GetStartedPage() {
             <span className="text-blue-400">Vidi</span>
             <span className="text-white">Agency</span>
           </Link>
-          
           <Link 
             href="/"
             className="text-gray-400 hover:text-white text-sm font-medium transition-colors"
@@ -903,7 +837,6 @@ export default function GetStartedPage() {
       
       <div ref={containerRef} className="pt-20 pb-40 container mx-auto px-4 md:px-12 lg:px-20 max-w-6xl">
         {renderProgressBar()}
-        
         <div className="min-h-[500px]">
           {currentStep === 1 && renderStep1()}
           {currentStep === 2 && renderStep2()}

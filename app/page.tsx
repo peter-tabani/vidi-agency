@@ -187,7 +187,7 @@ export default function Home() {
                 Serve your <span className="text-white/80 font-medium">clients better</span>, convert more{' '}
                 <span className="text-white/80 font-medium">prospects</span>, and free your{' '}
                 <span className="text-white/80 font-medium">team</span> from repetitive tasks
-                and buried manuals — one AI system built for your entire business.
+                and buried manuals.
               </p>
 
               <div className="flex flex-wrap gap-2 justify-center lg:justify-start mb-8">

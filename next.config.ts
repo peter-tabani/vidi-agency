@@ -7,9 +7,6 @@ const nextConfig: any = {
     // We can allow optimization again (optional, but better for performance)
     unoptimized: true, 
   },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   typescript: {
     ignoreBuildErrors: true,
   },

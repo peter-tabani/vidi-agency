@@ -7,15 +7,16 @@ import Navbar from "@/components/Navbar";
 import Link from 'next/link';
 import {
   ArrowRight, MessageCircle, ShieldCheck, Clock,
-  Lock, Linkedin, Mail, Sparkles, Database, Zap, Globe
+  Lock, Linkedin, Mail, Sparkles, Database, Zap, Globe,
+  HardHat, Truck, Cog, Activity, FileText, Search
 } from 'lucide-react';
 
-// ── TICKER ──────────────────────────────────────────────────────
+// ── TICKER (industrial partners - can be replaced with real clients later) ──
 const clients = [
-  "KASNEB",
-  "Institutional Client · Kenya",
-  "Government Sector · East Africa",
-  "Enterprise Client · Nairobi",
+  "Fall Protection Systems · Global",
+  "Loading Dock Manufacturers · USA",
+  "Conveyor Systems · Europe",
+  "Industrial EHS · East Africa",
 ];
 
 function ClientsTicker() {
@@ -54,25 +55,28 @@ export default function AboutPage() {
     setTimeout(() => setSecretCount(0), 1000);
   };
 
+  // Updated team roles to industrial AI
   const team = [
-    { name: "Peter Frank",      role: "Principal Consultant",          image: "/team/peter-frank.png",       linkedin: "https://linkedin.com/in/yourprofile", email: "peter@vidiagencyltd.com" },
-    { name: "Emmanuel Douglas", role: "Lead AI Engineer",              image: "/team/emmanuel-douglas.jpeg", linkedin: "#", email: "emmanuel@vidiagencyltd.com" },
-    { name: "Dawson Johnson",   role: "Systems Architect",             image: "/team/dawson-johnson.jpeg",   linkedin: "#", email: "dawson@vidiagencyltd.com" },
-    { name: "Anna Hall",        role: "Knowledge Infrastructure Lead", image: "/team/anna-hall.jpeg",        linkedin: "#", email: "anna@vidiagencyltd.com" },
-    { name: "Abigael Roberts",  role: "Integration Specialist",        image: "/team/abigael-roberts.jpeg",  linkedin: "#", email: "abigael@vidiagencyltd.com" },
+    { name: "Peter Frank",      role: "Principal Consultant – Industrial AI", image: "/team/peter-frank.png",       linkedin: "https://linkedin.com/in/yourprofile", email: "peter@vidiagencyltd.com" },
+    { name: "Emmanuel Douglas", role: "Lead AI Engineer – Manufacturing",     image: "/team/emmanuel-douglas.jpeg", linkedin: "#", email: "emmanuel@vidiagencyltd.com" },
+    { name: "Dawson Johnson",   role: "Systems Architect – IoT & SCADA",      image: "/team/dawson-johnson.jpeg",   linkedin: "#", email: "dawson@vidiagencyltd.com" },
+    { name: "Anna Hall",        role: "Knowledge Infrastructure Lead",        image: "/team/anna-hall.jpeg",        linkedin: "#", email: "anna@vidiagencyltd.com" },
+    { name: "Abigael Roberts",  role: "Integration Specialist – CMMS/ERP",    image: "/team/abigael-roberts.jpeg",  linkedin: "#", email: "abigael@vidiagencyltd.com" },
   ];
 
+  // Updated capabilities to match industrial niche
   const capabilities = [
-    { icon: Database, title: "Private AI Assistants",  desc: "Trained exclusively on your company data. Deployed within your infrastructure." },
-    { icon: Lock,     title: "Zero Data Exposure",     desc: "Fully closed-loop. Your information never touches a public AI model." },
-    { icon: Zap,      title: "Instant Accurate Answers", desc: "Responds in seconds. Only answers from verified company documentation." },
-    { icon: Globe,    title: "Always Available",       desc: "24 hours a day. Any device. Any location. Any language." },
+    { icon: Database, title: "Engineering Knowledge Base",  desc: "Train AI on your manuals, P&IDs, CMMS records, and maintenance logs. Instant answers for your engineers and technicians." },
+    { icon: Lock,     title: "Private & Secure",            desc: "Fully closed‑loop. Your intellectual property and operational data never leave your infrastructure." },
+    { icon: Zap,      title: "Predictive Maintenance",      desc: "AI monitors equipment and predicts failures before they happen, reducing unplanned downtime." },
+    { icon: Globe,    title: "Available Anywhere",          desc: "Web, tablet, or mobile. Your team gets answers on the shop floor, in the field, or from the office." },
   ];
 
+  // Updated principles (still three, but more industrial)
   const principles = [
-    { icon: ShieldCheck, title: "Accuracy first",              desc: "We build systems that are correct before they are fast. Precision is the only acceptable standard." },
-    { icon: Lock,        title: "Security without compromise", desc: "Your data stays within your infrastructure. No exceptions, no third-party exposure." },
-    { icon: Clock,       title: "Built to last",               desc: "Designed for the next decade. Every system grows with your organisation." },
+    { icon: ShieldCheck, title: "Accuracy first",              desc: "In industrial environments, wrong information stops production. We build systems that are correct before they are fast." },
+    { icon: Lock,        title: "Security without compromise", desc: "Your plant data, engineering drawings, and safety records remain within your control. No third-party exposure." },
+    { icon: Clock,       title: "Built for legacy systems",    desc: "We integrate with your existing CMMS, SCADA, and ERP. No rip‑and‑replace – your existing investment is preserved." },
   ];
 
   return (
@@ -86,12 +90,11 @@ export default function AboutPage() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/about-hero-bg.jpeg"
-            alt="Background"
+            alt="Industrial manufacturing facility"
             fill
             className="object-cover object-center"
             priority
           />
-          {/* Dark overlay so text is always readable */}
           <div className="absolute inset-0 bg-black/80" />
         </div>
 
@@ -99,85 +102,64 @@ export default function AboutPage() {
         <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-12 lg:px-24 py-32">
           <div className="max-w-3xl">
 
-            {/* Label */}
             <p className="text-blue-400 text-xs font-semibold uppercase tracking-[0.2em] mb-6">
-              Vidi Agency Ltd — Enterprise AI Solutions
+              Vidi Agency Ltd — Industrial AI
             </p>
 
-            {/* Headline */}
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-light text-white leading-[1.1] tracking-tight mb-8">
-              Every question answered.{" "}
-              <span className="font-semibold">Every process explained.</span>{" "}
-              <span className="text-blue-400">24 hours a day.</span>
+              Instant answers for{" "}
+              <span className="font-semibold">heavy equipment</span>{" "}
+              and <span className="text-blue-400">manufacturing operations.</span>
             </h1>
 
-            {/* Body */}
             <p className="text-gray-300 text-lg leading-relaxed max-w-2xl mb-4">
-              We build smart AI assistants trained on your company's own data — always
-              available to answer questions, explain processes, guide users, and deliver
-              information instantly.
+              We build private AI assistants trained on your engineering data, safety manuals, and maintenance records.
+              Your team gets the right answer – every time – without hunting through binders or waiting on an engineer.
             </p>
             <p className="text-gray-300 text-lg leading-relaxed max-w-2xl mb-10">
-              Whether it is a client needing support, a staff member navigating a complex
-              workflow, or a visitor looking for direction — your AI assistant handles it.
-              Accurately. Immediately. Every time.
+              From fall protection quoting to conveyor troubleshooting, from EHS compliance to spare parts forecasting –
+              we turn your company knowledge into an instant, always‑available resource.
             </p>
 
-            {/* Action words */}
             <p className="text-blue-400/70 text-xs font-semibold tracking-[0.25em] uppercase mb-10">
-              Delivering · Answering · Guiding · Supporting · Selling · Comforting
+              Reducing downtime · Protecting people · Streamlining operations
             </p>
 
-            {/* CTA buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="/get-started"
+                href="/contact"
                 className="px-8 py-3.5 bg-blue-600 text-white text-sm font-semibold rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
               >
-                Request a Demo
+                Talk to an Engineer
                 <ArrowRight className="w-4 h-4" />
               </a>
-              <a
-                href="/contact"
-                className="px-8 py-3.5 bg-white/10 text-white text-sm font-semibold rounded-lg hover:bg-white/20 transition-colors flex items-center justify-center gap-2 backdrop-blur-sm"
-              >
-                Get in Touch
-                <MessageCircle className="w-4 h-4" />
-              </a>
+              
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── CLIENTS TICKER ── */}
-      <section className="py-12 px-4 border-y border-white/6">
-        <p className="text-center text-gray-600 text-xs uppercase tracking-[0.2em] mb-6">
-          Organisations we have worked with
-        </p>
-        <ClientsTicker />
-      </section>
+      {/* ── CLIENTS TICKER (industrial partners) ── */}
+      
 
       {/* ── WHAT WE DO ── */}
       <section className="py-24 px-4 sm:px-6 md:px-12 lg:px-24">
         <div className="max-w-6xl mx-auto">
 
-          {/* Section header */}
           <div className="max-w-2xl mb-16">
             <p className="text-blue-400 text-xs font-semibold uppercase tracking-[0.2em] mb-4">
               What We Do
             </p>
             <h2 className="text-3xl sm:text-4xl font-light text-white leading-tight mb-4">
               One system.{" "}
-              <span className="font-semibold">All the answers.</span>
+              <span className="font-semibold">All your industrial knowledge.</span>
             </h2>
             <p className="text-gray-400 leading-relaxed">
-              We build private, closed-loop AI systems that unify your organisation's
-              documentation into a single intelligence layer — accessible to any
-              authorised team member, on any device, in any timezone.
+              We unify your engineering documents, safety procedures, CMMS records, and equipment history into a single
+              intelligence layer – accessible to any authorised team member, on any device, in any timezone.
             </p>
           </div>
 
-          {/* 2x2 capability grid */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {capabilities.map((item, i) => {
               const Icon = item.icon;
@@ -198,7 +180,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── THIN RULE ── */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-12 lg:px-24">
         <div className="border-t border-white/6" />
       </div>
@@ -207,23 +188,19 @@ export default function AboutPage() {
       <section className="py-24 px-4 sm:px-6 md:px-12 lg:px-24">
         <div className="max-w-6xl mx-auto">
 
-          {/* Section header — centred */}
           <div className="text-center mb-16">
             <p className="text-blue-400 text-xs font-semibold uppercase tracking-[0.2em] mb-4">
               The Team
             </p>
             <h2 className="text-3xl sm:text-4xl font-light text-white leading-tight">
-              A focused team of{" "}
-              <span className="font-semibold">AI specialists.</span>
+              Experts in industrial AI.
             </h2>
           </div>
 
-          {/* Team grid — centred, even spacing */}
           <div className="flex flex-wrap justify-center gap-x-12 gap-y-12">
             {team.map((member, idx) => (
               <div key={idx} className="group flex flex-col items-center w-36 text-center">
 
-                {/* Photo */}
                 <div className="relative w-28 h-28 rounded-xl overflow-hidden mb-4 border border-transparent group-hover:border-blue-500/30 transition-all">
                   <Image
                     src={member.image}
@@ -231,7 +208,6 @@ export default function AboutPage() {
                     fill
                     className="object-cover transition-all duration-300"
                   />
-                  {/* Hover overlay */}
                   <div className="absolute inset-0 bg-blue-900/80 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center gap-3">
                     <a
                       href={member.linkedin}
@@ -260,7 +236,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── THIN RULE ── */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-12 lg:px-24">
         <div className="border-t border-white/6" />
       </div>
@@ -298,7 +273,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── THIN RULE ── */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-12 lg:px-24">
         <div className="border-t border-white/6" />
       </div>
@@ -310,12 +284,12 @@ export default function AboutPage() {
             Get Started
           </p>
           <h2 className="text-3xl sm:text-4xl font-light text-white mb-4 leading-tight">
-            Ready to give your organisation{" "}
+            Ready to give your operations{" "}
             <span className="font-semibold">its own AI assistant?</span>
           </h2>
           <p className="text-gray-500 mb-10 leading-relaxed max-w-xl mx-auto">
-            We offer a 30-minute live demonstration built around your company's
-            own documentation. No slides. No theory. Just the system working.
+            We offer a 30‑minute live demonstration built around your own engineering documents,
+            safety manuals, and maintenance data. No slides. Just the system working.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -334,7 +308,7 @@ export default function AboutPage() {
             </a>
           </div>
           <p className="text-gray-700 text-xs mt-8">
-            Response within 24 hours · Available globally
+            Response within 24 hours · Global industrial experience
           </p>
         </div>
       </section>
@@ -351,12 +325,11 @@ export default function AboutPage() {
                 </div>
                 <span className="text-lg font-bold text-white">Vidi Agency Ltd</span>
               </div>
-              {/* Easter egg — preserved */}
               <button
                 onClick={handleSecretKnock}
                 className="text-gray-700 text-xs hover:text-gray-500 transition-colors text-left"
               >
-                Building tomorrow's knowledge infrastructure
+                Building tomorrow's industrial AI
               </button>
             </div>
 
@@ -364,7 +337,6 @@ export default function AboutPage() {
               <a href="/contact" className="text-gray-400 hover:text-blue-400 text-sm transition-colors">
                 Contact
               </a>
-              {/* Hidden link 1 — preserved */}
               <Link
                 href="/case-studies"
                 className="text-gray-400 hover:text-blue-400 text-sm transition-colors"
@@ -379,7 +351,6 @@ export default function AboutPage() {
               >
                 LinkedIn
               </a>
-              {/* Hidden link 2 — preserved */}
               <Link
                 href="/team"
                 className="text-gray-700 hover:text-blue-400 text-xs transition-colors"

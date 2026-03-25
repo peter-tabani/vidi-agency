@@ -6,28 +6,23 @@ import { getAllPosts, getAllCategories, getAllTags } from '@/lib/posts';
 
 export const metadata = {
   title: "Blog & Resources | Vidi Agency",
-  description: "Stay updated with the latest insights on web development, AI automation, digital transformation, and industry trends.",
+  description: "Stay updated with the latest insights on industrial AI, manufacturing automation, and digital transformation.",
 };
 
 export default function BlogPage() {
-  // This is a Server Component - fs operations are safe here
   const allPosts = getAllPosts();
   const categories = getAllCategories();
   const allTags = getAllTags();
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-[#05060b] text-white">
       <Navbar />
-      
-      {/* Pass server-fetched data to the client component */}
       <BlogClient 
         allPosts={allPosts} 
         categories={categories} 
         allTags={allTags} 
       />
-
       <Footer />
     </main>
   );
 }
- 
