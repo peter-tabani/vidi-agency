@@ -9,19 +9,20 @@
 
 export const company = {
   name: 'Vidi Agency',
-  legalName: 'Vidi Agency LLC',
-  tagline: 'AI Automation for Business',
-  description: 'We build AI systems that capture leads, automate customer engagement, and eliminate repetitive work. Custom AI automation for B2B and e-commerce businesses.',
+  legalName: 'Vidi Agency Ltd',
+  tagline: 'Instant answers for heavy equipment and manufacturing operations',
+  description:
+    'We build private AI assistants trained on your engineering data, safety manuals, and maintenance records. Your team gets the right answer — every time — without hunting through binders or waiting on an engineer.',
   founded: 2023,
-  email: 'hello@vidiagency.com',
-  phone: '+1 (555) 123-4567',
+  email: 'peter@vidiagencyltd.com',
+  phone: '',
   address: {
-    street: '123 Innovation Drive',
-    city: 'San Francisco',
-    state: 'CA',
-    zip: '94105',
-    country: 'USA',
-    full: '123 Innovation Drive, San Francisco, CA 94105, USA',
+    street: '',
+    city: 'Nairobi',
+    state: '',
+    zip: '',
+    country: 'Kenya',
+    full: 'Nairobi, Kenya',
   },
 };
 
@@ -30,12 +31,7 @@ export const company = {
 // ============================================================================
 
 export const social = {
-  twitter: 'https://twitter.com/vidiagency',
   linkedin: 'https://linkedin.com/company/vidiagency',
-  github: 'https://github.com/vidiagency',
-  instagram: 'https://instagram.com/vidiagency',
-  youtube: 'https://youtube.com/@vidiagency',
-  dribbble: 'https://dribbble.com/vidiagency',
 };
 
 // ============================================================================
@@ -46,31 +42,27 @@ export const navigation = {
   main: [
     { name: 'Home', href: '/' },
     { name: 'Services', href: '/#services' },
-    { name: 'Case Studies', href: '/case-studies' },
-    { name: 'Pricing', href: '/#pricing' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Contact', href: '/get-started' },
+    { name: 'About', href: '/about' },
+    { name: 'Our Work', href: '/case-studies' },
+    { name: 'Contact', href: '/contact' },
   ],
   footer: {
     services: [
-      { name: 'AI Lead Capture', href: '/services/ai-lead-capture' },
-      { name: 'AI Customer Engagement', href: '/services/ai-engagement' },
-      { name: 'Workflow Automation', href: '/services/workflow-automation' },
-      { name: 'System Integration', href: '/services/system-integration' },
-      { name: 'AI-Powered Websites', href: '/services/web-development' },
-      { name: 'Support & Optimization', href: '/services/maintenance' },
+      { name: 'Engineering Knowledge Assistant', href: '/#services' },
+      { name: 'AI Lead Capture & CRM Sync', href: '/#services' },
+      { name: 'AI Customer Support', href: '/#services' },
+      { name: 'EHS Compliance Assistant', href: '/#services' },
+      { name: 'Document & Image Analysis', href: '/#services' },
+      { name: 'AI Strategy Consulting', href: '/#services' },
     ],
     company: [
       { name: 'About Us', href: '/about' },
-      { name: 'Case Studies', href: '/case-studies' },
-      { name: 'Blog', href: '/blog' },
-      { name: 'Careers', href: '/careers' },
+      { name: 'Our Work', href: '/case-studies' },
       { name: 'Contact', href: '/contact' },
     ],
     legal: [
       { name: 'Privacy Policy', href: '/privacy' },
       { name: 'Terms of Service', href: '/terms' },
-      { name: 'Cookie Policy', href: '/cookies' },
     ],
   },
 };
@@ -81,180 +73,98 @@ export const navigation = {
 
 export const services = [
   {
-    id: 'ai-lead-capture',
-    title: 'AI Lead Capture & Qualification',
-    description: 'AI agents that engage every visitor, qualify leads in real time, and route them to your sales team 24/7.',
-    icon: 'Bot',
-    features: [
-      'Real-Time Lead Qualification',
-      'Multi-Channel Capture',
-      'CRM Integration',
-      'Automated Lead Routing',
-    ],
-  },
-  {
-    id: 'ai-engagement',
-    title: 'AI Customer Engagement & Support',
-    description: 'Intelligent chatbots and automated sequences that handle customer questions, follow-ups, and support around the clock.',
-    icon: 'MessageSquare',
-    features: [
-      'AI Support Agents',
-      'Automated Follow-Ups',
-      'Booking & Scheduling',
-      'Unified Inbox',
-    ],
-  },
-  {
-    id: 'workflow-automation',
-    title: 'AI Workflow Automation',
-    description: 'Eliminate repetitive tasks by connecting your existing tools into seamless automated workflows.',
-    icon: 'Workflow',
-    features: [
-      'Process Automation',
-      'System Integration',
-      'Data Sync & Routing',
-      'Custom AI Tools',
-    ],
-  },
-  {
-    id: 'system-integration',
-    title: 'System Integration',
-    description: 'Connect your CRM, email, payments, and other tools into one seamless ecosystem. No rebuild required.',
+    id: 'engineering-knowledge',
+    title: 'Engineering Knowledge Assistant',
+    description:
+      'AI trained on your manuals, drawings, and SOPs. Engineers get instant answers without interrupting senior staff or searching through binders.',
     icon: 'Database',
     features: [
-      'CRM Integration',
-      'Payment Systems',
-      'Email & SMS Platforms',
-      'Custom API Connections',
+      'Manual & Document Search',
+      'Drawing & Spec Retrieval',
+      'Image & Photo Analysis',
+      'CMMS Integration',
     ],
   },
   {
-    id: 'web-development',
-    title: 'AI-Powered Websites & Apps',
-    description: 'High-performance websites and mobile apps built to support your AI systems and convert more customers.',
-    icon: 'Globe',
+    id: 'ai-lead-capture',
+    title: 'AI Lead Capture & CRM Sync',
+    description:
+      'An AI assistant on your website that captures visitor details, qualifies them, and sends leads straight to your CRM or email — automatically.',
+    icon: 'TrendingUp',
     features: [
-      'Custom Web Development',
-      'E-Commerce Stores',
-      'Mobile Apps (iOS & Android)',
-      'SEO & Performance',
+      'Automated Lead Capture',
+      'Smart Qualification',
+      'CRM & Email Sync',
+      'Instant Follow-up Emails',
     ],
   },
   {
-    id: 'maintenance',
-    title: 'Support & Optimization',
-    description: 'Optional ongoing support to keep your AI systems optimized, updated, and performing at their best.',
-    icon: 'Wrench',
+    id: 'customer-support',
+    title: 'AI Customer Support Assistant',
+    description:
+      '24/7 AI trained on your FAQs, product docs, and support materials. Answers common questions and escalates complex ones to your team.',
+    icon: 'MessageSquare',
     features: [
-      'AI Performance Tuning',
-      'System Monitoring',
-      'Security Updates',
-      'Feature Enhancements',
+      'FAQ & Doc Automation',
+      'Multi-Channel Deployment',
+      'Human Handoff',
+      'Conversation Logging',
+    ],
+  },
+  {
+    id: 'ehs-compliance',
+    title: 'EHS Compliance Assistant',
+    description:
+      'Instant retrieval of safety procedures, inspection records, and compliance documents — the right answer when your team needs it most.',
+    icon: 'ShieldCheck',
+    features: [
+      'Safety Document Ingestion',
+      'Incident Logging',
+      'Audit-Ready Reports',
+      'Regulatory Alerts',
+    ],
+  },
+  {
+    id: 'document-analysis',
+    title: 'AI Document & Image Analysis',
+    description:
+      'Upload a manual PDF or a photo of equipment — AI reads it, identifies parts, extracts specs, and answers questions from your own documents.',
+    icon: 'FileText',
+    features: [
+      'Manual Upload & Analysis',
+      'Part Identification',
+      'Technical Data Extraction',
+      'System Diagram Reading',
+    ],
+  },
+  {
+    id: 'ai-consulting',
+    title: 'AI Strategy Consulting',
+    description:
+      'We map your current operations and show you exactly where AI saves the most time and money — before you spend anything building it.',
+    icon: 'Target',
+    features: [
+      'AI Opportunity Audit',
+      'Workflow Review',
+      'Automation Roadmap',
+      'Integration Planning',
     ],
   },
 ];
 
 // ============================================================================
-// PRICING TIERS
+// INDUSTRIES
 // ============================================================================
 
-export const pricing = [
-  {
-    id: 'starter',
-    name: 'Starter',
-    description: 'For businesses ready to automate lead capture and customer engagement.',
-    price: 2500,
-    priceLabel: 'Starting at',
-    features: [
-      'AI Chatbot (Web + 1 Channel)',
-      'Lead Capture & Qualification',
-      'Basic Workflow Automation',
-      'CRM Integration',
-      '30-Day Post-Launch Support',
-      'You Own Everything',
-    ],
-    cta: 'Book a Demo',
-    popular: false,
-  },
-  {
-    id: 'growth',
-    name: 'Growth',
-    description: 'Full AI automation across channels with advanced workflows and reporting.',
-    price: null,
-    priceLabel: 'Custom',
-    features: [
-      'Multi-Channel AI (Web, WA, IG, SMS)',
-      'Automated Follow-Up Sequences',
-      'Smart Dashboard & Analytics',
-      'Deep System Integrations',
-      'Priority Support & Optimization',
-      'Dedicated Account Manager',
-    ],
-    cta: 'Book a Demo',
-    popular: true,
-  },
-  {
-    id: 'enterprise',
-    name: 'Enterprise',
-    description: 'End-to-end AI infrastructure for complex operations and high volume.',
-    price: null,
-    priceLabel: 'Custom',
-    features: [
-      'Full AI Automation Suite',
-      'Custom AI Agents & Tools',
-      'Advanced Analytics & Reporting',
-      'Unlimited Integrations',
-      'Dedicated Partnership',
-      'Custom SLA',
-    ],
-    cta: 'Contact Us',
-    popular: false,
-  },
-];
-
-// ============================================================================
-// TESTIMONIALS
-// ============================================================================
-
-export const testimonials = [
-  {
-    id: 1,
-    quote: "Vidi's AI system captures and qualifies leads around the clock. Our sales team only talks to people who are ready to buy.",
-    author: 'Sarah Johnson',
-    role: 'CEO',
-    company: 'TechStart Inc.',
-    image: '/testimonials/sarah.jpg',
-    rating: 5,
-  },
-  {
-    id: 2,
-    quote: "The AI chatbot handles 80% of our customer inquiries automatically. It paid for itself in the first month.",
-    author: 'Michael Chen',
-    role: 'Operations Director',
-    company: 'RetailMax',
-    image: '/testimonials/michael.jpg',
-    rating: 5,
-  },
-  {
-    id: 3,
-    quote: "They integrated AI into our existing systems without rebuilding anything. Fast deployment, real results.",
-    author: 'Emily Rodriguez',
-    role: 'Marketing Manager',
-    company: 'GrowthLabs',
-    image: '/testimonials/emily.jpg',
-    rating: 5,
-  },
-];
-
-// ============================================================================
-// STATISTICS
-// ============================================================================
-
-export const stats = [
-  { label: 'Projects Completed', value: '150+' },
-  { label: 'Happy Clients', value: '100+' },
-  { label: 'Years Experience', value: '5+' },
-  { label: 'Team Members', value: '15+' },
+export const industries = [
+  'Fall Protection & Safety Equipment',
+  'Loading Platforms & Dock Systems',
+  'Conveyor & Material Handling',
+  'EHS & Compliance Teams',
+  'Engineering & Technical Documentation',
+  'Heavy Equipment Manufacturing',
+  'Spare Parts Management',
+  'Field Operations Support',
 ];
 
 // ============================================================================
@@ -263,28 +173,34 @@ export const stats = [
 
 export const faq = [
   {
-    question: 'How long does it take to deploy an AI system?',
-    answer: 'A focused AI lead capture or chatbot system can be live in 7-14 days. A full multi-channel automation suite typically takes 4-8 weeks. We work in short sprints so you see progress constantly.',
+    question: 'How long does it take to set up?',
+    answer:
+      'Most implementations are live within 2–6 weeks depending on the scope and the number of documents we need to ingest. We keep you updated throughout.',
   },
   {
-    question: 'What is your process?',
-    answer: 'We follow a simple four-step process: Discover (understand your business) → Build (create your AI system) → Integrate (connect to your existing tools) → Improve (optimize for results).',
+    question: 'Will this work with our existing systems?',
+    answer:
+      'Yes. We integrate with your existing CMMS, ERP, CRM, and email tools. Your team does not need to learn a new system — the AI sits on top of what you already use.',
   },
   {
-    question: 'Do you provide ongoing support?',
-    answer: 'Every project includes a 30-day warranty period. After that, we offer optional support packages to keep your AI system optimized and performing at its best. No forced recurring fees.',
+    question: 'Is our data secure?',
+    answer:
+      'Absolutely. Your data stays in your infrastructure and is never shared with third parties. Fully closed-loop and private.',
   },
   {
-    question: 'Can you integrate AI into my existing systems?',
-    answer: 'Absolutely. We specialize in adding AI to what you already have — WordPress, Shopify, custom apps, CRMs, and more. No rebuild required.',
+    question: 'Do you offer a free trial or demo?',
+    answer:
+      'Yes — we offer a free 30-minute live demo built around your own engineering documents and safety manuals. No slides, just the system working on your actual data.',
   },
   {
-    question: 'What technologies do you use?',
-    answer: 'We use OpenAI, Python, Next.js, React, and modern cloud infrastructure. We choose the best tools for each project and integrate with your existing tech stack.',
+    question: 'Do you build mobile apps or websites?',
+    answer:
+      'We focus exclusively on AI assistants and automation for industrial operations. We are not a general web or app development agency.',
   },
   {
-    question: 'How does pricing work?',
-    answer: 'Projects typically start at $2,500 for a focused AI automation build. We provide a clear proposal with fixed pricing before any work begins. No hidden fees.',
+    question: 'What industries do you serve?',
+    answer:
+      'Fall protection, loading platforms, conveyor systems, EHS, heavy equipment manufacturing, spare parts management, and field operations.',
   },
 ];
 
@@ -297,8 +213,6 @@ export default {
   social,
   navigation,
   services,
-  pricing,
-  testimonials,
-  stats,
+  industries,
   faq,
 };

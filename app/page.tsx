@@ -34,7 +34,7 @@ const modalContent = {
     body: [
       "Your senior engineers shouldn't spend their day answering questions that already exist in your documentation. Once your manuals, drawings, and CMMS data are ingested, AI handles those queries instead.",
       "Staff ask plain questions and get precise answers — sourced directly from your own documents. No guessing, no waiting, no interruptions to the people doing the actual engineering work.",
-      "Legacy systems, SCADA exports, P&IDs — all made searchable. Knowledge that was locked in one person's head becomes available to the whole team.",
+      "Legacy systems, SCADA exports, P&IDs — all made searchable. Engineers can also upload drawings or photos of equipment and get the exact spec or procedure in seconds.",
     ],
     stats: [
       { value: "100%",   label: "answers sourced from your own data" },
@@ -64,15 +64,15 @@ type ModalKey = keyof typeof modalContent;
 // ─── INDUSTRIES ───────────────────────────────────────────────────────────────
 const industries = [
   { icon: Factory,      name: "Industrial Manufacturing" },
-  { icon: Anchor,       name: "Loading Platforms & Dock Systems" },
-  { icon: ShieldCheck,  name: "Fall Protection Equipment" },
+  { icon: Anchor,       name: "Loading Platforms & Rail/Truck Access" },
+  { icon: ShieldCheck,  name: "Fall Protection & Safety Systems" },
   { icon: FlaskConical, name: "Process & Chemical Equipment" },
   { icon: Shield,       name: "EHS & Safety Solutions" },
   { icon: Layers,       name: "Conveyor & Material Handling" },
   { icon: Package,      name: "Bulk Handling & Storage" },
-  { icon: Cog,          name: "Engineering & Technical" },
+  { icon: Cog,          name: "Engineering & Technical Services" },
   { icon: Truck,        name: "Logistics & Supply Chain" },
-  { icon: HardHat,      name: "Construction" },
+  { icon: HardHat,      name: "Construction & Heavy Equipment" },
 ];
 
 // ─── MODAL ────────────────────────────────────────────────────────────────────
@@ -184,14 +184,20 @@ export default function Home() {
               <div className="w-10 h-0.5 bg-blue-500 rounded-full mb-6 mx-auto lg:mx-0" />
 
               <p className="text-white/50 font-light text-base md:text-lg leading-relaxed mb-8 max-w-md mx-auto lg:mx-0">
-                Serve your <span className="text-white/80 font-medium">clients better</span>, convert more{' '}
-                <span className="text-white/80 font-medium">prospects</span>, and free your{' '}
-                <span className="text-white/80 font-medium">team</span> from repetitive tasks
-                and buried manuals.
+                We build an AI assistant trained on your own{' '}
+                <span className="text-white/80 font-medium">manuals, drawings & documents</span>{' '}
+                — and connect it directly to your{' '}
+                <span className="text-white/80 font-medium">CRM, email, and spreadsheets</span>.{' '}
+                Clients get instant answers. Your team stops digging through PDFs and inboxes.
               </p>
 
               <div className="flex flex-wrap gap-2 justify-center lg:justify-start mb-8">
-                {['24/7 Lead Capture', 'Client Self-Service', 'Team Automation', 'Zero Manual Entry'].map((pill) => (
+                {[
+                  'Trained on Your Manuals & Drawings',
+                  '24/7 Sales & Support Assistant',
+                  'Leads to CRM / Email / Sheets',
+                  'No New System for Your Team',
+                ].map((pill) => (
                   <span key={pill} className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.03] text-white/55 text-xs font-medium">
                     <span className="w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0" />
                     {pill}
@@ -281,7 +287,6 @@ export default function Home() {
       </section>
 
       {/* ── PARTNERSHIPS STRIP ── */}
-      {/* ── PARTNERSHIPS STRIP ── */}
       <section className="w-full bg-[#05060b] border-t border-b border-white/[0.04] py-8 md:py-10 relative z-20 overflow-hidden">
         <style>{`
           @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
@@ -333,14 +338,13 @@ export default function Home() {
             <img src="/images/ai-automation-bg.avif" alt="AI Automation" className="absolute inset-0 w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-r from-[#05060b] via-[#05060b]/85 to-[#05060b]/40" />
             <div className="relative z-10 max-w-3xl px-8 py-16 md:px-14 md:py-24">
-              
               <h2 className="font-space-grotesk text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-[1.08] tracking-tight mb-6">
                 What is{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-sky-300">AI Automation</span>{' '}
                 — and why does your business need it?
               </h2>
               <p className="text-gray-300 text-lg md:text-xl font-light leading-relaxed">
-                AI automation is a business model in which an AI company, consults with organisations to identify how day-to-day operations can be improved using intelligent solutions. The goal is simple: save time, minimise expenses, and maximise revenue, so business owners can focus on what actually grows their company.
+                AI automation means putting an intelligent assistant on top of the tools and documents you already use. It answers client and internal questions, fills in your CRM, drafts follow-ups, and pulls the right spec or procedure in seconds — so your team spends time on projects and customers, not admin.
               </p>
             </div>
           </div>
@@ -365,12 +369,22 @@ export default function Home() {
                 Embedded directly into your website or application.
               </h3>
               <p className="text-gray-400 font-light text-base md:text-lg leading-relaxed mb-8">
-                Your AI system lives inside your existing website or app — no rebuilding required. It engages every visitor the moment they land, answers questions, qualifies intent, and moves prospects down the funnel automatically.
+                Your AI system lives inside your existing website or app — no rebuilding required. It engages every visitor the moment they land, answers technical questions, qualifies intent, and moves prospects down the funnel automatically.
               </p>
               <div className="flex flex-col gap-4">
                 {[
-                  { label: "Trained on your business data",       desc: "Your AI learns your products, processes, pricing, and policies — so every answer is accurate and on-brand." },
-                  { label: "Answers complex process questions",   desc: "From procurement flows to technical specifications, your AI handles questions that would otherwise require a senior team member." },
+                  {
+                    label: "Trained on your manuals, drawings & documents",
+                    desc: "Your AI learns your products, specs, safety policies, and processes — so every answer is accurate, on-brand, and sourced from your own data.",
+                  },
+                  {
+                    label: "Understands PDFs, drawings & uploaded images",
+                    desc: "Clients and engineers can upload spec sheets, drawings, or photos of equipment. AI reads them and answers from your approved documentation — no manual lookup needed.",
+                  },
+                  {
+                    label: "Answers complex technical questions instantly",
+                    desc: "From product configurations to safety requirements, your AI handles questions that would otherwise require a senior team member — 24 hours a day.",
+                  },
                 ].map((item) => (
                   <div key={item.label} className="flex items-start gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/[0.05]">
                     <div className="w-5 h-5 rounded-full bg-blue-500/20 border border-blue-400/30 flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -403,15 +417,21 @@ export default function Home() {
             <div className="w-full lg:w-1/2 lg:pr-6">
               <p className="text-emerald-400 text-xs font-bold tracking-[0.18em] uppercase mb-4">Connected to Your Stack</p>
               <h3 className="font-space-grotesk text-3xl md:text-4xl font-extrabold text-white leading-tight tracking-tight mb-5">
-                Integrated with your CRM, email, and existing tools.
+                Every lead captured. Every conversation logged. Zero manual entry.
               </h3>
               <p className="text-gray-400 font-light text-base md:text-lg leading-relaxed mb-8">
-                Your AI plugs directly into Salesforce, HubSpot, Outlook, Gmail, and any platform your team already uses. Every conversation, lead qualification, and follow-up is logged and synced automatically.
+                Your AI plugs directly into Salesforce, HubSpot, Outlook, Gmail, and Google Sheets. Every inquiry, qualification, and follow-up is captured and synced automatically — no rep has to touch a keyboard to log it.
               </p>
               <div className="flex flex-col gap-4">
                 {[
-                  { label: "Automated lead capture & routing",  desc: "Every inbound inquiry is captured, qualified, and routed to the right team member — instantly, around the clock." },
-                  { label: "Intelligent follow-up sequences",   desc: "Your AI drafts and sends contextual follow-up emails within minutes. High-intent prospects never go cold." },
+                  {
+                    label: "Leads sent straight to your CRM, email, or spreadsheet",
+                    desc: "Every inbound inquiry is captured, qualified, and pushed to wherever your team works — instantly, around the clock. No forms, no delays.",
+                  },
+                  {
+                    label: "Intelligent follow-up sequences",
+                    desc: "Your AI drafts and sends contextual follow-up emails within minutes of a conversation ending. High-intent prospects never go cold.",
+                  },
                 ].map((item) => (
                   <div key={item.label} className="flex items-start gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/[0.05]">
                     <div className="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -453,7 +473,7 @@ export default function Home() {
           <img src="/images/industrial-plant.avif" alt="Industrial facility" className="absolute inset-0 w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#05060b] via-[#05060b]/85 to-[#05060b]/30" />
           <div className="relative z-10 container mx-auto px-6 md:px-12 xl:px-16 max-w-7xl py-24">
-            <p className="text-blue-400 text-xs font-bold tracking-[0.2em] uppercase mb-5">What It Means For Industrial Manufacturers</p>
+            <p className="text-blue-400 text-xs font-bold tracking-[0.2em] uppercase mb-5">Built for Industrial Operations</p>
             <h2 className="font-space-grotesk text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-[1.08] tracking-tight mb-6 max-w-2xl">
               Built for operations that{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-sky-300">
@@ -461,7 +481,7 @@ export default function Home() {
               </span>
             </h2>
             <p className="text-gray-300 text-base md:text-lg font-light leading-relaxed max-w-lg mb-10">
-              Industrial manufacturers run complex, high-stakes operations. AI sits on top of your existing systems and data - giving your sales, engineering, and safety teams instant access to the information they need.
+              Industrial manufacturers, loading platform providers, fall protection equipment makers, bulk handling companies, and safety solutions suppliers — your AI assistant sits on top of your existing systems and documentation, giving sales, engineering, and EHS teams instant answers from your own data.
             </p>
             <Link
               href="/contact"
@@ -493,7 +513,7 @@ export default function Home() {
                   icon: <Inbox className="w-5 h-5" />,
                   label: "Engineering & Technical",
                   heading: "Buried Manuals",
-                  text: "Every manual, drawing, CMMS record, and SCADA export becomes instantly searchable. Your engineers stop being interrupted and start doing engineering.",
+                  text: "Every manual, drawing, CMMS record, and SCADA export becomes instantly searchable. Upload a drawing or photo and get the exact spec in seconds.",
                   color: "indigo",
                 },
                 {
@@ -585,12 +605,12 @@ export default function Home() {
                   Knowledge available to everyone, instantly.
                 </h3>
                 <p className="text-gray-400 text-base md:text-lg font-light leading-relaxed mb-8">
-                  Train AI on your manuals, drawings, CMMS, and SCADA data. Complex technical questions get answered immediately — without interrupting your engineers.
+                  Train AI on your manuals, drawings, CMMS, and SCADA data. Engineers and technicians can ask plain-language questions — or upload a drawing or photo of equipment — and get the right spec, measurement, or procedure without interrupting senior staff.
                 </p>
                 <div className="flex flex-col gap-3 mb-8">
                   {[
                     "Technical queries answered from your own documents",
-                    "Measurements and specs pulled from drawings",
+                    "Measurements and specs pulled from drawings and uploaded images",
                     "Legacy system data made searchable",
                   ].map((point) => (
                     <div key={point} className="flex items-center gap-3">
@@ -727,7 +747,7 @@ export default function Home() {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-sky-300">Capabilities.</span>
             </h2>
             <p className="text-gray-500 text-base md:text-lg font-light mt-4 max-w-2xl mx-auto">
-              Our AI only answers from your approved documents and systems — never guesses.
+              Our AI only answers from your approved documents and systems — never guesses, never uses public data.
             </p>
           </div>
 
@@ -756,9 +776,9 @@ export default function Home() {
                 labelColor: "text-indigo-400",
                 dotColor: "bg-indigo-400",
                 reverse: true,
-                text: "Every customer conversation, lead qualification, and follow-up is mapped directly into your existing CRM pipeline. No manual entry. No lost context. 70% of administrative time recovered — redirected toward closing deals.",
+                text: "Every customer conversation, lead qualification, and follow-up is mapped directly into your existing CRM pipeline — or your email and spreadsheets if that's where your team works. No manual entry. No lost context. 70% of administrative time recovered.",
                 points: [
-                  "Salesforce, HubSpot, Dynamics 365 — all supported",
+                  "Salesforce, HubSpot, Dynamics 365, Google Sheets — all supported",
                   "Lead intent signals logged automatically after every interaction",
                   "Sales reps receive pre-qualified accounts, ready to engage",
                 ],
@@ -801,7 +821,7 @@ export default function Home() {
                 labelColor: "text-rose-400",
                 dotColor: "bg-rose-400",
                 reverse: false,
-                text: "A technician describes a symptom. The AI returns the exact corrective steps from your approved SOPs, maintenance logs, and equipment history — in seconds. No more hunting binders. No more waiting for an engineer.",
+                text: "A technician describes a symptom — or uploads a photo of the issue. The AI returns the exact corrective steps from your approved SOPs, maintenance logs, and equipment history — in seconds. No more hunting binders. No more waiting for an engineer.",
                 points: [
                   "Cuts unplanned downtime by up to 50%",
                   "MTTR and rework rate measurably reduced",
@@ -816,11 +836,11 @@ export default function Home() {
                 labelColor: "text-sky-400",
                 dotColor: "bg-sky-400",
                 reverse: true,
-                text: "Most plants weren't built for today's level of automation. We design AI that fits your real layout and tools — orchestrating across your docs, CMMS, SCADA/PLC data, and people so they work together. Practical partner. Not a generic vendor.",
+                text: "Most industrial operations weren't built for today's level of automation. We design AI that fits your real layout and tools — orchestrating across your docs, CMMS, SCADA/PLC data, and people so they work together. A practical partner. Not a generic vendor.",
                 points: [
                   "Works with messy, legacy, and fragmented data sources",
                   "Connects CMMS, SCADA/PLC, ERP, and email without rip-and-replace",
-                  "Inspired by operations like Carbis Solutions Group — complex equipment, strict safety, no room for guesswork",
+                  "Designed for complex, safety-critical equipment environments with zero room for guesswork",
                 ],
               },
             ].map((item) => (
@@ -863,7 +883,7 @@ export default function Home() {
                   </span>
                 </h3>
                 <p className="text-gray-400 font-light text-base leading-relaxed mb-6">
-                  One loading bay, one line, or one unit operation. We ingest your top 20 recurring issues and procedures, configure guardrails, and deploy a live AI assistant — in under a month.
+                  One loading bay, one product line, or one unit operation. We ingest your top 20 recurring issues and procedures, configure guardrails, and deploy a live AI assistant — in under a month.
                 </p>
                 <p className="text-white/60 text-sm font-light italic border-l-2 border-blue-500/40 pl-4 mb-8">
                   &ldquo;If it doesn&apos;t move the metrics we agree on, you keep the system and the playbook. We don&apos;t push expansion.&rdquo;
@@ -872,15 +892,15 @@ export default function Home() {
                   href="/contact"
                   className="inline-flex items-center gap-3 px-7 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20"
                 >
-                  Book a plant AI pilot <ArrowRight className="w-4 h-4" />
+                  Book a pilot <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
               <div className="grid grid-cols-1 gap-4">
                 {[
-                  { label: "Scope",     value: "One line / one loading bay / one maintenance cell",           color: "blue"    },
-                  { label: "Timeline",  value: "3–4 weeks from document handoff to live assistant",            color: "indigo"  },
-                  { label: "Target",    value: "30–50% faster answers to SOP questions, fewer repeat tickets", color: "emerald" },
-                  { label: "Guarantee", value: "You own the system regardless of outcome",                     color: "amber"   },
+                  { label: "Scope",     value: "One line / one loading bay / one product category",                color: "blue"    },
+                  { label: "Timeline",  value: "3–4 weeks from document handoff to live assistant",               color: "indigo"  },
+                  { label: "Target",    value: "30–50% faster answers to SOP and technical questions",            color: "emerald" },
+                  { label: "Guarantee", value: "You own the system regardless of outcome",                        color: "amber"   },
                 ].map((item) => (
                   <div key={item.label} className="flex items-start gap-4 p-4 rounded-xl bg-white/[0.03] border border-white/[0.06]">
                     <div className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-widest flex-shrink-0 mt-0.5 ${
@@ -920,9 +940,9 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
             {[
-              { phase: "01", pulseColor: "bg-blue-500",  label: "Phase_01", title: "Ingest Your\nSOPs & Logs",        desc: "We train a private AI model on your safety manuals, maintenance logs, CMMS records, SCADA exports, and technical PDFs.", href: "/deployment/ingestion",   hoverText: "group-hover:text-blue-500"  },
-              { phase: "02", pulseColor: "bg-blue-400",  label: "Phase_02", title: "Configure\nGuardrails & Access",  desc: "On-prem or private cloud. Per-role permissions configured. Only approved, current documents used for every answer.",      href: "/deployment/integration", hoverText: "group-hover:text-blue-400"  },
-              { phase: "03", pulseColor: "bg-sky-400",   label: "Phase_03", title: "Deploy to\nthe Floor",            desc: "Web, tablet, kiosk, or internal chat. Your team gets answers instantly. Every question logged to improve your docs.",     href: "/deployment/growth",      hoverText: "group-hover:text-sky-400"   },
+              { phase: "01", pulseColor: "bg-blue-500",  label: "Phase_01", title: "Ingest Your\nDocs & Data",          desc: "We train a private AI model on your safety manuals, maintenance logs, product specs, CMMS records, SCADA exports, drawings, and technical PDFs.", href: "/deployment/ingestion",   hoverText: "group-hover:text-blue-500"  },
+              { phase: "02", pulseColor: "bg-blue-400",  label: "Phase_02", title: "Configure\nGuardrails & Access",    desc: "On-prem or private cloud. Per-role permissions configured. Only approved, current documents used for every answer. Connected to your CRM, email, and spreadsheets.",      href: "/deployment/integration", hoverText: "group-hover:text-blue-400"  },
+              { phase: "03", pulseColor: "bg-sky-400",   label: "Phase_03", title: "Deploy &\nGo Live",                 desc: "Web, tablet, kiosk, or internal chat. Your team and clients get answers instantly. Every question logged to continuously improve your AI.",     href: "/deployment/growth",      hoverText: "group-hover:text-sky-400"   },
             ].map((item, i) => (
               <div key={item.phase} className="relative p-8 md:p-12 bg-[#0a0b12] border border-white/[0.04] hover:border-white/[0.1] rounded-2xl md:rounded-[32px] overflow-hidden group transition-all duration-500 flex flex-col justify-between">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-transparent opacity-40 group-hover:opacity-100 transition-opacity duration-500" />
@@ -963,7 +983,7 @@ export default function Home() {
               { q: "Do I own the AI system you build?",                a: <span>Yes. Unlike SaaS platforms where you rent access, we build custom AI systems that belong to you. Once the project is complete, <b>you own 100% of the code, AI agents, workflows, and data.</b> It is your asset to keep, scale, or sell.</span> },
               { q: "How long does a typical project take?",            a: <span>It depends on scope. A focused <b>AI lead capture or chatbot system</b> can be live in 7–14 days. A full <b>multi-channel automation suite</b> typically takes 4–8 weeks. We work in short sprints so you see progress constantly.</span> },
               { q: "What happens after launch?",                       a: <span>We don&apos;t disappear after launch. Every project includes a <b>30-day warranty period</b> for bug fixes. After that, we offer optional support packages to keep your AI system optimized, updated, and performing at its best.</span> },
-              { q: "Can you add AI to my existing website or systems?", a: <span>Absolutely. We specialize in integrating AI into what you already have. Whether it&apos;s a WordPress site, a Shopify store, or a custom app — we add AI chatbots, lead capture, and automation workflows <b>without rebuilding anything.</b></span> },
+              { q: "Can you add AI to my existing website or systems?", a: <span>Absolutely. We specialize in integrating AI into what you already have — whether it&apos;s an industrial product site, an engineering portal, or an internal ops system. We add AI chat, lead capture, and automation workflows <b>without rebuilding anything.</b></span> },
               { q: "How does your pricing work?",                      a: <span>Projects typically start at <b>$2,500</b> for a focused AI automation build. Pricing depends on scope and complexity. We provide a clear proposal with a fixed price before any work begins. <b>No hidden fees. No forced recurring charges.</b></span> },
               { q: "Will I work directly with your team?",             a: <span>Yes. You work directly with the people building your system — including our founder. No account managers in between. You get a direct line to the engineers and AI specialists working on your project.</span> },
             ].map((item) => (
@@ -994,7 +1014,7 @@ export default function Home() {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-300 to-sky-300">your business?</span>
             </h2>
             <p className="text-gray-400 text-base md:text-lg">
-              Tell us about your goals. We&apos;ll show you exactly how AI can capture more leads, engage customers, and save your team hours every week.
+              Tell us about your goals. We&apos;ll show you exactly how AI can capture more leads, answer technical questions, and save your team hours every week.
             </p>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 xl:gap-24 items-start">
@@ -1050,14 +1070,14 @@ export default function Home() {
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-gray-300 ml-1">Project Description</label>
-                  <textarea rows={4} placeholder="Tell us about your business goals, what you want to automate, and any systems you currently use..." className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm md:text-base text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/40 transition-all resize-none" suppressHydrationWarning />
+                  <textarea rows={4} placeholder="Tell us about your business, what you want to automate, and any systems you currently use (CRM, CMMS, SCADA, etc.)..." className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm md:text-base text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/40 transition-all resize-none" suppressHydrationWarning />
                 </div>
                 <div className="border-2 border-dashed border-white/[0.08] rounded-xl p-6 md:p-8 text-center hover:border-blue-500/30 hover:bg-blue-500/[0.03] transition-all cursor-pointer group">
                   <UploadCloud size={24} className="md:size-[32px] mx-auto text-gray-500 group-hover:text-blue-400 transition-colors mb-2" />
                   <p className="text-xs md:text-sm text-gray-500 font-medium">
                     <span className="text-blue-400 font-bold">Click to upload</span> or drag and drop
                   </p>
-                  <p className="text-xs text-gray-600 mt-1">PDF, DOCX, or PPT (Max 10MB)</p>
+                  <p className="text-xs text-gray-600 mt-1">Manuals, drawings, SOPs, or specs (PDF, DOCX, up to 10MB)</p>
                 </div>
                 <button className="w-full py-3 md:py-4 rounded-xl bg-blue-600 text-white font-bold text-base md:text-lg hover:bg-blue-500 shadow-xl shadow-blue-500/20 transition-all transform hover:-translate-y-1">
                   Get Your Free AI Consultation

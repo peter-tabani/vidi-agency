@@ -2,96 +2,104 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { 
+import Image from 'next/image';
+import {
   Menu, X, ChevronDown, ChevronRight, ArrowRight,
-  Smartphone, Globe, Bot, Database,
-  Stethoscope, Home, Scale, GraduationCap, Plane, Utensils, ShoppingBag,
-  HardHat, Heart, Truck, Dumbbell, Scissors, Landmark, Rocket, Briefcase,
-  Users, BookOpen, CreditCard, BarChart, MessageSquare
+  Bot, Database, Smartphone, MessageSquare,
+  Shield, Layers, Cog, ShieldCheck,
+  Factory, Anchor, Package,
+  Users, BarChart,
+  FileText, Mail,
+  TrendingUp, Target
 } from 'lucide-react';
 
-// --- DATA: SERVICES MENU ---
+// --- SERVICES (only what Vidi actually delivers) ---
 const servicesData = [
   {
-    id: "ai-lead-capture",
+    id: "lead-capture",
     label: "AI Lead Capture & Qualification",
     icon: Bot,
-    headerDesc: "Capture, qualify, and route leads 24/7 with AI agents.",
+    headerDesc: "AI chatbots that capture leads, qualify them, and sync directly to your CRM or email.",
     subServices: [
-      { title: "AI Chatbots", desc: "Engage visitors and qualify leads in real time." },
-      { title: "Lead Routing", desc: "Auto-assign leads to your sales team." },
-      { title: "Multi-Channel Capture", desc: "Web, WhatsApp, Instagram, SMS." },
-      { title: "CRM Integration", desc: "Sync leads directly to your CRM." }
+      { title: "Lead Capture", desc: "Collect name, email, phone, company — automatically." },
+      { title: "Smart Qualification", desc: "Ask the right questions to identify hot leads." },
+      { title: "CRM Integration", desc: "HubSpot, Salesforce, Zoho — leads saved instantly." },
+      { title: "Email Sync", desc: "Auto-send lead details to your sales team." }
     ]
   },
   {
-    id: "ai-engagement",
-    label: "AI Customer Engagement",
+    id: "customer-support",
+    label: "AI Customer Support",
     icon: MessageSquare,
-    headerDesc: "Automate customer support and engagement across channels.",
+    headerDesc: "24/7 AI assistants that answer customer questions and escalate when needed.",
     subServices: [
-      { title: "AI Support Agents", desc: "Resolve FAQs and issues instantly." },
-      { title: "Automated Follow-Ups", desc: "SMS, email, and WhatsApp sequences." },
-      { title: "Booking & Scheduling", desc: "AI-powered appointment management." },
-      { title: "Unified Inbox", desc: "All channels in one stream." }
+      { title: "FAQ Automation", desc: "Trained on your FAQs, manuals, and support docs." },
+      { title: "Multi-Channel", desc: "Deploy on website, WhatsApp, or email." },
+      { title: "Human Handoff", desc: "Seamless transfer to your team when required." },
+      { title: "Ticket Logging", desc: "Every conversation saved and organised automatically." }
     ]
   },
   {
-    id: "ai-automation",
-    label: "AI Workflow Automation",
+    id: "engineering-assistant",
+    label: "Engineering Knowledge Assistant",
     icon: Database,
-    headerDesc: "Eliminate repetitive work and connect your systems.",
+    headerDesc: "AI trained on your manuals, drawings, and specs — answers engineers instantly.",
     subServices: [
-      { title: "Process Automation", desc: "Automate data entry and internal tasks." },
-      { title: "System Integration", desc: "Connect CRM, email, payments, and more." },
-      { title: "Smart Dashboards", desc: "Real-time business analytics." },
-      { title: "Custom AI Tools", desc: "Tailored solutions for your workflows." }
+      { title: "Document Search", desc: "Find the right section of any manual in seconds." },
+      { title: "Image & Drawing Analysis", desc: "Upload a photo or drawing; AI retrieves specs." },
+      { title: "CMMS Integration", desc: "Pull maintenance history and work orders." },
+      { title: "Plain-Language Answers", desc: "No jargon — just the right answer, fast." }
     ]
   },
   {
-    id: "web-app-dev",
-    label: "AI-Powered Websites & Apps",
-    icon: Smartphone,
-    headerDesc: "High-performance websites and apps built to support your AI systems.",
+    id: "document-analysis",
+    label: "AI Document & Image Analysis",
+    icon: FileText,
+    headerDesc: "Upload images of manuals, parts, or systems; AI extracts info and answers questions.",
     subServices: [
-      { title: "Custom Websites", desc: "Next.js, React, high-performance." },
-      { title: "E-Commerce", desc: "Shopify & custom online stores." },
-      { title: "Mobile Apps", desc: "iOS & Android (Kotlin/Flutter)." },
-      { title: "SaaS Platforms", desc: "Subscription software products." }
+      { title: "Manual Upload & Analysis", desc: "Upload a PDF; AI reads and answers questions from it." },
+      { title: "Part Identification", desc: "Snap a photo; AI identifies the part and retrieves specs." },
+      { title: "Technical Data Extraction", desc: "Pull measurements, materials, and instructions." },
+      { title: "System Diagram Reading", desc: "Upload a diagram; AI explains components." }
+    ]
+  },
+  {
+    id: "crm-email-integration",
+    label: "CRM & Email Integration",
+    icon: Mail,
+    headerDesc: "Connect your AI assistant with your existing sales and communication tools.",
+    subServices: [
+      { title: "One-Click CRM Sync", desc: "Leads automatically appear in your CRM." },
+      { title: "Email Capture", desc: "Save lead details to your email list automatically." },
+      { title: "Follow-up Sequences", desc: "AI triggers email sequences based on lead behaviour." },
+      { title: "Live Dashboard", desc: "Real-time view of leads and conversations." }
     ]
   }
 ];
 
-// --- DATA: INDUSTRIES MENU ---
+// --- INDUSTRIAL VERTICALS (matching your actual niche) ---
 const industriesData = [
-  { name: "Healthcare", icon: Stethoscope, href: "/industries/healthcare" },
-  { name: "Real Estate", icon: Home, href: "/industries/real-estate" }, 
-  { name: "Legal", icon: Scale, href: "/industries/legal" },
-  { name: "Education", icon: GraduationCap, href: "/industries/education" },
-  { name: "Hospitality", icon: Plane, href: "/industries/hospitality" },
-  { name: "Food & Restaurant", icon: Utensils, href: "/industries/restaurant" },
-  { name: "Retail & E-Com", icon: ShoppingBag, href: "/industries/retail" },
-  { name: "Construction", icon: HardHat, href: "/industries/construction" },
-  { name: "Non-Profit", icon: Heart, href: "/industries/non-profit" },
-  { name: "Logistics", icon: Truck, href: "/industries/logistics" },
-  { name: "Fitness", icon: Dumbbell, href: "/industries/fitness" },
-  { name: "Beauty", icon: Scissors, href: "/industries/beauty-lifestyle" },
-  { name: "Fintech", icon: Landmark, href: "/industries/fintech" },
-  { name: "Startups", icon: Rocket, href: "/industries/startups" },
-  { name: "Supply Chain & POS", icon: BarChart, href: "/industries/supply-chain-pos" },
+  { name: "Fall Protection & Safety", icon: Shield },
+  { name: "Loading Platforms & Docks", icon: Anchor },
+  { name: "Conveyor & Material Handling", icon: Layers },
+  { name: "EHS & Compliance", icon: ShieldCheck },
+  { name: "Engineering & Technical Docs", icon: Cog },
+  { name: "Heavy Equipment Manufacturing", icon: Factory },
+  { name: "Spare Parts Management", icon: Package },
+  { name: "Field Operations Support", icon: Smartphone },
 ];
 
-// --- DATA: COMPANY MENU ---
+// --- COMPANY MENU (trimmed — only pages that exist) ---
 const companyData = [
   { name: "About Us", href: "/about", icon: Users, desc: "Our mission & team." },
-  { name: "Blog", href: "/blog", icon: BookOpen, desc: "Latest tech insights." },
+  { name: "Our Work", href: "/case-studies", icon: BarChart, desc: "Real-world client results." },
 ];
 
 export default function Navbar() {
-  const [activeMenu, setActiveMenu] = useState<string | null>(null); 
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [activeService, setActiveService] = useState(servicesData[0]);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [expandedMobileSection, setExpandedMobileSection] = useState<string | null>(null); 
+  const [expandedMobileSection, setExpandedMobileSection] = useState<string | null>(null);
 
   const navRef = useRef<HTMLElement>(null);
 
@@ -117,25 +125,35 @@ export default function Navbar() {
     <>
       <nav ref={navRef} className="fixed top-0 z-50 w-full bg-[#05060b]/90 backdrop-blur-xl border-b border-white/[0.06] transition-all duration-300">
         <div className="container mx-auto flex h-16 md:h-20 items-center justify-between px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 relative">
-          
-          <Link href="/" className="text-xl md:text-2xl font-bold font-space-grotesk flex items-center gap-1.5 cursor-pointer hover:opacity-80 transition-opacity z-50">
-            <span className="text-blue-400">Vidi</span>
-            <span className="text-white">Agency</span>
+
+          {/* LOGO + BRAND */}
+          <Link href="/" className="flex items-center gap-2.5 cursor-pointer hover:opacity-80 transition-opacity z-50">
+            {/* Replace /logo.png with your actual logo file path */}
+            <div className="w-8 h-8 md:w-9 md:h-9 relative flex-shrink-0">
+              <Image
+                src="/logo.png"
+                alt="Vidi Agency Logo"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
+            <span className="text-xl md:text-2xl font-bold font-space-grotesk flex items-center gap-1">
+              <span className="text-blue-400">Vidi</span>
+              <span className="text-white">Agency</span>
+            </span>
           </Link>
 
           {/* DESKTOP NAVIGATION */}
           <div className="hidden md:flex items-center gap-3 lg:gap-4 xl:gap-6 text-sm font-semibold text-gray-300 h-full font-space-grotesk">
-            
+
             <Link href="/" className="hover:text-white transition-colors h-full flex items-center px-2 py-1 rounded-lg hover:bg-white/[0.06] text-xs lg:text-sm xl:text-base whitespace-nowrap">
               Home
             </Link>
-            <Link href="/solutions" className="hover:text-white transition-colors h-full flex items-center font-bold px-2 py-1 rounded-lg hover:bg-white/[0.06] text-xs lg:text-sm xl:text-base whitespace-nowrap">
-              Solutions
-            </Link>
 
-            {/* 1. SERVICES MEGA MENU */}
+            {/* Services Mega Menu */}
             <div className="h-full flex items-center relative">
-              <button 
+              <button
                 onClick={() => toggleMenu('services')}
                 className={`flex items-center gap-1 hover:text-white transition-all duration-300 px-3 py-1.5 rounded-full ${activeMenu === 'services' ? 'text-white bg-white/10' : 'hover:bg-white/[0.06]'} text-xs lg:text-sm xl:text-base whitespace-nowrap`}
               >
@@ -143,24 +161,24 @@ export default function Navbar() {
                 <ChevronDown size={14} className={`transition-transform duration-300 ${activeMenu === 'services' ? 'rotate-180' : ''}`} />
               </button>
               <div className={`
-                absolute top-[60px] md:top-[70px] left-1/2 -translate-x-1/2 
+                absolute top-[60px] md:top-[70px] left-1/2 -translate-x-1/2
                 w-[calc(100vw-2rem)] md:w-[calc(100vw-4rem)] lg:w-[calc(100vw-8rem)] xl:w-[calc(100vw-16rem)] max-w-[1200px]
-                bg-[#0c0d14]/95 backdrop-blur-2xl shadow-2xl shadow-black/40 rounded-xl md:rounded-3xl 
-                border border-white/[0.08] p-2 transition-all duration-300 origin-top transform 
+                bg-[#0c0d14]/95 backdrop-blur-2xl shadow-2xl shadow-black/40 rounded-xl md:rounded-3xl
+                border border-white/[0.08] p-2 transition-all duration-300 origin-top transform
                 ${activeMenu === 'services' ? 'opacity-100 visible scale-100 translate-y-0' : 'opacity-0 invisible scale-95 -translate-y-4'}
               `}>
                 <div className="flex flex-col lg:flex-row h-auto lg:h-[400px] overflow-hidden rounded-xl md:rounded-2xl">
-                  {/* Left Panel - Service Selection */}
+                  {/* Left Panel */}
                   <div className="w-full lg:w-1/3 bg-white/[0.03] p-3 md:p-4 flex flex-col gap-1 md:gap-2 border-b lg:border-r border-white/[0.06]">
                     {servicesData.map((service) => {
                       const Icon = service.icon;
                       const isActive = activeService.id === service.id;
                       return (
-                        <button 
-                          key={service.id} 
+                        <button
+                          key={service.id}
                           onMouseEnter={() => setActiveService(service)}
                           className={`
-                            flex items-center gap-2 md:gap-3 px-3 md:px-4 py-3 md:py-4 rounded-xl md:rounded-2xl 
+                            flex items-center gap-2 md:gap-3 px-3 md:px-4 py-3 md:py-4 rounded-xl md:rounded-2xl
                             text-left transition-all duration-200 group min-h-[60px]
                             ${isActive ? 'bg-white/10 text-blue-400 ring-1 ring-blue-500/20' : 'text-gray-400 hover:bg-white/[0.06] hover:text-gray-200'}
                           `}
@@ -177,8 +195,8 @@ export default function Navbar() {
                       );
                     })}
                   </div>
-                  
-                  {/* Right Panel - Subservices */}
+
+                  {/* Right Panel */}
                   <div className="w-full lg:w-2/3 p-4 md:p-6 lg:p-8">
                     <div className="mb-4 md:mb-6 pb-4 md:pb-6 border-b border-white/[0.06]">
                       <h3 className="text-lg md:text-xl font-bold text-white mb-1 flex items-center gap-2">
@@ -189,8 +207,8 @@ export default function Navbar() {
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-x-6 md:gap-y-6">
                       {activeService.subServices.map((sub, idx) => (
-                        <div 
-                          key={idx} 
+                        <div
+                          key={idx}
                           className="group cursor-pointer p-2 md:p-3 rounded-lg md:rounded-xl hover:bg-white/[0.06] transition-colors"
                         >
                           <h4 className="font-bold text-gray-200 text-sm mb-1 group-hover:text-blue-400 transition-colors">
@@ -205,9 +223,9 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* 2. INDUSTRIES MEGA MENU */}
+            {/* Industries Mega Menu */}
             <div className="h-full flex items-center relative">
-              <button 
+              <button
                 onClick={() => toggleMenu('industries')}
                 className={`flex items-center gap-1 hover:text-white transition-all duration-300 px-3 py-1.5 rounded-full ${activeMenu === 'industries' ? 'text-white bg-white/10' : 'hover:bg-white/[0.06]'} text-xs lg:text-sm xl:text-base whitespace-nowrap`}
               >
@@ -215,28 +233,26 @@ export default function Navbar() {
                 <ChevronDown size={14} className={`transition-transform duration-300 ${activeMenu === 'industries' ? 'rotate-180' : ''}`} />
               </button>
               <div className={`
-                absolute top-[60px] md:top-[70px] left-1/2 -translate-x-1/2 
+                absolute top-[60px] md:top-[70px] left-1/2 -translate-x-1/2
                 w-[calc(100vw-2rem)] md:w-[calc(100vw-4rem)] lg:w-[calc(100vw-8rem)] xl:w-[calc(100vw-16rem)] max-w-[1200px]
-                bg-[#0c0d14]/95 backdrop-blur-2xl shadow-2xl shadow-black/40 rounded-xl md:rounded-[32px] 
+                bg-[#0c0d14]/95 backdrop-blur-2xl shadow-2xl shadow-black/40 rounded-xl md:rounded-[32px]
                 border border-white/[0.08] overflow-hidden transition-all duration-300 origin-top transform
                 ${activeMenu === 'industries' ? 'opacity-100 visible scale-100 translate-y-0' : 'opacity-0 invisible scale-95 -translate-y-4'}
               `}>
                 <div className="p-4 md:p-6 lg:p-8">
                   <h3 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4 md:mb-6 px-2">
-                    Industries We Serve
+                    Industrial Sectors We Serve
                   </h3>
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
                     {industriesData.map((industry, idx) => (
-                      <Link 
-                        key={idx} 
-                        href={industry.href} 
-                        onClick={() => setActiveMenu(null)}
-                        className="group flex flex-col items-center justify-center p-3 md:p-4 lg:p-6 
-                        rounded-xl md:rounded-2xl lg:rounded-3xl transition-all duration-300 
-                        bg-white/[0.04] border border-white/[0.06] 
-                        hover:bg-white/[0.08] hover:border-white/[0.12] 
-                        hover:-translate-y-0.5 md:hover:-translate-y-1 
-                        text-center min-h-[100px]"
+                      <div
+                        key={idx}
+                        className="group flex flex-col items-center justify-center p-3 md:p-4 lg:p-6
+                        rounded-xl md:rounded-2xl lg:rounded-3xl transition-all duration-300
+                        bg-white/[0.04] border border-white/[0.06]
+                        hover:bg-white/[0.08] hover:border-white/[0.12]
+                        hover:-translate-y-0.5 md:hover:-translate-y-1
+                        text-center min-h-[100px] cursor-default"
                       >
                         <div className="mb-2 md:mb-3 text-blue-400/70 group-hover:text-blue-400 transition-colors">
                           {React.createElement(industry.icon, { size: 24, className: "md:size-[30px]" })}
@@ -244,42 +260,40 @@ export default function Navbar() {
                         <span className="text-xs md:text-sm font-bold text-gray-400 group-hover:text-white transition-colors line-clamp-2 px-1">
                           {industry.name}
                         </span>
-                      </Link>
+                      </div>
                     ))}
                   </div>
                 </div>
                 <div className="border-t border-white/[0.06] p-4 md:p-6 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6">
                   <div className="flex items-center gap-3 md:gap-4">
                     <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-gradient-to-br from-blue-600 to-blue-500 flex items-center justify-center text-white shadow-lg shadow-blue-500/20 flex-shrink-0">
-                      <Rocket size={24} className="md:size-[32px]" />
+                      <Bot size={24} className="md:size-[32px]" />
                     </div>
                     <div>
                       <h4 className="text-base md:text-lg font-bold text-white">
-                        AI Automation for Every Industry
+                        AI Assistants for Heavy Industry & Manufacturing
                       </h4>
                       <p className="text-xs md:text-sm text-gray-400 mt-1">
-                        We build AI systems that capture leads and automate engagement across industries.
+                        Lead capture, customer support, and engineering knowledge — powered by your own documents.
                       </p>
                     </div>
                   </div>
-                  <Link 
-                    href="/case-studies" 
+                  <Link
+                    href="/about"
                     onClick={() => setActiveMenu(null)}
-                    className="px-4 md:px-6 py-2.5 md:py-3 bg-blue-600 text-white rounded-xl md:rounded-2xl 
-                    font-bold text-xs md:text-sm hover:bg-blue-500 transition-all 
+                    className="px-4 md:px-6 py-2.5 md:py-3 bg-blue-600 text-white rounded-xl md:rounded-2xl
+                    font-bold text-xs md:text-sm hover:bg-blue-500 transition-all
                     shadow-lg shadow-blue-500/20 w-full md:w-auto text-center whitespace-nowrap"
                   >
-                    View All Industries
+                    Learn More
                   </Link>
                 </div>
               </div>
             </div>
 
-            
-
-            {/* 3. COMPANY MENU */}
+            {/* Company Menu */}
             <div className="h-full flex items-center relative">
-              <button 
+              <button
                 onClick={() => toggleMenu('company')}
                 className={`flex items-center gap-1 hover:text-white transition-all duration-300 px-3 py-1.5 rounded-full ${activeMenu === 'company' ? 'text-white bg-white/10' : 'hover:bg-white/[0.06]'} text-xs lg:text-sm xl:text-base whitespace-nowrap`}
               >
@@ -287,17 +301,17 @@ export default function Navbar() {
                 <ChevronDown size={14} className={`transition-transform duration-300 ${activeMenu === 'company' ? 'rotate-180' : ''}`} />
               </button>
               <div className={`
-                absolute top-[60px] md:top-[70px] left-1/2 -translate-x-1/2 
-                w-[250px] bg-[#0c0d14]/95 backdrop-blur-2xl shadow-2xl shadow-black/40 rounded-xl md:rounded-2xl 
-                border border-white/[0.08] p-2 transition-all duration-300 origin-top transform 
+                absolute top-[60px] md:top-[70px] left-1/2 -translate-x-1/2
+                w-[220px] bg-[#0c0d14]/95 backdrop-blur-2xl shadow-2xl shadow-black/40 rounded-xl md:rounded-2xl
+                border border-white/[0.08] p-2 transition-all duration-300 origin-top transform
                 ${activeMenu === 'company' ? 'opacity-100 visible scale-100 translate-y-0' : 'opacity-0 invisible scale-95 -translate-y-4'}
               `}>
                 {companyData.map((item, idx) => (
-                  <Link 
-                    key={idx} 
-                    href={item.href} 
+                  <Link
+                    key={idx}
+                    href={item.href}
                     onClick={() => setActiveMenu(null)}
-                    className="flex items-center gap-2 md:gap-3 px-3 md:px-4 py-2.5 md:py-3 rounded-lg md:rounded-xl 
+                    className="flex items-center gap-2 md:gap-3 px-3 md:px-4 py-2.5 md:py-3 rounded-lg md:rounded-xl
                     hover:bg-white/[0.06] transition-colors group min-h-[50px]"
                   >
                     <div className="text-gray-500 group-hover:text-blue-400">
@@ -307,7 +321,7 @@ export default function Navbar() {
                       <span className="font-bold text-gray-300 text-xs md:text-sm block group-hover:text-white truncate">
                         {item.name}
                       </span>
-                      <span className="text-[10px] md:text-[10px] text-gray-500 block truncate">
+                      <span className="text-[10px] text-gray-500 block truncate">
                         {item.desc}
                       </span>
                     </div>
@@ -317,20 +331,20 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* DESKTOP CTA BUTTON - FIXED FOR RESPONSIVENESS */}
+          {/* DESKTOP CTA */}
           <div className="hidden md:flex items-center gap-3">
-            <Link 
-              href="/contact" 
+            <Link
+              href="/contact"
               className="inline-flex items-center justify-center gap-2 px-3 py-2 lg:px-4 lg:py-2.5 xl:px-6 xl:py-3 rounded-full text-white font-bold font-space-grotesk bg-blue-600 hover:bg-blue-500 transition-all shadow-lg shadow-blue-500/20 whitespace-nowrap min-w-[120px] text-xs lg:text-sm xl:text-base"
             >
-              
-              <span className="hidden lg:inline">Speak to an Expert</span>
-              <span className="lg:hidden">Demo</span>
+              <span className="hidden lg:inline">Talk to Us</span>
+              <span className="lg:hidden">Contact</span>
+              <ArrowRight size={14} className="hidden lg:inline" />
             </Link>
           </div>
 
-          {/* MOBILE MENU TOGGLE */}
-          <button 
+          {/* MOBILE TOGGLE */}
+          <button
             className="md:hidden p-2 text-gray-300 hover:bg-white/10 rounded-lg transition-colors z-50"
             onClick={() => setIsMobileMenuOpen(true)}
             aria-label="Open menu"
@@ -342,20 +356,24 @@ export default function Navbar() {
 
       {/* MOBILE FULL SCREEN MENU */}
       <div className={`
-        fixed inset-0 z-[100] bg-[#05060b] transition-all duration-300 ease-in-out 
+        fixed inset-0 z-[100] bg-[#05060b] transition-all duration-300 ease-in-out
         ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}
       `}>
-        {/* Mobile Header */}
         <div className="flex items-center justify-between px-4 sm:px-6 h-16 border-b border-white/[0.06]">
-          <Link 
-            href="/" 
+          <Link
+            href="/"
             onClick={() => setIsMobileMenuOpen(false)}
-            className="text-xl font-bold font-space-grotesk flex items-center gap-1.5"
+            className="flex items-center gap-2 font-bold font-space-grotesk"
           >
-            <span className="text-blue-400">Vidi</span>
-            <span className="text-white">Agency</span>
+            <div className="w-7 h-7 relative flex-shrink-0">
+              <Image src="/logo.png" alt="Vidi Agency Logo" fill className="object-contain" />
+            </div>
+            <span className="text-xl flex items-center gap-1">
+              <span className="text-blue-400">Vidi</span>
+              <span className="text-white">Agency</span>
+            </span>
           </Link>
-          <button 
+          <button
             onClick={() => setIsMobileMenuOpen(false)}
             className="p-2 text-gray-400 hover:bg-white/10 rounded-full transition-colors"
             aria-label="Close menu"
@@ -364,40 +382,29 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Mobile Menu Content */}
         <div className="flex flex-col px-4 sm:px-6 py-4 overflow-y-auto h-[calc(100vh-64px)] font-space-grotesk">
-          {/* Home Link */}
-          <Link 
-            href="/" 
+          <Link
+            href="/"
             onClick={() => setIsMobileMenuOpen(false)}
             className="py-3 text-base font-medium text-gray-300 border-b border-white/[0.06] flex items-center min-h-[56px] hover:text-white transition-colors"
           >
             Home
           </Link>
 
-          {/* Solutions Link */}
-          <Link 
-            href="/solutions" 
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="py-3 text-base font-bold text-blue-400 border-b border-white/[0.06] flex items-center min-h-[56px]"
-          >
-            Solutions
-          </Link>
-
           {/* Services Accordion */}
           <div className="border-b border-white/[0.06]">
-            <button 
+            <button
               onClick={() => toggleMobileSection('services')}
               className="flex items-center justify-between w-full py-3 text-base font-medium text-gray-300 min-h-[56px]"
             >
-              Services 
-              <ChevronDown 
-                size={20} 
-                className={`transition-transform duration-300 ${expandedMobileSection === 'services' ? 'rotate-180 text-blue-400' : 'text-gray-500'}`} 
+              Services
+              <ChevronDown
+                size={20}
+                className={`transition-transform duration-300 ${expandedMobileSection === 'services' ? 'rotate-180 text-blue-400' : 'text-gray-500'}`}
               />
             </button>
             <div className={`
-              overflow-hidden transition-all duration-300 ease-in-out 
+              overflow-hidden transition-all duration-300 ease-in-out
               ${expandedMobileSection === 'services' ? 'max-h-[600px] opacity-100 pb-4' : 'max-h-0 opacity-0'}
             `}>
               {servicesData.map((service, idx) => (
@@ -408,8 +415,8 @@ export default function Navbar() {
                   </div>
                   <div className="pl-4 space-y-2 border-l-2 border-white/[0.06]">
                     {service.subServices.map((sub, sIdx) => (
-                      <div 
-                        key={sIdx} 
+                      <div
+                        key={sIdx}
                         className="text-xs text-gray-500 py-1.5 px-2 rounded hover:bg-white/[0.06] hover:text-gray-300"
                       >
                         {sub.title}
@@ -423,76 +430,60 @@ export default function Navbar() {
 
           {/* Industries Accordion */}
           <div className="border-b border-white/[0.06]">
-            <button 
+            <button
               onClick={() => toggleMobileSection('industries')}
               className="flex items-center justify-between w-full py-3 text-base font-medium text-gray-300 min-h-[56px]"
             >
-              Industries 
-              <ChevronDown 
-                size={20} 
-                className={`transition-transform duration-300 ${expandedMobileSection === 'industries' ? 'rotate-180 text-blue-400' : 'text-gray-500'}`} 
+              Industries
+              <ChevronDown
+                size={20}
+                className={`transition-transform duration-300 ${expandedMobileSection === 'industries' ? 'rotate-180 text-blue-400' : 'text-gray-500'}`}
               />
             </button>
             <div className={`
-              overflow-hidden transition-all duration-300 ease-in-out 
-              ${expandedMobileSection === 'industries' ? 'max-h-[600px] opacity-100 pb-4' : 'max-h-0 opacity-0'}
+              overflow-hidden transition-all duration-300 ease-in-out
+              ${expandedMobileSection === 'industries' ? 'max-h-[400px] opacity-100 pb-4' : 'max-h-0 opacity-0'}
             `}>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 pt-3">
-                {industriesData.map((industry, idx) => {
-                  const isSupplyChain = industry.name === "Supply Chain & POS";
-                  return (
-                    <Link 
-                      key={idx} 
-                      href={industry.href} 
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className={`
-                        flex flex-col items-center justify-center p-2 rounded-lg 
-                        bg-white/[0.04] border border-white/[0.06] text-center hover:bg-white/[0.08]
-                        ${isSupplyChain ? 'min-h-[100px]' : 'min-h-[90px]'}
-                      `}
-                    >
-                      <div className="text-blue-400/70 mb-1">
-                        {React.createElement(industry.icon, { 
-                          size: isSupplyChain ? 16 : 18 
-                        })}
-                      </div>
-                      <span className={`
-                        font-semibold text-gray-400 
-                        ${isSupplyChain ? 'text-[11px] leading-tight' : 'text-xs'}
-                        line-clamp-2 px-1
-                      `}>
-                        {industry.name}
-                      </span>
-                    </Link>
-                  );
-                })}
+              <div className="grid grid-cols-2 gap-2 pt-3">
+                {industriesData.map((industry, idx) => (
+                  <div
+                    key={idx}
+                    className="flex flex-col items-center justify-center p-3 rounded-lg
+                    bg-white/[0.04] border border-white/[0.06] text-center min-h-[80px] cursor-default"
+                  >
+                    <div className="text-blue-400/70 mb-1">
+                      {React.createElement(industry.icon, { size: 18 })}
+                    </div>
+                    <span className="text-xs font-semibold text-gray-400 leading-tight">
+                      {industry.name}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
 
-          
-
           {/* Company Accordion */}
           <div className="border-b border-white/[0.06]">
-            <button 
+            <button
               onClick={() => toggleMobileSection('company')}
               className="flex items-center justify-between w-full py-3 text-base font-medium text-gray-300 min-h-[56px]"
             >
-              Company 
-              <ChevronDown 
-                size={20} 
-                className={`transition-transform duration-300 ${expandedMobileSection === 'company' ? 'rotate-180 text-blue-400' : 'text-gray-500'}`} 
+              Company
+              <ChevronDown
+                size={20}
+                className={`transition-transform duration-300 ${expandedMobileSection === 'company' ? 'rotate-180 text-blue-400' : 'text-gray-500'}`}
               />
             </button>
             <div className={`
-              overflow-hidden transition-all duration-300 ease-in-out 
-              ${expandedMobileSection === 'company' ? 'max-h-[150px] opacity-100 pb-4' : 'max-h-0 opacity-0'}
+              overflow-hidden transition-all duration-300 ease-in-out
+              ${expandedMobileSection === 'company' ? 'max-h-[200px] opacity-100 pb-4' : 'max-h-0 opacity-0'}
             `}>
               <div className="flex flex-col gap-1 pl-4 pt-2">
                 {companyData.map((item, idx) => (
-                  <Link 
-                    key={idx} 
-                    href={item.href} 
+                  <Link
+                    key={idx}
+                    href={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
                     className="flex items-center gap-2 py-2.5 text-gray-400 hover:text-white hover:bg-white/[0.06] rounded-lg px-2"
                   >
@@ -506,15 +497,15 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Mobile CTA Button */}
-          <Link 
-            href="/contact" 
+          {/* Mobile CTA */}
+          <Link
+            href="/contact"
             onClick={() => setIsMobileMenuOpen(false)}
-            className="block w-full mt-8 py-3.5 rounded-full text-white font-bold 
+            className="block w-full mt-8 py-3.5 rounded-full text-white font-bold
             bg-blue-600 hover:bg-blue-500 shadow-lg shadow-blue-500/20 text-center text-sm flex items-center justify-center gap-2 transition-colors"
           >
-            
-            Book a Demo
+            Talk to Us
+            <ArrowRight size={16} />
           </Link>
         </div>
       </div>
