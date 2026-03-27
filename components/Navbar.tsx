@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -13,7 +13,7 @@ import {
   TrendingUp, Target
 } from 'lucide-react';
 
-// --- SERVICES (only what Vidi actually delivers) ---
+// --- SERVICES ---
 const servicesData = [
   {
     id: "lead-capture",
@@ -77,7 +77,7 @@ const servicesData = [
   }
 ];
 
-// --- INDUSTRIAL VERTICALS (matching your actual niche) ---
+// --- INDUSTRIAL VERTICALS ---
 const industriesData = [
   { name: "Fall Protection & Safety", icon: Shield },
   { name: "Loading Platforms & Docks", icon: Anchor },
@@ -89,7 +89,7 @@ const industriesData = [
   { name: "Field Operations Support", icon: Smartphone },
 ];
 
-// --- COMPANY MENU (trimmed — only pages that exist) ---
+// --- COMPANY MENU ---
 const companyData = [
   { name: "About Us", href: "/about", icon: Users, desc: "Our mission & team." },
   { name: "Our Work", href: "/case-studies", icon: BarChart, desc: "Real-world client results." },
@@ -103,6 +103,12 @@ export default function Navbar() {
 
   const navRef = useRef<HTMLElement>(null);
 
+  // Close all menus — reusable
+  const closeAll = useCallback(() => {
+    setActiveMenu(null);
+    setIsMobileMenuOpen(false);
+  }, []);
+
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (navRef.current && !navRef.current.contains(event.target as Node)) {
@@ -111,6 +117,13 @@ export default function Navbar() {
     }
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // Close dropdown on route change (popstate)
+  useEffect(() => {
+    const handleRouteChange = () => setActiveMenu(null);
+    window.addEventListener('popstate', handleRouteChange);
+    return () => window.removeEventListener('popstate', handleRouteChange);
   }, []);
 
   const toggleMenu = (menuName: string) => {
@@ -126,9 +139,8 @@ export default function Navbar() {
       <nav ref={navRef} className="fixed top-0 z-50 w-full bg-[#05060b]/90 backdrop-blur-xl border-b border-white/[0.06] transition-all duration-300">
         <div className="container mx-auto flex h-16 md:h-20 items-center justify-between px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 relative">
 
-          {/* LOGO + BRAND */}
-          <Link href="/" className="flex items-center gap-2.5 cursor-pointer hover:opacity-80 transition-opacity z-50">
-            {/* Replace /logo.png with your actual logo file path */}
+          {/* LOGO */}
+          <Link href="/" onClick={closeAll} className="flex items-center gap-2.5 cursor-pointer hover:opacity-80 transition-opacity z-50">
             <div className="w-8 h-8 md:w-9 md:h-9 relative flex-shrink-0">
               <Image
                 src="/logo.png"
@@ -144,16 +156,21 @@ export default function Navbar() {
             </span>
           </Link>
 
-          {/* DESKTOP NAVIGATION */}
+          {/* DESKTOP NAV */}
           <div className="hidden md:flex items-center gap-3 lg:gap-4 xl:gap-6 text-sm font-semibold text-gray-300 h-full font-space-grotesk">
 
-            <Link href="/" className="hover:text-white transition-colors h-full flex items-center px-2 py-1 rounded-lg hover:bg-white/[0.06] text-xs lg:text-sm xl:text-base whitespace-nowrap">
+            <Link
+              href="/"
+              onClick={closeAll}
+              className="hover:text-white transition-colors h-full flex items-center px-2 py-1 rounded-lg hover:bg-white/[0.06] text-xs lg:text-sm xl:text-base whitespace-nowrap"
+            >
               Home
             </Link>
 
             {/* Services Mega Menu */}
             <div className="h-full flex items-center relative">
               <button
+                suppressHydrationWarning
                 onClick={() => toggleMenu('services')}
                 className={`flex items-center gap-1 hover:text-white transition-all duration-300 px-3 py-1.5 rounded-full ${activeMenu === 'services' ? 'text-white bg-white/10' : 'hover:bg-white/[0.06]'} text-xs lg:text-sm xl:text-base whitespace-nowrap`}
               >
@@ -176,6 +193,7 @@ export default function Navbar() {
                       return (
                         <button
                           key={service.id}
+                          suppressHydrationWarning
                           onMouseEnter={() => setActiveService(service)}
                           className={`
                             flex items-center gap-2 md:gap-3 px-3 md:px-4 py-3 md:py-4 rounded-xl md:rounded-2xl
@@ -207,10 +225,7 @@ export default function Navbar() {
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-x-6 md:gap-y-6">
                       {activeService.subServices.map((sub, idx) => (
-                        <div
-                          key={idx}
-                          className="group cursor-pointer p-2 md:p-3 rounded-lg md:rounded-xl hover:bg-white/[0.06] transition-colors"
-                        >
+                        <div key={idx} className="group cursor-pointer p-2 md:p-3 rounded-lg md:rounded-xl hover:bg-white/[0.06] transition-colors">
                           <h4 className="font-bold text-gray-200 text-sm mb-1 group-hover:text-blue-400 transition-colors">
                             {sub.title}
                           </h4>
@@ -226,6 +241,7 @@ export default function Navbar() {
             {/* Industries Mega Menu */}
             <div className="h-full flex items-center relative">
               <button
+                suppressHydrationWarning
                 onClick={() => toggleMenu('industries')}
                 className={`flex items-center gap-1 hover:text-white transition-all duration-300 px-3 py-1.5 rounded-full ${activeMenu === 'industries' ? 'text-white bg-white/10' : 'hover:bg-white/[0.06]'} text-xs lg:text-sm xl:text-base whitespace-nowrap`}
               >
@@ -280,7 +296,7 @@ export default function Navbar() {
                   </div>
                   <Link
                     href="/about"
-                    onClick={() => setActiveMenu(null)}
+                    onClick={closeAll}
                     className="px-4 md:px-6 py-2.5 md:py-3 bg-blue-600 text-white rounded-xl md:rounded-2xl
                     font-bold text-xs md:text-sm hover:bg-blue-500 transition-all
                     shadow-lg shadow-blue-500/20 w-full md:w-auto text-center whitespace-nowrap"
@@ -294,6 +310,7 @@ export default function Navbar() {
             {/* Company Menu */}
             <div className="h-full flex items-center relative">
               <button
+                suppressHydrationWarning
                 onClick={() => toggleMenu('company')}
                 className={`flex items-center gap-1 hover:text-white transition-all duration-300 px-3 py-1.5 rounded-full ${activeMenu === 'company' ? 'text-white bg-white/10' : 'hover:bg-white/[0.06]'} text-xs lg:text-sm xl:text-base whitespace-nowrap`}
               >
@@ -306,27 +323,31 @@ export default function Navbar() {
                 border border-white/[0.08] p-2 transition-all duration-300 origin-top transform
                 ${activeMenu === 'company' ? 'opacity-100 visible scale-100 translate-y-0' : 'opacity-0 invisible scale-95 -translate-y-4'}
               `}>
-                {companyData.map((item, idx) => (
-                  <Link
-                    key={idx}
-                    href={item.href}
-                    onClick={() => setActiveMenu(null)}
-                    className="flex items-center gap-2 md:gap-3 px-3 md:px-4 py-2.5 md:py-3 rounded-lg md:rounded-xl
-                    hover:bg-white/[0.06] transition-colors group min-h-[50px]"
-                  >
-                    <div className="text-gray-500 group-hover:text-blue-400">
-                      {React.createElement(item.icon, { size: 16, className: "md:size-[18px]" })}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <span className="font-bold text-gray-300 text-xs md:text-sm block group-hover:text-white truncate">
-                        {item.name}
-                      </span>
-                      <span className="text-[10px] text-gray-500 block truncate">
-                        {item.desc}
-                      </span>
-                    </div>
-                  </Link>
-                ))}
+                {companyData.map((item, idx) => {
+                  const Icon = item.icon;
+                  return (
+                    <Link
+                      key={idx}
+                      href={item.href}
+                      onClick={closeAll}
+                      prefetch={true}
+                      className="flex items-center gap-2 md:gap-3 px-3 md:px-4 py-2.5 md:py-3 rounded-lg md:rounded-xl
+                      hover:bg-white/[0.06] transition-colors group min-h-[50px]"
+                    >
+                      <div className="text-gray-500 group-hover:text-blue-400">
+                        <Icon size={16} className="md:size-[18px]" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <span className="font-bold text-gray-300 text-xs md:text-sm block group-hover:text-white truncate">
+                          {item.name}
+                        </span>
+                        <span className="text-[10px] text-gray-500 block truncate">
+                          {item.desc}
+                        </span>
+                      </div>
+                    </Link>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -335,6 +356,8 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-3">
             <Link
               href="/contact"
+              onClick={closeAll}
+              prefetch={true}
               className="inline-flex items-center justify-center gap-2 px-3 py-2 lg:px-4 lg:py-2.5 xl:px-6 xl:py-3 rounded-full text-white font-bold font-space-grotesk bg-blue-600 hover:bg-blue-500 transition-all shadow-lg shadow-blue-500/20 whitespace-nowrap min-w-[120px] text-xs lg:text-sm xl:text-base"
             >
               <span className="hidden lg:inline">Talk to Us</span>
@@ -345,6 +368,7 @@ export default function Navbar() {
 
           {/* MOBILE TOGGLE */}
           <button
+            suppressHydrationWarning
             className="md:hidden p-2 text-gray-300 hover:bg-white/10 rounded-lg transition-colors z-50"
             onClick={() => setIsMobileMenuOpen(true)}
             aria-label="Open menu"
@@ -362,7 +386,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between px-4 sm:px-6 h-16 border-b border-white/[0.06]">
           <Link
             href="/"
-            onClick={() => setIsMobileMenuOpen(false)}
+            onClick={closeAll}
             className="flex items-center gap-2 font-bold font-space-grotesk"
           >
             <div className="w-7 h-7 relative flex-shrink-0">
@@ -374,6 +398,7 @@ export default function Navbar() {
             </span>
           </Link>
           <button
+            suppressHydrationWarning
             onClick={() => setIsMobileMenuOpen(false)}
             className="p-2 text-gray-400 hover:bg-white/10 rounded-full transition-colors"
             aria-label="Close menu"
@@ -385,7 +410,7 @@ export default function Navbar() {
         <div className="flex flex-col px-4 sm:px-6 py-4 overflow-y-auto h-[calc(100vh-64px)] font-space-grotesk">
           <Link
             href="/"
-            onClick={() => setIsMobileMenuOpen(false)}
+            onClick={closeAll}
             className="py-3 text-base font-medium text-gray-300 border-b border-white/[0.06] flex items-center min-h-[56px] hover:text-white transition-colors"
           >
             Home
@@ -394,6 +419,7 @@ export default function Navbar() {
           {/* Services Accordion */}
           <div className="border-b border-white/[0.06]">
             <button
+              suppressHydrationWarning
               onClick={() => toggleMobileSection('services')}
               className="flex items-center justify-between w-full py-3 text-base font-medium text-gray-300 min-h-[56px]"
             >
@@ -415,10 +441,7 @@ export default function Navbar() {
                   </div>
                   <div className="pl-4 space-y-2 border-l-2 border-white/[0.06]">
                     {service.subServices.map((sub, sIdx) => (
-                      <div
-                        key={sIdx}
-                        className="text-xs text-gray-500 py-1.5 px-2 rounded hover:bg-white/[0.06] hover:text-gray-300"
-                      >
+                      <div key={sIdx} className="text-xs text-gray-500 py-1.5 px-2 rounded hover:bg-white/[0.06] hover:text-gray-300">
                         {sub.title}
                       </div>
                     ))}
@@ -431,6 +454,7 @@ export default function Navbar() {
           {/* Industries Accordion */}
           <div className="border-b border-white/[0.06]">
             <button
+              suppressHydrationWarning
               onClick={() => toggleMobileSection('industries')}
               className="flex items-center justify-between w-full py-3 text-base font-medium text-gray-300 min-h-[56px]"
             >
@@ -466,6 +490,7 @@ export default function Navbar() {
           {/* Company Accordion */}
           <div className="border-b border-white/[0.06]">
             <button
+              suppressHydrationWarning
               onClick={() => toggleMobileSection('company')}
               className="flex items-center justify-between w-full py-3 text-base font-medium text-gray-300 min-h-[56px]"
             >
@@ -480,19 +505,23 @@ export default function Navbar() {
               ${expandedMobileSection === 'company' ? 'max-h-[200px] opacity-100 pb-4' : 'max-h-0 opacity-0'}
             `}>
               <div className="flex flex-col gap-1 pl-4 pt-2">
-                {companyData.map((item, idx) => (
-                  <Link
-                    key={idx}
-                    href={item.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="flex items-center gap-2 py-2.5 text-gray-400 hover:text-white hover:bg-white/[0.06] rounded-lg px-2"
-                  >
-                    <span className="text-blue-400">
-                      {React.createElement(item.icon, { size: 16 })}
-                    </span>
-                    <span className="text-sm">{item.name}</span>
-                  </Link>
-                ))}
+                {companyData.map((item, idx) => {
+                  const Icon = item.icon;
+                  return (
+                    <Link
+                      key={idx}
+                      href={item.href}
+                      onClick={closeAll}
+                      prefetch={true}
+                      className="flex items-center gap-2 py-2.5 text-gray-400 hover:text-white hover:bg-white/[0.06] rounded-lg px-2"
+                    >
+                      <span className="text-blue-400">
+                        <Icon size={16} />
+                      </span>
+                      <span className="text-sm">{item.name}</span>
+                    </Link>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -500,7 +529,8 @@ export default function Navbar() {
           {/* Mobile CTA */}
           <Link
             href="/contact"
-            onClick={() => setIsMobileMenuOpen(false)}
+            onClick={closeAll}
+            prefetch={true}
             className="block w-full mt-8 py-3.5 rounded-full text-white font-bold
             bg-blue-600 hover:bg-blue-500 shadow-lg shadow-blue-500/20 text-center text-sm flex items-center justify-center gap-2 transition-colors"
           >
