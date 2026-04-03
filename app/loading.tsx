@@ -1,26 +1,26 @@
 // ============================================================================
-// GLOBAL LOADING STATE
+// GLOBAL LOADING STATE - Modern Fade In/Out Text Animation
 // ============================================================================
 
 export default function Loading() {
   return (
-    <main className="min-h-screen bg-[#05060b] flex items-center justify-center">
-
+    <main className="min-h-screen bg-white dark:bg-slate-950 flex items-center justify-center">
+      {/* Subtle background gradient */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-600/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-indigo-600/5 rounded-full blur-3xl animate-pulse delay-700" />
       </div>
 
-      <div className="relative text-center">
-        <div className="inline-flex items-center justify-center mb-6">
-          <div className="relative">
-            <div className="w-16 h-16 rounded-full border-4 border-white/10" />
-            <div className="absolute inset-0 w-16 h-16 rounded-full border-4 border-transparent border-t-blue-500 animate-spin" />
-            <div className="absolute inset-2 rounded-full bg-gradient-to-r from-blue-600/30 via-purple-600/30 to-indigo-600/30 animate-pulse" />
-          </div>
-        </div>
-
-        <p className="text-gray-400 font-medium animate-pulse tracking-wide">
+      <div className="relative text-center px-4">
+        {/* Main Logo Text with Fade Animation */}
+        <h1 className="text-5xl md:text-7xl font-bold mb-4">
+          <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent animate-[pulse_2s_ease-in-out_infinite]">
+            Vidi Agency
+          </span>
+        </h1>
+        
+        {/* Subtitle with subtle animation */}
+        <p className="text-slate-500 dark:text-slate-400 text-sm md:text-base tracking-[0.2em] uppercase animate-[pulse_2s_ease-in-out_infinite] delay-100">
           Loading...
         </p>
       </div>
