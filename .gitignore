@@ -1,42 +1,105 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+```
+# Dependencies
+node_modules/
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
-
-# testing
-/coverage
-
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-# misc
-.DS_Store
-*.pem
-
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
-
-# env files (can opt-in for committing if needed)
-.env*
+# Environment variables
+.env
 .env.local
+.env.*
 
-# vercel
-.vercel
+# IDE specific
+.vscode/
+.idea/
 
-# typescript
+# Build artifacts
+dist/
+build/
+target/
+
+# Python related
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+.ENV
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+
+# Coverage reports
+coverage/
+htmlcov/
+.coverage
+
+# Package manager
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# TypeScript/JavaScript build output
+*.js.map
 *.tsbuildinfo
-next-env.d.ts
+.next/
+.nuxt/
+dist/
+
+# Testing
+.jest/
+jest/
+mocha.opts
+test-report.xml
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# PyTest
+.pytest_cache/
+
+# ESLint
+.eslintcache
+
+# Babel
+.babel_cache/
+
+# Rollup
+.rollup.cache/
+
+# Webpack
+webpack.config.js
+.webpack/
+
+# Vite
+.vite/
+
+# Angular
+.angular/
+
+# Vue
+.vuepress/dist
+.static-cache
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Sensitive files
+secrets/
+credentials.json
+```
