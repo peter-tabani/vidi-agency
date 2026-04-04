@@ -402,8 +402,8 @@ export default function VidiCRMProtected() {
     name: '',
     email: '',
     phone: '',
-    service: 'Website Design',
-    package: 'Grow',
+    service: 'AI Integration',
+    package: 'Professional',
     amount: 0,
     paid: 0,
     status: 'Not Started',
@@ -800,8 +800,8 @@ export default function VidiCRMProtected() {
       name: '',
       email: '',
       phone: '',
-      service: 'Website Design',
-      package: 'Grow',
+      service: 'AI Integration',
+      package: 'Professional',
       amount: 0,
       paid: 0,
       status: 'Not Started',
@@ -1575,10 +1575,6 @@ export default function VidiCRMProtected() {
               <p className="text-gray-400 mb-8">
                 Advanced {activeTab} features are coming soon with enhanced analytics and automation.
               </p>
-              <div className="inline-flex items-center gap-2 text-sm text-gray-500 bg-black px-4 py-2.5 rounded-full border border-white/10">
-                <Clock className="w-4 h-4" />
-                Launching Q2 2025
-              </div>
             </div>
           </div>
         )}
@@ -1661,12 +1657,12 @@ export default function VidiCRMProtected() {
                     value={formData.service}
                     onChange={(e) => setFormData({...formData, service: e.target.value})}
                   >
-                    <option value="Website Design">Website Design</option>
-                    <option value="Web App / SaaS">Web App / SaaS</option>
                     <option value="AI Integration">AI Integration</option>
-                    <option value="Brand Strategy">Brand Strategy</option>
-                    <option value="E-commerce">E-commerce</option>
-                    <option value="Mobile App">Mobile App</option>
+                    <option value="AI Strategy Consulting">AI Strategy Consulting</option>
+                    <option value="Engineering Knowledge Assistant">Engineering Knowledge Assistant</option>
+                    <option value="AI Lead Capture & CRM Sync">AI Lead Capture & CRM Sync</option>
+                    <option value="AI Customer Support">AI Customer Support</option>
+                    <option value="EHS Compliance Assistant">EHS Compliance Assistant</option>
                   </select>
                 </div>
 
@@ -1677,9 +1673,8 @@ export default function VidiCRMProtected() {
                     value={formData.package}
                     onChange={(e) => setFormData({...formData, package: e.target.value})}
                   >
-                    <option value="Launch">Launch</option>
-                    <option value="Grow">Grow</option>
-                    <option value="Dominate">Dominate</option>
+                    <option value="Standard">Standard</option>
+                    <option value="Professional">Professional</option>
                     <option value="Enterprise">Enterprise</option>
                   </select>
                 </div>

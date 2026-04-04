@@ -36,9 +36,9 @@ export default function PremiumPaymentPage({ params }: { params: { id: string } 
     phone: '+1 (555) 123-4567',
     package: 'Enterprise',
     amount: 3000, 
-    service: 'Website Development',
+    service: 'AI Integration',
     date: new Date().toLocaleDateString(),
-    project_description: 'A comprehensive e-commerce platform with AI-powered recommendations and mobile app integration.'
+    project_description: 'Custom AI assistant trained on engineering manuals and safety documentation for instant technical answers.'
   };
 
   useEffect(() => {
@@ -713,7 +713,7 @@ export default function PremiumPaymentPage({ params }: { params: { id: string } 
                     </span>
                     <span className="flex items-center gap-1">
                       <Smartphone className="w-4 h-4 text-purple-500" />
-                      Mobile app access
+                      24/7 AI assistant access
                     </span>
                   </div>
                 </div>

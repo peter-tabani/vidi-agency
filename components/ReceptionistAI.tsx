@@ -42,18 +42,18 @@ export default function ReceptionistAI() {
   const [greetingTime, setGreetingTime] = useState('Day');
 
   const quickActions = [
-    { text: " View Pricing", action: "What's your pricing?" },
-    { text: " Build an App", action: "I want to build a mobile app" },
-    { text: " AI Automation", action: "Tell me about AI automation" },
-    { text: " Book a Call", action: "I'd like to schedule a consultation" }
+    { text: "📅 Book a Demo", action: "I'd like to book a free 30-minute demo" },
+    { text: "🏭 Industrial AI", action: "Tell me about your industrial AI solutions" },
+    { text: "🔒 Data Security", action: "How do you handle data security?" },
+    { text: "📞 Contact Us", action: "How can I contact Vidi Agency?" }
   ];
 
   const [personalizedMessages, setPersonalizedMessages] = useState([
-    { text: " AI Automation for your business , 24/7 lead capture & support." },
-    { text: " Custom AI systems built to scale your operations." },
-    { text: " Automate customer engagement with AI trained on your data." },
-    { text: " Workflow automation that eliminates repetitive tasks." },
-    { text: " AI-powered websites & apps that convert visitors." }
+    { text: "AI assistants for heavy equipment & manufacturing operations." },
+    { text: "Instant answers from your engineering manuals, drawings & SOPs." },
+    { text: "24/7 lead capture trained on your product data." },
+    { text: "EHS compliance assistance with audit-ready reports." },
+    { text: "Free 30-minute demo built on your own documents." }
   ]);
 
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -85,18 +85,18 @@ export default function ReceptionistAI() {
         });
         setPersonalizedMessages([
           { text: `Good ${timeGreeting}! How can we help you today ?` },
-          { text: " Custom AI systems – lead capture, support, and workflow automation." },
-          { text: " AI trained on your data to engage customers and close deals 24/7." },
+          { text: " Custom AI systems – lead capture, support, and workflow automation for industrial operations." },
+          { text: " AI trained on your manuals, drawings & SOPs for instant engineering answers." },
           { text: " Automate repetitive tasks and integrate with your existing tools." },
-          { text: " AI-powered websites & apps that convert visitors." }
+          { text: " Free 30-minute demo built on your own documents." }
         ]);
       } catch {
         setPersonalizedMessages([
           { text: `Good ${timeGreeting}! How can we help you today ?` },
-          { text: "Custom AI systems built to scale your operations." },
+          { text: "Custom AI systems built to scale your industrial operations." },
           { text: " Automate customer engagement with AI trained on your data." },
           { text: " Workflow automation that eliminates repetitive tasks." },
-          { text: " AI-powered websites & apps that convert visitors." }
+          { text: " Free 30-minute demo built on your own documents." }
         ]);
       }
     };
@@ -236,16 +236,17 @@ export default function ReceptionistAI() {
   const currentMessage = personalizedMessages[messageIndex] || personalizedMessages[0];
 
   return (
-    <div className="fixed bottom-4 right-4 md:right-6 md:bottom-6 z-[9999] font-sans flex flex-col items-end">
+    <div className="fixed bottom-0 right-0 md:right-6 md:bottom-6 z-[9999] font-sans flex flex-col items-end pointer-events-none">
+      <div className="pointer-events-auto w-full flex justify-end">
       {!isOpen && (
         <div
           onClick={openChat}
           className={`
-            cursor-pointer mb-4 flex items-center gap-3 transition-all duration-500 ease-out transform
+            cursor-pointer mb-4 flex items-center gap-3 transition-all duration-500 ease-out transform mr-4 md:mr-0
             ${isPeeking ? 'translate-y-0 opacity-100' : 'translate-y-[150%] opacity-0'}
           `}
         >
-          <div className="relative bg-black/40 backdrop-blur-lg border border-blue-500/30 text-white px-5 py-3 rounded-2xl rounded-tr-none shadow-2xl shadow-blue-500/20 max-w-[280px] hover:scale-105 transition-transform duration-300">
+          <div className="relative bg-black/40 backdrop-blur-lg border border-blue-500/30 text-white px-5 py-3 rounded-2xl rounded-tr-none shadow-2xl shadow-blue-500/20 max-w-[280px] hover:scale-105 transition-transform duration-300 hidden sm:block">
             <p className="text-sm font-semibold leading-relaxed drop-shadow-md">{currentMessage.text}</p>
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer rounded-2xl pointer-events-none"></div>
           </div>
@@ -270,7 +271,7 @@ export default function ReceptionistAI() {
         <button
           onClick={openChat}
           aria-label="Open chat"
-          className="group relative bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 shadow-blue-500/20"
+          className="group relative bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 shadow-blue-500/20 mr-4 md:mr-0"
         >
           <MessageSquare className="w-7 h-7" />
           <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full border-2 border-white animate-pulse"></span>
@@ -283,14 +284,16 @@ export default function ReceptionistAI() {
       {isOpen && (
         <div
           className={`
-            mb-2
+            mb-2 mr-4 md:mr-0
             w-[calc(100vw-32px)] sm:w-[400px] max-w-full
-            ${isMinimized ? 'h-16' : 'h-[85vh] sm:h-[600px]'}
+            ${isMinimized ? 'h-16' : 'h-[70vh] sm:h-[600px] max-h-[85vh]'}
             rounded-2xl shadow-2xl
             flex flex-col overflow-hidden
             transition-all duration-300 ease-in-out
             bg-[#05060b]/90 backdrop-blur-xl
             border border-white/10
+            fixed bottom-0 right-0 md:right-6 md:bottom-6
+            chat-container-fixed
           `}
         >
           <div className="bg-black/80 backdrop-blur-md p-4 flex justify-between items-center text-white border-b border-white/10">
@@ -334,7 +337,7 @@ export default function ReceptionistAI() {
 
           {!isMinimized && (
             <>
-              <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 space-y-4 bg-[#05060b]/50">
+              <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 space-y-4 bg-[#05060b]/50" style={{ minHeight: '200px' }}>
                 {messages.map((m) => (
                   <div key={m.id} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                     <div
@@ -410,6 +413,8 @@ export default function ReceptionistAI() {
           )}
         </div>
       )}
+      </div>
+    </div>
 
       <style jsx>{`
         @keyframes shimmer {

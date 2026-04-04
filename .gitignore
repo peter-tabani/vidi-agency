@@ -2,21 +2,7 @@
 # Dependencies
 node_modules/
 
-# Environment variables
-.env
-.env.local
-.env.*
-
-# IDE specific
-.vscode/
-.idea/
-
-# Build artifacts
-dist/
-build/
-target/
-
-# Python related
+# Python
 __pycache__/
 *.pyc
 *.pyo
@@ -26,80 +12,41 @@ env/
 venv/
 .venv/
 .ENV
+.ENV.local
+
+# Build outputs
+dist/
+build/
+.next/
+out/
 
 # Logs
 *.log
 
-# OS generated files
+# Environment variables
+.env
+.env.local
+.env.*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.tmp
+
+# OS
 .DS_Store
 Thumbs.db
 
-# Temporary files
-*.tmp
-*.temp
-*.swp
-*.swo
-
-# Coverage reports
+# Coverage
 coverage/
 htmlcov/
 .coverage
 
-# Package manager
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
-
-# TypeScript/JavaScript build output
-*.js.map
-*.tsbuildinfo
-.next/
-.nuxt/
-dist/
-
-# Testing
-.jest/
-jest/
-mocha.opts
-test-report.xml
-
-# MyPy
+# Cache
 .mypy_cache/
-.dmypy.json
-dmypy.json
-
-# PyTest
 .pytest_cache/
-
-# ESLint
-.eslintcache
-
-# Babel
-.babel_cache/
-
-# Rollup
-.rollup.cache/
-
-# Webpack
-webpack.config.js
-.webpack/
-
-# Vite
-.vite/
-
-# Angular
-.angular/
-
-# Vue
-.vuepress/dist
-.static-cache
-
-# Database
-*.db
-*.sqlite
-*.sqlite3
-
-# Sensitive files
-secrets/
-credentials.json
+.nyc_output/
+coverage/
 ```
