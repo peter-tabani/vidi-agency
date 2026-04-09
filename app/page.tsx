@@ -104,7 +104,8 @@ function Modal({ id, onClose }: { id: ModalKey; onClose: () => void }) {
               </h3>
             </div>
             <button
-              onClick={onClose}
+              onClick={(e) => { e.stopPropagation(); onClose(); }}
+              type="button"
               className="flex-shrink-0 w-9 h-9 rounded-full bg-white/[0.06] hover:bg-white/[0.12] flex items-center justify-center text-gray-400 hover:text-white transition-all duration-200 mt-1"
             >
               <X className="w-4 h-4" />
@@ -539,7 +540,8 @@ export default function Home() {
                       <p className="text-gray-500 text-sm font-light leading-relaxed">{item.text}</p>
                     </div>
                     <button
-                      onClick={() => setOpenModal(item.id)}
+                      onClick={(e) => { e.stopPropagation(); setOpenModal(item.id); }}
+                      type="button"
                       className={`inline-flex items-center gap-2 text-sm font-semibold transition-colors duration-200 group ${styles!.btn}`}
                     >
                       Read more <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
@@ -585,7 +587,8 @@ export default function Home() {
                   ))}
                 </div>
                 <button
-                  onClick={() => setOpenModal("sales")}
+                  onClick={(e) => { e.stopPropagation(); setOpenModal("sales"); }}
+                  type="button"
                   className="inline-flex items-center gap-2 text-blue-400 text-sm font-semibold hover:text-blue-300 transition-colors duration-200 group"
                 >
                   Read more <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
@@ -620,7 +623,8 @@ export default function Home() {
                   ))}
                 </div>
                 <button
-                  onClick={() => setOpenModal("engineering")}
+                  onClick={(e) => { e.stopPropagation(); setOpenModal("engineering"); }}
+                  type="button"
                   className="inline-flex items-center gap-2 text-indigo-400 text-sm font-semibold hover:text-indigo-300 transition-colors duration-200 group"
                 >
                   Read more <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
@@ -669,7 +673,8 @@ export default function Home() {
                   ))}
                 </div>
                 <button
-                  onClick={() => setOpenModal("ehs")}
+                  onClick={(e) => { e.stopPropagation(); setOpenModal("ehs"); }}
+                  type="button"
                   className="inline-flex items-center gap-2 text-emerald-400 text-sm font-semibold hover:text-emerald-300 transition-colors duration-200 group"
                 >
                   Read more <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
@@ -685,7 +690,8 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-10">
               <p className="text-white/30 text-xs font-bold tracking-[0.2em] uppercase">Industries we serve</p>
               <button
-                onClick={() => setShowAllIndustries(!showAllIndustries)}
+                onClick={(e) => { e.stopPropagation(); setShowAllIndustries(!showAllIndustries); }}
+                type="button"
                 className="inline-flex items-center gap-2 text-xs font-bold text-blue-400 hover:text-blue-300 transition-colors duration-200 uppercase tracking-widest"
               >
                 {showAllIndustries ? "Show less" : "See all industries"}
@@ -1041,7 +1047,7 @@ export default function Home() {
 
             <div className="bg-white/[0.04] rounded-2xl md:rounded-[32px] p-6 md:p-8 lg:p-10 shadow-xl border border-white/[0.08] relative overflow-hidden backdrop-blur-sm">
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-blue-400 to-sky-400" />
-              <form className="space-y-4 md:space-y-6 relative z-10">
+              <form className="space-y-4 md:space-y-6 relative z-10" onSubmit={(e) => e.preventDefault()}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                   <div className="space-y-2">
                     <label className="text-sm font-bold text-gray-300 ml-1">Name</label>

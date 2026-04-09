@@ -40,6 +40,7 @@ export default function ReceptionistAI() {
 
   const [userLocation, setUserLocation] = useState<UserLocation>({ city: '', state: '', country: '' });
   const [greetingTime, setGreetingTime] = useState('Day');
+  const [viewportHeight, setViewportHeight] = useState<number | null>(null);
 
   const quickActions = [
     { text: " View Pricing", action: "What's your pricing?" },
@@ -105,12 +106,30 @@ export default function ReceptionistAI() {
 
   useEffect(() => {
     if (scrollRef.current) {
-      scrollRef.current.scrollTo({
-        top: scrollRef.current.scrollHeight,
-        behavior: 'smooth'
+      requestAnimationFrame(() => {
+        scrollRef.current?.scrollTo({
+          top: scrollRef.current.scrollHeight,
+          behavior: 'smooth'
+        });
       });
     }
   }, [messages, isMinimized, isOpen]);
+
+  useEffect(() => {
+    if (!isOpen || isMinimized) return;
+    const vp = window.visualViewport;
+    if (!vp) return;
+    const updateViewport = () => {
+        setViewportHeight(vp.height);
+    };
+    vp.addEventListener('resize', updateViewport);
+    vp.addEventListener('scroll', updateViewport);
+    updateViewport();
+    return () => {
+        vp.removeEventListener('resize', updateViewport);
+        vp.removeEventListener('scroll', updateViewport);
+    };
+  }, [isOpen, isMinimized]);
 
   useEffect(() => {
     if (isOpen || userHasInteracted) {
@@ -146,6 +165,7 @@ export default function ReceptionistAI() {
 
     setInputValue('');
     if (inputRef.current) inputRef.current.style.height = 'auto';
+    inputRef.current?.blur();
     setShowQuickActions(false);
     setUserHasInteracted(true);
 
@@ -239,7 +259,7 @@ export default function ReceptionistAI() {
     <div className="fixed bottom-4 right-4 md:right-6 md:bottom-6 z-[9999] font-sans flex flex-col items-end">
       {!isOpen && (
         <div
-          onClick={openChat}
+          onClick={(e) => { e.stopPropagation(); openChat(); }}
           className={`
             cursor-pointer mb-4 flex items-center gap-3 transition-all duration-500 ease-out transform
             ${isPeeking ? 'translate-y-0 opacity-100' : 'translate-y-[150%] opacity-0'}
@@ -268,7 +288,8 @@ export default function ReceptionistAI() {
 
       {!isOpen && (
         <button
-          onClick={openChat}
+          onClick={(e) => { e.stopPropagation(); openChat(); }}
+          type="button"
           aria-label="Open chat"
           className="group relative bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 shadow-blue-500/20"
         >
@@ -285,13 +306,14 @@ export default function ReceptionistAI() {
           className={`
             mb-2
             w-[calc(100vw-32px)] sm:w-[400px] max-w-full
-            ${isMinimized ? 'h-16' : 'h-[85vh] sm:h-[600px]'}
+            ${isMinimized ? 'h-16' : ''}
             rounded-2xl shadow-2xl
             flex flex-col overflow-hidden
             transition-all duration-300 ease-in-out
             bg-[#05060b]/90 backdrop-blur-xl
             border border-white/10
           `}
+          style={isOpen && !isMinimized ? (viewportHeight ? { height: `${viewportHeight - 40}px`, maxHeight: '600px' } : { height: '85dvh', maxHeight: '600px' }) : undefined}
         >
           <div className="bg-black/80 backdrop-blur-md p-4 flex justify-between items-center text-white border-b border-white/10">
             <div className="flex items-center gap-3">
@@ -316,14 +338,16 @@ export default function ReceptionistAI() {
             </div>
             <div className="flex gap-1">
               <button
-                onClick={() => setIsMinimized(!isMinimized)}
+                onClick={(e) => { e.stopPropagation(); setIsMinimized(!isMinimized); }}
+                type="button"
                 aria-label={isMinimized ? "Expand chat" : "Minimize chat"}
                 className="hover:bg-white/10 p-2 rounded-lg transition-colors"
               >
                 {isMinimized ? <ChevronDown className="w-5 h-5" /> : <Minimize2 className="w-5 h-5" />}
               </button>
               <button
-                onClick={() => setIsOpen(false)}
+                onClick={(e) => { e.stopPropagation(); setIsOpen(false); }}
+                type="button"
                 aria-label="Close chat"
                 className="hover:bg-white/10 p-2 rounded-lg transition-colors"
               >
@@ -393,7 +417,8 @@ export default function ReceptionistAI() {
                     aria-label="Chat message input"
                   />
                   <button
-                    onClick={() => handleSendMessage()}
+                    onClick={(e) => { e.stopPropagation(); handleSendMessage(); }}
+                    type="button"
                     disabled={isLoading || !inputValue.trim()}
                     aria-label="Send message"
                     className="bg-blue-600 hover:bg-blue-700 text-white p-2.5 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed transition-transform hover:scale-105 active:scale-95 shadow-md"
