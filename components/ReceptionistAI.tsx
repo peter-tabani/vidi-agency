@@ -3,6 +3,18 @@
 import { useState, useRef, useEffect } from 'react';
 import { MessageSquare, X, Send, Sparkles, Zap, ChevronDown, Minimize2, MapPin } from 'lucide-react';
 
+// Hook to detect mobile viewport
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 640);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+  return isMobile;
+};
+
 const ROBOT_IMAGE = "/vidi-avatar.jpeg";
 
 type Message = {
@@ -41,6 +53,7 @@ export default function ReceptionistAI() {
   const [userLocation, setUserLocation] = useState<UserLocation>({ city: '', state: '', country: '' });
   const [greetingTime, setGreetingTime] = useState('Day');
   const [viewportHeight, setViewportHeight] = useState<number | null>(null);
+  const isMobile = useIsMobile();
 
   const quickActions = [
     { text: " View Pricing", action: "What's your pricing?" },
@@ -256,7 +269,13 @@ export default function ReceptionistAI() {
   const currentMessage = personalizedMessages[messageIndex] || personalizedMessages[0];
 
   return (
-    <div className="fixed bottom-4 right-4 md:right-6 md:bottom-6 z-[9999] font-sans flex flex-col items-end">
+    <div
+      className={`
+        fixed z-[9999] font-sans flex flex-col items-end
+        ${isOpen && isMobile && !isMinimized ? 'top-0 left-0 w-full' : 'bottom-4 right-4 md:right-6 md:bottom-6'}
+      `}
+      style={isOpen && isMobile && !isMinimized && viewportHeight ? { height: `${viewportHeight}px` } : undefined}
+    >
       {!isOpen && (
         <div
           onClick={(e) => { e.stopPropagation(); openChat(); }}
@@ -304,16 +323,18 @@ export default function ReceptionistAI() {
       {isOpen && (
         <div
           className={`
-            mb-2
-            w-[calc(100vw-32px)] sm:w-[400px] max-w-full
             ${isMinimized ? 'h-16' : ''}
-            rounded-2xl shadow-2xl
+            ${isOpen && isMobile && !isMinimized ? 'rounded-none' : 'rounded-2xl'}
+            shadow-2xl
             flex flex-col overflow-hidden
             transition-all duration-300 ease-in-out
             bg-[#05060b]/90 backdrop-blur-xl
             border border-white/10
+            ${isOpen && isMobile && !isMinimized ? 'w-full' : 'w-[calc(100vw-32px)] sm:w-[400px]'}
+            ${!isMinimized && isOpen && isMobile ? 'h-full' : ''}
+            max-w-full
           `}
-          style={isOpen && !isMinimized ? (viewportHeight ? { height: `${viewportHeight - 40}px`, maxHeight: '600px' } : { height: '85dvh', maxHeight: '600px' }) : undefined}
+          style={!isMinimized && isOpen && !isMobile ? (viewportHeight ? { height: `${viewportHeight - 40}px`, maxHeight: '600px' } : { height: '85dvh', maxHeight: '600px' }) : undefined}
         >
           <div className="bg-black/80 backdrop-blur-md p-4 flex justify-between items-center text-white border-b border-white/10">
             <div className="flex items-center gap-3">
