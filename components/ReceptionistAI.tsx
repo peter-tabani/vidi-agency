@@ -380,7 +380,8 @@ export default function ReceptionistAI() {
                       {quickActions.map((qa, idx) => (
                         <button
                           key={idx}
-                          onClick={() => handleQuickAction(qa.action)}
+                          onClick={(e) => { e.stopPropagation(); handleQuickAction(qa.action); }}
+                          type="button"
                           className="text-xs bg-white/5 border border-white/10 hover:border-blue-500/50 hover:bg-blue-500/20 rounded-xl p-3 transition-all text-left font-medium text-gray-300 hover:text-white backdrop-blur-sm"
                         >
                           {qa.text}
