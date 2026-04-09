@@ -354,16 +354,17 @@ export default function Navbar() {
 
           {/* DESKTOP CTA */}
           <div className="hidden md:flex items-center gap-3">
-            <Link
-              href="/contact"
+            <a
+              href="https://wa.me/254100856199?text=Hello!%20I%27m%20interested%20in%20your%20AI%20services%20and%20would%20like%20to%20discuss%20how%20Vidi%20Agency%20can%20help%20my%20business.%20Let%27s%20connect!"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={closeAll}
-              prefetch={true}
               className="inline-flex items-center justify-center gap-2 px-3 py-2 lg:px-4 lg:py-2.5 xl:px-6 xl:py-3 rounded-full text-white font-bold font-space-grotesk bg-blue-600 hover:bg-blue-500 transition-all shadow-lg shadow-blue-500/20 whitespace-nowrap min-w-[120px] text-xs lg:text-sm xl:text-base"
             >
               <span className="hidden lg:inline">Talk to Us</span>
               <span className="lg:hidden">Contact</span>
               <ArrowRight size={14} className="hidden lg:inline" />
-            </Link>
+            </a>
           </div>
 
           {/* MOBILE TOGGLE */}
@@ -527,16 +528,17 @@ export default function Navbar() {
           </div>
 
           {/* Mobile CTA */}
-          <Link
-            href="/contact"
+          <a
+            href="https://wa.me/254100856199?text=Hello!%20I%27m%20interested%20in%20your%20AI%20services%20and%20would%20like%20to%20discuss%20how%20Vidi%20Agency%20can%20help%20my%20business.%20Let%27s%20connect!"
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={closeAll}
-            prefetch={true}
             className="block w-full mt-8 py-3.5 rounded-full text-white font-bold
             bg-blue-600 hover:bg-blue-500 shadow-lg shadow-blue-500/20 text-center text-sm flex items-center justify-center gap-2 transition-colors"
           >
             Talk to Us
             <ArrowRight size={16} />
-          </Link>
+          </a>
         </div>
       </div>
     </>
